@@ -1,0 +1,260 @@
+import { Link } from "react-router-dom";
+import { Button } from "@/components/ui/button";
+import { Navigation } from "@/components/Navigation";
+import { Footer } from "@/components/Footer";
+import heroImage from "@/assets/hero-toys.jpg";
+import { Sparkles, Shield, RefreshCw, TruckIcon, Star } from "lucide-react";
+
+const Home = () => {
+  return (
+    <div className="min-h-screen bg-background">
+      <Navigation />
+      
+      {/* Hero Section */}
+      <section className="container mx-auto px-4 py-16 md:py-24">
+        <div className="max-w-4xl mx-auto text-center">
+          <h1 className="text-4xl md:text-6xl font-heading font-bold text-foreground mb-6 leading-tight">
+            Playtime that grows{" "}
+            <span className="text-primary">smarter</span> with every box
+          </h1>
+          
+          <p className="text-xl md:text-2xl text-muted-foreground mb-8">
+            AI-curated, hygienic, high-value toys delivered across Bengaluru.
+          </p>
+          
+          <Link to="/quiz">
+            <Button variant="cta" size="lg" className="text-lg px-12 h-14 mb-12">
+              Find Your Child's Toy Personality in 60 Seconds ✨
+            </Button>
+          </Link>
+          
+          <div className="rounded-3xl overflow-hidden shadow-2xl mb-12">
+            <img
+              src={heroImage}
+              alt="JoyBox filled with colorful educational toys"
+              className="w-full h-auto"
+            />
+          </div>
+        </div>
+      </section>
+      
+      {/* Value Proposition Grid */}
+      <section className="container mx-auto px-4 py-16">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div className="glass-card p-6 hover-lift">
+            <div className="w-12 h-12 rounded-full bg-primary/20 flex items-center justify-center mb-4">
+              <Sparkles className="text-primary" size={24} />
+            </div>
+            <h3 className="font-heading font-bold text-xl mb-2">AI Curation</h3>
+            <p className="text-muted-foreground">
+              Toys matched to your child's unique play personality and developmental stage.
+            </p>
+          </div>
+          
+          <div className="glass-card p-6 hover-lift">
+            <div className="w-12 h-12 rounded-full bg-secondary/20 flex items-center justify-center mb-4">
+              <Shield className="text-secondary" size={24} />
+            </div>
+            <h3 className="font-heading font-bold text-xl mb-2">Hygiene Shield</h3>
+            <p className="text-muted-foreground">
+              Hospital-grade cleaning with UV-C sterilization and vacuum sealing.
+            </p>
+          </div>
+          
+          <div className="glass-card p-6 hover-lift">
+            <div className="w-12 h-12 rounded-full bg-accent/20 flex items-center justify-center mb-4">
+              <RefreshCw className="text-accent" size={24} />
+            </div>
+            <h3 className="font-heading font-bold text-xl mb-2">Circular Play</h3>
+            <p className="text-muted-foreground">
+              Swap toys every month. Zero clutter. Maximum variety. Sustainable joy.
+            </p>
+          </div>
+          
+          <div className="glass-card p-6 hover-lift">
+            <div className="w-12 h-12 rounded-full bg-coral/20 flex items-center justify-center mb-4">
+              <TruckIcon className="text-coral" size={24} />
+            </div>
+            <h3 className="font-heading font-bold text-xl mb-2">Bengaluru Delivery</h3>
+            <p className="text-muted-foreground">
+              Hyperlocal service. Doorstep pickup and delivery within 48 hours.
+            </p>
+          </div>
+        </div>
+      </section>
+      
+      {/* The JoyLoop */}
+      <section className="container mx-auto px-4 py-16">
+        <div className="max-w-4xl mx-auto text-center mb-12">
+          <h2 className="text-3xl md:text-5xl font-heading font-bold mb-4">
+            The JoyLoop
+          </h2>
+          <p className="text-lg text-muted-foreground">
+            Three simple steps to endless play possibilities
+          </p>
+        </div>
+        
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-5xl mx-auto">
+          <div className="text-center">
+            <div className="w-20 h-20 rounded-full bg-primary/20 flex items-center justify-center mx-auto mb-4">
+              <span className="text-4xl">1️⃣</span>
+            </div>
+            <h3 className="font-heading font-bold text-xl mb-2">Profile</h3>
+            <p className="text-muted-foreground">
+              Take our 60-second AI quiz to discover your child's play personality
+            </p>
+          </div>
+          
+          <div className="text-center">
+            <div className="w-20 h-20 rounded-full bg-secondary/20 flex items-center justify-center mx-auto mb-4">
+              <span className="text-4xl">2️⃣</span>
+            </div>
+            <h3 className="font-heading font-bold text-xl mb-2">Play</h3>
+            <p className="text-muted-foreground">
+              Receive curated JoyBox with 3-4 premium toys worth ₹4,500+
+            </p>
+          </div>
+          
+          <div className="text-center">
+            <div className="w-20 h-20 rounded-full bg-accent/20 flex items-center justify-center mx-auto mb-4">
+              <span className="text-4xl">3️⃣</span>
+            </div>
+            <h3 className="font-heading font-bold text-xl mb-2">Swap</h3>
+            <p className="text-muted-foreground">
+              Exchange for new toys monthly. Keep the fun fresh, home clutter-free
+            </p>
+          </div>
+        </div>
+      </section>
+      
+      {/* Toy Brands */}
+      <section className="container mx-auto px-4 py-16 bg-muted/30 rounded-3xl">
+        <div className="text-center mb-12">
+          <h2 className="text-3xl md:text-4xl font-heading font-bold mb-4">
+            Premium Brands You Trust
+          </h2>
+          <p className="text-lg text-muted-foreground">
+            We partner with the world's best toy makers
+          </p>
+        </div>
+        
+        <div className="flex flex-wrap justify-center items-center gap-8 md:gap-12">
+          <div className="text-2xl font-bold text-muted-foreground">Melissa & Doug</div>
+          <div className="text-2xl font-bold text-muted-foreground">Hape</div>
+          <div className="text-2xl font-bold text-muted-foreground">Fisher-Price</div>
+          <div className="text-2xl font-bold text-muted-foreground">LEGO</div>
+          <div className="text-2xl font-bold text-muted-foreground">Hasbro</div>
+        </div>
+      </section>
+      
+      {/* Community Proof */}
+      <section className="container mx-auto px-4 py-16">
+        <div className="text-center mb-12">
+          <h2 className="text-3xl md:text-4xl font-heading font-bold mb-4">
+            Loved by Bengaluru Parents
+          </h2>
+        </div>
+        
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-5xl mx-auto">
+          <div className="glass-card p-6">
+            <div className="flex gap-1 mb-3">
+              {[...Array(5)].map((_, i) => (
+                <Star key={i} className="fill-accent text-accent" size={16} />
+              ))}
+            </div>
+            <p className="text-foreground mb-4">
+              "My daughter was bored of her toys. ToyLuv's AI matched her perfectly. Now she's excited every month!"
+            </p>
+            <p className="text-sm font-semibold">— Priya M., Koramangala</p>
+          </div>
+          
+          <div className="glass-card p-6">
+            <div className="flex gap-1 mb-3">
+              {[...Array(5)].map((_, i) => (
+                <Star key={i} className="fill-accent text-accent" size={16} />
+              ))}
+            </div>
+            <p className="text-foreground mb-4">
+              "Finally, no more toy clutter! The hygiene standards are incredible. Worth every rupee."
+            </p>
+            <p className="text-sm font-semibold">— Rahul K., Indiranagar</p>
+          </div>
+          
+          <div className="glass-card p-6">
+            <div className="flex gap-1 mb-3">
+              {[...Array(5)].map((_, i) => (
+                <Star key={i} className="fill-accent text-accent" size={16} />
+              ))}
+            </div>
+            <p className="text-foreground mb-4">
+              "Best investment in my son's development. He learns while playing with different toys monthly."
+            </p>
+            <p className="text-sm font-semibold">— Ananya S., Whitefield</p>
+          </div>
+        </div>
+      </section>
+      
+      {/* Why Parents Choose ToyLuv */}
+      <section className="container mx-auto px-4 py-16">
+        <div className="max-w-4xl mx-auto">
+          <h2 className="text-3xl md:text-4xl font-heading font-bold text-center mb-12">
+            Why Parents Choose ToyLuv
+          </h2>
+          
+          <div className="space-y-8">
+            <div className="flex gap-6 items-start">
+              <div className="text-5xl">💰</div>
+              <div>
+                <h3 className="font-heading font-bold text-xl mb-2">Save Up to 80%</h3>
+                <p className="text-muted-foreground">
+                  Get ₹4,500+ worth of toys for just ₹999/month. No storage, no waste.
+                </p>
+              </div>
+            </div>
+            
+            <div className="flex gap-6 items-start">
+              <div className="text-5xl">🧠</div>
+              <div>
+                <h3 className="font-heading font-bold text-xl mb-2">Developmental Match</h3>
+                <p className="text-muted-foreground">
+                  Our AI ensures every toy supports your child's growth at the right stage.
+                </p>
+              </div>
+            </div>
+            
+            <div className="flex gap-6 items-start">
+              <div className="text-5xl">🌱</div>
+              <div>
+                <h3 className="font-heading font-bold text-xl mb-2">Sustainable Future</h3>
+                <p className="text-muted-foreground">
+                  Join the circular economy. One toy rotates to 12+ families per year.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      
+      {/* Final CTA */}
+      <section className="container mx-auto px-4 py-16">
+        <div className="glass-card p-12 text-center max-w-3xl mx-auto">
+          <h2 className="text-3xl md:text-4xl font-heading font-bold mb-4">
+            Ready to Start the JoyLoop?
+          </h2>
+          <p className="text-lg text-muted-foreground mb-8">
+            Discover your child's play personality in 60 seconds
+          </p>
+          <Link to="/quiz">
+            <Button variant="cta" size="lg" className="text-lg px-12 h-14">
+              Take the Quiz Now
+            </Button>
+          </Link>
+        </div>
+      </section>
+      
+      <Footer />
+    </div>
+  );
+};
+
+export default Home;

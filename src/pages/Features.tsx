@@ -1,0 +1,249 @@
+import { Navigation } from "@/components/Navigation";
+import { Footer } from "@/components/Footer";
+import { Brain, Droplets, Zap, CheckCircle, Shield, TruckIcon } from "lucide-react";
+
+const Features = () => {
+  return (
+    <div className="min-h-screen bg-background">
+      <Navigation />
+      
+      {/* Hero Section */}
+      <section className="container mx-auto px-4 py-16 md:py-24">
+        <div className="max-w-4xl mx-auto text-center">
+          <h1 className="text-4xl md:text-6xl font-heading font-bold text-foreground mb-6 leading-tight">
+            How ToyLuv makes playtime{" "}
+            <span className="text-primary">smarter</span>
+          </h1>
+          
+          <p className="text-xl md:text-2xl text-muted-foreground mb-8">
+            The science, hygiene, and logistics behind every JoyBox
+          </p>
+        </div>
+      </section>
+      
+      {/* AI Curation Engine */}
+      <section className="container mx-auto px-4 py-16">
+        <div className="max-w-5xl mx-auto">
+          <div className="text-center mb-12">
+            <div className="w-16 h-16 rounded-full bg-primary/20 flex items-center justify-center mx-auto mb-4">
+              <Brain className="text-primary" size={32} />
+            </div>
+            <h2 className="text-3xl md:text-5xl font-heading font-bold mb-4">
+              AI Curation Engine
+            </h2>
+            <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+              Our Play Personality Test analyzes developmental data points to match toys perfectly to your child
+            </p>
+          </div>
+          
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <div className="glass-card p-6">
+              <div className="text-4xl mb-3">🎯</div>
+              <h3 className="font-heading font-bold text-xl mb-2">Play Schema</h3>
+              <p className="text-muted-foreground">
+                We identify whether your child is a builder, explorer, artist, or problem-solver to curate the right toy types.
+              </p>
+            </div>
+            
+            <div className="glass-card p-6">
+              <div className="text-4xl mb-3">🎨</div>
+              <h3 className="font-heading font-bold text-xl mb-2">Interests</h3>
+              <p className="text-muted-foreground">
+                From vehicles to animals, art to science - we match toys to what genuinely excites your child.
+              </p>
+            </div>
+            
+            <div className="glass-card p-6">
+              <div className="text-4xl mb-3">⏱️</div>
+              <h3 className="font-heading font-bold text-xl mb-2">Attention Span</h3>
+              <p className="text-muted-foreground">
+                Quick play or deep focus? We select complexity levels that keep your child engaged without frustration.
+              </p>
+            </div>
+          </div>
+          
+          <div className="mt-8 glass-card p-8 bg-primary/5">
+            <p className="text-center text-foreground">
+              <span className="font-semibold">60 seconds of questions</span> → 
+              <span className="font-semibold"> 12+ data points</span> → 
+              <span className="font-semibold"> Personalized JoyBox</span>
+            </p>
+          </div>
+        </div>
+      </section>
+      
+      {/* Hygiene Shield */}
+      <section className="container mx-auto px-4 py-16 bg-muted/30 rounded-3xl my-16">
+        <div className="max-w-5xl mx-auto">
+          <div className="text-center mb-12">
+            <div className="w-16 h-16 rounded-full bg-secondary/20 flex items-center justify-center mx-auto mb-4">
+              <Shield className="text-secondary" size={32} />
+            </div>
+            <h2 className="text-3xl md:text-5xl font-heading font-bold mb-4">
+              Hygiene Shield
+            </h2>
+            <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+              Every toy goes through our 4-step hospital-grade cleaning process
+            </p>
+          </div>
+          
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+            <div className="glass-card p-6 text-center">
+              <div className="w-12 h-12 rounded-full bg-secondary/20 flex items-center justify-center mx-auto mb-4">
+                <span className="text-2xl">🔍</span>
+              </div>
+              <h3 className="font-heading font-bold text-lg mb-2">1. Inspection</h3>
+              <p className="text-sm text-muted-foreground">
+                Manual quality check for damage, wear, and safety
+              </p>
+            </div>
+            
+            <div className="glass-card p-6 text-center">
+              <div className="w-12 h-12 rounded-full bg-secondary/20 flex items-center justify-center mx-auto mb-4">
+                <Droplets className="text-secondary" size={24} />
+              </div>
+              <h3 className="font-heading font-bold text-lg mb-2">2. Ultrasonic Clean</h3>
+              <p className="text-sm text-muted-foreground">
+                Deep cleaning removes 99.9% of germs and bacteria
+              </p>
+            </div>
+            
+            <div className="glass-card p-6 text-center">
+              <div className="w-12 h-12 rounded-full bg-secondary/20 flex items-center justify-center mx-auto mb-4">
+                <Zap className="text-secondary" size={24} />
+              </div>
+              <h3 className="font-heading font-bold text-lg mb-2">3. UV-C Sterilization</h3>
+              <p className="text-sm text-muted-foreground">
+                Medical-grade UV light kills remaining pathogens
+              </p>
+            </div>
+            
+            <div className="glass-card p-6 text-center">
+              <div className="w-12 h-12 rounded-full bg-secondary/20 flex items-center justify-center mx-auto mb-4">
+                <span className="text-2xl">📦</span>
+              </div>
+              <h3 className="font-heading font-bold text-lg mb-2">4. Vacuum Seal</h3>
+              <p className="text-sm text-muted-foreground">
+                Sealed packaging ensures hygiene until delivery
+              </p>
+            </div>
+          </div>
+          
+          <div className="mt-8 text-center">
+            <p className="text-muted-foreground">
+              <span className="font-semibold text-foreground">Hospital-grade standards.</span> Safer than new toys from stores.
+            </p>
+          </div>
+        </div>
+      </section>
+      
+      {/* Logistics Flow */}
+      <section className="container mx-auto px-4 py-16">
+        <div className="max-w-5xl mx-auto">
+          <div className="text-center mb-12">
+            <div className="w-16 h-16 rounded-full bg-coral/20 flex items-center justify-center mx-auto mb-4">
+              <TruckIcon className="text-coral" size={32} />
+            </div>
+            <h2 className="text-3xl md:text-5xl font-heading font-bold mb-4">
+              Seamless Logistics
+            </h2>
+            <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+              Hyperlocal Bengaluru service means fast delivery and easy swaps
+            </p>
+          </div>
+          
+          <div className="space-y-6">
+            <div className="glass-card p-6 flex gap-6 items-start hover-lift">
+              <div className="w-12 h-12 rounded-full bg-primary/20 flex items-center justify-center flex-shrink-0">
+                <span className="text-2xl">📅</span>
+              </div>
+              <div>
+                <h3 className="font-heading font-bold text-xl mb-2">Step 1: Complete Quiz</h3>
+                <p className="text-muted-foreground">
+                  Take our 60-second Play Personality Test and receive your personalized JoyBox preview
+                </p>
+              </div>
+            </div>
+            
+            <div className="glass-card p-6 flex gap-6 items-start hover-lift">
+              <div className="w-12 h-12 rounded-full bg-secondary/20 flex items-center justify-center flex-shrink-0">
+                <span className="text-2xl">🚚</span>
+              </div>
+              <div>
+                <h3 className="font-heading font-bold text-xl mb-2">Step 2: First Delivery</h3>
+                <p className="text-muted-foreground">
+                  Your first JoyBox arrives within 48 hours at your doorstep in sealed, hygienic packaging
+                </p>
+              </div>
+            </div>
+            
+            <div className="glass-card p-6 flex gap-6 items-start hover-lift">
+              <div className="w-12 h-12 rounded-full bg-accent/20 flex items-center justify-center flex-shrink-0">
+                <span className="text-2xl">🔄</span>
+              </div>
+              <div>
+                <h3 className="font-heading font-bold text-xl mb-2">Step 3: Monthly Swap</h3>
+                <p className="text-muted-foreground">
+                  Every month, we pick up the old box and deliver a new one with fresh toys - same day service
+                </p>
+              </div>
+            </div>
+            
+            <div className="glass-card p-6 flex gap-6 items-start hover-lift">
+              <div className="w-12 h-12 rounded-full bg-coral/20 flex items-center justify-center flex-shrink-0">
+                <span className="text-2xl">♻️</span>
+              </div>
+              <div>
+                <h3 className="font-heading font-bold text-xl mb-2">Step 4: Repeat JoyLoop</h3>
+                <p className="text-muted-foreground">
+                  Your child gets variety, you get convenience, and the planet gets sustainability
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      
+      {/* Trust & Safety */}
+      <section className="container mx-auto px-4 py-16">
+        <div className="max-w-4xl mx-auto">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl md:text-5xl font-heading font-bold mb-4">
+              Trust & Safety Guaranteed
+            </h2>
+          </div>
+          
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <div className="glass-card p-6 text-center">
+              <CheckCircle className="text-primary mx-auto mb-3" size={32} />
+              <h3 className="font-heading font-bold mb-2">Safety Certified</h3>
+              <p className="text-sm text-muted-foreground">
+                All toys meet international safety standards
+              </p>
+            </div>
+            
+            <div className="glass-card p-6 text-center">
+              <CheckCircle className="text-primary mx-auto mb-3" size={32} />
+              <h3 className="font-heading font-bold mb-2">Quality Guarantee</h3>
+              <p className="text-sm text-muted-foreground">
+                Not happy? Free swap within 48 hours
+              </p>
+            </div>
+            
+            <div className="glass-card p-6 text-center">
+              <CheckCircle className="text-primary mx-auto mb-3" size={32} />
+              <h3 className="font-heading font-bold mb-2">Secure Payments</h3>
+              <p className="text-sm text-muted-foreground">
+                SSL encrypted, zero data sharing
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+      
+      <Footer />
+    </div>
+  );
+};
+
+export default Features;

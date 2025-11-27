@@ -1,16 +1,13 @@
 import { Link } from "react-router-dom";
 import { Instagram, Facebook, Twitter } from "lucide-react";
-
 export const Footer = () => {
-  return (
-    <footer className="bg-card border-t border-border mt-20">
+  return <footer className="bg-card border-t border-border mt-20">
       <div className="container mx-auto px-4 py-12">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
           <div>
-            <h3 className="font-heading font-bold text-xl text-primary mb-4">ToyLuv</h3>
-            <p className="text-sm text-muted-foreground">
-              AI-curated, hygienic toys delivered across Bengaluru.
-            </p>
+            <h3 className="font-heading font-bold mb-4 text-coral text-5xl">ToyLuv</h3>
+            <p className="text-sm text-muted-foreground text-left">AI-curated,  Hygienic toys delivered 
+across Bengaluru.</p>
           </div>
           
           <div>
@@ -51,6 +48,5 @@ export const Footer = () => {
           <p>© 2024 ToyLuv. All rights reserved. Delivering joy across Bengaluru.</p>
         </div>
       </div>
-    </footer>
-  );
+    </footer>;
 };

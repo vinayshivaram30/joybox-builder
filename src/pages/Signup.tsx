@@ -3,12 +3,20 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { toast } from "sonner";
+import { useScrollAnimation } from "@/hooks/useScrollAnimation";
+import { useParallax } from "@/hooks/useParallax";
 import { Shield, TruckIcon, Check } from "lucide-react";
 import toyBlocks from "@/assets/toy-blocks.jpg";
 import toyCraft from "@/assets/toy-craft.jpg";
 import toyPuzzle from "@/assets/toy-puzzle.jpg";
 
 const Signup = () => {
+  const boxAnim = useScrollAnimation(0.2);
+  const formAnim = useScrollAnimation(0.2);
+  const toyParallax1 = useParallax(0.4);
+  const toyParallax2 = useParallax(0.5);
+  const toyParallax3 = useParallax(0.3);
+  
   const [formData, setFormData] = useState({
     name: "",
     phone: "",
@@ -64,7 +72,12 @@ const Signup = () => {
         </div>
 
         {/* JoyBox Preview */}
-        <div className="max-w-5xl mx-auto mb-12">
+        <div 
+          ref={boxAnim.ref}
+          className={`max-w-5xl mx-auto mb-12 transition-all duration-700 ${
+            boxAnim.isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
+          }`}
+        >
           <div className="glass-card p-8 md:p-12">
             <h2 className="text-2xl md:text-3xl font-heading font-bold text-center mb-8">
               Your Child's Personalized JoyBox
@@ -73,11 +86,13 @@ const Signup = () => {
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
               <div className="bg-white rounded-2xl p-4 border-2 border-primary/10">
                 <div className="aspect-square bg-muted rounded-xl mb-3 overflow-hidden">
-                  <img
-                    src={toyBlocks}
-                    alt="Motor skill toy"
-                    className="w-full h-full object-cover"
-                  />
+                  <div ref={toyParallax1} className="parallax-slow h-full">
+                    <img
+                      src={toyBlocks}
+                      alt="Motor skill toy"
+                      className="w-full h-full object-cover"
+                    />
+                  </div>
                 </div>
                 <h4 className="font-semibold mb-1">Motor Skills Toy</h4>
                 <p className="text-sm text-muted-foreground">Building & Construction</p>
@@ -85,11 +100,13 @@ const Signup = () => {
 
               <div className="bg-white rounded-2xl p-4 border-2 border-primary/10">
                 <div className="aspect-square bg-muted rounded-xl mb-3 overflow-hidden">
-                  <img
-                    src={toyPuzzle}
-                    alt="Problem solver toy"
-                    className="w-full h-full object-cover"
-                  />
+                  <div ref={toyParallax2} className="parallax-slow h-full">
+                    <img
+                      src={toyPuzzle}
+                      alt="Problem solver toy"
+                      className="w-full h-full object-cover"
+                    />
+                  </div>
                 </div>
                 <h4 className="font-semibold mb-1">Problem Solver</h4>
                 <p className="text-sm text-muted-foreground">Puzzles & Logic</p>
@@ -97,11 +114,13 @@ const Signup = () => {
 
               <div className="bg-white rounded-2xl p-4 border-2 border-primary/10">
                 <div className="aspect-square bg-muted rounded-xl mb-3 overflow-hidden">
-                  <img
-                    src={toyCraft}
-                    alt="Creativity toy"
-                    className="w-full h-full object-cover"
-                  />
+                  <div ref={toyParallax3} className="parallax-slow h-full">
+                    <img
+                      src={toyCraft}
+                      alt="Creativity toy"
+                      className="w-full h-full object-cover"
+                    />
+                  </div>
                 </div>
                 <h4 className="font-semibold mb-1">Creativity Toy</h4>
                 <p className="text-sm text-muted-foreground">Arts & Crafts</p>
@@ -123,7 +142,12 @@ const Signup = () => {
         </div>
 
         {/* Signup Form & Plan Selection */}
-        <div className="max-w-3xl mx-auto">
+        <div 
+          ref={formAnim.ref}
+          className={`max-w-3xl mx-auto transition-all duration-700 delay-200 ${
+            formAnim.isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
+          }`}
+        >
           <div className="glass-card p-8 md:p-12">
             <h3 className="text-2xl font-heading font-bold text-center mb-8">
               Complete Your Signup

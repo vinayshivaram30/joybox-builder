@@ -1,8 +1,14 @@
 import { Navigation } from "@/components/Navigation";
 import { Footer } from "@/components/Footer";
+import { useScrollAnimation } from "@/hooks/useScrollAnimation";
 import { Brain, Droplets, Zap, CheckCircle, Shield, TruckIcon } from "lucide-react";
 
 const Features = () => {
+  const aiAnim = useScrollAnimation(0.2);
+  const hygieneAnim = useScrollAnimation(0.2);
+  const logisticsAnim = useScrollAnimation(0.2);
+  const trustAnim = useScrollAnimation(0.2);
+
   return (
     <div className="min-h-screen bg-background">
       <Navigation />
@@ -22,7 +28,12 @@ const Features = () => {
       </section>
       
       {/* AI Curation Engine */}
-      <section className="container mx-auto px-4 py-16">
+      <section 
+        ref={aiAnim.ref}
+        className={`container mx-auto px-4 py-16 transition-all duration-700 ${
+          aiAnim.isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
+        }`}
+      >
         <div className="max-w-5xl mx-auto">
           <div className="text-center mb-12">
             <div className="w-16 h-16 rounded-full bg-primary/20 flex items-center justify-center mx-auto mb-4">
@@ -73,7 +84,12 @@ const Features = () => {
       </section>
       
       {/* Hygiene Shield */}
-      <section className="container mx-auto px-4 py-16 bg-muted/30 rounded-3xl my-16">
+      <section 
+        ref={hygieneAnim.ref}
+        className={`container mx-auto px-4 py-16 bg-muted/30 rounded-3xl my-16 transition-all duration-700 delay-200 ${
+          hygieneAnim.isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
+        }`}
+      >
         <div className="max-w-5xl mx-auto">
           <div className="text-center mb-12">
             <div className="w-16 h-16 rounded-full bg-secondary/20 flex items-center justify-center mx-auto mb-4">
@@ -138,7 +154,12 @@ const Features = () => {
       </section>
       
       {/* Logistics Flow */}
-      <section className="container mx-auto px-4 py-16">
+      <section 
+        ref={logisticsAnim.ref}
+        className={`container mx-auto px-4 py-16 transition-all duration-700 delay-300 ${
+          logisticsAnim.isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
+        }`}
+      >
         <div className="max-w-5xl mx-auto">
           <div className="text-center mb-12">
             <div className="w-16 h-16 rounded-full bg-coral/20 flex items-center justify-center mx-auto mb-4">
@@ -205,7 +226,12 @@ const Features = () => {
       </section>
       
       {/* Trust & Safety */}
-      <section className="container mx-auto px-4 py-16">
+      <section 
+        ref={trustAnim.ref}
+        className={`container mx-auto px-4 py-16 transition-all duration-700 delay-400 ${
+          trustAnim.isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
+        }`}
+      >
         <div className="max-w-4xl mx-auto">
           <div className="text-center mb-12">
             <h2 className="text-3xl md:text-5xl font-heading font-bold mb-4">

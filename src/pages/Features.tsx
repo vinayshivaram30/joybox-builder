@@ -222,53 +222,89 @@ const Features = () => {
           </div>
           
           <div className="space-y-6">
-            <div className="glass-card p-6 flex gap-6 items-start hover-lift">
-              <div className="w-12 h-12 rounded-full bg-primary/20 flex items-center justify-center flex-shrink-0">
-                <span className="text-2xl">📅</span>
+            <InteractiveGradient 
+              color="#8B5CF6" 
+              glowColor="#8B5CF640"
+              borderRadius="1rem"
+              followMouse={true}
+              hoverOnly={true}
+              intensity={80}
+            >
+              <div className="p-6 flex gap-6 items-start">
+                <div className="w-12 h-12 rounded-full bg-primary/20 flex items-center justify-center flex-shrink-0">
+                  <span className="text-2xl">📅</span>
+                </div>
+                <div>
+                  <h3 className="font-heading font-bold text-xl mb-2">Step 1: Complete Quiz</h3>
+                  <p className="text-muted-foreground">
+                    Take our 60-second Play Personality Test and receive your personalized JoyBox preview
+                  </p>
+                </div>
               </div>
-              <div>
-                <h3 className="font-heading font-bold text-xl mb-2">Step 1: Complete Quiz</h3>
-                <p className="text-muted-foreground">
-                  Take our 60-second Play Personality Test and receive your personalized JoyBox preview
-                </p>
-              </div>
-            </div>
+            </InteractiveGradient>
             
-            <div className="glass-card p-6 flex gap-6 items-start hover-lift">
-              <div className="w-12 h-12 rounded-full bg-secondary/20 flex items-center justify-center flex-shrink-0">
-                <span className="text-2xl">🚚</span>
+            <InteractiveGradient 
+              color="#3B82F6" 
+              glowColor="#3B82F640"
+              borderRadius="1rem"
+              followMouse={true}
+              hoverOnly={true}
+              intensity={80}
+            >
+              <div className="p-6 flex gap-6 items-start">
+                <div className="w-12 h-12 rounded-full bg-secondary/20 flex items-center justify-center flex-shrink-0">
+                  <span className="text-2xl">🚚</span>
+                </div>
+                <div>
+                  <h3 className="font-heading font-bold text-xl mb-2">Step 2: First Delivery</h3>
+                  <p className="text-muted-foreground">
+                    Your first JoyBox arrives within 48 hours at your doorstep in sealed, hygienic packaging
+                  </p>
+                </div>
               </div>
-              <div>
-                <h3 className="font-heading font-bold text-xl mb-2">Step 2: First Delivery</h3>
-                <p className="text-muted-foreground">
-                  Your first JoyBox arrives within 48 hours at your doorstep in sealed, hygienic packaging
-                </p>
-              </div>
-            </div>
+            </InteractiveGradient>
             
-            <div className="glass-card p-6 flex gap-6 items-start hover-lift">
-              <div className="w-12 h-12 rounded-full bg-accent/20 flex items-center justify-center flex-shrink-0">
-                <span className="text-2xl">🔄</span>
+            <InteractiveGradient 
+              color="#14B8A6" 
+              glowColor="#14B8A640"
+              borderRadius="1rem"
+              followMouse={true}
+              hoverOnly={true}
+              intensity={80}
+            >
+              <div className="p-6 flex gap-6 items-start">
+                <div className="w-12 h-12 rounded-full bg-accent/20 flex items-center justify-center flex-shrink-0">
+                  <span className="text-2xl">🔄</span>
+                </div>
+                <div>
+                  <h3 className="font-heading font-bold text-xl mb-2">Step 3: Monthly Swap</h3>
+                  <p className="text-muted-foreground">
+                    Every month, we pick up the old box and deliver a new one with fresh toys - same day service
+                  </p>
+                </div>
               </div>
-              <div>
-                <h3 className="font-heading font-bold text-xl mb-2">Step 3: Monthly Swap</h3>
-                <p className="text-muted-foreground">
-                  Every month, we pick up the old box and deliver a new one with fresh toys - same day service
-                </p>
-              </div>
-            </div>
+            </InteractiveGradient>
             
-            <div className="glass-card p-6 flex gap-6 items-start hover-lift">
-              <div className="w-12 h-12 rounded-full bg-coral/20 flex items-center justify-center flex-shrink-0">
-                <span className="text-2xl">♻️</span>
+            <InteractiveGradient 
+              color="#FF6B6B" 
+              glowColor="#FF6B6B40"
+              borderRadius="1rem"
+              followMouse={true}
+              hoverOnly={true}
+              intensity={80}
+            >
+              <div className="p-6 flex gap-6 items-start">
+                <div className="w-12 h-12 rounded-full bg-coral/20 flex items-center justify-center flex-shrink-0">
+                  <span className="text-2xl">♻️</span>
+                </div>
+                <div>
+                  <h3 className="font-heading font-bold text-xl mb-2">Step 4: Repeat JoyLoop</h3>
+                  <p className="text-muted-foreground">
+                    Your child gets variety, you get convenience, and the planet gets sustainability
+                  </p>
+                </div>
               </div>
-              <div>
-                <h3 className="font-heading font-bold text-xl mb-2">Step 4: Repeat JoyLoop</h3>
-                <p className="text-muted-foreground">
-                  Your child gets variety, you get convenience, and the planet gets sustainability
-                </p>
-              </div>
-            </div>
+            </InteractiveGradient>
           </div>
         </div>
       </section>

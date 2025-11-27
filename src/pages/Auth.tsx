@@ -9,6 +9,7 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { toast } from '@/hooks/use-toast';
 import { Navigation } from '@/components/Navigation';
 import { Footer } from '@/components/Footer';
+import { PasswordStrengthIndicator, StrengthLevel } from '@/components/ui/password-strength-indicator';
 import {
   Dialog,
   DialogContent,
@@ -27,6 +28,7 @@ export default function Auth() {
   const [resetEmail, setResetEmail] = useState('');
   const [resetLoading, setResetLoading] = useState(false);
   const [resetDialogOpen, setResetDialogOpen] = useState(false);
+  const [passwordStrength, setPasswordStrength] = useState<StrengthLevel>('empty');
 
   const handleGoogleSignIn = async () => {
     setLoading(true);
@@ -81,6 +83,17 @@ export default function Auth() {
 
   const handleEmailSignUp = async (e: React.FormEvent) => {
     e.preventDefault();
+    
+    // Validate password strength before signup
+    if (passwordStrength === 'weak' || passwordStrength === 'empty') {
+      toast({
+        title: "Weak Password",
+        description: "Please choose a stronger password for better security.",
+        variant: "destructive",
+      });
+      return;
+    }
+    
     setLoading(true);
 
     try {
@@ -284,17 +297,20 @@ export default function Auth() {
                         required
                       />
                     </div>
-                    <div className="space-y-2">
-                      <Label htmlFor="signup-password">Password</Label>
-                      <Input
-                        id="signup-password"
-                        type="password"
-                        value={password}
-                        onChange={(e) => setPassword(e.target.value)}
-                        required
-                        minLength={6}
-                      />
-                    </div>
+                    <PasswordStrengthIndicator
+                      value={password}
+                      onChange={setPassword}
+                      onStrengthChange={setPasswordStrength}
+                      label="Password"
+                      placeholder="Create a strong password"
+                      showScore={true}
+                      showVisibilityToggle={true}
+                      inputProps={{
+                        required: true,
+                        minLength: 6,
+                        id: 'signup-password'
+                      }}
+                    />
                     <Button type="submit" className="w-full" disabled={loading}>
                       {loading ? 'Creating account...' : 'Sign Up'}
                     </Button>

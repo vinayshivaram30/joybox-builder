@@ -89,6 +89,51 @@ export type Database = {
         }
         Relationships: []
       }
+      toy_reviews: {
+        Row: {
+          created_at: string
+          id: string
+          rating: number
+          review_text: string | null
+          toy_id: string
+          updated_at: string
+          user_id: string
+        }
+        Insert: {
+          created_at?: string
+          id?: string
+          rating: number
+          review_text?: string | null
+          toy_id: string
+          updated_at?: string
+          user_id: string
+        }
+        Update: {
+          created_at?: string
+          id?: string
+          rating?: number
+          review_text?: string | null
+          toy_id?: string
+          updated_at?: string
+          user_id?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "toy_reviews_toy_id_fkey"
+            columns: ["toy_id"]
+            isOneToOne: false
+            referencedRelation: "toy_ratings_summary"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "toy_reviews_toy_id_fkey"
+            columns: ["toy_id"]
+            isOneToOne: false
+            referencedRelation: "toys"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
       toys: {
         Row: {
           age_group: string
@@ -157,7 +202,20 @@ export type Database = {
       }
     }
     Views: {
-      [_ in never]: never
+      toy_ratings_summary: {
+        Row: {
+          average_rating: number | null
+          five_star_count: number | null
+          four_star_count: number | null
+          id: string | null
+          name: string | null
+          one_star_count: number | null
+          review_count: number | null
+          three_star_count: number | null
+          two_star_count: number | null
+        }
+        Relationships: []
+      }
     }
     Functions: {
       has_role: {

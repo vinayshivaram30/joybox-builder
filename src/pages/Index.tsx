@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { QuizQuestion } from "@/components/QuizQuestion";
 import { ProgressBar } from "@/components/ProgressBar";
@@ -8,6 +9,7 @@ import { JoyBoxPreview } from "@/components/JoyBoxPreview";
 import { quizQuestions, calculatePersonality } from "@/data/quizData";
 import { supabase } from "@/integrations/supabase/client";
 import { useToast } from "@/hooks/use-toast";
+import { useAuth } from "@/contexts/AuthContext";
 import heroImage from "@/assets/hero-toys.jpg";
 import toyBlocks from "@/assets/toy-blocks.jpg";
 import toyCraft from "@/assets/toy-craft.jpg";
@@ -17,6 +19,8 @@ type FlowStep = "hero" | "quiz" | "result" | "signup" | "preview";
 
 const Index = () => {
   const { toast } = useToast();
+  const navigate = useNavigate();
+  const { user } = useAuth();
   const [currentStep, setCurrentStep] = useState<FlowStep>("hero");
   const [quizStep, setQuizStep] = useState(0);
   const [answers, setAnswers] = useState<Record<string, string>>({});
@@ -92,6 +96,7 @@ const Index = () => {
         whatsapp_number: data.phone,
         pincode: data.pincode,
         child_age: null, // Can be added to the form later
+        user_id: user?.id || null,
       });
 
       if (error) throw error;
@@ -103,6 +108,11 @@ const Index = () => {
         title: "Quiz saved successfully!",
         description: "Your personalized JoyBox is ready.",
       });
+
+      // If user is logged in, redirect to dashboard after preview
+      if (user) {
+        setTimeout(() => navigate('/dashboard'), 2000);
+      }
     } catch (error) {
       console.error("Error saving quiz results:", error);
       toast({

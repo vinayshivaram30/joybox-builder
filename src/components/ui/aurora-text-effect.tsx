@@ -1,5 +1,5 @@
 import React from "react";
-import { cn } from "@/lib/utils";
+import { cn } from "@/lib/utils"; // Assuming 'cn' is a utility for merging class names
 
 export interface AuroraTextEffectProps {
   text: string;
@@ -88,14 +88,16 @@ export function AuroraTextEffect({
   return (
     <div
       className={cn(
+        // Updated to support light and dark modes
         "bg-white dark:bg-black flex items-center justify-center overflow-hidden",
         className
       )}
     >
-      <style>{keyframes}</style>
+      <style>{keyframes /* This injects the keyframes into the DOM */}</style>
       <div className="text-center">
         <h2
           className={cn(
+            // Added theme-aware text color for visibility
             "font-extrabold tracking-tight relative overflow-hidden text-black dark:text-white",
             textClassName
           )}
@@ -103,6 +105,7 @@ export function AuroraTextEffect({
         >
           {text}
           <div
+            // Switched blend mode based on theme to preserve the effect
             className="absolute inset-0 z-10 mix-blend-lighten dark:mix-blend-darken pointer-events-none"
           >
             {/* First Aurora Layer */}

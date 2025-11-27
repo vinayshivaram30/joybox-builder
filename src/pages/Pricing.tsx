@@ -2,12 +2,21 @@ import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Navigation } from "@/components/Navigation";
 import { Footer } from "@/components/Footer";
+import { useScrollAnimation } from "@/hooks/useScrollAnimation";
+import { useParallax } from "@/hooks/useParallax";
 import { Check, X, Shield } from "lucide-react";
 import toyBlocks from "@/assets/toy-blocks.jpg";
 import toyCraft from "@/assets/toy-craft.jpg";
 import toyPuzzle from "@/assets/toy-puzzle.jpg";
 
 const Pricing = () => {
+  const tiersAnim = useScrollAnimation(0.2);
+  const comparisonAnim = useScrollAnimation(0.2);
+  const boxAnim = useScrollAnimation(0.2);
+  const toyParallax1 = useParallax(0.4);
+  const toyParallax2 = useParallax(0.5);
+  const toyParallax3 = useParallax(0.3);
+
   return (
     <div className="min-h-screen bg-background">
       <Navigation />
@@ -27,7 +36,12 @@ const Pricing = () => {
       
       {/* Pricing Tiers */}
       <section className="container mx-auto px-4 py-16">
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-5xl mx-auto">
+        <div 
+          ref={tiersAnim.ref}
+          className={`grid grid-cols-1 md:grid-cols-3 gap-6 max-w-5xl mx-auto transition-all duration-700 ${
+            tiersAnim.isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
+          }`}
+        >
           {/* Monthly Plan */}
           <div className="glass-card p-8 hover-lift">
             <h3 className="font-heading font-bold text-2xl mb-2">Monthly</h3>
@@ -155,7 +169,12 @@ const Pricing = () => {
       </section>
       
       {/* Comparison Table */}
-      <section className="container mx-auto px-4 py-16">
+      <section 
+        ref={comparisonAnim.ref}
+        className={`container mx-auto px-4 py-16 transition-all duration-700 delay-200 ${
+          comparisonAnim.isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
+        }`}
+      >
         <div className="max-w-4xl mx-auto">
           <h2 className="text-3xl md:text-4xl font-heading font-bold text-center mb-12">
             ToyLuv vs Buying Toys
@@ -213,7 +232,12 @@ const Pricing = () => {
       </section>
       
       {/* What's Inside a JoyBox */}
-      <section className="container mx-auto px-4 py-16">
+      <section 
+        ref={boxAnim.ref}
+        className={`container mx-auto px-4 py-16 transition-all duration-700 delay-300 ${
+          boxAnim.isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
+        }`}
+      >
         <div className="max-w-5xl mx-auto">
           <h2 className="text-3xl md:text-4xl font-heading font-bold text-center mb-4">
             What's Inside a JoyBox?
@@ -225,11 +249,13 @@ const Pricing = () => {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             <div className="glass-card p-4 hover-lift">
               <div className="aspect-square bg-muted rounded-xl mb-3 overflow-hidden">
-                <img
-                  src={toyBlocks}
-                  alt="Building blocks toy"
-                  className="w-full h-full object-cover"
-                />
+                <div ref={toyParallax1} className="parallax-slow h-full">
+                  <img
+                    src={toyBlocks}
+                    alt="Building blocks toy"
+                    className="w-full h-full object-cover"
+                  />
+                </div>
               </div>
               <h4 className="font-semibold mb-1">Motor Skills Toy</h4>
               <p className="text-sm text-muted-foreground mb-2">
@@ -242,11 +268,13 @@ const Pricing = () => {
             
             <div className="glass-card p-4 hover-lift">
               <div className="aspect-square bg-muted rounded-xl mb-3 overflow-hidden">
-                <img
-                  src={toyCraft}
-                  alt="Creative craft toy"
-                  className="w-full h-full object-cover"
-                />
+                <div ref={toyParallax2} className="parallax-slow h-full">
+                  <img
+                    src={toyCraft}
+                    alt="Creative craft toy"
+                    className="w-full h-full object-cover"
+                  />
+                </div>
               </div>
               <h4 className="font-semibold mb-1">Creativity Toy</h4>
               <p className="text-sm text-muted-foreground mb-2">
@@ -259,11 +287,13 @@ const Pricing = () => {
             
             <div className="glass-card p-4 hover-lift">
               <div className="aspect-square bg-muted rounded-xl mb-3 overflow-hidden">
-                <img
-                  src={toyPuzzle}
-                  alt="Educational puzzle toy"
-                  className="w-full h-full object-cover"
-                />
+                <div ref={toyParallax3} className="parallax-slow h-full">
+                  <img
+                    src={toyPuzzle}
+                    alt="Educational puzzle toy"
+                    className="w-full h-full object-cover"
+                  />
+                </div>
               </div>
               <h4 className="font-semibold mb-1">Problem-Solving Toy</h4>
               <p className="text-sm text-muted-foreground mb-2">

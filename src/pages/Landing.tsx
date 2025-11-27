@@ -1,9 +1,15 @@
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
+import { useScrollAnimation } from "@/hooks/useScrollAnimation";
+import { useParallax } from "@/hooks/useParallax";
 import { Star, Sparkles, Shield, RefreshCw, TruckIcon } from "lucide-react";
 import heroImage from "@/assets/hero-toys.jpg";
 
 const Landing = () => {
+  const heroParallax = useParallax(0.3);
+  const benefitsAnim = useScrollAnimation(0.2);
+  const proofAnim = useScrollAnimation(0.2);
+
   return (
     <div className="min-h-screen bg-background">
       {/* No navigation - conversion focused */}
@@ -26,11 +32,13 @@ const Landing = () => {
           </Link>
           
           <div className="rounded-3xl overflow-hidden shadow-2xl mb-8">
-            <img
-              src={heroImage}
-              alt="Happy child playing with organized toys"
-              className="w-full h-auto"
-            />
+            <div ref={heroParallax} className="parallax-slow">
+              <img
+                src={heroImage}
+                alt="Happy child playing with organized toys"
+                className="w-full h-auto animate-float"
+              />
+            </div>
           </div>
         </div>
       </section>
@@ -86,7 +94,12 @@ const Landing = () => {
       </section>
       
       {/* Why It Works */}
-      <section className="container mx-auto px-4 py-12">
+      <section 
+        ref={benefitsAnim.ref}
+        className={`container mx-auto px-4 py-12 transition-all duration-700 ${
+          benefitsAnim.isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
+        }`}
+      >
         <div className="max-w-5xl mx-auto">
           <h2 className="text-3xl md:text-5xl font-heading font-bold text-center mb-12">
             Why Bengaluru Parents Love ToyLuv
@@ -145,7 +158,12 @@ const Landing = () => {
       </section>
       
       {/* Social Proof */}
-      <section className="container mx-auto px-4 py-12">
+      <section 
+        ref={proofAnim.ref}
+        className={`container mx-auto px-4 py-12 transition-all duration-700 delay-200 ${
+          proofAnim.isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
+        }`}
+      >
         <div className="max-w-4xl mx-auto">
           <div className="text-center mb-8">
             <div className="flex justify-center gap-1 mb-2">

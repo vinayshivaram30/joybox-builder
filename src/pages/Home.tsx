@@ -9,6 +9,7 @@ import { Sparkles, Shield, TruckIcon, Star, CheckCircle } from "lucide-react";
 import ParticlesBackground from "@/components/ParticlesBackground";
 import OrbitCard from "@/components/ui/orbit-card";
 import { GlowingCards, GlowingCard } from "@/components/ui/glowing-cards";
+import { SlidingLogoMarquee } from "@/components/ui/sliding-logo-marquee";
 const Home = () => {
   const heroParallax = useParallax(0.3);
   const valuePropsAnim = useScrollAnimation(0.2);
@@ -152,13 +153,48 @@ const Home = () => {
           </p>
         </div>
         
-        <div className="flex flex-wrap justify-center items-center gap-8 md:gap-12">
-          <div className="text-2xl font-bold text-muted-foreground">Melissa & Doug</div>
-          <div className="text-2xl font-bold text-muted-foreground">Hape</div>
-          <div className="text-2xl font-bold text-muted-foreground">Fisher-Price</div>
-          <div className="text-2xl font-bold text-muted-foreground">LEGO</div>
-          <div className="text-2xl font-bold text-muted-foreground">Hasbro</div>
-        </div>
+        <SlidingLogoMarquee
+          items={[
+            {
+              id: "melissa",
+              content: <div className="text-2xl font-bold">Melissa & Doug</div>,
+            },
+            {
+              id: "hape",
+              content: <div className="text-2xl font-bold">Hape</div>,
+            },
+            {
+              id: "fisher",
+              content: <div className="text-2xl font-bold">Fisher-Price</div>,
+            },
+            {
+              id: "lego",
+              content: <div className="text-2xl font-bold">LEGO</div>,
+            },
+            {
+              id: "hasbro",
+              content: <div className="text-2xl font-bold">Hasbro</div>,
+            },
+            {
+              id: "mattel",
+              content: <div className="text-2xl font-bold">Mattel</div>,
+            },
+            {
+              id: "playmobil",
+              content: <div className="text-2xl font-bold">Playmobil</div>,
+            },
+            {
+              id: "vtech",
+              content: <div className="text-2xl font-bold">VTech</div>,
+            },
+          ]}
+          speed={40}
+          pauseOnHover={true}
+          enableBlur={true}
+          height="120px"
+          gap="3rem"
+          showControls={false}
+        />
       </section>
       
       {/* Community Proof */}

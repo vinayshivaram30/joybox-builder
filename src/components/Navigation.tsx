@@ -80,9 +80,7 @@ export const Navigation = () => {
           </Link>
           
           {/* Desktop Navigation with DynamicNavigation */}
-          <div className="hidden items-center flex-1 justify-center max-w-md md:flex md:items-center md:justify-end gap-px">
-            <DynamicNavigation links={navigationLinks} activeLink={getActiveLink()} onLinkClick={handleNavLinkClick} showLabelsOnMobile={false} className="w-full border-stone-400" />
-          </div>
+          
           
           {/* Desktop Auth Buttons */}
           <div className="hidden md:flex items-center gap-4">

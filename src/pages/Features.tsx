@@ -2,6 +2,7 @@ import { Navigation } from "@/components/Navigation";
 import { Footer } from "@/components/Footer";
 import { useScrollAnimation } from "@/hooks/useScrollAnimation";
 import { Brain, Droplets, Zap, CheckCircle, Shield, TruckIcon } from "lucide-react";
+import { ElectroBorder } from "@/components/ui/electro-border";
 
 const Features = () => {
   const aiAnim = useScrollAnimation(0.2);
@@ -48,37 +49,47 @@ const Features = () => {
           </div>
           
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            <div className="glass-card p-6">
-              <div className="text-4xl mb-3">🎯</div>
-              <h3 className="font-heading font-bold text-xl mb-2">Play Schema</h3>
-              <p className="text-muted-foreground">
-                We identify whether your child is a builder, explorer, artist, or problem-solver to curate the right toy types.
-              </p>
-            </div>
+            <ElectroBorder borderColor="#FF6B6B" borderWidth={2} radius="1rem" glow={true} aura={true}>
+              <div className="p-6">
+                <div className="text-4xl mb-3">🎯</div>
+                <h3 className="font-heading font-bold text-xl mb-2">Play Schema</h3>
+                <p className="text-muted-foreground">
+                  We identify whether your child is a builder, explorer, artist, or problem-solver to curate the right toy types.
+                </p>
+              </div>
+            </ElectroBorder>
             
-            <div className="glass-card p-6">
-              <div className="text-4xl mb-3">🎨</div>
-              <h3 className="font-heading font-bold text-xl mb-2">Interests</h3>
-              <p className="text-muted-foreground">
-                From vehicles to animals, art to science - we match toys to what genuinely excites your child.
-              </p>
-            </div>
+            <ElectroBorder borderColor="#8B5CF6" borderWidth={2} radius="1rem" glow={true} aura={true}>
+              <div className="p-6">
+                <div className="text-4xl mb-3">🎨</div>
+                <h3 className="font-heading font-bold text-xl mb-2">Interests</h3>
+                <p className="text-muted-foreground">
+                  From vehicles to animals, art to science - we match toys to what genuinely excites your child.
+                </p>
+              </div>
+            </ElectroBorder>
             
-            <div className="glass-card p-6">
-              <div className="text-4xl mb-3">⏱️</div>
-              <h3 className="font-heading font-bold text-xl mb-2">Attention Span</h3>
-              <p className="text-muted-foreground">
-                Quick play or deep focus? We select complexity levels that keep your child engaged without frustration.
-              </p>
-            </div>
+            <ElectroBorder borderColor="#14B8A6" borderWidth={2} radius="1rem" glow={true} aura={true}>
+              <div className="p-6">
+                <div className="text-4xl mb-3">⏱️</div>
+                <h3 className="font-heading font-bold text-xl mb-2">Attention Span</h3>
+                <p className="text-muted-foreground">
+                  Quick play or deep focus? We select complexity levels that keep your child engaged without frustration.
+                </p>
+              </div>
+            </ElectroBorder>
           </div>
           
-          <div className="mt-8 glass-card p-8 bg-primary/5">
-            <p className="text-center text-foreground">
-              <span className="font-semibold">60 seconds of questions</span> → 
-              <span className="font-semibold"> 12+ data points</span> → 
-              <span className="font-semibold"> Personalized JoyBox</span>
-            </p>
+          <div className="mt-8">
+            <ElectroBorder borderColor="#3B82F6" borderWidth={2} radius="1rem" glow={true} aura={true}>
+              <div className="p-8">
+                <p className="text-center text-foreground">
+                  <span className="font-semibold">60 seconds of questions</span> → 
+                  <span className="font-semibold"> 12+ data points</span> → 
+                  <span className="font-semibold"> Personalized JoyBox</span>
+                </p>
+              </div>
+            </ElectroBorder>
           </div>
         </div>
       </section>

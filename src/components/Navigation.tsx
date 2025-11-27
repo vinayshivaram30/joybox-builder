@@ -79,13 +79,9 @@ export const Navigation = () => {
           }} />
           </Link>
           
-          {/* Desktop Navigation with DynamicNavigation */}
-          <div className="hidden md:flex flex-1 justify-center">
+          {/* Desktop Navigation and Auth Buttons */}
+          <div className="hidden md:flex flex-1 items-center justify-end gap-4">
             <DynamicNavigation links={navigationLinks} activeLink={getActiveLink()} onLinkClick={handleNavLinkClick} showLabelsOnMobile={false} className="max-w-md" />
-          </div>
-          
-          {/* Desktop Auth Buttons */}
-          <div className="hidden md:flex items-center gap-4">
             {user ? <>
                 <Link to="/dashboard">
                   <Button variant="outline" size="sm">

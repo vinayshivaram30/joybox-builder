@@ -11,6 +11,7 @@ import { OrbitCard } from "@/components/ui/orbit-card";
 import { GlowingCards, GlowingCard } from "@/components/ui/glowing-cards";
 import { SlidingLogoMarquee } from "@/components/ui/sliding-logo-marquee";
 import { TrustedUsers } from "@/components/TrustedUsers";
+import { AuroraTextEffect } from "@/components/ui/aurora-text-effect";
 const Home = () => {
   const heroParallax = useParallax(0.3);
   const valuePropsAnim = useScrollAnimation(0.2);
@@ -23,7 +24,26 @@ const Home = () => {
       <section className="container mx-auto px-4 py-16 md:py-24 relative">
         <ParticlesBackground colors={['#ff223e', '#5d1eb2', '#ff7300']} size={3} countDesktop={60} countTablet={50} countMobile={40} zIndex={0} height="100%" />
         <div className="max-w-4xl mx-auto text-center relative z-10">
-          <h1 className="text-4xl md:text-6xl font-heading font-bold text-foreground mb-6 leading-tight">
+          <AuroraTextEffect
+            text="ToyLuv"
+            className="mb-6 h-32 md:h-40"
+            fontSize="clamp(3rem, 10vw, 6rem)"
+            colors={{
+              first: "bg-primary",
+              second: "bg-accent",
+              third: "bg-secondary",
+              fourth: "bg-coral",
+            }}
+            blurAmount="blur-2xl"
+            animationSpeed={{
+              border: 8,
+              first: 6,
+              second: 7,
+              third: 4,
+              fourth: 10,
+            }}
+          />
+          <h1 className="text-3xl md:text-5xl font-heading font-bold text-foreground mb-6 leading-tight">
             Playtime that grows{" "}
             <span className="text-primary">smarter</span> with every box
           </h1>

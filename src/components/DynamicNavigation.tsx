@@ -37,7 +37,7 @@ export const DynamicNavigation = ({
   showLabelsOnMobile = false,
   onLinkClick,
   activeLink,
-  enableRipple = true
+  enableRipple = true,
 }: DynamicNavigationProps) => {
   const navRef = useRef<HTMLElement>(null);
   const highlightRef = useRef<HTMLDivElement>(null);
@@ -52,7 +52,7 @@ export const DynamicNavigation = ({
     // Use provided or default white
     highlight: highlightColor || "bg-foreground/10",
     // Use provided or default white/10
-    glow: `shadow-[0_0_${glowIntensity}px_rgba(255,255,255,0.3)]`
+    glow: `shadow-[0_0_${glowIntensity}px_rgba(255,255,255,0.3)]`,
   };
 
   // Update highlight position based on active link
@@ -60,10 +60,7 @@ export const DynamicNavigation = ({
     if (!navRef.current || !highlightRef.current) return;
     const linkElement = navRef.current.querySelector(`#nav-item-${id || active}`);
     if (!linkElement) return;
-    const {
-      left,
-      width
-    } = linkElement.getBoundingClientRect();
+    const { left, width } = linkElement.getBoundingClientRect();
     const navRect = navRef.current.getBoundingClientRect();
     highlightRef.current.style.transform = `translateX(${left - navRect.left}px)`;
     highlightRef.current.style.width = `${width}px`;
@@ -122,37 +119,63 @@ export const DynamicNavigation = ({
       setActive(activeLink);
     }
   }, [activeLink]);
-  return <nav ref={navRef} className={cn(`relative rounded-full  backdrop-blur-md border 
-        shadow-lg transition-all duration-300`, defaultThemeStyles.bg, defaultThemeStyles.border, defaultThemeStyles.glow, className)} style={{
-    backgroundColor: backgroundColor,
-    color: textColor
-  }}>
+  return (
+    <nav
+      ref={navRef}
+      className={cn(
+        `relative rounded-full  backdrop-blur-md border 
+        shadow-lg transition-all duration-300`,
+        defaultThemeStyles.bg,
+        defaultThemeStyles.border,
+        defaultThemeStyles.glow,
+        className,
+      )}
+      style={{
+        backgroundColor: backgroundColor,
+        color: textColor,
+      }}
+    >
       {/* Background highlight */}
-      <div ref={highlightRef} className={cn(`absolute top-0 left-0 h-full rounded-full transition-all 
-          duration-300 ease-[cubic-bezier(0.25,1,0.5,1)] z-0`, defaultThemeStyles.highlight)} style={{
-      backgroundColor: highlightColor
-    }}></div>
+      <div
+        ref={highlightRef}
+        className={cn(
+          `absolute top-0 left-0 h-full rounded-full transition-all 
+          duration-300 ease-[cubic-bezier(0.25,1,0.5,1)] z-0`,
+          defaultThemeStyles.highlight,
+        )}
+        style={{
+          backgroundColor: highlightColor,
+        }}
+      ></div>
 
       <ul className="gap-0.5 py-0.5 relative z-10 rounded shadow px-0.5 flex items-center justify-end bg-primary-foreground text-stone-600 border-coral border-dashed">
-        {links.map(link => <li key={link.id} className="rounded-full" id={`nav-item-${link.id}`}>
-            <a href={link.href} className={cn(`flex gap-0.5 items-center justify-center px-2 py-0.5 text-xs
+        {links.map((link) => (
+          <li key={link.id} className="rounded-full" id={`nav-item-${link.id}`}>
+            <a
+              href={link.href}
+              className={cn(
+                `flex gap-0.5 items-center justify-center px-2 py-0.5 text-xs
                 rounded-full font-medium transition-all duration-300 hover:scale-105 
-                relative overflow-hidden whitespace-nowrap`, defaultThemeStyles.text, active === link.id && "font-semibold")} onClick={e => {
-          e.preventDefault();
-          handleLinkClick(link.id, e);
-        }} onMouseEnter={() => handleLinkHover(link.id)}>
-              {link.icon && <span className="text-current text-[10px]">
-                  {link.icon}
-                </span>}
-              <span className={cn(showLabelsOnMobile ? "flex" : "hidden sm:flex")}>
-                {link.label}
-              </span>
+                relative overflow-hidden whitespace-nowrap`,
+                defaultThemeStyles.text,
+                active === link.id && "font-semibold",
+              )}
+              onClick={(e) => {
+                e.preventDefault();
+                handleLinkClick(link.id, e);
+              }}
+              onMouseEnter={() => handleLinkHover(link.id)}
+            >
+              {link.icon && <span className="text-current text-[10px]">{link.icon}</span>}
+              <span className={cn(showLabelsOnMobile ? "flex" : "hidden sm:flex")}>{link.label}</span>
             </a>
-          </li>)}
+          </li>
+        ))}
       </ul>
 
-      <style dangerouslySetInnerHTML={{
-      __html: `        @keyframes ripple {
+      <style
+        dangerouslySetInnerHTML={{
+          __html: `        @keyframes ripple {
           to {
             transform: scale(4);
             opacity: 0;
@@ -161,8 +184,10 @@ export const DynamicNavigation = ({
         .animate-ripple {
           animation: ripple 0.6s linear;
         }
-`
-    }} />
-    </nav>;
+`,
+        }}
+      />
+    </nav>
+  );
 };
 export default DynamicNavigation;

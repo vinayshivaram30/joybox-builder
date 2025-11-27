@@ -62,7 +62,7 @@ export const Navigation = () => {
     await signOut();
   };
   return <nav className="sticky top-0 z-50 glass-card border-b border-border/50">
-      <div className="container mx-auto px-4">
+      <div className="container mx-auto px-4 bg-stone-200 text-stone-400">
         <div className="h-16 gap-4 flex items-center justify-between bg-stone-200 text-stone-400 border-muted">
           <Link to="/" className="block">
             <AuroraTextEffect text="ToyLuv" className="bg-transparent dark:bg-transparent h-10 w-[120px] rounded-lg" textClassName="font-heading font-bold" fontSize="1.5rem" colors={{

@@ -7,7 +7,7 @@ import { useParallax } from "@/hooks/useParallax";
 import heroImage from "@/assets/hero-toys.jpg";
 import { Sparkles, Shield, TruckIcon, Star, CheckCircle } from "lucide-react";
 import ParticlesBackground from "@/components/ParticlesBackground";
-import OrbitCard from "@/components/ui/orbit-card";
+import { OrbitCard } from "@/components/ui/orbit-card";
 import { GlowingCards, GlowingCard } from "@/components/ui/glowing-cards";
 import { SlidingLogoMarquee } from "@/components/ui/sliding-logo-marquee";
 import { TrustedUsers } from "@/components/TrustedUsers";

@@ -5,7 +5,7 @@ type OrbitCardProps = {
   className?: string;
 };
 
-const OrbitCard: React.FC<OrbitCardProps> = ({ children, className }) => {
+export const OrbitCard: React.FC<OrbitCardProps> = ({ children, className }) => {
   return (
     <div className={`relative ${className} rounded-xl`}>
       {/* Glowing shadow background */}
@@ -22,5 +22,3 @@ const OrbitCard: React.FC<OrbitCardProps> = ({ children, className }) => {
     </div>
   );
 };
-
-export default OrbitCard;

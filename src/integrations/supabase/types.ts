@@ -17,25 +17,34 @@ export type Database = {
       profiles: {
         Row: {
           avatar_url: string | null
+          child_age: string | null
           created_at: string
+          delivery_address: string | null
           id: string
           parent_name: string | null
+          preferences: Json | null
           updated_at: string
           user_id: string
         }
         Insert: {
           avatar_url?: string | null
+          child_age?: string | null
           created_at?: string
+          delivery_address?: string | null
           id?: string
           parent_name?: string | null
+          preferences?: Json | null
           updated_at?: string
           user_id: string
         }
         Update: {
           avatar_url?: string | null
+          child_age?: string | null
           created_at?: string
+          delivery_address?: string | null
           id?: string
           parent_name?: string | null
+          preferences?: Json | null
           updated_at?: string
           user_id?: string
         }

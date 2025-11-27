@@ -6,6 +6,8 @@ import { PersonalityResult } from "@/components/PersonalityResult";
 import { SignupForm } from "@/components/SignupForm";
 import { JoyBoxPreview } from "@/components/JoyBoxPreview";
 import { quizQuestions, calculatePersonality } from "@/data/quizData";
+import { supabase } from "@/integrations/supabase/client";
+import { useToast } from "@/hooks/use-toast";
 import heroImage from "@/assets/hero-toys.jpg";
 import toyBlocks from "@/assets/toy-blocks.jpg";
 import toyCraft from "@/assets/toy-craft.jpg";
@@ -14,12 +16,14 @@ import toyPuzzle from "@/assets/toy-puzzle.jpg";
 type FlowStep = "hero" | "quiz" | "result" | "signup" | "preview";
 
 const Index = () => {
+  const { toast } = useToast();
   const [currentStep, setCurrentStep] = useState<FlowStep>("hero");
   const [quizStep, setQuizStep] = useState(0);
   const [answers, setAnswers] = useState<Record<string, string>>({});
   const [selectedAnswer, setSelectedAnswer] = useState<string | null>(null);
   const [personalityResult, setPersonalityResult] = useState<any>(null);
   const [userData, setUserData] = useState<any>(null);
+  const [isSaving, setIsSaving] = useState(false);
 
   // Load state from session storage
   useEffect(() => {
@@ -76,9 +80,39 @@ const Index = () => {
     setCurrentStep("signup");
   };
 
-  const handleSignupSubmit = (data: any) => {
-    setUserData(data);
-    setCurrentStep("preview");
+  const handleSignupSubmit = async (data: { name: string; phone: string; pincode: string }) => {
+    setIsSaving(true);
+    
+    try {
+      // Save quiz results to database
+      const { error } = await supabase.from("quiz_results").insert({
+        personality_type: personalityResult.title,
+        answers: answers,
+        parent_name: data.name,
+        whatsapp_number: data.phone,
+        pincode: data.pincode,
+        child_age: null, // Can be added to the form later
+      });
+
+      if (error) throw error;
+
+      setUserData(data);
+      setCurrentStep("preview");
+      
+      toast({
+        title: "Quiz saved successfully!",
+        description: "Your personalized JoyBox is ready.",
+      });
+    } catch (error) {
+      console.error("Error saving quiz results:", error);
+      toast({
+        title: "Error saving quiz",
+        description: "Please try again or contact support.",
+        variant: "destructive",
+      });
+    } finally {
+      setIsSaving(false);
+    }
   };
 
   const getToysByPersonality = () => {
@@ -171,7 +205,7 @@ const Index = () => {
       {/* Signup Section */}
       {currentStep === "signup" && (
         <div className="container mx-auto px-4 py-12 md:py-20">
-          <SignupForm onSubmit={handleSignupSubmit} />
+          <SignupForm onSubmit={handleSignupSubmit} isLoading={isSaving} />
         </div>
       )}
 

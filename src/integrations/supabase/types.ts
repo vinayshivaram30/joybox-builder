@@ -14,7 +14,45 @@ export type Database = {
   }
   public: {
     Tables: {
-      [_ in never]: never
+      quiz_results: {
+        Row: {
+          answers: Json
+          child_age: string | null
+          created_at: string
+          id: string
+          parent_name: string
+          personality_type: string
+          pincode: string
+          updated_at: string
+          user_id: string | null
+          whatsapp_number: string
+        }
+        Insert: {
+          answers: Json
+          child_age?: string | null
+          created_at?: string
+          id?: string
+          parent_name: string
+          personality_type: string
+          pincode: string
+          updated_at?: string
+          user_id?: string | null
+          whatsapp_number: string
+        }
+        Update: {
+          answers?: Json
+          child_age?: string | null
+          created_at?: string
+          id?: string
+          parent_name?: string
+          personality_type?: string
+          pincode?: string
+          updated_at?: string
+          user_id?: string | null
+          whatsapp_number?: string
+        }
+        Relationships: []
+      }
     }
     Views: {
       [_ in never]: never

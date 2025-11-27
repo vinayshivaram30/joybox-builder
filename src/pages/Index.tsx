@@ -137,6 +137,16 @@ const Index = () => {
     }
   };
 
+  const handleResetQuiz = () => {
+    sessionStorage.removeItem("toyLuvQuiz");
+    setCurrentStep("hero");
+    setQuizStep(0);
+    setAnswers({});
+    setSelectedAnswer(null);
+    setPersonalityResult(null);
+    setUserData(null);
+  };
+
   return (
     <div className="min-h-screen bg-background">
       {/* Hero Section */}
@@ -193,6 +203,16 @@ const Index = () => {
       {/* Quiz Section */}
       {currentStep === "quiz" && (
         <div className="container mx-auto px-4 py-12 md:py-20">
+          <div className="max-w-2xl mx-auto mb-4 flex justify-end">
+            <Button
+              variant="ghost"
+              size="sm"
+              onClick={handleResetQuiz}
+              className="text-muted-foreground hover:text-foreground"
+            >
+              Reset Quiz
+            </Button>
+          </div>
           <ProgressBar
             currentStep={quizStep + 1}
             totalSteps={quizQuestions.length}

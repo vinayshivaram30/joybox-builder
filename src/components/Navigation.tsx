@@ -63,7 +63,7 @@ export const Navigation = () => {
   };
   return <nav className="sticky top-0 z-50 glass-card border-b border-border/50">
       <div className="container mx-auto px-4 bg-stone-200 text-stone-400">
-        <div className="h-16 gap-4 flex items-center justify-between bg-stone-200 text-stone-400 border-muted">
+        <div className="h-16 gap-4 items-center justify-between bg-stone-200 text-stone-400 border-muted flex flex-row">
           <Link to="/" className="block">
             <AuroraTextEffect text="ToyLuv" className="bg-transparent dark:bg-transparent h-10 w-[120px] rounded-lg" textClassName="font-heading font-bold" fontSize="1.5rem" colors={{
             first: "bg-primary/40",
@@ -81,7 +81,7 @@ export const Navigation = () => {
           
           {/* Desktop Navigation with DynamicNavigation */}
           <div className="hidden items-center flex-1 justify-center max-w-md md:flex md:items-center md:justify-end gap-px">
-            <DynamicNavigation links={navigationLinks} activeLink={getActiveLink()} onLinkClick={handleNavLinkClick} showLabelsOnMobile={false} className="w-full" />
+            <DynamicNavigation links={navigationLinks} activeLink={getActiveLink()} onLinkClick={handleNavLinkClick} showLabelsOnMobile={false} className="w-full border-stone-400" />
           </div>
           
           {/* Desktop Auth Buttons */}

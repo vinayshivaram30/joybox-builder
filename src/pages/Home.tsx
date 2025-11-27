@@ -120,7 +120,7 @@ const Home = () => {
           </div>
           
           <div className="text-center">
-            <div className="w-20 h-20 rounded-full bg-accent/20 flex items-center justify-center mx-auto mb-4">
+            <div className="w-20 h-20 rounded-full flex items-center justify-center mx-auto mb-4 bg-red-200">
               <span className="text-4xl">3️⃣</span>
             </div>
             <h3 className="font-heading font-bold text-xl mb-2">Swap</h3>

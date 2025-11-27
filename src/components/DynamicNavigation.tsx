@@ -177,19 +177,19 @@ export const DynamicNavigation = ({
         }}
       ></div>
 
-      <ul className="flex justify-between items-center gap-4 py-2 relative z-10">
+      <ul className="flex items-center gap-1 py-1.5 px-2 relative z-10">
         {links.map((link) => (
           <li
             key={link.id}
-            className="flex-1 rounded-full mx-1 lg:mx-2 px-4"
+            className="rounded-full"
             id={`nav-item-${link.id}`}
           >
             <a
               href={link.href}
               className={cn(
-                `flex gap-1 items-center justify-center h-8 md:h-8 text-xs md:text-sm 
+                `flex gap-1 items-center justify-center px-4 py-1.5 text-sm 
                 rounded-full font-medium transition-all duration-300 hover:scale-105 
-                relative overflow-hidden`,
+                relative overflow-hidden whitespace-nowrap`,
                 defaultThemeStyles.text,
                 active === link.id && "font-semibold"
               )}

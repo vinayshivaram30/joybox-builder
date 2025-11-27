@@ -231,6 +231,7 @@ const Index = () => {
           <PersonalityResult
             result={personalityResult}
             onContinue={handleContinueToSignup}
+            onRetake={handleResetQuiz}
           />
         </div>
       )}

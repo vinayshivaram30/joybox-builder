@@ -6,6 +6,7 @@ import { useScrollAnimation } from "@/hooks/useScrollAnimation";
 import { useParallax } from "@/hooks/useParallax";
 import heroImage from "@/assets/hero-toys.jpg";
 import { Sparkles, Shield, RefreshCw, TruckIcon, Star } from "lucide-react";
+import ParticlesBackground from "@/components/ParticlesBackground";
 
 const Home = () => {
   const heroParallax = useParallax(0.3);
@@ -18,8 +19,17 @@ const Home = () => {
       <Navigation />
       
       {/* Hero Section */}
-      <section className="container mx-auto px-4 py-16 md:py-24">
-        <div className="max-w-4xl mx-auto text-center">
+      <section className="container mx-auto px-4 py-16 md:py-24 relative">
+        <ParticlesBackground 
+          colors={['#ff223e', '#5d1eb2', '#ff7300']}
+          size={3}
+          countDesktop={60}
+          countTablet={50}
+          countMobile={40}
+          zIndex={0}
+          height="100%"
+        />
+        <div className="max-w-4xl mx-auto text-center relative z-10">
           <h1 className="text-4xl md:text-6xl font-heading font-bold text-foreground mb-6 leading-tight">
             Playtime that grows{" "}
             <span className="text-primary">smarter</span> with every box

@@ -7,6 +7,7 @@ import { useParallax } from "@/hooks/useParallax";
 import heroImage from "@/assets/hero-toys.jpg";
 import { Sparkles, Shield, TruckIcon, Star, CheckCircle } from "lucide-react";
 import ParticlesBackground from "@/components/ParticlesBackground";
+import OrbitCard from "@/components/ui/orbit-card";
 const Home = () => {
   const heroParallax = useParallax(0.3);
   const valuePropsAnim = useScrollAnimation(0.2);
@@ -235,19 +236,21 @@ const Home = () => {
       
       {/* Final CTA */}
       <section className="container mx-auto px-4 py-16">
-        <div className="glass-card p-12 text-center max-w-3xl mx-auto">
-          <h2 className="text-3xl md:text-4xl font-heading font-bold mb-4">
-            Ready to Start the JoyLoop?
-          </h2>
-          <p className="text-lg text-muted-foreground mb-8">
-            Discover your child's play personality in 60 seconds
-          </p>
-          <Link to="/quiz">
-            <Button variant="cta" size="lg" className="text-lg px-12 h-14">
-              Take the Quiz Now
-            </Button>
-          </Link>
-        </div>
+        <OrbitCard className="max-w-3xl mx-auto">
+          <div className="text-center p-6">
+            <h2 className="text-3xl md:text-4xl font-heading font-bold mb-4">
+              Ready to Start the JoyLoop?
+            </h2>
+            <p className="text-lg text-muted-foreground mb-8">
+              Discover your child's play personality in 60 seconds
+            </p>
+            <Link to="/quiz">
+              <Button variant="cta" size="lg" className="text-lg px-12 h-14">
+                Take the Quiz Now
+              </Button>
+            </Link>
+          </div>
+        </OrbitCard>
       </section>
       
       <Footer />

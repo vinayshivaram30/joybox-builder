@@ -84,7 +84,7 @@ const Index = () => {
     setCurrentStep("signup");
   };
 
-  const handleSignupSubmit = async (data: { name: string; phone: string; pincode: string }) => {
+  const handleSignupSubmit = async (data: { name: string; email: string; phone: string; pincode: string }) => {
     setIsSaving(true);
     
     try {
@@ -101,12 +101,27 @@ const Index = () => {
 
       if (error) throw error;
 
+      // Send personalized email with toy recommendations
+      try {
+        await supabase.functions.invoke('send-quiz-email', {
+          body: {
+            parentName: data.name,
+            email: data.email,
+            personalityType: personalityResult.title,
+            childAge: 'Not specified',
+          },
+        });
+      } catch (emailError) {
+        console.error("Error sending email:", emailError);
+        // Don't fail the whole process if email fails
+      }
+
       setUserData(data);
       setCurrentStep("preview");
       
       toast({
         title: "Quiz saved successfully!",
-        description: "Your personalized JoyBox is ready.",
+        description: "Your personalized JoyBox is ready. Check your email for recommendations!",
       });
 
       // If user is logged in, redirect to dashboard after preview

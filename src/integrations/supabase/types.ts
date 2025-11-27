@@ -89,10 +89,75 @@ export type Database = {
         }
         Relationships: []
       }
-      toy_reviews: {
+      review_photos: {
         Row: {
           created_at: string
           id: string
+          image_url: string
+          review_id: string
+        }
+        Insert: {
+          created_at?: string
+          id?: string
+          image_url: string
+          review_id: string
+        }
+        Update: {
+          created_at?: string
+          id?: string
+          image_url?: string
+          review_id?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "review_photos_review_id_fkey"
+            columns: ["review_id"]
+            isOneToOne: false
+            referencedRelation: "toy_reviews"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      review_votes: {
+        Row: {
+          created_at: string
+          id: string
+          is_helpful: boolean
+          review_id: string
+          user_id: string
+        }
+        Insert: {
+          created_at?: string
+          id?: string
+          is_helpful: boolean
+          review_id: string
+          user_id: string
+        }
+        Update: {
+          created_at?: string
+          id?: string
+          is_helpful?: boolean
+          review_id?: string
+          user_id?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "review_votes_review_id_fkey"
+            columns: ["review_id"]
+            isOneToOne: false
+            referencedRelation: "toy_reviews"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      toy_reviews: {
+        Row: {
+          created_at: string
+          hidden_at: string | null
+          hidden_by: string | null
+          hidden_reason: string | null
+          id: string
+          is_hidden: boolean
           rating: number
           review_text: string | null
           toy_id: string
@@ -101,7 +166,11 @@ export type Database = {
         }
         Insert: {
           created_at?: string
+          hidden_at?: string | null
+          hidden_by?: string | null
+          hidden_reason?: string | null
           id?: string
+          is_hidden?: boolean
           rating: number
           review_text?: string | null
           toy_id: string
@@ -110,7 +179,11 @@ export type Database = {
         }
         Update: {
           created_at?: string
+          hidden_at?: string | null
+          hidden_by?: string | null
+          hidden_reason?: string | null
           id?: string
+          is_hidden?: boolean
           rating?: number
           review_text?: string | null
           toy_id?: string

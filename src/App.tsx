@@ -16,6 +16,7 @@ import AdminDashboard from "./pages/AdminDashboard";
 import ProfileEdit from "./pages/ProfileEdit";
 import ResetPassword from "./pages/ResetPassword";
 import ToyInventory from "./pages/ToyInventory";
+import ToyDetails from "./pages/ToyDetails";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -38,6 +39,7 @@ const App = () => (
             <Route path="/dashboard" element={<Dashboard />} />
             <Route path="/admin" element={<AdminDashboard />} />
             <Route path="/admin/toys" element={<ToyInventory />} />
+            <Route path="/toys/:id" element={<ToyDetails />} />
             <Route path="/profile/edit" element={<ProfileEdit />} />
             <Route path="/reset-password" element={<ResetPassword />} />
             {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}

@@ -1,8 +1,10 @@
 import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import { getRecommendedToys, RecommendedToy } from "@/lib/toyRecommendations";
 import { Loader2 } from "lucide-react";
+import { ToyRating } from "@/components/ToyRating";
+import { supabase } from "@/integrations/supabase/client";
 
 interface JoyBoxPreviewProps {
   personalityType: string;
@@ -13,6 +15,7 @@ export const JoyBoxPreview = ({ personalityType, childAge }: JoyBoxPreviewProps)
   const navigate = useNavigate();
   const [toys, setToys] = useState<RecommendedToy[]>([]);
   const [loading, setLoading] = useState(true);
+  const [ratings, setRatings] = useState<Record<string, { average: number; count: number }>>({});
 
   useEffect(() => {
     loadRecommendedToys();
@@ -22,6 +25,26 @@ export const JoyBoxPreview = ({ personalityType, childAge }: JoyBoxPreviewProps)
     setLoading(true);
     const recommendations = await getRecommendedToys(personalityType, childAge);
     setToys(recommendations);
+    
+    // Load ratings for all toys
+    if (recommendations.length > 0) {
+      const { data } = await supabase
+        .from('toy_ratings_summary')
+        .select('id, average_rating, review_count')
+        .in('id', recommendations.map(t => t.id));
+      
+      if (data) {
+        const ratingsMap: Record<string, { average: number; count: number }> = {};
+        data.forEach(r => {
+          ratingsMap[r.id!] = {
+            average: r.average_rating || 0,
+            count: Number(r.review_count) || 0
+          };
+        });
+        setRatings(ratingsMap);
+      }
+    }
+    
     setLoading(false);
   };
 
@@ -67,8 +90,9 @@ export const JoyBoxPreview = ({ personalityType, childAge }: JoyBoxPreviewProps)
           <>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
               {toys.map((toy) => (
-                <div
+                <Link
                   key={toy.id}
+                  to={`/toys/${toy.id}`}
                   className="bg-card rounded-2xl overflow-hidden border-2 border-primary/10 hover:shadow-xl transition-all transform hover:-translate-y-1"
                 >
                   {toy.image_url ? (
@@ -86,6 +110,15 @@ export const JoyBoxPreview = ({ personalityType, childAge }: JoyBoxPreviewProps)
                   )}
                   <div className="p-4">
                     <h4 className="font-semibold text-foreground mb-2 line-clamp-2">{toy.name}</h4>
+                    {ratings[toy.id] && ratings[toy.id].count > 0 && (
+                      <div className="mb-2">
+                        <ToyRating 
+                          rating={ratings[toy.id].average} 
+                          reviewCount={ratings[toy.id].count}
+                          size="sm"
+                        />
+                      </div>
+                    )}
                     <p className="text-sm text-muted-foreground mb-2 line-clamp-2">
                       {toy.description || "Perfect for your child"}
                     </p>
@@ -101,7 +134,7 @@ export const JoyBoxPreview = ({ personalityType, childAge }: JoyBoxPreviewProps)
                       </span>
                     </div>
                   </div>
-                </div>
+                </Link>
               ))}
             </div>
 

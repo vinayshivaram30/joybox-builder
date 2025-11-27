@@ -133,7 +133,7 @@ export const DynamicNavigation = ({
       backgroundColor: highlightColor
     }}></div>
 
-      <ul className="gap-1 py-1.5 px-2 relative z-10 rounded shadow flex items-center justify-end">
+      <ul className="gap-1 py-1.5 relative z-10 rounded shadow flex items-center justify-end px-[6px]">
         {links.map(link => <li key={link.id} className="rounded-full" id={`nav-item-${link.id}`}>
             <a href={link.href} className={cn(`flex gap-1 items-center justify-center px-4 py-1.5 text-sm 
                 rounded-full font-medium transition-all duration-300 hover:scale-105 

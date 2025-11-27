@@ -11,9 +11,6 @@ import { supabase } from "@/integrations/supabase/client";
 import { useToast } from "@/hooks/use-toast";
 import { useAuth } from "@/contexts/AuthContext";
 import heroImage from "@/assets/hero-toys.jpg";
-import toyBlocks from "@/assets/toy-blocks.jpg";
-import toyCraft from "@/assets/toy-craft.jpg";
-import toyPuzzle from "@/assets/toy-puzzle.jpg";
 
 type FlowStep = "hero" | "quiz" | "result" | "signup" | "preview";
 
@@ -140,15 +137,6 @@ const Index = () => {
     }
   };
 
-  const getToysByPersonality = () => {
-    // Return toy images based on personality type
-    return [
-      { name: "Building Blocks Set", image: toyBlocks, age: "Ages 3+" },
-      { name: "Creative Craft Kit", image: toyCraft, age: "Ages 4+" },
-      { name: "Educational Puzzle", image: toyPuzzle, age: "Ages 3+" },
-    ];
-  };
-
   return (
     <div className="min-h-screen bg-background">
       {/* Hero Section */}
@@ -238,8 +226,8 @@ const Index = () => {
       {currentStep === "preview" && personalityResult && (
         <div className="container mx-auto px-4 py-12 md:py-20">
           <JoyBoxPreview
-            toys={getToysByPersonality()}
             personalityType={personalityResult.title}
+            childAge={userData?.childAge}
           />
         </div>
       )}

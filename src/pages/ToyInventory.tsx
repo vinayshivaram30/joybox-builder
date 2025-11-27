@@ -30,7 +30,7 @@ import {
   DialogTrigger,
 } from "@/components/ui/dialog";
 import { Badge } from "@/components/ui/badge";
-import { Plus, Pencil, Trash2 } from "lucide-react";
+import { Plus, Pencil, Trash2, Upload, X } from "lucide-react";
 import { Checkbox } from "@/components/ui/checkbox";
 
 interface Toy {
@@ -62,6 +62,9 @@ const ToyInventory = () => {
   const [editingToy, setEditingToy] = useState<Toy | null>(null);
   const [filterPersonality, setFilterPersonality] = useState<string>("all");
   const [filterAgeGroup, setFilterAgeGroup] = useState<string>("all");
+  const [uploading, setUploading] = useState(false);
+  const [imageFile, setImageFile] = useState<File | null>(null);
+  const [imagePreview, setImagePreview] = useState<string>("");
   const [formData, setFormData] = useState({
     name: "",
     description: "",
@@ -120,6 +123,51 @@ const ToyInventory = () => {
     setLoading(false);
   };
 
+  const handleImageChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0];
+    if (file) {
+      if (file.size > 5 * 1024 * 1024) {
+        toast({
+          title: "File too large",
+          description: "Please select an image under 5MB.",
+          variant: "destructive",
+        });
+        return;
+      }
+      setImageFile(file);
+      setImagePreview(URL.createObjectURL(file));
+    }
+  };
+
+  const uploadImage = async (): Promise<string | null> => {
+    if (!imageFile) return formData.image_url || null;
+
+    setUploading(true);
+    try {
+      const fileExt = imageFile.name.split(".").pop();
+      const fileName = `${Math.random().toString(36).substring(2)}-${Date.now()}.${fileExt}`;
+      const filePath = `${fileName}`;
+
+      const { error: uploadError } = await supabase.storage
+        .from("toy-images")
+        .upload(filePath, imageFile);
+
+      if (uploadError) throw uploadError;
+
+      const { data } = supabase.storage.from("toy-images").getPublicUrl(filePath);
+      return data.publicUrl;
+    } catch (error: any) {
+      toast({
+        title: "Error uploading image",
+        description: error.message,
+        variant: "destructive",
+      });
+      return null;
+    } finally {
+      setUploading(false);
+    }
+  };
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
 
@@ -132,10 +180,12 @@ const ToyInventory = () => {
       return;
     }
 
+    const uploadedImageUrl = await uploadImage();
+
     const toyData = {
       ...formData,
       price: formData.price || null,
-      image_url: formData.image_url || null,
+      image_url: uploadedImageUrl,
       description: formData.description || null,
     };
 
@@ -194,6 +244,8 @@ const ToyInventory = () => {
       price: toy.price || 0,
       is_featured: toy.is_featured,
     });
+    setImagePreview(toy.image_url || "");
+    setImageFile(null);
     setDialogOpen(true);
   };
 
@@ -230,6 +282,8 @@ const ToyInventory = () => {
       is_featured: false,
     });
     setEditingToy(null);
+    setImageFile(null);
+    setImagePreview("");
   };
 
   const togglePersonalityType = (type: string) => {
@@ -351,14 +405,59 @@ const ToyInventory = () => {
               </div>
 
               <div>
-                <Label htmlFor="image_url">Image URL</Label>
-                <Input
-                  id="image_url"
-                  type="url"
-                  value={formData.image_url}
-                  onChange={(e) => setFormData({ ...formData, image_url: e.target.value })}
-                  placeholder="https://example.com/toy-image.jpg"
-                />
+                <Label>Toy Image</Label>
+                <div className="space-y-4">
+                  {imagePreview && (
+                    <div className="relative inline-block">
+                      <img
+                        src={imagePreview}
+                        alt="Preview"
+                        className="w-full h-48 object-cover rounded-lg"
+                      />
+                      <Button
+                        type="button"
+                        variant="destructive"
+                        size="sm"
+                        className="absolute top-2 right-2"
+                        onClick={() => {
+                          setImagePreview("");
+                          setImageFile(null);
+                          setFormData({ ...formData, image_url: "" });
+                        }}
+                      >
+                        <X className="h-4 w-4" />
+                      </Button>
+                    </div>
+                  )}
+                  <div className="flex gap-2">
+                    <div className="flex-1">
+                      <Input
+                        id="image_file"
+                        type="file"
+                        accept="image/*"
+                        onChange={handleImageChange}
+                        className="cursor-pointer"
+                      />
+                      <p className="text-xs text-muted-foreground mt-1">
+                        Upload an image (max 5MB)
+                      </p>
+                    </div>
+                  </div>
+                  <div className="text-center text-sm text-muted-foreground">or</div>
+                  <div>
+                    <Input
+                      id="image_url"
+                      type="url"
+                      value={formData.image_url}
+                      onChange={(e) => {
+                        setFormData({ ...formData, image_url: e.target.value });
+                        setImagePreview(e.target.value);
+                        setImageFile(null);
+                      }}
+                      placeholder="Enter image URL"
+                    />
+                  </div>
+                </div>
               </div>
 
               <div className="grid grid-cols-2 gap-4">
@@ -398,8 +497,15 @@ const ToyInventory = () => {
               </div>
 
               <div className="flex gap-3 pt-4">
-                <Button type="submit" variant="cta" className="flex-1">
-                  {editingToy ? "Update Toy" : "Add Toy"}
+                <Button type="submit" variant="cta" className="flex-1" disabled={uploading}>
+                  {uploading ? (
+                    <>
+                      <Upload className="mr-2 h-4 w-4 animate-pulse" />
+                      Uploading...
+                    </>
+                  ) : (
+                    <>{editingToy ? "Update Toy" : "Add Toy"}</>
+                  )}
                 </Button>
                 <Button
                   type="button"

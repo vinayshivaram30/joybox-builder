@@ -5,30 +5,19 @@ import { Footer } from "@/components/Footer";
 import { useScrollAnimation } from "@/hooks/useScrollAnimation";
 import { useParallax } from "@/hooks/useParallax";
 import heroImage from "@/assets/hero-toys.jpg";
-import { Sparkles, Shield, RefreshCw, TruckIcon, Star } from "lucide-react";
+import { Sparkles, Shield, TruckIcon, Star, CheckCircle } from "lucide-react";
 import ParticlesBackground from "@/components/ParticlesBackground";
-
 const Home = () => {
   const heroParallax = useParallax(0.3);
   const valuePropsAnim = useScrollAnimation(0.2);
   const showcaseAnim = useScrollAnimation(0.2);
   const testimonialsAnim = useScrollAnimation(0.2);
-
-  return (
-    <div className="min-h-screen bg-background">
+  return <div className="min-h-screen bg-background">
       <Navigation />
       
       {/* Hero Section */}
       <section className="container mx-auto px-4 py-16 md:py-24 relative">
-        <ParticlesBackground 
-          colors={['#ff223e', '#5d1eb2', '#ff7300']}
-          size={3}
-          countDesktop={60}
-          countTablet={50}
-          countMobile={40}
-          zIndex={0}
-          height="100%"
-        />
+        <ParticlesBackground colors={['#ff223e', '#5d1eb2', '#ff7300']} size={3} countDesktop={60} countTablet={50} countMobile={40} zIndex={0} height="100%" />
         <div className="max-w-4xl mx-auto text-center relative z-10">
           <h1 className="text-4xl md:text-6xl font-heading font-bold text-foreground mb-6 leading-tight">
             Playtime that grows{" "}
@@ -47,11 +36,7 @@ const Home = () => {
           
           <div className="rounded-3xl overflow-hidden shadow-2xl mb-12">
             <div ref={heroParallax} className="parallax-slow">
-              <img
-                src={heroImage}
-                alt="JoyBox filled with colorful educational toys"
-                className="w-full h-auto animate-float"
-              />
+              <img src={heroImage} alt="JoyBox filled with colorful educational toys" className="w-full h-auto animate-float" />
             </div>
           </div>
         </div>
@@ -59,12 +44,7 @@ const Home = () => {
       
       {/* Value Proposition Grid */}
       <section className="container mx-auto px-4 py-16">
-        <div 
-          ref={valuePropsAnim.ref}
-          className={`grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 transition-all duration-700 ${
-            valuePropsAnim.isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
-          }`}
-        >
+        <div ref={valuePropsAnim.ref} className={`grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 transition-all duration-700 ${valuePropsAnim.isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
           <div className="glass-card p-6 hover-lift">
             <div className="w-12 h-12 rounded-full bg-primary/20 flex items-center justify-center mb-4">
               <Sparkles className="text-primary" size={24} />
@@ -87,7 +67,7 @@ const Home = () => {
           
           <div className="glass-card p-6 hover-lift">
             <div className="w-12 h-12 rounded-full bg-accent/20 flex items-center justify-center mb-4">
-              <RefreshCw className="text-accent" size={24} />
+              <CheckCircle size={24} className="text-accent bg-accent-foreground" />
             </div>
             <h3 className="font-heading font-bold text-xl mb-2">Circular Play</h3>
             <p className="text-muted-foreground">
@@ -152,12 +132,7 @@ const Home = () => {
       </section>
       
       {/* Toy Brands */}
-      <section 
-        ref={showcaseAnim.ref}
-        className={`container mx-auto px-4 py-16 bg-muted/30 rounded-3xl transition-all duration-700 delay-200 ${
-          showcaseAnim.isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
-        }`}
-      >
+      <section ref={showcaseAnim.ref} className={`container mx-auto px-4 py-16 bg-muted/30 rounded-3xl transition-all duration-700 delay-200 ${showcaseAnim.isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
         <div className="text-center mb-12">
           <h2 className="text-3xl md:text-4xl font-heading font-bold mb-4">
             Premium Brands You Trust
@@ -177,12 +152,7 @@ const Home = () => {
       </section>
       
       {/* Community Proof */}
-      <section 
-        ref={testimonialsAnim.ref}
-        className={`container mx-auto px-4 py-16 transition-all duration-700 delay-300 ${
-          testimonialsAnim.isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
-        }`}
-      >
+      <section ref={testimonialsAnim.ref} className={`container mx-auto px-4 py-16 transition-all duration-700 delay-300 ${testimonialsAnim.isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
         <div className="text-center mb-12">
           <h2 className="text-3xl md:text-4xl font-heading font-bold mb-4">
             Loved by Bengaluru Parents
@@ -192,9 +162,7 @@ const Home = () => {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-5xl mx-auto">
           <div className="glass-card p-6">
             <div className="flex gap-1 mb-3">
-              {[...Array(5)].map((_, i) => (
-                <Star key={i} className="fill-accent text-accent" size={16} />
-              ))}
+              {[...Array(5)].map((_, i) => <Star key={i} className="fill-accent text-accent" size={16} />)}
             </div>
             <p className="text-foreground mb-4">
               "My daughter was bored of her toys. ToyLuv's AI matched her perfectly. Now she's excited every month!"
@@ -204,9 +172,7 @@ const Home = () => {
           
           <div className="glass-card p-6">
             <div className="flex gap-1 mb-3">
-              {[...Array(5)].map((_, i) => (
-                <Star key={i} className="fill-accent text-accent" size={16} />
-              ))}
+              {[...Array(5)].map((_, i) => <Star key={i} className="fill-accent text-accent" size={16} />)}
             </div>
             <p className="text-foreground mb-4">
               "Finally, no more toy clutter! The hygiene standards are incredible. Worth every rupee."
@@ -216,9 +182,7 @@ const Home = () => {
           
           <div className="glass-card p-6">
             <div className="flex gap-1 mb-3">
-              {[...Array(5)].map((_, i) => (
-                <Star key={i} className="fill-accent text-accent" size={16} />
-              ))}
+              {[...Array(5)].map((_, i) => <Star key={i} className="fill-accent text-accent" size={16} />)}
             </div>
             <p className="text-foreground mb-4">
               "Best investment in my son's development. He learns while playing with different toys monthly."
@@ -287,8 +251,6 @@ const Home = () => {
       </section>
       
       <Footer />
-    </div>
-  );
+    </div>;
 };
-
 export default Home;

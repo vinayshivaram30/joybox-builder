@@ -157,42 +157,74 @@ const Home = () => {
           items={[
             {
               id: "melissa",
-              content: <div className="text-2xl font-bold">Melissa & Doug</div>,
+              content: (
+                <div className="bg-white dark:bg-gray-800 rounded-xl px-8 py-6 shadow-md min-w-[200px]">
+                  <div className="text-xl font-bold text-[#E85D75]">Melissa & Doug</div>
+                </div>
+              ),
             },
             {
               id: "hape",
-              content: <div className="text-2xl font-bold">Hape</div>,
+              content: (
+                <div className="bg-white dark:bg-gray-800 rounded-xl px-8 py-6 shadow-md min-w-[200px]">
+                  <div className="text-xl font-bold text-[#FF6B35]">Hape</div>
+                </div>
+              ),
             },
             {
               id: "fisher",
-              content: <div className="text-2xl font-bold">Fisher-Price</div>,
+              content: (
+                <div className="bg-white dark:bg-gray-800 rounded-xl px-8 py-6 shadow-md min-w-[200px]">
+                  <div className="text-xl font-bold text-[#00539B]">Fisher-Price</div>
+                </div>
+              ),
             },
             {
               id: "lego",
-              content: <div className="text-2xl font-bold">LEGO</div>,
+              content: (
+                <div className="bg-white dark:bg-gray-800 rounded-xl px-8 py-6 shadow-md min-w-[200px]">
+                  <div className="text-xl font-bold text-[#FFCF00]">LEGO</div>
+                </div>
+              ),
             },
             {
               id: "hasbro",
-              content: <div className="text-2xl font-bold">Hasbro</div>,
+              content: (
+                <div className="bg-white dark:bg-gray-800 rounded-xl px-8 py-6 shadow-md min-w-[200px]">
+                  <div className="text-xl font-bold text-[#0072BC]">Hasbro</div>
+                </div>
+              ),
             },
             {
               id: "mattel",
-              content: <div className="text-2xl font-bold">Mattel</div>,
+              content: (
+                <div className="bg-white dark:bg-gray-800 rounded-xl px-8 py-6 shadow-md min-w-[200px]">
+                  <div className="text-xl font-bold text-[#E4032E]">Mattel</div>
+                </div>
+              ),
             },
             {
               id: "playmobil",
-              content: <div className="text-2xl font-bold">Playmobil</div>,
+              content: (
+                <div className="bg-white dark:bg-gray-800 rounded-xl px-8 py-6 shadow-md min-w-[200px]">
+                  <div className="text-xl font-bold text-[#0066CC]">Playmobil</div>
+                </div>
+              ),
             },
             {
               id: "vtech",
-              content: <div className="text-2xl font-bold">VTech</div>,
+              content: (
+                <div className="bg-white dark:bg-gray-800 rounded-xl px-8 py-6 shadow-md min-w-[200px]">
+                  <div className="text-xl font-bold text-[#E31837]">VTech</div>
+                </div>
+              ),
             },
           ]}
           speed={40}
           pauseOnHover={true}
           enableBlur={true}
-          height="120px"
-          gap="3rem"
+          height="140px"
+          gap="2rem"
           showControls={false}
         />
       </section>

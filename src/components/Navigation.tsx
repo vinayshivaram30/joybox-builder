@@ -3,7 +3,7 @@ import { Link, useLocation, useNavigate } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { useAuth } from "@/contexts/AuthContext";
 import { supabase } from "@/integrations/supabase/client";
-import { LogOut, User, Home as HomeIcon, Info, DollarSign } from "lucide-react";
+import { LogOut, User, Home as HomeIcon, Info, IndianRupee } from "lucide-react";
 import {
   DropdownMenu,
   DropdownMenuContent,

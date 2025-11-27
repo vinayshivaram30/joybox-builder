@@ -8,7 +8,7 @@ import heroImage from "@/assets/hero-toys.jpg";
 import { Sparkles, Shield, TruckIcon, Star, CheckCircle } from "lucide-react";
 import ParticlesBackground from "@/components/ParticlesBackground";
 import OrbitCard from "@/components/ui/orbit-card";
-import { ElectroBorder } from "@/components/ui/electro-border";
+import { GlowingCards, GlowingCard } from "@/components/ui/glowing-cards";
 const Home = () => {
   const heroParallax = useParallax(0.3);
   const valuePropsAnim = useScrollAnimation(0.2);
@@ -46,9 +46,15 @@ const Home = () => {
       
       {/* Value Proposition Grid */}
       <section className="container mx-auto px-4 py-16">
-        <div ref={valuePropsAnim.ref} className={`grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 transition-all duration-700 ${valuePropsAnim.isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
-          <ElectroBorder borderColor="#8B5CF6" borderWidth={2} radius="1rem" glow={true} aura={true}>
-            <div className="p-6">
+        <div ref={valuePropsAnim.ref} className={`transition-all duration-700 ${valuePropsAnim.isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
+          <GlowingCards 
+            enableGlow={true} 
+            glowRadius={20} 
+            glowOpacity={0.8}
+            gap="1.5rem"
+            padding="0"
+          >
+            <GlowingCard glowColor="#8B5CF6">
               <div className="w-12 h-12 rounded-full bg-primary/20 flex items-center justify-center mb-4">
                 <Sparkles className="text-primary" size={24} />
               </div>
@@ -56,11 +62,9 @@ const Home = () => {
               <p className="text-muted-foreground">
                 Toys matched to your child's unique play personality and developmental stage.
               </p>
-            </div>
-          </ElectroBorder>
-          
-          <ElectroBorder borderColor="#64748B" borderWidth={2} radius="1rem" glow={true} aura={true}>
-            <div className="p-6">
+            </GlowingCard>
+            
+            <GlowingCard glowColor="#64748B">
               <div className="w-12 h-12 rounded-full bg-secondary/20 flex items-center justify-center mb-4">
                 <Shield className="text-secondary" size={24} />
               </div>
@@ -68,23 +72,19 @@ const Home = () => {
               <p className="text-muted-foreground">
                 Hospital-grade cleaning with UV-C sterilization and vacuum sealing.
               </p>
-            </div>
-          </ElectroBorder>
-          
-          <ElectroBorder borderColor="#14B8A6" borderWidth={2} radius="1rem" glow={true} aura={true}>
-            <div className="p-6">
-              <div className="w-12 h-12 rounded-full flex items-center justify-center mb-4 bg-stone-400">
-                <CheckCircle size={24} className="bg-primary-foreground text-teal-500" />
+            </GlowingCard>
+            
+            <GlowingCard glowColor="#14B8A6">
+              <div className="w-12 h-12 rounded-full flex items-center justify-center mb-4 bg-teal-500/20">
+                <CheckCircle size={24} className="text-teal-500" />
               </div>
               <h3 className="font-heading font-bold text-xl mb-2">Circular Play</h3>
               <p className="text-muted-foreground">
                 Swap toys every month. Zero clutter. Maximum variety. Sustainable joy.
               </p>
-            </div>
-          </ElectroBorder>
-          
-          <ElectroBorder borderColor="#FF6B6B" borderWidth={2} radius="1rem" glow={true} aura={true}>
-            <div className="p-6">
+            </GlowingCard>
+            
+            <GlowingCard glowColor="#FF6B6B">
               <div className="w-12 h-12 rounded-full bg-coral/20 flex items-center justify-center mb-4">
                 <TruckIcon className="text-coral" size={24} />
               </div>
@@ -92,8 +92,8 @@ const Home = () => {
               <p className="text-muted-foreground">
                 Hyperlocal service. Doorstep pickup and delivery within 48 hours.
               </p>
-            </div>
-          </ElectroBorder>
+            </GlowingCard>
+          </GlowingCards>
         </div>
       </section>
       

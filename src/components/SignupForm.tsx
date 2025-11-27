@@ -5,13 +5,14 @@ import { Label } from "@/components/ui/label";
 import { toast } from "sonner";
 
 interface SignupFormProps {
-  onSubmit: (data: { name: string; phone: string; pincode: string }) => void;
+  onSubmit: (data: { name: string; email: string; phone: string; pincode: string }) => void;
   isLoading?: boolean;
 }
 
 export const SignupForm = ({ onSubmit, isLoading = false }: SignupFormProps) => {
   const [formData, setFormData] = useState({
     name: "",
+    email: "",
     phone: "",
     pincode: "",
   });
@@ -22,6 +23,10 @@ export const SignupForm = ({ onSubmit, isLoading = false }: SignupFormProps) => 
 
     if (!formData.name.trim()) {
       newErrors.name = "Please enter your name";
+    }
+
+    if (!formData.email.trim() || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email)) {
+      newErrors.email = "Please enter a valid email address";
     }
 
     if (!/^\d{10}$/.test(formData.phone)) {
@@ -69,6 +74,23 @@ export const SignupForm = ({ onSubmit, isLoading = false }: SignupFormProps) => 
           />
           {errors.name && (
             <p className="text-destructive text-sm mt-1">{errors.name}</p>
+          )}
+        </div>
+
+        <div>
+          <Label htmlFor="email" className="text-base font-semibold">
+            Email Address
+          </Label>
+          <Input
+            id="email"
+            type="email"
+            placeholder="your.email@example.com"
+            value={formData.email}
+            onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+            className="mt-2 h-12 rounded-xl border-2"
+          />
+          {errors.email && (
+            <p className="text-destructive text-sm mt-1">{errors.email}</p>
           )}
         </div>
 

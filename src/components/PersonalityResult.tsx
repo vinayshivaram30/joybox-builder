@@ -1,4 +1,15 @@
+import { useState } from "react";
 import { Button } from "@/components/ui/button";
+import {
+  AlertDialog,
+  AlertDialogAction,
+  AlertDialogCancel,
+  AlertDialogContent,
+  AlertDialogDescription,
+  AlertDialogFooter,
+  AlertDialogHeader,
+  AlertDialogTitle,
+} from "@/components/ui/alert-dialog";
 
 export interface PersonalityResultData {
   title: string;
@@ -17,6 +28,19 @@ interface PersonalityResultProps {
 }
 
 export const PersonalityResult = ({ result, onContinue, onRetake }: PersonalityResultProps) => {
+  const [showRetakeDialog, setShowRetakeDialog] = useState(false);
+
+  const handleRetakeClick = () => {
+    if (onRetake) {
+      setShowRetakeDialog(true);
+    }
+  };
+
+  const handleConfirmRetake = () => {
+    setShowRetakeDialog(false);
+    onRetake?.();
+  };
+
   return (
     <div className="max-w-2xl mx-auto animate-confetti">
       <div className="glass-card p-8 md:p-12 text-center">
@@ -61,7 +85,7 @@ export const PersonalityResult = ({ result, onContinue, onRetake }: PersonalityR
             <Button
               variant="outline"
               size="lg"
-              onClick={onRetake}
+              onClick={handleRetakeClick}
               className="w-full md:w-auto min-w-[200px]"
             >
               Retake Quiz
@@ -69,6 +93,24 @@ export const PersonalityResult = ({ result, onContinue, onRetake }: PersonalityR
           )}
         </div>
       </div>
+
+      <AlertDialog open={showRetakeDialog} onOpenChange={setShowRetakeDialog}>
+        <AlertDialogContent>
+          <AlertDialogHeader>
+            <AlertDialogTitle>Retake Quiz?</AlertDialogTitle>
+            <AlertDialogDescription>
+              This will clear your current results and restart the quiz from the beginning. 
+              Your personality type and answers will be lost. Are you sure you want to continue?
+            </AlertDialogDescription>
+          </AlertDialogHeader>
+          <AlertDialogFooter>
+            <AlertDialogCancel>Cancel</AlertDialogCancel>
+            <AlertDialogAction onClick={handleConfirmRetake}>
+              Yes, Retake Quiz
+            </AlertDialogAction>
+          </AlertDialogFooter>
+        </AlertDialogContent>
+      </AlertDialog>
     </div>
   );
 };

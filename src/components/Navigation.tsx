@@ -4,82 +4,63 @@ import { Button } from "@/components/ui/button";
 import { useAuth } from "@/contexts/AuthContext";
 import { supabase } from '@/integrations/supabase/client';
 import { LogOut, User, Home as HomeIcon, Info, DollarSign } from "lucide-react";
-import {
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuItem,
-  DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu";
+import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from "@/components/ui/dropdown-menu";
 import { DynamicNavigation } from "@/components/DynamicNavigation";
-
 export const Navigation = () => {
   const location = useLocation();
   const navigate = useNavigate();
-  const { user, signOut } = useAuth();
+  const {
+    user,
+    signOut
+  } = useAuth();
   const [isAdmin, setIsAdmin] = useState(false);
-  
-  const navigationLinks = [
-    {
-      id: 'home',
-      label: 'Home',
-      href: '/',
-      icon: <HomeIcon size={16} />
-    },
-    {
-      id: 'features',
-      label: 'How It Works',
-      href: '/features',
-      icon: <Info size={16} />
-    },
-    {
-      id: 'pricing',
-      label: 'Pricing',
-      href: '/pricing',
-      icon: <DollarSign size={16} />
-    }
-  ];
-  
+  const navigationLinks = [{
+    id: 'home',
+    label: 'Home',
+    href: '/',
+    icon: <HomeIcon size={16} />
+  }, {
+    id: 'features',
+    label: 'How It Works',
+    href: '/features',
+    icon: <Info size={16} />
+  }, {
+    id: 'pricing',
+    label: 'Pricing',
+    href: '/pricing',
+    icon: <DollarSign size={16} />
+  }];
   const getActiveLink = () => {
     if (location.pathname === '/') return 'home';
     if (location.pathname === '/features') return 'features';
     if (location.pathname === '/pricing') return 'pricing';
     return 'home';
   };
-  
   const handleNavLinkClick = (id: string) => {
     const link = navigationLinks.find(l => l.id === id);
     if (link) {
       navigate(link.href);
     }
   };
-
   useEffect(() => {
     if (user) {
       checkAdminStatus();
     }
   }, [user]);
-
   const checkAdminStatus = async () => {
     try {
-      const { data } = await supabase
-        .from('user_roles')
-        .select('role')
-        .eq('user_id', user?.id)
-        .eq('role', 'admin')
-        .single();
-
+      const {
+        data
+      } = await supabase.from('user_roles').select('role').eq('user_id', user?.id).eq('role', 'admin').single();
       setIsAdmin(!!data);
     } catch (error) {
       setIsAdmin(false);
     }
   };
-
   const handleSignOut = async () => {
     await signOut();
   };
-  
-  return (
-    <nav className="sticky top-0 z-50 glass-card border-b border-border/50">
+  return <nav className="sticky top-0 z-50 glass-card border-b border-border/50">
       <div className="container mx-auto px-4">
         <div className="flex items-center justify-between h-16 gap-4">
           <Link to="/" className="font-heading font-bold text-xl md:text-2xl text-primary">
@@ -87,20 +68,13 @@ export const Navigation = () => {
           </Link>
           
           {/* Desktop Navigation with DynamicNavigation */}
-          <div className="hidden md:flex items-center gap-6 flex-1 justify-center max-w-md">
-            <DynamicNavigation
-              links={navigationLinks}
-              activeLink={getActiveLink()}
-              onLinkClick={handleNavLinkClick}
-              showLabelsOnMobile={false}
-              className="w-full"
-            />
+          <div className="hidden items-center flex-1 justify-center max-w-md md:flex md:items-center md:justify-end gap-[18px]">
+            <DynamicNavigation links={navigationLinks} activeLink={getActiveLink()} onLinkClick={handleNavLinkClick} showLabelsOnMobile={false} className="w-full" />
           </div>
           
           {/* Desktop Auth Buttons */}
           <div className="hidden md:flex items-center gap-4">
-            {user ? (
-              <>
+            {user ? <>
                 <Link to="/dashboard">
                   <Button variant="outline" size="sm">
                     Dashboard
@@ -116,16 +90,14 @@ export const Navigation = () => {
                     <DropdownMenuItem asChild>
                       <Link to="/dashboard">Dashboard</Link>
                     </DropdownMenuItem>
-                    {isAdmin && (
-                      <>
+                    {isAdmin && <>
                         <DropdownMenuItem asChild>
                           <Link to="/admin">Admin Dashboard</Link>
                         </DropdownMenuItem>
                         <DropdownMenuItem asChild>
                           <Link to="/admin/toys">Toy Inventory</Link>
                         </DropdownMenuItem>
-                      </>
-                    )}
+                      </>}
                     <DropdownMenuItem asChild>
                       <Link to="/profile/edit">Edit Profile</Link>
                     </DropdownMenuItem>
@@ -135,9 +107,7 @@ export const Navigation = () => {
                     </DropdownMenuItem>
                   </DropdownMenuContent>
                 </DropdownMenu>
-              </>
-            ) : (
-              <>
+              </> : <>
                 <Link to="/quiz">
                   <Button variant="cta" size="sm">
                     Take Quiz
@@ -148,14 +118,12 @@ export const Navigation = () => {
                     Sign In
                   </Button>
                 </Link>
-              </>
-            )}
+              </>}
           </div>
           
           {/* Mobile Auth Buttons */}
           <div className="md:hidden flex items-center gap-2">
-            {user ? (
-              <>
+            {user ? <>
                 <Link to="/dashboard">
                   <Button variant="outline" size="sm">
                     <User className="h-4 w-4" />
@@ -164,9 +132,7 @@ export const Navigation = () => {
                 <Button variant="ghost" size="sm" onClick={handleSignOut}>
                   <LogOut className="h-4 w-4" />
                 </Button>
-              </>
-            ) : (
-              <>
+              </> : <>
                 <Link to="/quiz">
                   <Button variant="cta" size="sm">
                     Quiz
@@ -177,22 +143,14 @@ export const Navigation = () => {
                     Sign In
                   </Button>
                 </Link>
-              </>
-            )}
+              </>}
           </div>
         </div>
         
         {/* Mobile Navigation with DynamicNavigation */}
         <div className="md:hidden pb-3">
-          <DynamicNavigation
-            links={navigationLinks}
-            activeLink={getActiveLink()}
-            onLinkClick={handleNavLinkClick}
-            showLabelsOnMobile={true}
-            className="w-full"
-          />
+          <DynamicNavigation links={navigationLinks} activeLink={getActiveLink()} onLinkClick={handleNavLinkClick} showLabelsOnMobile={true} className="w-full" />
         </div>
       </div>
-    </nav>
-  );
+    </nav>;
 };

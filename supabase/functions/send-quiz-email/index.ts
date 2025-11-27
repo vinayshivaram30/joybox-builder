@@ -8,6 +8,21 @@ const corsHeaders = {
   "Access-Control-Allow-Headers": "authorization, x-client-info, apikey, content-type",
 };
 
+// HTML escape function to prevent XSS in emails
+const escapeHtml = (str: string): string => {
+  if (!str) return '';
+  return str.replace(/[&<>"']/g, (char) => {
+    const entities: Record<string, string> = {
+      '&': '&amp;',
+      '<': '&lt;',
+      '>': '&gt;',
+      '"': '&quot;',
+      "'": '&#39;'
+    };
+    return entities[char] || char;
+  });
+};
+
 interface QuizEmailRequest {
   parentName: string;
   email: string;
@@ -66,14 +81,20 @@ const handler = async (req: Request): Promise<Response> => {
   try {
     const { parentName, email, personalityType, childAge }: QuizEmailRequest = await req.json();
 
+    // Sanitize user inputs
+    const safeName = escapeHtml(parentName);
+    const safeEmail = escapeHtml(email);
+    const safePersonality = escapeHtml(personalityType);
+    const safeAge = escapeHtml(childAge);
+
     console.log("Sending quiz completion email to:", email);
 
     const recommendations = getToyRecommendations(personalityType, childAge);
 
     const emailResponse = await resend.emails.send({
       from: "JoyBox <onboarding@resend.dev>",
-      to: [email],
-      subject: `${parentName}, Your Child's Personality Profile is Ready! 🎁`,
+      to: [safeEmail],
+      subject: `${safeName}, Your Child's Personality Profile is Ready! 🎁`,
       html: `
         <!DOCTYPE html>
         <html>
@@ -163,19 +184,19 @@ const handler = async (req: Request): Promise<Response> => {
             <div class="container">
               <div class="header">
                 <h1>🎉 Quiz Results Are In!</h1>
-                <p>Hi ${parentName},</p>
+                <p>Hi ${safeName},</p>
                 <p>We've analyzed your responses and discovered your child's personality type!</p>
               </div>
 
               <div style="text-align: center;">
                 <div class="personality-badge">
-                  ${personalityType.toUpperCase()}
+                  ${safePersonality.toUpperCase()}
                 </div>
               </div>
 
               <div class="section">
                 <h2>Personalized Toy Recommendations</h2>
-                <p>Based on your child's <strong>${personalityType}</strong> personality and age (${childAge}), we've curated these perfect toy selections:</p>
+                <p>Based on your child's <strong>${safePersonality}</strong> personality and age (${safeAge}), we've curated these perfect toy selections:</p>
                 
                 <div class="toy-list">
                   <h3 style="margin-top: 0; color: #8B5CF6;">${recommendations.title}</h3>

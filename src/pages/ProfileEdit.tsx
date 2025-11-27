@@ -11,6 +11,15 @@ import { Label } from '@/components/ui/label';
 import { Textarea } from '@/components/ui/textarea';
 import { toast } from '@/hooks/use-toast';
 import { Loader2 } from 'lucide-react';
+import { z } from 'zod';
+import { getErrorMessage } from '@/lib/errorHandling';
+
+const profileSchema = z.object({
+  parent_name: z.string().max(100, "Name must be less than 100 characters").optional(),
+  child_age: z.string().max(50, "Age must be less than 50 characters").optional(),
+  delivery_address: z.string().max(500, "Address must be less than 500 characters").optional(),
+  preferences: z.string().max(5000, "Preferences must be less than 5000 characters").optional(),
+});
 
 export default function ProfileEdit() {
   const { user, loading: authLoading } = useAuth();
@@ -67,6 +76,18 @@ export default function ProfileEdit() {
     setLoading(true);
 
     try {
+      // Validate inputs
+      const validationResult = profileSchema.safeParse(formData);
+      if (!validationResult.success) {
+        toast({
+          title: "Validation Error",
+          description: validationResult.error.errors[0].message,
+          variant: "destructive",
+        });
+        setLoading(false);
+        return;
+      }
+
       let preferences = {};
       if (formData.preferences) {
         try {
@@ -103,7 +124,7 @@ export default function ProfileEdit() {
     } catch (error: any) {
       toast({
         title: "Error",
-        description: error.message,
+        description: getErrorMessage(error),
         variant: "destructive",
       });
     } finally {

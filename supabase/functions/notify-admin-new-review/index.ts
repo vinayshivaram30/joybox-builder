@@ -9,6 +9,21 @@ const corsHeaders = {
   "Access-Control-Allow-Headers": "authorization, x-client-info, apikey, content-type",
 };
 
+// HTML escape function to prevent XSS in emails
+const escapeHtml = (str: string): string => {
+  if (!str) return '';
+  return str.replace(/[&<>"']/g, (char) => {
+    const entities: Record<string, string> = {
+      '&': '&amp;',
+      '<': '&lt;',
+      '>': '&gt;',
+      '"': '&quot;',
+      "'": '&#39;'
+    };
+    return entities[char] || char;
+  });
+};
+
 interface ReviewNotificationRequest {
   reviewId: string;
   toyName: string;
@@ -24,6 +39,11 @@ const handler = async (req: Request): Promise<Response> => {
 
   try {
     const { reviewId, toyName, rating, reviewText, parentName }: ReviewNotificationRequest = await req.json();
+
+    // Sanitize user inputs
+    const safeToyName = escapeHtml(toyName);
+    const safeReviewText = escapeHtml(reviewText || '');
+    const safeParentName = escapeHtml(parentName);
 
     console.log("Sending admin notification for review:", reviewId);
 
@@ -87,17 +107,17 @@ const handler = async (req: Request): Promise<Response> => {
       resend.emails.send({
         from: "JoyBox Reviews <onboarding@resend.dev>",
         to: [email],
-        subject: `New Review Posted: ${toyName} (${rating}/5)`,
+        subject: `New Review Posted: ${safeToyName} (${rating}/5)`,
         html: `
           <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">
             <h1 style="color: #333;">New Toy Review Posted</h1>
             
             <div style="background: #f5f5f5; padding: 20px; border-radius: 8px; margin: 20px 0;">
-              <h2 style="margin-top: 0;">${toyName}</h2>
+              <h2 style="margin-top: 0;">${safeToyName}</h2>
               <p style="font-size: 24px; margin: 10px 0;">${stars}</p>
               <p><strong>Rating:</strong> ${rating}/5</p>
-              <p><strong>Parent:</strong> ${parentName}</p>
-              ${reviewText ? `<p><strong>Review:</strong></p><p>${reviewText}</p>` : ""}
+              <p><strong>Parent:</strong> ${safeParentName}</p>
+              ${safeReviewText ? `<p><strong>Review:</strong></p><p>${safeReviewText}</p>` : ""}
             </div>
 
             <p>This review has been automatically published and is now visible to all users.</p>

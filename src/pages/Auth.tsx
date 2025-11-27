@@ -10,6 +10,7 @@ import { toast } from '@/hooks/use-toast';
 import { Navigation } from '@/components/Navigation';
 import { Footer } from '@/components/Footer';
 import { PasswordStrengthIndicator, StrengthLevel } from '@/components/ui/password-strength-indicator';
+import { getErrorMessage } from '@/lib/errorHandling';
 import {
   Dialog,
   DialogContent,
@@ -45,7 +46,7 @@ export default function Auth() {
     } catch (error: any) {
       toast({
         title: "Error",
-        description: error.message,
+        description: getErrorMessage(error),
         variant: "destructive",
       });
     } finally {
@@ -73,7 +74,7 @@ export default function Auth() {
     } catch (error: any) {
       toast({
         title: "Error",
-        description: error.message,
+        description: getErrorMessage(error),
         variant: "destructive",
       });
     } finally {
@@ -118,7 +119,7 @@ export default function Auth() {
     } catch (error: any) {
       toast({
         title: "Error",
-        description: error.message,
+        description: getErrorMessage(error),
         variant: "destructive",
       });
     } finally {
@@ -147,7 +148,7 @@ export default function Auth() {
     } catch (error: any) {
       toast({
         title: "Error",
-        description: error.message,
+        description: getErrorMessage(error),
         variant: "destructive",
       });
     } finally {

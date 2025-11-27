@@ -24,25 +24,18 @@ const Home = () => {
       <section className="container mx-auto px-4 py-16 md:py-24 relative">
         <ParticlesBackground colors={['#ff223e', '#5d1eb2', '#ff7300']} size={3} countDesktop={60} countTablet={50} countMobile={40} zIndex={0} height="100%" />
         <div className="max-w-4xl mx-auto text-center relative z-10">
-          <AuroraTextEffect
-            text="ToyLuv"
-            className="mb-6 h-32 md:h-40"
-            fontSize="clamp(3rem, 10vw, 6rem)"
-            colors={{
-              first: "bg-primary",
-              second: "bg-accent",
-              third: "bg-secondary",
-              fourth: "bg-coral",
-            }}
-            blurAmount="blur-2xl"
-            animationSpeed={{
-              border: 8,
-              first: 6,
-              second: 7,
-              third: 4,
-              fourth: 10,
-            }}
-          />
+          <AuroraTextEffect text="ToyLuv" fontSize="clamp(3rem, 10vw, 6rem)" colors={{
+          first: "bg-primary",
+          second: "bg-accent",
+          third: "bg-secondary",
+          fourth: "bg-coral"
+        }} blurAmount="blur-2xl" animationSpeed={{
+          border: 8,
+          first: 6,
+          second: 7,
+          third: 4,
+          fourth: 10
+        }} className="mb-6 h-32 md:h-40 bg-stone-100" />
           <h1 className="text-3xl md:text-5xl font-heading font-bold text-foreground mb-6 leading-tight">
             Playtime that grows{" "}
             <span className="text-primary">smarter</span> with every box
@@ -58,21 +51,7 @@ const Home = () => {
             </Button>
           </Link>
           
-          <TrustedUsers
-            avatars={[
-              "https://api.dicebear.com/7.x/avataaars/svg?seed=Sarah",
-              "https://api.dicebear.com/7.x/avataaars/svg?seed=Michael",
-              "https://api.dicebear.com/7.x/avataaars/svg?seed=Priya",
-              "https://api.dicebear.com/7.x/avataaars/svg?seed=Rajesh",
-              "https://api.dicebear.com/7.x/avataaars/svg?seed=Ananya",
-            ]}
-            rating={5}
-            totalUsersText={2500}
-            caption="Loved by"
-            starColorClass="text-accent"
-            ringColors={["ring-primary", "ring-secondary", "ring-accent", "ring-coral", "ring-primary"]}
-            className="mb-12"
-          />
+          <TrustedUsers avatars={["https://api.dicebear.com/7.x/avataaars/svg?seed=Sarah", "https://api.dicebear.com/7.x/avataaars/svg?seed=Michael", "https://api.dicebear.com/7.x/avataaars/svg?seed=Priya", "https://api.dicebear.com/7.x/avataaars/svg?seed=Rajesh", "https://api.dicebear.com/7.x/avataaars/svg?seed=Ananya"]} rating={5} totalUsersText={2500} caption="Loved by" starColorClass="text-accent" ringColors={["ring-primary", "ring-secondary", "ring-accent", "ring-coral", "ring-primary"]} className="mb-12" />
           
           <div className="rounded-3xl overflow-hidden shadow-2xl mb-12">
             <div ref={heroParallax} className="parallax-slow">
@@ -85,13 +64,7 @@ const Home = () => {
       {/* Value Proposition Grid */}
       <section className="container mx-auto px-4 py-16">
         <div ref={valuePropsAnim.ref} className={`transition-all duration-700 ${valuePropsAnim.isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
-          <GlowingCards 
-            enableGlow={true} 
-            glowRadius={20} 
-            glowOpacity={0.8}
-            gap="1.5rem"
-            padding="0"
-          >
+          <GlowingCards enableGlow={true} glowRadius={20} glowOpacity={0.8} gap="1.5rem" padding="0">
             <GlowingCard glowColor="#8B5CF6">
               <div className="w-12 h-12 rounded-full bg-primary/20 flex items-center justify-center mb-4">
                 <Sparkles className="text-primary" size={24} />
@@ -190,80 +163,47 @@ const Home = () => {
           </p>
         </div>
         
-        <SlidingLogoMarquee
-          items={[
-            {
-              id: "melissa",
-              content: (
-                <div className="bg-white dark:bg-gray-800 rounded-xl px-8 py-6 shadow-md min-w-[200px]">
+        <SlidingLogoMarquee items={[{
+        id: "melissa",
+        content: <div className="bg-white dark:bg-gray-800 rounded-xl px-8 py-6 shadow-md min-w-[200px]">
                   <div className="text-xl font-bold text-[#E85D75]">Melissa & Doug</div>
                 </div>
-              ),
-            },
-            {
-              id: "hape",
-              content: (
-                <div className="bg-white dark:bg-gray-800 rounded-xl px-8 py-6 shadow-md min-w-[200px]">
+      }, {
+        id: "hape",
+        content: <div className="bg-white dark:bg-gray-800 rounded-xl px-8 py-6 shadow-md min-w-[200px]">
                   <div className="text-xl font-bold text-[#FF6B35]">Hape</div>
                 </div>
-              ),
-            },
-            {
-              id: "fisher",
-              content: (
-                <div className="bg-white dark:bg-gray-800 rounded-xl px-8 py-6 shadow-md min-w-[200px]">
+      }, {
+        id: "fisher",
+        content: <div className="bg-white dark:bg-gray-800 rounded-xl px-8 py-6 shadow-md min-w-[200px]">
                   <div className="text-xl font-bold text-[#00539B]">Fisher-Price</div>
                 </div>
-              ),
-            },
-            {
-              id: "lego",
-              content: (
-                <div className="bg-white dark:bg-gray-800 rounded-xl px-8 py-6 shadow-md min-w-[200px]">
+      }, {
+        id: "lego",
+        content: <div className="bg-white dark:bg-gray-800 rounded-xl px-8 py-6 shadow-md min-w-[200px]">
                   <div className="text-xl font-bold text-[#FFCF00]">LEGO</div>
                 </div>
-              ),
-            },
-            {
-              id: "hasbro",
-              content: (
-                <div className="bg-white dark:bg-gray-800 rounded-xl px-8 py-6 shadow-md min-w-[200px]">
+      }, {
+        id: "hasbro",
+        content: <div className="bg-white dark:bg-gray-800 rounded-xl px-8 py-6 shadow-md min-w-[200px]">
                   <div className="text-xl font-bold text-[#0072BC]">Hasbro</div>
                 </div>
-              ),
-            },
-            {
-              id: "mattel",
-              content: (
-                <div className="bg-white dark:bg-gray-800 rounded-xl px-8 py-6 shadow-md min-w-[200px]">
+      }, {
+        id: "mattel",
+        content: <div className="bg-white dark:bg-gray-800 rounded-xl px-8 py-6 shadow-md min-w-[200px]">
                   <div className="text-xl font-bold text-[#E4032E]">Mattel</div>
                 </div>
-              ),
-            },
-            {
-              id: "playmobil",
-              content: (
-                <div className="bg-white dark:bg-gray-800 rounded-xl px-8 py-6 shadow-md min-w-[200px]">
+      }, {
+        id: "playmobil",
+        content: <div className="bg-white dark:bg-gray-800 rounded-xl px-8 py-6 shadow-md min-w-[200px]">
                   <div className="text-xl font-bold text-[#0066CC]">Playmobil</div>
                 </div>
-              ),
-            },
-            {
-              id: "vtech",
-              content: (
-                <div className="bg-white dark:bg-gray-800 rounded-xl px-8 py-6 shadow-md min-w-[200px]">
+      }, {
+        id: "vtech",
+        content: <div className="bg-white dark:bg-gray-800 rounded-xl px-8 py-6 shadow-md min-w-[200px]">
                   <div className="text-xl font-bold text-[#E31837]">VTech</div>
                 </div>
-              ),
-            },
-          ]}
-          speed={40}
-          pauseOnHover={true}
-          enableBlur={true}
-          height="140px"
-          gap="2rem"
-          showControls={false}
-        />
+      }]} speed={40} pauseOnHover={true} enableBlur={true} height="140px" gap="2rem" showControls={false} />
       </section>
       
       {/* Community Proof */}

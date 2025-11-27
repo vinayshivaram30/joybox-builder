@@ -6,6 +6,7 @@ import { supabase } from '@/integrations/supabase/client';
 import { LogOut, User, Home as HomeIcon, Info, DollarSign } from "lucide-react";
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from "@/components/ui/dropdown-menu";
 import { DynamicNavigation } from "@/components/DynamicNavigation";
+import { AuroraTextEffect } from "@/components/ui/aurora-text-effect";
 export const Navigation = () => {
   const location = useLocation();
   const navigate = useNavigate();
@@ -63,8 +64,27 @@ export const Navigation = () => {
   return <nav className="sticky top-0 z-50 glass-card border-b border-border/50">
       <div className="container mx-auto px-4">
         <div className="flex items-center justify-between h-16 gap-4">
-          <Link to="/" className="font-heading font-bold text-xl md:text-2xl text-primary">
-            ToyLuv
+          <Link to="/" className="block">
+            <AuroraTextEffect 
+              text="ToyLuv" 
+              className="bg-transparent dark:bg-transparent h-10 w-[120px] rounded-lg"
+              textClassName="font-heading font-bold"
+              fontSize="1.5rem"
+              colors={{
+                first: "bg-primary/40",
+                second: "bg-secondary/40",
+                third: "bg-accent/40",
+                fourth: "bg-primary/30",
+              }}
+              blurAmount="blur-md"
+              animationSpeed={{
+                border: 8,
+                first: 6,
+                second: 7,
+                third: 5,
+                fourth: 10,
+              }}
+            />
           </Link>
           
           {/* Desktop Navigation with DynamicNavigation */}

@@ -1,22 +1,57 @@
 import { useState, useEffect } from 'react';
-import { Link, useLocation } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { useAuth } from "@/contexts/AuthContext";
 import { supabase } from '@/integrations/supabase/client';
-import { LogOut, User } from "lucide-react";
+import { LogOut, User, Home as HomeIcon, Info, DollarSign } from "lucide-react";
 import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
+import { DynamicNavigation } from "@/components/DynamicNavigation";
 
 export const Navigation = () => {
   const location = useLocation();
+  const navigate = useNavigate();
   const { user, signOut } = useAuth();
   const [isAdmin, setIsAdmin] = useState(false);
   
-  const isActive = (path: string) => location.pathname === path;
+  const navigationLinks = [
+    {
+      id: 'home',
+      label: 'Home',
+      href: '/',
+      icon: <HomeIcon size={16} />
+    },
+    {
+      id: 'features',
+      label: 'How It Works',
+      href: '/features',
+      icon: <Info size={16} />
+    },
+    {
+      id: 'pricing',
+      label: 'Pricing',
+      href: '/pricing',
+      icon: <DollarSign size={16} />
+    }
+  ];
+  
+  const getActiveLink = () => {
+    if (location.pathname === '/') return 'home';
+    if (location.pathname === '/features') return 'features';
+    if (location.pathname === '/pricing') return 'pricing';
+    return 'home';
+  };
+  
+  const handleNavLinkClick = (id: string) => {
+    const link = navigationLinks.find(l => l.id === id);
+    if (link) {
+      navigate(link.href);
+    }
+  };
 
   useEffect(() => {
     if (user) {
@@ -46,31 +81,24 @@ export const Navigation = () => {
   return (
     <nav className="sticky top-0 z-50 glass-card border-b border-border/50">
       <div className="container mx-auto px-4">
-        <div className="flex items-center justify-between h-16">
-          <Link to="/" className="font-heading font-bold text-2xl text-primary">
+        <div className="flex items-center justify-between h-16 gap-4">
+          <Link to="/" className="font-heading font-bold text-xl md:text-2xl text-primary">
             ToyLuv
           </Link>
           
-          <div className="hidden md:flex items-center gap-6">
-            <Link 
-              to="/" 
-              className={`font-medium transition-colors ${isActive('/') ? 'text-primary' : 'text-muted-foreground hover:text-foreground'}`}
-            >
-              Home
-            </Link>
-            <Link 
-              to="/features" 
-              className={`font-medium transition-colors ${isActive('/features') ? 'text-primary' : 'text-muted-foreground hover:text-foreground'}`}
-            >
-              How It Works
-            </Link>
-            <Link 
-              to="/pricing" 
-              className={`font-medium transition-colors ${isActive('/pricing') ? 'text-primary' : 'text-muted-foreground hover:text-foreground'}`}
-            >
-              Pricing
-            </Link>
-            
+          {/* Desktop Navigation with DynamicNavigation */}
+          <div className="hidden md:flex items-center gap-6 flex-1 justify-center max-w-md">
+            <DynamicNavigation
+              links={navigationLinks}
+              activeLink={getActiveLink()}
+              onLinkClick={handleNavLinkClick}
+              showLabelsOnMobile={false}
+              className="w-full"
+            />
+          </div>
+          
+          {/* Desktop Auth Buttons */}
+          <div className="hidden md:flex items-center gap-4">
             {user ? (
               <>
                 <Link to="/dashboard">
@@ -124,6 +152,7 @@ export const Navigation = () => {
             )}
           </div>
           
+          {/* Mobile Auth Buttons */}
           <div className="md:hidden flex items-center gap-2">
             {user ? (
               <>
@@ -151,6 +180,17 @@ export const Navigation = () => {
               </>
             )}
           </div>
+        </div>
+        
+        {/* Mobile Navigation with DynamicNavigation */}
+        <div className="md:hidden pb-3">
+          <DynamicNavigation
+            links={navigationLinks}
+            activeLink={getActiveLink()}
+            onLinkClick={handleNavLinkClick}
+            showLabelsOnMobile={true}
+            className="w-full"
+          />
         </div>
       </div>
     </nav>

@@ -6,9 +6,10 @@ import { toast } from "sonner";
 
 interface SignupFormProps {
   onSubmit: (data: { name: string; phone: string; pincode: string }) => void;
+  isLoading?: boolean;
 }
 
-export const SignupForm = ({ onSubmit }: SignupFormProps) => {
+export const SignupForm = ({ onSubmit, isLoading = false }: SignupFormProps) => {
   const [formData, setFormData] = useState({
     name: "",
     phone: "",
@@ -105,8 +106,14 @@ export const SignupForm = ({ onSubmit }: SignupFormProps) => {
           )}
         </div>
 
-        <Button type="submit" variant="cta" size="lg" className="w-full mt-6">
-          View My Child's Box
+        <Button 
+          type="submit" 
+          variant="cta" 
+          size="lg" 
+          className="w-full mt-6"
+          disabled={isLoading}
+        >
+          {isLoading ? "Saving..." : "View My Child's Box"}
         </Button>
       </form>
     </div>

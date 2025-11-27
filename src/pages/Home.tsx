@@ -67,7 +67,7 @@ const Home = () => {
           
           <div className="glass-card p-6 hover-lift">
             <div className="w-12 h-12 rounded-full flex items-center justify-center mb-4 bg-stone-300">
-              <CheckCircle size={24} className="text-accent bg-primary-foreground" />
+              <CheckCircle size={24} className="bg-primary-foreground text-teal-500" />
             </div>
             <h3 className="font-heading font-bold text-xl mb-2">Circular Play</h3>
             <p className="text-muted-foreground">

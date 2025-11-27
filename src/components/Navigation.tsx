@@ -18,17 +18,17 @@ export const Navigation = () => {
     id: 'home',
     label: 'Home',
     href: '/',
-    icon: <HomeIcon size={16} />
+    icon: <HomeIcon size={14} />
   }, {
     id: 'features',
     label: 'How It Works',
     href: '/features',
-    icon: <Info size={16} />
+    icon: <Info size={14} />
   }, {
     id: 'pricing',
     label: 'Pricing',
     href: '/pricing',
-    icon: <DollarSign size={16} />
+    icon: <DollarSign size={14} />
   }];
   const getActiveLink = () => {
     if (location.pathname === '/') return 'home';

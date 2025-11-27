@@ -133,15 +133,15 @@ export const DynamicNavigation = ({
       backgroundColor: highlightColor
     }}></div>
 
-      <ul className="gap-0.5 py-1 relative z-10 rounded shadow flex items-center justify-center px-1">
+      <ul className="gap-0.5 py-0.5 relative z-10 rounded shadow flex items-center justify-center px-0.5">
         {links.map(link => <li key={link.id} className="rounded-full" id={`nav-item-${link.id}`}>
-            <a href={link.href} className={cn(`flex gap-1 items-center justify-center px-2.5 py-1 text-xs 
+            <a href={link.href} className={cn(`flex gap-0.5 items-center justify-center px-2 py-0.5 text-xs
                 rounded-full font-medium transition-all duration-300 hover:scale-105 
                 relative overflow-hidden whitespace-nowrap`, defaultThemeStyles.text, active === link.id && "font-semibold")} onClick={e => {
           e.preventDefault();
           handleLinkClick(link.id, e);
         }} onMouseEnter={() => handleLinkHover(link.id)}>
-              {link.icon && <span className="text-current text-xs ">
+              {link.icon && <span className="text-current text-[10px]">
                   {link.icon}
                 </span>}
               <span className={cn(showLabelsOnMobile ? "flex" : "hidden sm:flex")}>

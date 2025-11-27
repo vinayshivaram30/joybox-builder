@@ -10,6 +10,7 @@ import ParticlesBackground from "@/components/ParticlesBackground";
 import OrbitCard from "@/components/ui/orbit-card";
 import { GlowingCards, GlowingCard } from "@/components/ui/glowing-cards";
 import { SlidingLogoMarquee } from "@/components/ui/sliding-logo-marquee";
+import { TrustedUsers } from "@/components/TrustedUsers";
 const Home = () => {
   const heroParallax = useParallax(0.3);
   const valuePropsAnim = useScrollAnimation(0.2);
@@ -32,10 +33,26 @@ const Home = () => {
           </p>
           
           <Link to="/quiz">
-            <Button variant="cta" size="lg" className="text-lg px-12 h-14 mb-12">
+            <Button variant="cta" size="lg" className="text-lg px-12 h-14 mb-8">
               Find Your Child's Toy Personality in 60 Seconds ✨
             </Button>
           </Link>
+          
+          <TrustedUsers
+            avatars={[
+              "https://api.dicebear.com/7.x/avataaars/svg?seed=Sarah",
+              "https://api.dicebear.com/7.x/avataaars/svg?seed=Michael",
+              "https://api.dicebear.com/7.x/avataaars/svg?seed=Priya",
+              "https://api.dicebear.com/7.x/avataaars/svg?seed=Rajesh",
+              "https://api.dicebear.com/7.x/avataaars/svg?seed=Ananya",
+            ]}
+            rating={5}
+            totalUsersText={2500}
+            caption="Loved by"
+            starColorClass="text-accent"
+            ringColors={["ring-primary", "ring-secondary", "ring-accent", "ring-coral", "ring-primary"]}
+            className="mb-12"
+          />
           
           <div className="rounded-3xl overflow-hidden shadow-2xl mb-12">
             <div ref={heroParallax} className="parallax-slow">

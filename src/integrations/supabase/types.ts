@@ -89,6 +89,51 @@ export type Database = {
         }
         Relationships: []
       }
+      toys: {
+        Row: {
+          age_group: string
+          category: string
+          created_at: string
+          description: string | null
+          id: string
+          image_url: string | null
+          is_featured: boolean
+          name: string
+          personality_types: string[]
+          price: number | null
+          stock_quantity: number
+          updated_at: string
+        }
+        Insert: {
+          age_group: string
+          category: string
+          created_at?: string
+          description?: string | null
+          id?: string
+          image_url?: string | null
+          is_featured?: boolean
+          name: string
+          personality_types?: string[]
+          price?: number | null
+          stock_quantity?: number
+          updated_at?: string
+        }
+        Update: {
+          age_group?: string
+          category?: string
+          created_at?: string
+          description?: string | null
+          id?: string
+          image_url?: string | null
+          is_featured?: boolean
+          name?: string
+          personality_types?: string[]
+          price?: number | null
+          stock_quantity?: number
+          updated_at?: string
+        }
+        Relationships: []
+      }
       user_roles: {
         Row: {
           created_at: string

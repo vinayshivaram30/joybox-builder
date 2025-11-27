@@ -16,6 +16,11 @@ const Features = () => {
   const parallax2 = useParallax(0.25);
   const parallax3 = useParallax(0.35);
   const parallax4 = useParallax(0.45);
+  
+  const hygieneParallax1 = useParallax(0.1);
+  const hygieneParallax2 = useParallax(0.2);
+  const hygieneParallax3 = useParallax(0.3);
+  const hygieneParallax4 = useParallax(0.4);
 
   return (
     <div className="min-h-screen bg-background">
@@ -122,81 +127,89 @@ const Features = () => {
           </div>
           
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-            <InteractiveGradient 
-              color="#64748B" 
-              glowColor="#64748B40"
-              borderRadius="1rem"
-              followMouse={true}
-              hoverOnly={true}
-              intensity={80}
-            >
-              <div className="p-6">
-                <div className="w-12 h-12 rounded-full bg-secondary/20 flex items-center justify-center mx-auto mb-4">
-                  <span className="text-2xl">🔍</span>
+            <div ref={hygieneParallax1}>
+              <InteractiveGradient 
+                color="#64748B" 
+                glowColor="#64748B40"
+                borderRadius="1rem"
+                followMouse={true}
+                hoverOnly={true}
+                intensity={80}
+              >
+                <div className="p-6">
+                  <div className="w-12 h-12 rounded-full bg-secondary/20 flex items-center justify-center mx-auto mb-4">
+                    <span className="text-2xl">🔍</span>
+                  </div>
+                  <h3 className="font-heading font-bold text-lg mb-2">1. Inspection</h3>
+                  <p className="text-sm text-muted-foreground">
+                    Manual quality check for damage, wear, and safety
+                  </p>
                 </div>
-                <h3 className="font-heading font-bold text-lg mb-2">1. Inspection</h3>
-                <p className="text-sm text-muted-foreground">
-                  Manual quality check for damage, wear, and safety
-                </p>
-              </div>
-            </InteractiveGradient>
+              </InteractiveGradient>
+            </div>
             
-            <InteractiveGradient 
-              color="#3B82F6" 
-              glowColor="#3B82F640"
-              borderRadius="1rem"
-              followMouse={true}
-              hoverOnly={true}
-              intensity={80}
-            >
-              <div className="p-6">
-                <div className="w-12 h-12 rounded-full bg-secondary/20 flex items-center justify-center mx-auto mb-4">
-                  <Droplets className="text-secondary" size={24} />
+            <div ref={hygieneParallax2}>
+              <InteractiveGradient 
+                color="#3B82F6" 
+                glowColor="#3B82F640"
+                borderRadius="1rem"
+                followMouse={true}
+                hoverOnly={true}
+                intensity={80}
+              >
+                <div className="p-6">
+                  <div className="w-12 h-12 rounded-full bg-secondary/20 flex items-center justify-center mx-auto mb-4">
+                    <Droplets className="text-secondary" size={24} />
+                  </div>
+                  <h3 className="font-heading font-bold text-lg mb-2">2. Ultrasonic Clean</h3>
+                  <p className="text-sm text-muted-foreground">
+                    Deep cleaning removes 99.9% of germs and bacteria
+                  </p>
                 </div>
-                <h3 className="font-heading font-bold text-lg mb-2">2. Ultrasonic Clean</h3>
-                <p className="text-sm text-muted-foreground">
-                  Deep cleaning removes 99.9% of germs and bacteria
-                </p>
-              </div>
-            </InteractiveGradient>
+              </InteractiveGradient>
+            </div>
             
-            <InteractiveGradient 
-              color="#8B5CF6" 
-              glowColor="#8B5CF640"
-              borderRadius="1rem"
-              followMouse={true}
-              hoverOnly={true}
-              intensity={80}
-            >
-              <div className="p-6">
-                <div className="w-12 h-12 rounded-full bg-secondary/20 flex items-center justify-center mx-auto mb-4">
-                  <Zap className="text-secondary" size={24} />
+            <div ref={hygieneParallax3}>
+              <InteractiveGradient 
+                color="#8B5CF6" 
+                glowColor="#8B5CF640"
+                borderRadius="1rem"
+                followMouse={true}
+                hoverOnly={true}
+                intensity={80}
+              >
+                <div className="p-6">
+                  <div className="w-12 h-12 rounded-full bg-secondary/20 flex items-center justify-center mx-auto mb-4">
+                    <Zap className="text-secondary" size={24} />
+                  </div>
+                  <h3 className="font-heading font-bold text-lg mb-2">3. UV-C Sterilization</h3>
+                  <p className="text-sm text-muted-foreground">
+                    Medical-grade UV light kills remaining pathogens
+                  </p>
                 </div>
-                <h3 className="font-heading font-bold text-lg mb-2">3. UV-C Sterilization</h3>
-                <p className="text-sm text-muted-foreground">
-                  Medical-grade UV light kills remaining pathogens
-                </p>
-              </div>
-            </InteractiveGradient>
+              </InteractiveGradient>
+            </div>
             
-            <InteractiveGradient 
-              color="#14B8A6" 
-              glowColor="#14B8A640"
-              borderRadius="1rem"
-              followMouse={true}
-              hoverOnly={true}
-              intensity={80}
-            >
-              <div className="p-6">
-                <div className="w-12 h-12 rounded-full bg-secondary/20 flex items-center justify-center mx-auto mb-4">
-                  <span className="text-2xl">📦</span>
+            <div ref={hygieneParallax4}>
+              <InteractiveGradient 
+                color="#14B8A6" 
+                glowColor="#14B8A640"
+                borderRadius="1rem"
+                followMouse={true}
+                hoverOnly={true}
+                intensity={80}
+              >
+                <div className="p-6">
+                  <div className="w-12 h-12 rounded-full bg-secondary/20 flex items-center justify-center mx-auto mb-4">
+                    <span className="text-2xl">📦</span>
+                  </div>
+                  <h3 className="font-heading font-bold text-lg mb-2">4. Vacuum Seal</h3>
+                  <p className="text-sm text-muted-foreground">
+                    Sealed packaging ensures hygiene until delivery
+                  </p>
                 </div>
-                <h3 className="font-heading font-bold text-lg mb-2">4. Vacuum Seal</h3>
-                <p className="text-sm text-muted-foreground">
-                  Sealed packaging ensures hygiene until delivery
-                </p>
-              </div>
-            </InteractiveGradient>
+              </InteractiveGradient>
+            </div>
           </div>
           
           <div className="mt-8 text-center">

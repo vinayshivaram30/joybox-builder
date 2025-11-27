@@ -13,9 +13,10 @@ export interface PersonalityResultData {
 interface PersonalityResultProps {
   result: PersonalityResultData;
   onContinue: () => void;
+  onRetake?: () => void;
 }
 
-export const PersonalityResult = ({ result, onContinue }: PersonalityResultProps) => {
+export const PersonalityResult = ({ result, onContinue, onRetake }: PersonalityResultProps) => {
   return (
     <div className="max-w-2xl mx-auto animate-confetti">
       <div className="glass-card p-8 md:p-12 text-center">
@@ -46,14 +47,27 @@ export const PersonalityResult = ({ result, onContinue }: PersonalityResultProps
           </div>
         </div>
 
-        <Button
-          variant="cta"
-          size="lg"
-          onClick={onContinue}
-          className="w-full md:w-auto min-w-[280px]"
-        >
-          See My Child's JoyBox
-        </Button>
+        <div className="flex flex-col md:flex-row gap-4 justify-center">
+          <Button
+            variant="cta"
+            size="lg"
+            onClick={onContinue}
+            className="w-full md:w-auto min-w-[280px]"
+          >
+            See My Child's JoyBox
+          </Button>
+          
+          {onRetake && (
+            <Button
+              variant="outline"
+              size="lg"
+              onClick={onRetake}
+              className="w-full md:w-auto min-w-[200px]"
+            >
+              Retake Quiz
+            </Button>
+          )}
+        </div>
       </div>
     </div>
   );

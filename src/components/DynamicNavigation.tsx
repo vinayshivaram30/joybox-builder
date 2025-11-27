@@ -134,30 +134,16 @@ export const DynamicNavigation = ({
     }}></div>
 
       {/* Navigation Links */}
-      <ul className="relative z-10 flex items-center gap-1 p-1">
-        {links.map((link) => (
-          <li key={link.id}>
-            <a
-              id={`nav-item-${link.id}`}
-              href={link.href}
-              onClick={(e) => {
-                e.preventDefault();
-                handleLinkClick(link.id, e);
-              }}
-              onMouseEnter={() => handleLinkHover(link.id)}
-              onMouseLeave={() => updateHighlightPosition()}
-              className={cn(
-                "relative flex items-center gap-2 px-4 py-2 rounded-full transition-colors duration-200",
-                "hover:text-foreground",
-                active === link.id ? "text-foreground" : "text-muted-foreground",
-                !showLabelsOnMobile && "md:gap-2 gap-0"
-              )}
-            >
+      <ul className="relative z-10 gap-1 p-1 flex items-center justify-end">
+        {links.map(link => <li key={link.id}>
+            <a id={`nav-item-${link.id}`} href={link.href} onClick={e => {
+          e.preventDefault();
+          handleLinkClick(link.id, e);
+        }} onMouseEnter={() => handleLinkHover(link.id)} onMouseLeave={() => updateHighlightPosition()} className={cn("relative flex items-center gap-2 px-4 py-2 rounded-full transition-colors duration-200", "hover:text-foreground", active === link.id ? "text-foreground" : "text-muted-foreground", !showLabelsOnMobile && "md:gap-2 gap-0")}>
               {link.icon && <span className="flex-shrink-0">{link.icon}</span>}
               <span className={cn(!showLabelsOnMobile && "hidden md:inline")}>{link.label}</span>
             </a>
-          </li>
-        ))}
+          </li>)}
       </ul>
 
       <style dangerouslySetInnerHTML={{

@@ -91,6 +91,25 @@ export default function Dashboard() {
           </div>
 
           <div className="grid gap-6">
+            <div className="grid md:grid-cols-2 gap-4 mb-4">
+              <Card className="hover:shadow-lg transition-shadow cursor-pointer" onClick={() => navigate('/my-reviews')}>
+                <CardHeader>
+                  <CardTitle>My Reviews</CardTitle>
+                  <CardDescription>
+                    View and manage all your toy reviews
+                  </CardDescription>
+                </CardHeader>
+              </Card>
+              <Card className="hover:shadow-lg transition-shadow cursor-pointer" onClick={() => navigate('/profile/edit')}>
+                <CardHeader>
+                  <CardTitle>Profile Settings</CardTitle>
+                  <CardDescription>
+                    Update your delivery address and preferences
+                  </CardDescription>
+                </CardHeader>
+              </Card>
+            </div>
+
             <Card>
               <CardHeader>
                 <CardTitle>Quiz History</CardTitle>

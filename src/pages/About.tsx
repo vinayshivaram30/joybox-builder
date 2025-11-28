@@ -263,14 +263,19 @@ const About = () => {
             title="OUR TEAM"
             titleSize="xl"
             titleColor="hsl(var(--primary))"
-            cardWidth={300}
-            cardHeight={400}
+            cardWidth={350}
+            cardHeight={450}
+            cardRadius={24}
             showArrows={true}
             showDots={true}
             autoPlay={5000}
             pauseOnHover={true}
             infoPosition="bottom"
             infoTextColor="hsl(var(--foreground))"
+            sideCardScale={0.85}
+            sideCardOpacity={0.6}
+            grayscaleEffect={true}
+            cardClassName="border-4 border-primary/20 shadow-2xl"
             className="mb-16"
           />
 

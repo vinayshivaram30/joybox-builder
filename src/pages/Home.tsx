@@ -27,7 +27,7 @@ const Home = () => {
         <ParticlesBackground colors={['#e91e63', '#00bcd4', '#ffc107']} size={3} countDesktop={80} countTablet={60} countMobile={40} zIndex={0} height="100%" />
         <div className="w-full px-4 sm:px-6 lg:px-8 py-12 sm:py-16 relative z-10">
           <div className="max-w-6xl mx-auto text-center">
-            <img src={logoSvg} alt="ToyLuv" className="h-16 sm:h-24 md:h-32 w-auto mx-auto mb-6 sm:mb-8 drop-shadow-2xl animate-float" loading="eager" />
+            <img src={logoSvg} alt="ToyLuv" className="h-16 sm:h-24 md:h-32 w-auto mx-auto mb-6 sm:mb-8 drop-shadow-2xl animate-float" width="213" height="64" loading="eager" fetchPriority="high" />
             <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-heading font-bold text-foreground mb-4 sm:mb-6 leading-tight px-2">
               Making playtime{" "}
               <span className="text-primary">smarter</span> with every box

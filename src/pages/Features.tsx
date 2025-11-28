@@ -2,30 +2,25 @@ import { Navigation } from "@/components/Navigation";
 import { Footer } from "@/components/Footer";
 import { useScrollAnimation } from "@/hooks/useScrollAnimation";
 import { useParallax } from "@/hooks/useParallax";
-import { useIsMobile } from "@/hooks/use-mobile";
 import { Brain, Droplets, Zap, CheckCircle, Shield, TruckIcon } from "lucide-react";
 import { ElectroBorder } from "@/components/ui/electro-border";
 import { InteractiveGradient } from "@/components/ui/interactive-gradient";
-import { useRef } from "react";
 
 const Features = () => {
-  const isMobile = useIsMobile();
   const aiAnim = useScrollAnimation(0.2);
   const hygieneAnim = useScrollAnimation(0.2);
   const logisticsAnim = useScrollAnimation(0.2);
   const trustAnim = useScrollAnimation(0.2);
   
-  // Disable parallax on mobile for better performance
-  const parallax1 = isMobile ? { current: null } : useParallax(0.15);
-  const parallax2 = isMobile ? { current: null } : useParallax(0.25);
-  const parallax3 = isMobile ? { current: null } : useParallax(0.35);
-  const parallax4 = isMobile ? { current: null } : useParallax(0.45);
+  const parallax1 = useParallax(0.15);
+  const parallax2 = useParallax(0.25);
+  const parallax3 = useParallax(0.35);
+  const parallax4 = useParallax(0.45);
   
-  // Fallback refs for mobile
-  const mobileRef1 = useRef<HTMLDivElement>(null);
-  const mobileRef2 = useRef<HTMLDivElement>(null);
-  const mobileRef3 = useRef<HTMLDivElement>(null);
-  const mobileRef4 = useRef<HTMLDivElement>(null);
+  const hygieneParallax1 = useParallax(0.1);
+  const hygieneParallax2 = useParallax(0.2);
+  const hygieneParallax3 = useParallax(0.3);
+  const hygieneParallax4 = useParallax(0.4);
 
   return (
     <div className="min-h-screen bg-background">
@@ -136,9 +131,9 @@ const Features = () => {
               color="#64748B" 
               glowColor="#64748B40"
               borderRadius="1rem"
-              followMouse={!isMobile}
+              followMouse={true}
               hoverOnly={true}
-              intensity={isMobile ? 50 : 80}
+              intensity={80}
             >
               <div className="p-4 sm:p-5 h-full flex flex-col items-center text-center">
                 <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-secondary/20 flex items-center justify-center mb-3">
@@ -155,9 +150,9 @@ const Features = () => {
               color="#3B82F6" 
               glowColor="#3B82F640"
               borderRadius="1rem"
-              followMouse={!isMobile}
+              followMouse={true}
               hoverOnly={true}
-              intensity={isMobile ? 50 : 80}
+              intensity={80}
             >
               <div className="p-4 sm:p-5 h-full flex flex-col items-center text-center">
                 <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-secondary/20 flex items-center justify-center mb-3">
@@ -174,9 +169,9 @@ const Features = () => {
               color="#8B5CF6" 
               glowColor="#8B5CF640"
               borderRadius="1rem"
-              followMouse={!isMobile}
+              followMouse={true}
               hoverOnly={true}
-              intensity={isMobile ? 50 : 80}
+              intensity={80}
             >
               <div className="p-4 sm:p-5 h-full flex flex-col items-center text-center">
                 <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-secondary/20 flex items-center justify-center mb-3">
@@ -193,9 +188,9 @@ const Features = () => {
               color="#14B8A6" 
               glowColor="#14B8A640"
               borderRadius="1rem"
-              followMouse={!isMobile}
+              followMouse={true}
               hoverOnly={true}
-              intensity={isMobile ? 50 : 80}
+              intensity={80}
             >
               <div className="p-4 sm:p-5 h-full flex flex-col items-center text-center">
                 <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-secondary/20 flex items-center justify-center mb-3">
@@ -238,14 +233,14 @@ const Features = () => {
           </div>
           
           <div className="space-y-4 sm:space-y-5">
-            <div ref={isMobile ? mobileRef1 : parallax1}>
+            <div ref={parallax1}>
               <InteractiveGradient 
                 color="#FF6B6B" 
                 glowColor="#FF6B6B40"
                 borderRadius="1rem"
-                followMouse={!isMobile}
+                followMouse={true}
                 hoverOnly={true}
-                intensity={isMobile ? 50 : 70}
+                intensity={70}
                 className="p-4 sm:p-5 flex gap-4 sm:gap-5 items-start"
               >
                 <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-primary/20 flex items-center justify-center flex-shrink-0">
@@ -260,14 +255,14 @@ const Features = () => {
               </InteractiveGradient>
             </div>
             
-            <div ref={isMobile ? mobileRef2 : parallax2}>
+            <div ref={parallax2}>
               <InteractiveGradient 
                 color="#3B82F6" 
                 glowColor="#3B82F640"
                 borderRadius="1rem"
-                followMouse={!isMobile}
+                followMouse={true}
                 hoverOnly={true}
-                intensity={isMobile ? 50 : 70}
+                intensity={70}
                 className="p-4 sm:p-5 flex gap-4 sm:gap-5 items-start"
               >
                 <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-secondary/20 flex items-center justify-center flex-shrink-0">
@@ -282,14 +277,14 @@ const Features = () => {
               </InteractiveGradient>
             </div>
             
-            <div ref={isMobile ? mobileRef3 : parallax3}>
+            <div ref={parallax3}>
               <InteractiveGradient 
                 color="#8B5CF6" 
                 glowColor="#8B5CF640"
                 borderRadius="1rem"
-                followMouse={!isMobile}
+                followMouse={true}
                 hoverOnly={true}
-                intensity={isMobile ? 50 : 70}
+                intensity={70}
                 className="p-4 sm:p-5 flex gap-4 sm:gap-5 items-start"
               >
                 <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-accent/20 flex items-center justify-center flex-shrink-0">
@@ -304,14 +299,14 @@ const Features = () => {
               </InteractiveGradient>
             </div>
             
-            <div ref={isMobile ? mobileRef4 : parallax4}>
+            <div ref={parallax4}>
               <InteractiveGradient 
                 color="#14B8A6" 
                 glowColor="#14B8A640"
                 borderRadius="1rem"
-                followMouse={!isMobile}
+                followMouse={true}
                 hoverOnly={true}
-                intensity={isMobile ? 50 : 70}
+                intensity={70}
                 className="p-4 sm:p-5 flex gap-4 sm:gap-5 items-start"
               >
                 <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-coral/20 flex items-center justify-center flex-shrink-0">

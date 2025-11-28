@@ -22,37 +22,37 @@ const Pricing = () => {
       <Navigation />
       
       {/* Hero Section */}
-      <section className="container mx-auto px-4 py-16 md:py-24">
+      <section className="container mx-auto px-4 py-8 sm:py-12 md:py-16">
         <div className="max-w-4xl mx-auto text-center">
-          <h1 className="text-4xl md:text-6xl font-heading font-bold text-foreground mb-6 leading-tight">
+          <h1 className="text-4xl md:text-6xl font-heading font-bold text-foreground mb-3 sm:mb-4 leading-tight">
             Spend <span className="text-primary">less</span>. Play more.
           </h1>
           
-          <p className="text-xl md:text-2xl text-muted-foreground mb-8">
+          <p className="text-lg sm:text-xl md:text-2xl text-muted-foreground mb-0">
             Get premium toys worth ₹4,500 in every JoyBox at an affordable monthly price
           </p>
         </div>
       </section>
       
       {/* Pricing Tiers */}
-      <section className="container mx-auto px-4 py-16">
+      <section className="container mx-auto px-4 py-8 sm:py-10 md:py-12">
         {/* Trial Box */}
-        <div className="max-w-2xl mx-auto mb-12">
-          <div className="glass-card p-8 border-2 border-accent/30 text-center">
-            <div className="inline-block bg-accent/20 text-accent px-4 py-2 rounded-full text-sm font-bold mb-4">
+        <div className="max-w-2xl mx-auto mb-8 sm:mb-10">
+          <div className="glass-card p-6 sm:p-8 border-2 border-accent/30 text-center">
+            <div className="inline-block bg-accent/20 text-accent px-3 sm:px-4 py-1.5 sm:py-2 rounded-full text-xs sm:text-sm font-bold mb-3">
               TRY BEFORE YOU COMMIT
             </div>
-            <h3 className="font-heading font-bold text-3xl mb-2">Trial Box</h3>
-            <div className="mb-6">
-              <span className="text-5xl font-bold text-foreground">₹299</span>
+            <h3 className="font-heading font-bold text-2xl sm:text-3xl mb-1.5">Trial Box</h3>
+            <div className="mb-4">
+              <span className="text-4xl sm:text-5xl font-bold text-foreground">₹299</span>
               <span className="text-muted-foreground">/one-time</span>
             </div>
             
-            <p className="text-lg text-muted-foreground mb-6">
+            <p className="text-base sm:text-lg text-muted-foreground mb-4">
               Experience ToyLuv with a curated trial box. See the quality, hygiene, and joy firsthand.
             </p>
             
-            <ul className="space-y-3 mb-8 text-left max-w-md mx-auto">
+            <ul className="space-y-2 mb-6 text-left max-w-md mx-auto">
               <li className="flex items-start gap-2">
                 <Check className="text-accent flex-shrink-0 mt-1" size={20} />
                 <span className="text-muted-foreground">2 premium toys</span>
@@ -79,7 +79,7 @@ const Pricing = () => {
           </div>
         </div>
 
-        <h2 className="text-2xl md:text-3xl font-heading font-bold text-center mb-8">
+        <h2 className="text-xl sm:text-2xl md:text-3xl font-heading font-bold text-center mb-6 sm:mb-8">
           Subscription Plans
         </h2>
         
@@ -90,14 +90,14 @@ const Pricing = () => {
           }`}
         >
           {/* Monthly Plan */}
-          <div className="glass-card p-8 hover-lift">
-            <h3 className="font-heading font-bold text-2xl mb-2">Monthly</h3>
-            <div className="mb-6">
-              <span className="text-4xl font-bold text-foreground">₹1,499</span>
+          <div className="glass-card p-5 sm:p-6 md:p-8 hover-lift">
+            <h3 className="font-heading font-bold text-xl sm:text-2xl mb-1.5">Monthly</h3>
+            <div className="mb-4">
+              <span className="text-3xl sm:text-4xl font-bold text-foreground">₹1,499</span>
               <span className="text-muted-foreground">/month</span>
             </div>
             
-            <ul className="space-y-3 mb-8">
+            <ul className="space-y-2 mb-6">
               <li className="flex items-start gap-2">
                 <Check className="text-primary flex-shrink-0 mt-1" size={20} />
                 <span className="text-muted-foreground">3-4 premium toys</span>
@@ -124,21 +124,21 @@ const Pricing = () => {
           </div>
           
           {/* Quarterly Plan - Recommended */}
-          <div className="glass-card p-8 border-2 border-primary hover-lift relative">
-            <div className="absolute -top-3 left-1/2 -translate-x-1/2 bg-primary text-primary-foreground px-4 py-1 rounded-full text-sm font-semibold">
+          <div className="glass-card p-5 sm:p-6 md:p-8 border-2 border-primary hover-lift relative">
+            <div className="absolute -top-2.5 left-1/2 -translate-x-1/2 bg-primary text-primary-foreground px-3 sm:px-4 py-0.5 sm:py-1 rounded-full text-xs sm:text-sm font-semibold">
               Recommended
             </div>
             
-            <h3 className="font-heading font-bold text-2xl mb-2">Quarterly</h3>
-            <div className="mb-6">
-              <span className="text-4xl font-bold text-foreground">₹1,299</span>
+            <h3 className="font-heading font-bold text-xl sm:text-2xl mb-1.5">Quarterly</h3>
+            <div className="mb-4">
+              <span className="text-3xl sm:text-4xl font-bold text-foreground">₹1,299</span>
               <span className="text-muted-foreground">/month</span>
-              <div className="text-sm text-primary font-semibold mt-1">
+              <div className="text-xs sm:text-sm text-primary font-semibold mt-0.5">
                 Save ₹600/quarter
               </div>
             </div>
             
-            <ul className="space-y-3 mb-8">
+            <ul className="space-y-2 mb-6">
               <li className="flex items-start gap-2">
                 <Check className="text-primary flex-shrink-0 mt-1" size={20} />
                 <span className="text-muted-foreground">3-4 premium toys</span>
@@ -169,17 +169,17 @@ const Pricing = () => {
           </div>
           
           {/* Annual Plan */}
-          <div className="glass-card p-8 hover-lift">
-            <h3 className="font-heading font-bold text-2xl mb-2">Annual</h3>
-            <div className="mb-6">
-              <span className="text-4xl font-bold text-foreground">₹999</span>
+          <div className="glass-card p-5 sm:p-6 md:p-8 hover-lift">
+            <h3 className="font-heading font-bold text-xl sm:text-2xl mb-1.5">Annual</h3>
+            <div className="mb-4">
+              <span className="text-3xl sm:text-4xl font-bold text-foreground">₹999</span>
               <span className="text-muted-foreground">/month</span>
-              <div className="text-sm text-accent font-semibold mt-1">
+              <div className="text-xs sm:text-sm text-accent font-semibold mt-0.5">
                 Save ₹6,000/year
               </div>
             </div>
             
-            <ul className="space-y-3 mb-8">
+            <ul className="space-y-2 mb-6">
               <li className="flex items-start gap-2">
                 <Check className="text-primary flex-shrink-0 mt-1" size={20} />
                 <span className="text-muted-foreground">3-4 premium toys</span>
@@ -218,12 +218,12 @@ const Pricing = () => {
       {/* Comparison Table */}
       <section 
         ref={comparisonAnim.ref}
-        className={`container mx-auto px-4 py-16 transition-all duration-700 delay-200 ${
+        className={`container mx-auto px-4 py-8 sm:py-10 md:py-12 transition-all duration-700 delay-200 ${
           comparisonAnim.isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
         }`}
       >
         <div className="max-w-4xl mx-auto">
-          <h2 className="text-3xl md:text-4xl font-heading font-bold text-center mb-12">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl font-heading font-bold text-center mb-6 sm:mb-8">
             ToyLuv vs Buying Toys
           </h2>
           
@@ -281,21 +281,21 @@ const Pricing = () => {
       {/* What's Inside a JoyBox */}
       <section 
         ref={boxAnim.ref}
-        className={`container mx-auto px-4 py-16 transition-all duration-700 delay-300 ${
+        className={`container mx-auto px-4 py-8 sm:py-10 md:py-12 transition-all duration-700 delay-300 ${
           boxAnim.isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
         }`}
       >
         <div className="max-w-5xl mx-auto">
-          <h2 className="text-3xl md:text-4xl font-heading font-bold text-center mb-4">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl font-heading font-bold text-center mb-2 sm:mb-3">
             What's Inside a JoyBox?
           </h2>
-          <p className="text-center text-muted-foreground mb-12">
+          <p className="text-center text-muted-foreground mb-6 sm:mb-8">
             Every box is curated for your child's development
           </p>
           
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            <div className="glass-card p-4 hover-lift">
-              <div className="aspect-square rounded-xl mb-3 overflow-hidden">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-4 sm:gap-6">
+            <div className="glass-card p-3 sm:p-4 hover-lift">
+              <div className="aspect-square rounded-xl mb-2 overflow-hidden">
                 <div ref={toyParallax1} className="parallax-slow h-full">
                   <img
                     src={toyBlocks}
@@ -304,17 +304,17 @@ const Pricing = () => {
                   />
                 </div>
               </div>
-              <h4 className="font-semibold mb-1">Motor Skills Toy</h4>
-              <p className="text-sm text-muted-foreground mb-2">
+              <h4 className="font-semibold mb-1 text-sm sm:text-base">Motor Skills Toy</h4>
+              <p className="text-xs sm:text-sm text-muted-foreground mb-1.5">
                 Building blocks, stacking toys, or construction sets
               </p>
-              <span className="text-xs bg-primary/10 text-primary px-2 py-1 rounded-full">
+              <span className="text-xs bg-primary/10 text-primary px-2 py-0.5 rounded-full">
                 Physical Development
               </span>
             </div>
             
-            <div className="glass-card p-4 hover-lift">
-              <div className="aspect-square rounded-xl mb-3 overflow-hidden">
+            <div className="glass-card p-3 sm:p-4 hover-lift">
+              <div className="aspect-square rounded-xl mb-2 overflow-hidden">
                 <div ref={toyParallax2} className="parallax-slow h-full">
                   <img
                     src={toyCraft}
@@ -323,17 +323,17 @@ const Pricing = () => {
                   />
                 </div>
               </div>
-              <h4 className="font-semibold mb-1">Creativity Toy</h4>
-              <p className="text-sm text-muted-foreground mb-2">
+              <h4 className="font-semibold mb-1 text-sm sm:text-base">Creativity Toy</h4>
+              <p className="text-xs sm:text-sm text-muted-foreground mb-1.5">
                 Art supplies, craft kits, or role-play items
               </p>
-              <span className="text-xs bg-accent/10 text-accent px-2 py-1 rounded-full">
+              <span className="text-xs bg-accent/10 text-accent px-2 py-0.5 rounded-full">
                 Creative Expression
               </span>
             </div>
             
-            <div className="glass-card p-4 hover-lift">
-              <div className="aspect-square rounded-xl mb-3 overflow-hidden">
+            <div className="glass-card p-3 sm:p-4 hover-lift">
+              <div className="aspect-square rounded-xl mb-2 overflow-hidden">
                 <div ref={toyParallax3} className="parallax-slow h-full">
                   <img
                     src={toyPuzzle}
@@ -342,11 +342,11 @@ const Pricing = () => {
                   />
                 </div>
               </div>
-              <h4 className="font-semibold mb-1">Problem-Solving Toy</h4>
-              <p className="text-sm text-muted-foreground mb-2">
+              <h4 className="font-semibold mb-1 text-sm sm:text-base">Problem-Solving Toy</h4>
+              <p className="text-xs sm:text-sm text-muted-foreground mb-1.5">
                 Puzzles, STEM toys, or logic games
               </p>
-              <span className="text-xs bg-secondary/10 text-secondary px-2 py-1 rounded-full">
+              <span className="text-xs bg-secondary/10 text-secondary px-2 py-0.5 rounded-full">
                 Cognitive Growth
               </span>
             </div>
@@ -355,12 +355,12 @@ const Pricing = () => {
       </section>
       
       {/* Call to Action */}
-      <section className="container mx-auto px-4 py-16">
-        <div className="max-w-3xl mx-auto glass-card p-8 md:p-12 text-center">
-          <h2 className="text-3xl font-heading font-bold mb-4">
+      <section className="container mx-auto px-4 py-8 sm:py-10 md:py-12">
+        <div className="max-w-3xl mx-auto glass-card p-6 sm:p-8 md:p-10 text-center">
+          <h2 className="text-2xl sm:text-3xl font-heading font-bold mb-3">
             Ready to Get Started?
           </h2>
-          <p className="text-lg text-muted-foreground mb-6">
+          <p className="text-base sm:text-lg text-muted-foreground mb-5">
             Take our 60-second quiz to discover your child's play personality and get personalized toy recommendations.
           </p>
           <Link to="/quiz">

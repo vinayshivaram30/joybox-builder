@@ -125,19 +125,17 @@ export const JoyBoxPreview = ({ personalityType, childAge, onRetakeQuiz }: JoyBo
                   to={`/toys/${toy.id}`}
                   className="bg-card rounded-xl sm:rounded-2xl overflow-hidden border-2 border-primary/10 hover:shadow-xl transition-all transform hover:-translate-y-1 active:scale-95"
                 >
-                  {toy.image_url ? (
-                    <div className="h-40 sm:h-48 overflow-hidden bg-muted">
+                  <div className="h-40 sm:h-48 overflow-hidden bg-gradient-to-br from-primary/5 to-secondary/5 flex items-center justify-center">
+                    {toy.image_url ? (
                       <img
                         src={toy.image_url}
                         alt={toy.name}
                         className="w-full h-full object-cover"
                       />
-                    </div>
-                  ) : (
-                    <div className="h-40 sm:h-48 bg-gradient-to-br from-primary/20 to-secondary/20 flex items-center justify-center">
+                    ) : (
                       <p className="text-4xl sm:text-5xl">🎁</p>
-                    </div>
-                  )}
+                    )}
+                  </div>
                   <div className="p-3 sm:p-4">
                     <h4 className="font-semibold text-sm sm:text-base text-foreground mb-2 line-clamp-2">{toy.name}</h4>
                     {ratings[toy.id] && ratings[toy.id].count > 0 && (

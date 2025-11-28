@@ -4,7 +4,7 @@ import { Navigation } from "@/components/Navigation";
 import { Footer } from "@/components/Footer";
 import { useScrollAnimation } from "@/hooks/useScrollAnimation";
 import { useParallax } from "@/hooks/useParallax";
-import { Check, X, Shield } from "lucide-react";
+import { Check, X } from "lucide-react";
 import toyBlocks from "@/assets/toy-blocks.jpg";
 import toyCraft from "@/assets/toy-craft.jpg";
 import toyPuzzle from "@/assets/toy-puzzle.jpg";
@@ -36,6 +36,53 @@ const Pricing = () => {
       
       {/* Pricing Tiers */}
       <section className="container mx-auto px-4 py-16">
+        {/* Trial Box */}
+        <div className="max-w-2xl mx-auto mb-12">
+          <div className="glass-card p-8 border-2 border-accent/30 text-center">
+            <div className="inline-block bg-accent/20 text-accent px-4 py-2 rounded-full text-sm font-bold mb-4">
+              TRY BEFORE YOU COMMIT
+            </div>
+            <h3 className="font-heading font-bold text-3xl mb-2">Trial Box</h3>
+            <div className="mb-6">
+              <span className="text-5xl font-bold text-foreground">₹299</span>
+              <span className="text-muted-foreground">/one-time</span>
+            </div>
+            
+            <p className="text-lg text-muted-foreground mb-6">
+              Experience ToyLuv with a curated trial box. See the quality, hygiene, and joy firsthand.
+            </p>
+            
+            <ul className="space-y-3 mb-8 text-left max-w-md mx-auto">
+              <li className="flex items-start gap-2">
+                <Check className="text-accent flex-shrink-0 mt-1" size={20} />
+                <span className="text-muted-foreground">2 premium toys</span>
+              </li>
+              <li className="flex items-start gap-2">
+                <Check className="text-accent flex-shrink-0 mt-1" size={20} />
+                <span className="text-muted-foreground">Box value: ₹1,500+</span>
+              </li>
+              <li className="flex items-start gap-2">
+                <Check className="text-accent flex-shrink-0 mt-1" size={20} />
+                <span className="text-muted-foreground">Free delivery in Bengaluru</span>
+              </li>
+              <li className="flex items-start gap-2">
+                <Check className="text-accent flex-shrink-0 mt-1" size={20} />
+                <span className="text-muted-foreground">No subscription required</span>
+              </li>
+            </ul>
+            
+            <Link to="/quiz">
+              <Button variant="default" size="lg" className="w-full max-w-md">
+                Try Trial Box
+              </Button>
+            </Link>
+          </div>
+        </div>
+
+        <h2 className="text-2xl md:text-3xl font-heading font-bold text-center mb-8">
+          Subscription Plans
+        </h2>
+        
         <div 
           ref={tiersAnim.ref}
           className={`grid grid-cols-1 md:grid-cols-3 gap-6 max-w-5xl mx-auto transition-all duration-700 ${
@@ -307,19 +354,18 @@ const Pricing = () => {
         </div>
       </section>
       
-      {/* Guarantee */}
+      {/* Call to Action */}
       <section className="container mx-auto px-4 py-16">
         <div className="max-w-3xl mx-auto glass-card p-8 md:p-12 text-center">
-          <Shield className="text-primary mx-auto mb-4" size={48} />
           <h2 className="text-3xl font-heading font-bold mb-4">
-            Our Happiness Guarantee
+            Ready to Get Started?
           </h2>
           <p className="text-lg text-muted-foreground mb-6">
-            Not happy with your first box? We'll swap it for free within 48 hours. No questions asked.
+            Take our 60-second quiz to discover your child's play personality and get personalized toy recommendations.
           </p>
           <Link to="/quiz">
             <Button variant="cta" size="lg">
-              Start Risk-Free Trial
+              Take the Quiz Now
             </Button>
           </Link>
         </div>

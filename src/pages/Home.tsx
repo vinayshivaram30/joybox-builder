@@ -217,7 +217,7 @@ const Home = () => {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-5xl mx-auto">
           <div className="glass-card p-6">
             <div className="flex gap-1 mb-3">
-              {[...Array(5)].map((_, i) => <Star key={i} className="fill-accent text-accent" size={16} />)}
+              {[...Array(5)].map((_, i) => <Star key={i} className="fill-yellow-500 text-yellow-500" size={16} />)}
             </div>
             <p className="text-foreground mb-4">
               "My daughter was bored of her toys. ToyLuv's AI matched her perfectly. Now she's excited every month!"
@@ -227,7 +227,7 @@ const Home = () => {
           
           <div className="glass-card p-6">
             <div className="flex gap-1 mb-3">
-              {[...Array(5)].map((_, i) => <Star key={i} className="fill-accent text-accent" size={16} />)}
+              {[...Array(5)].map((_, i) => <Star key={i} className="fill-yellow-500 text-yellow-500" size={16} />)}
             </div>
             <p className="text-foreground mb-4">
               "Finally, no more toy clutter! The hygiene standards are incredible. Worth every rupee."
@@ -237,7 +237,7 @@ const Home = () => {
           
           <div className="glass-card p-6">
             <div className="flex gap-1 mb-3">
-              {[...Array(5)].map((_, i) => <Star key={i} className="fill-accent text-accent" size={16} />)}
+              {[...Array(5)].map((_, i) => <Star key={i} className="fill-yellow-500 text-yellow-500" size={16} />)}
             </div>
             <p className="text-foreground mb-4">
               "Best investment in my son's development. He learns while playing with different toys monthly."

@@ -11,7 +11,7 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import { DynamicNavigation } from "@/components/DynamicNavigation";
-import { AuroraTextEffect } from "@/components/ui/aurora-text-effect";
+import logoSvg from "@/assets/toyluv-logo.svg";
 export const Navigation = () => {
   const location = useLocation();
   const navigate = useNavigate();
@@ -71,29 +71,15 @@ export const Navigation = () => {
     await signOut();
   };
   return (
-    <nav className="sticky top-0 z-50 glass-card border-b border-border/50">
-      <div className="container mx-auto px-4 bg-stone-200 text-stone-400">
-        <div className="h-16 gap-4 items-center justify-between bg-stone-200 text-stone-400 border-muted flex flex-row">
-          <Link to="/" className="block">
-            <AuroraTextEffect
-              text="ToyLuv"
-              className="bg-transparent dark:bg-transparent h-10 w-[120px] rounded-lg"
-              textClassName="font-heading font-bold"
-              fontSize="1.5rem"
-              colors={{
-                first: "bg-primary/40",
-                second: "bg-secondary/40",
-                third: "bg-accent/40",
-                fourth: "bg-primary/30",
-              }}
-              blurAmount="blur-md"
-              animationSpeed={{
-                border: 8,
-                first: 6,
-                second: 7,
-                third: 5,
-                fourth: 10,
-              }}
+    <nav className="sticky top-0 z-50 bg-background/95 backdrop-blur-md border-b border-border/50 shadow-sm">
+      <div className="container mx-auto px-4">
+        <div className="h-20 gap-4 items-center justify-between flex flex-row">
+          <Link to="/" className="block hover:opacity-80 transition-opacity">
+            <img 
+              src={logoSvg} 
+              alt="ToyLuv Logo" 
+              className="h-14 w-auto md:h-16"
+              loading="eager"
             />
           </Link>
 

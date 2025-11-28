@@ -5,13 +5,13 @@ import { Footer } from "@/components/Footer";
 import { useScrollAnimation } from "@/hooks/useScrollAnimation";
 import { useParallax } from "@/hooks/useParallax";
 import heroImage from "@/assets/hero-toys.jpg";
+import logoSvg from "@/assets/toyluv-logo.svg";
 import { Sparkles, Shield, TruckIcon, Star, CheckCircle, ClipboardList, Package, RefreshCw, Wallet, Brain, Leaf } from "lucide-react";
 import ParticlesBackground from "@/components/ParticlesBackground";
 import { OrbitCard } from "@/components/ui/orbit-card";
 import { GlowingCards, GlowingCard } from "@/components/ui/glowing-cards";
 import { SlidingLogoMarquee } from "@/components/ui/sliding-logo-marquee";
 import { TrustedUsers } from "@/components/TrustedUsers";
-import { AuroraTextEffect } from "@/components/ui/aurora-text-effect";
 import { FloatingQuizButton } from "@/components/FloatingQuizButton";
 const Home = () => {
   const heroParallax = useParallax(0.3);
@@ -23,22 +23,16 @@ const Home = () => {
       <FloatingQuizButton />
       
       {/* Hero Section - Full Width */}
-      <section className="relative w-full min-h-[90vh] flex items-center justify-center bg-gradient-to-br from-primary/10 via-background to-accent/10 overflow-hidden">
-        <ParticlesBackground colors={['#9333ea', '#fbbf24', '#a855f7']} size={3} countDesktop={80} countTablet={60} countMobile={40} zIndex={0} height="100%" />
+      <section className="relative w-full min-h-[90vh] flex items-center justify-center bg-gradient-to-br from-primary/15 via-background to-accent/15 overflow-hidden">
+        <ParticlesBackground colors={['#e91e63', '#00bcd4', '#ffc107']} size={3} countDesktop={80} countTablet={60} countMobile={40} zIndex={0} height="100%" />
         <div className="container mx-auto px-4 py-16 relative z-10">
           <div className="max-w-5xl mx-auto text-center">
-            <AuroraTextEffect text="ToyLuv" fontSize="clamp(3rem, 10vw, 6rem)" colors={{
-            first: "bg-primary",
-            second: "bg-accent",
-            third: "bg-secondary",
-            fourth: "bg-coral"
-          }} blurAmount="blur-2xl" animationSpeed={{
-            border: 8,
-            first: 6,
-            second: 7,
-            third: 4,
-            fourth: 10
-          }} className="mb-6 h-32 md:h-40" />
+            <img 
+              src={logoSvg} 
+              alt="ToyLuv" 
+              className="h-24 md:h-32 w-auto mx-auto mb-8 drop-shadow-2xl animate-float"
+              loading="eager"
+            />
             <h1 className="text-4xl md:text-6xl font-heading font-bold text-foreground mb-6 leading-tight">
               Making playtime{" "}
               <span className="text-primary">smarter</span> with every box
@@ -49,19 +43,13 @@ const Home = () => {
             </p>
             
             <Link to="/quiz">
-              <Button size="lg" className="text-xl px-16 py-8 h-auto mb-8 bg-gradient-to-r from-accent via-yellow-400 to-accent hover:scale-105 transition-all duration-300 shadow-2xl shadow-accent/50 text-foreground font-bold">
+              <Button size="lg" className="text-xl px-16 py-8 h-auto mb-8 bg-gradient-to-r from-primary via-accent to-secondary hover:scale-105 transition-all duration-300 shadow-2xl shadow-primary/30 text-primary-foreground font-bold">
                 Find Your Child's Toy Personality ✨
                 <Sparkles className="ml-2 animate-pulse" />
               </Button>
             </Link>
             
             <TrustedUsers avatars={["https://api.dicebear.com/7.x/avataaars/svg?seed=Sarah", "https://api.dicebear.com/7.x/avataaars/svg?seed=Michael", "https://api.dicebear.com/7.x/avataaars/svg?seed=Priya", "https://api.dicebear.com/7.x/avataaars/svg?seed=Rajesh", "https://api.dicebear.com/7.x/avataaars/svg?seed=Ananya"]} rating={5} totalUsersText={2500} caption="Loved by" starColorClass="text-yellow-500" ringColors={["ring-primary", "ring-secondary", "ring-accent", "ring-coral", "ring-primary"]} className="mb-12" />
-            
-            <div className="rounded-3xl overflow-hidden shadow-2xl max-w-3xl mx-auto">
-              <div ref={heroParallax} className="parallax-slow">
-                <img src={heroImage} alt="JoyBox filled with colorful educational toys" className="w-full h-auto" loading="eager" />
-              </div>
-            </div>
           </div>
         </div>
       </section>
@@ -71,7 +59,7 @@ const Home = () => {
         <div className="container mx-auto px-4">
           <div ref={valuePropsAnim.ref} className={`transition-all duration-700 max-w-6xl mx-auto ${valuePropsAnim.isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
             <GlowingCards enableGlow={true} glowRadius={20} glowOpacity={0.8} gap="1.5rem" padding="0">
-              <GlowingCard glowColor="#a855f7">
+              <GlowingCard glowColor="#e91e63">
                 <div className="w-12 h-12 rounded-full bg-primary/20 flex items-center justify-center mb-4">
                   <Sparkles className="text-primary" size={24} />
                 </div>
@@ -81,7 +69,7 @@ const Home = () => {
                 </p>
               </GlowingCard>
               
-              <GlowingCard glowColor="#9333ea">
+              <GlowingCard glowColor="#00bcd4">
                 <div className="w-12 h-12 rounded-full bg-secondary/20 flex items-center justify-center mb-4">
                   <Shield className="text-secondary" size={24} />
                 </div>
@@ -91,7 +79,7 @@ const Home = () => {
                 </p>
               </GlowingCard>
               
-              <GlowingCard glowColor="#fbbf24">
+              <GlowingCard glowColor="#ffc107">
                 <div className="w-12 h-12 rounded-full flex items-center justify-center mb-4 bg-accent/20">
                   <CheckCircle size={24} className="text-accent" />
                 </div>
@@ -101,9 +89,9 @@ const Home = () => {
                 </p>
               </GlowingCard>
               
-              <GlowingCard glowColor="#fbbf24">
-                <div className="w-12 h-12 rounded-full bg-accent/20 flex items-center justify-center mb-4">
-                  <TruckIcon className="text-accent" size={24} />
+              <GlowingCard glowColor="#ff7043">
+                <div className="w-12 h-12 rounded-full bg-coral/20 flex items-center justify-center mb-4">
+                  <TruckIcon className="text-coral" size={24} />
                 </div>
                 <h3 className="font-heading font-bold text-xl mb-2">Bengaluru Delivery</h3>
                 <p className="text-muted-foreground">
@@ -263,8 +251,8 @@ const Home = () => {
           
           <div className="space-y-8">
             <div className="flex gap-6 items-start">
-              <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-green-500/20 to-emerald-500/20 flex items-center justify-center flex-shrink-0">
-                <Wallet className="w-8 h-8 text-green-500" />
+              <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-primary/20 to-primary/30 flex items-center justify-center flex-shrink-0 shadow-lg shadow-primary/20">
+                <Wallet className="w-8 h-8 text-primary" />
               </div>
               <div>
                 <h3 className="font-heading font-bold text-xl mb-2">Save Up to 80%</h3>
@@ -275,8 +263,8 @@ const Home = () => {
             </div>
             
             <div className="flex gap-6 items-start">
-              <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-purple-500/20 to-pink-500/20 flex items-center justify-center flex-shrink-0">
-                <Brain className="w-8 h-8 text-purple-500" />
+              <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-secondary/20 to-secondary/30 flex items-center justify-center flex-shrink-0 shadow-lg shadow-secondary/20">
+                <Brain className="w-8 h-8 text-secondary" />
               </div>
               <div>
                 <h3 className="font-heading font-bold text-xl mb-2">Developmental Match</h3>
@@ -287,8 +275,8 @@ const Home = () => {
             </div>
             
             <div className="flex gap-6 items-start">
-              <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-teal-500/20 to-cyan-500/20 flex items-center justify-center flex-shrink-0">
-                <Leaf className="w-8 h-8 text-teal-500" />
+              <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-accent/20 to-accent/30 flex items-center justify-center flex-shrink-0 shadow-lg shadow-accent/20">
+                <Leaf className="w-8 h-8 text-accent" />
               </div>
               <div>
                 <h3 className="font-heading font-bold text-xl mb-2">Eco-Sensitive Rotation</h3>
@@ -302,7 +290,7 @@ const Home = () => {
       </section>
       
       {/* Final CTA */}
-      <section className="bg-gradient-to-br from-primary/10 via-accent/10 to-secondary/10 py-20">
+      <section className="bg-gradient-to-br from-primary/10 via-secondary/10 to-accent/10 py-20">
         <div className="container mx-auto px-4">
           <OrbitCard className="max-w-3xl mx-auto">
             <div className="text-center p-8">
@@ -313,7 +301,7 @@ const Home = () => {
                 Discover your child's play personality in 60 seconds
               </p>
               <Link to="/quiz">
-                <Button size="lg" className="text-xl px-12 py-6 h-auto bg-gradient-to-r from-accent to-yellow-400 hover:scale-105 transition-all shadow-xl text-foreground font-bold">
+                <Button size="lg" className="text-xl px-12 py-6 h-auto bg-gradient-to-r from-primary via-accent to-secondary hover:scale-105 transition-all shadow-xl text-primary-foreground font-bold">
                   Take the Quiz Now
                   <Sparkles className="ml-2" />
                 </Button>

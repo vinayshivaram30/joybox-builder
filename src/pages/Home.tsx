@@ -278,9 +278,9 @@ const Home = () => {
             <div className="flex gap-6 items-start">
               <div className="text-5xl">🌱</div>
               <div>
-                <h3 className="font-heading font-bold text-xl mb-2">Eco-Sensitive Swapping</h3>
+                <h3 className="font-heading font-bold text-xl mb-2">Eco-Sensitive Rotation</h3>
                 <p className="text-muted-foreground">
-                  Join the circular economy. We swap toys between families sustainably - one toy rotates to 12+ children per year, reducing waste.
+                  Join the circular economy. Toys rotate between families sustainably - one toy reaches 12+ children per year, reducing waste.
                 </p>
               </div>
             </div>

@@ -108,7 +108,7 @@ const Pricing = () => {
               </li>
               <li className="flex items-start gap-2">
                 <Check className="text-primary flex-shrink-0 mt-1" size={20} />
-                <span className="text-muted-foreground">Monthly swap</span>
+                <span className="text-muted-foreground">New JoyBox every 3 weeks</span>
               </li>
               <li className="flex items-start gap-2">
                 <Check className="text-primary flex-shrink-0 mt-1" size={20} />
@@ -149,7 +149,7 @@ const Pricing = () => {
               </li>
               <li className="flex items-start gap-2">
                 <Check className="text-primary flex-shrink-0 mt-1" size={20} />
-                <span className="text-muted-foreground">Monthly swap</span>
+                <span className="text-muted-foreground">New JoyBox every 3 weeks</span>
               </li>
               <li className="flex items-start gap-2">
                 <Check className="text-primary flex-shrink-0 mt-1" size={20} />
@@ -190,7 +190,7 @@ const Pricing = () => {
               </li>
               <li className="flex items-start gap-2">
                 <Check className="text-primary flex-shrink-0 mt-1" size={20} />
-                <span className="text-muted-foreground">Monthly swap</span>
+                <span className="text-muted-foreground">New JoyBox every 3 weeks</span>
               </li>
               <li className="flex items-start gap-2">
                 <Check className="text-primary flex-shrink-0 mt-1" size={20} />

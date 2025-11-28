@@ -50,7 +50,7 @@ const Home = () => {
       </section>
       
       {/* Value Proposition Grid */}
-      <section className="bg-muted/30 py-12 sm:py-16 lg:py-20">
+      <section className="bg-muted/30 py-8 sm:py-10 md:py-12">
         <div className="w-full px-4 sm:px-6 lg:px-8">
           <div ref={valuePropsAnim.ref} className={`transition-all duration-700 max-w-6xl mx-auto ${valuePropsAnim.isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
             <GlowingCards enableGlow={true} glowRadius={20} glowOpacity={0.8} gap="1.5rem" padding="0">
@@ -99,9 +99,9 @@ const Home = () => {
       </section>
       
       {/* The JoyLoop */}
-      <section className="w-full px-4 sm:px-6 lg:px-8 py-12 sm:py-16">
-        <div className="max-w-5xl mx-auto text-center mb-8 sm:mb-12">
-          <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-heading font-bold mb-3 sm:mb-4">
+      <section className="w-full px-4 sm:px-6 lg:px-8 py-8 sm:py-10 md:py-12">
+        <div className="max-w-5xl mx-auto text-center mb-6 sm:mb-8">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-heading font-bold mb-2 sm:mb-3">
             The JoyLoop
           </h2>
           <p className="text-base sm:text-lg text-muted-foreground px-4">
@@ -109,32 +109,32 @@ const Home = () => {
           </p>
         </div>
         
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8 max-w-6xl mx-auto">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 max-w-6xl mx-auto">
           <div className="text-center">
-            <div className="w-20 h-20 rounded-full bg-primary/20 flex items-center justify-center mx-auto mb-4">
-              <ClipboardList className="text-primary" size={40} />
+            <div className="w-16 h-16 sm:w-20 sm:h-20 rounded-full bg-primary/20 flex items-center justify-center mx-auto mb-3">
+              <ClipboardList className="text-primary" size={32} />
             </div>
-            <h3 className="font-heading font-bold text-xl mb-2">Profile</h3>
+            <h3 className="font-heading font-bold text-lg sm:text-xl mb-1.5">Profile</h3>
             <p className="text-muted-foreground">
               Take our 60-second AI quiz to discover your child's play personality
             </p>
           </div>
           
           <div className="text-center">
-            <div className="w-20 h-20 rounded-full bg-secondary/20 flex items-center justify-center mx-auto mb-4">
-              <Package className="text-secondary" size={40} />
+            <div className="w-16 h-16 sm:w-20 sm:h-20 rounded-full bg-secondary/20 flex items-center justify-center mx-auto mb-3">
+              <Package className="text-secondary" size={32} />
             </div>
-            <h3 className="font-heading font-bold text-xl mb-2">Play</h3>
+            <h3 className="font-heading font-bold text-lg sm:text-xl mb-1.5">Play</h3>
             <p className="text-muted-foreground">
               Receive curated JoyBox with 3-4 premium toys worth ₹4,500+
             </p>
           </div>
           
           <div className="text-center">
-            <div className="w-20 h-20 rounded-full flex items-center justify-center mx-auto mb-4 bg-muted">
-              <RefreshCw className="text-accent" size={40} />
+            <div className="w-16 h-16 sm:w-20 sm:h-20 rounded-full flex items-center justify-center mx-auto mb-3 bg-muted">
+              <RefreshCw className="text-accent" size={32} />
             </div>
-            <h3 className="font-heading font-bold text-xl mb-2">Refresh</h3>
+            <h3 className="font-heading font-bold text-lg sm:text-xl mb-1.5">Refresh</h3>
             <p className="text-muted-foreground">
               A new JoyBox every 3 weeks at your doorstep. Keep the fun fresh, home clutter-free
             </p>
@@ -143,9 +143,9 @@ const Home = () => {
       </section>
       
       {/* Toy Brands */}
-      <section ref={showcaseAnim.ref} className={`w-full px-4 sm:px-6 lg:px-8 py-12 sm:py-16 bg-muted/30 transition-all duration-700 delay-200 ${showcaseAnim.isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
-        <div className="text-center mb-8 sm:mb-12">
-          <h2 className="text-2xl sm:text-3xl md:text-4xl font-heading font-bold mb-3 sm:mb-4">
+      <section ref={showcaseAnim.ref} className={`w-full px-4 sm:px-6 lg:px-8 py-8 sm:py-10 md:py-12 bg-muted/30 transition-all duration-700 delay-200 ${showcaseAnim.isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
+        <div className="text-center mb-6 sm:mb-8">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl font-heading font-bold mb-2 sm:mb-3">
             Premium Brands You Trust
           </h2>
           <p className="text-base sm:text-lg text-muted-foreground px-4">
@@ -197,15 +197,15 @@ const Home = () => {
       </section>
       
       {/* Community Proof */}
-      <section ref={testimonialsAnim.ref} className={`w-full px-4 sm:px-6 lg:px-8 py-12 sm:py-16 transition-all duration-700 delay-300 ${testimonialsAnim.isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
-        <div className="text-center mb-8 sm:mb-12">
-          <h2 className="text-2xl sm:text-3xl md:text-4xl font-heading font-bold mb-3 sm:mb-4">
+      <section ref={testimonialsAnim.ref} className={`w-full px-4 sm:px-6 lg:px-8 py-8 sm:py-10 md:py-12 transition-all duration-700 delay-300 ${testimonialsAnim.isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
+        <div className="text-center mb-6 sm:mb-8">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl font-heading font-bold mb-2 sm:mb-3">
             Loved by Bengaluru Parents
           </h2>
         </div>
         
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 max-w-6xl mx-auto">
-          <div className="glass-card p-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-5 max-w-6xl mx-auto">
+          <div className="glass-card p-4 sm:p-5">
             <div className="flex gap-1 mb-3">
               {[...Array(5)].map((_, i) => <Star key={i} className="fill-yellow-500 text-yellow-500" size={16} />)}
             </div>
@@ -215,21 +215,21 @@ const Home = () => {
             <p className="text-sm font-semibold">— Priya M., Koramangala</p>
           </div>
           
-          <div className="glass-card p-6">
-            <div className="flex gap-1 mb-3">
+          <div className="glass-card p-4 sm:p-5">
+            <div className="flex gap-1 mb-2">
               {[...Array(5)].map((_, i) => <Star key={i} className="fill-yellow-500 text-yellow-500" size={16} />)}
             </div>
-            <p className="text-foreground mb-4">
+            <p className="text-foreground mb-3">
               "Finally, no more toy clutter! The hygiene standards are incredible. Worth every rupee."
             </p>
             <p className="text-sm font-semibold">— Rahul K., Indiranagar</p>
           </div>
           
-          <div className="glass-card p-6">
-            <div className="flex gap-1 mb-3">
+          <div className="glass-card p-4 sm:p-5">
+            <div className="flex gap-1 mb-2">
               {[...Array(5)].map((_, i) => <Star key={i} className="fill-yellow-500 text-yellow-500" size={16} />)}
             </div>
-            <p className="text-foreground mb-4">
+            <p className="text-foreground mb-3">
               "Best investment in my son's development. He learns while playing with different toys monthly."
             </p>
             <p className="text-sm font-semibold">— Ananya S., Whitefield</p>
@@ -238,43 +238,43 @@ const Home = () => {
       </section>
       
       {/* Why Parents Choose ToyLuv */}
-      <section className="w-full px-4 sm:px-6 lg:px-8 py-12 sm:py-16">
+      <section className="w-full px-4 sm:px-6 lg:px-8 py-8 sm:py-10 md:py-12">
         <div className="max-w-5xl mx-auto">
-          <h2 className="text-2xl sm:text-3xl md:text-4xl font-heading font-bold text-center mb-8 sm:mb-12">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl font-heading font-bold text-center mb-6 sm:mb-8">
             Why Parents Choose ToyLuv
           </h2>
           
-          <div className="space-y-8">
-            <div className="flex gap-6 items-start">
-              <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-primary/20 to-primary/30 flex items-center justify-center flex-shrink-0 shadow-lg shadow-primary/20">
-                <Wallet className="w-8 h-8 text-primary" />
+          <div className="space-y-5 sm:space-y-6">
+            <div className="flex gap-4 sm:gap-5 items-start">
+              <div className="w-14 h-14 sm:w-16 sm:h-16 rounded-2xl bg-gradient-to-br from-primary/20 to-primary/30 flex items-center justify-center flex-shrink-0 shadow-lg shadow-primary/20">
+                <Wallet className="w-7 h-7 sm:w-8 sm:h-8 text-primary" />
               </div>
               <div>
-                <h3 className="font-heading font-bold text-xl mb-2">Save Up to 80%</h3>
+                <h3 className="font-heading font-bold text-lg sm:text-xl mb-1.5">Save Up to 80%</h3>
                 <p className="text-muted-foreground">
                   Get ₹4,500+ worth of toys for just ₹999/month. No storage, no waste.
                 </p>
               </div>
             </div>
             
-            <div className="flex gap-6 items-start">
-              <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-secondary/20 to-secondary/30 flex items-center justify-center flex-shrink-0 shadow-lg shadow-secondary/20">
-                <Brain className="w-8 h-8 text-secondary" />
+            <div className="flex gap-4 sm:gap-5 items-start">
+              <div className="w-14 h-14 sm:w-16 sm:h-16 rounded-2xl bg-gradient-to-br from-secondary/20 to-secondary/30 flex items-center justify-center flex-shrink-0 shadow-lg shadow-secondary/20">
+                <Brain className="w-7 h-7 sm:w-8 sm:h-8 text-secondary" />
               </div>
               <div>
-                <h3 className="font-heading font-bold text-xl mb-2">Developmental Match</h3>
+                <h3 className="font-heading font-bold text-lg sm:text-xl mb-1.5">Developmental Match</h3>
                 <p className="text-muted-foreground">
                   Our AI ensures every toy supports your child's growth at the right stage.
                 </p>
               </div>
             </div>
             
-            <div className="flex gap-6 items-start">
-              <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-accent/20 to-accent/30 flex items-center justify-center flex-shrink-0 shadow-lg shadow-accent/20">
-                <Leaf className="w-8 h-8 text-accent" />
+            <div className="flex gap-4 sm:gap-5 items-start">
+              <div className="w-14 h-14 sm:w-16 sm:h-16 rounded-2xl bg-gradient-to-br from-accent/20 to-accent/30 flex items-center justify-center flex-shrink-0 shadow-lg shadow-accent/20">
+                <Leaf className="w-7 h-7 sm:w-8 sm:h-8 text-accent" />
               </div>
               <div>
-                <h3 className="font-heading font-bold text-xl mb-2">Eco-Sensitive Rotation</h3>
+                <h3 className="font-heading font-bold text-lg sm:text-xl mb-1.5">Eco-Sensitive Rotation</h3>
                 <p className="text-muted-foreground">
                   Join the circular economy. Toys rotate between families sustainably - one toy reaches 12+ children per year, reducing waste.
                 </p>
@@ -285,14 +285,14 @@ const Home = () => {
       </section>
       
       {/* Final CTA */}
-      <section className="bg-gradient-to-br from-primary/10 via-secondary/10 to-accent/10 py-12 sm:py-16 lg:py-20">
+      <section className="bg-gradient-to-br from-primary/10 via-secondary/10 to-accent/10 py-8 sm:py-10 md:py-12">
         <div className="w-full px-4 sm:px-6 lg:px-8">
           <OrbitCard className="max-w-4xl mx-auto">
-            <div className="text-center p-6 sm:p-8">
-              <h2 className="text-2xl sm:text-3xl md:text-4xl font-heading font-bold mb-3 sm:mb-4">
+            <div className="text-center p-5 sm:p-6 md:p-8">
+              <h2 className="text-2xl sm:text-3xl md:text-4xl font-heading font-bold mb-2 sm:mb-3">
                 Ready to Start the JoyLoop?
               </h2>
-              <p className="text-base sm:text-lg text-muted-foreground mb-6 sm:mb-8 px-4">
+              <p className="text-base sm:text-lg text-muted-foreground mb-5 sm:mb-6 px-4">
                 Discover your child's play personality in 60 seconds
               </p>
               <Link to="/quiz">

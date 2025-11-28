@@ -37,12 +37,12 @@ const Home = () => {
           fourth: 10
         }} className="mb-6 h-32 md:h-40 bg-stone-100" />
           <h1 className="text-3xl md:text-5xl font-heading font-bold text-foreground mb-6 leading-tight">
-            Playtime that grows{" "}
+            Making playtime{" "}
             <span className="text-primary">smarter</span> with every box
           </h1>
           
           <p className="text-xl md:text-2xl text-muted-foreground mb-8">
-            AI-curated, hygienic, high-value toys delivered across Bengaluru.
+            AI-curated, hygienic, high-value toys, Now in Bengaluru.
           </p>
           
           <Link to="/quiz">
@@ -89,9 +89,9 @@ const Home = () => {
               <div className="w-12 h-12 rounded-full flex items-center justify-center mb-4 bg-teal-500/20">
                 <CheckCircle size={24} className="text-teal-500" />
               </div>
-              <h3 className="font-heading font-bold text-xl mb-2">Circular Play</h3>
+              <h3 className="font-heading font-bold text-xl mb-2">Eco-Friendly Play</h3>
               <p className="text-muted-foreground">
-                Swap toys every month. Zero clutter. Maximum variety. Sustainable joy.
+                Sustainable toy rotation every month. Zero clutter. Maximum variety. Planet-friendly joy.
               </p>
             </GlowingCard>
             
@@ -141,12 +141,12 @@ const Home = () => {
           </div>
           
           <div className="text-center">
-            <div className="w-20 h-20 rounded-full flex items-center justify-center mx-auto mb-4 bg-red-200">
+            <div className="w-20 h-20 rounded-full flex items-center justify-center mx-auto mb-4 bg-accent/20">
               <span className="text-4xl">3️⃣</span>
             </div>
-            <h3 className="font-heading font-bold text-xl mb-2">Swap</h3>
+            <h3 className="font-heading font-bold text-xl mb-2">Refresh</h3>
             <p className="text-muted-foreground">
-              Exchange for new toys monthly. Keep the fun fresh, home clutter-free
+              A new JoyBox every 3 weeks at your doorstep. Keep the fun fresh, home clutter-free
             </p>
           </div>
         </div>
@@ -278,9 +278,9 @@ const Home = () => {
             <div className="flex gap-6 items-start">
               <div className="text-5xl">🌱</div>
               <div>
-                <h3 className="font-heading font-bold text-xl mb-2">Sustainable Future</h3>
+                <h3 className="font-heading font-bold text-xl mb-2">Eco-Sensitive Swapping</h3>
                 <p className="text-muted-foreground">
-                  Join the circular economy. One toy rotates to 12+ families per year.
+                  Join the circular economy. We swap toys between families sustainably - one toy rotates to 12+ children per year, reducing waste.
                 </p>
               </div>
             </div>

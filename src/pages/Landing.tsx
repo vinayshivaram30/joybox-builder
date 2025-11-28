@@ -135,9 +135,9 @@ const Landing = () => {
                 <TruckIcon className="text-accent" size={24} />
               </div>
               <div>
-                <h3 className="font-heading font-bold text-xl mb-2">Doorstep Swap</h3>
+                <h3 className="font-heading font-bold text-xl mb-2">Doorstep Delivery</h3>
                 <p className="text-muted-foreground">
-                  We pick up old toys and deliver new ones. Same day. Anywhere in Bengaluru.
+                  A new JoyBox every 3 weeks at your doorstep. Anywhere in Bengaluru.
                 </p>
               </div>
             </div>

@@ -27,12 +27,7 @@ const Home = () => {
         <ParticlesBackground colors={['#e91e63', '#00bcd4', '#ffc107']} size={3} countDesktop={80} countTablet={60} countMobile={40} zIndex={0} height="100%" />
         <div className="container mx-auto px-4 py-16 relative z-10">
           <div className="max-w-5xl mx-auto text-center">
-            <img 
-              src={logoSvg} 
-              alt="ToyLuv" 
-              className="h-24 md:h-32 w-auto mx-auto mb-8 drop-shadow-2xl animate-float"
-              loading="eager"
-            />
+            <img src={logoSvg} alt="ToyLuv" className="h-24 md:h-32 w-auto mx-auto mb-8 drop-shadow-2xl animate-float" loading="eager" />
             <h1 className="text-4xl md:text-6xl font-heading font-bold text-foreground mb-6 leading-tight">
               Making playtime{" "}
               <span className="text-primary">smarter</span> with every box
@@ -44,7 +39,7 @@ const Home = () => {
             
             <Link to="/quiz">
               <Button size="lg" className="text-xl px-16 py-8 h-auto mb-8 bg-gradient-to-r from-primary via-accent to-secondary hover:scale-105 transition-all duration-300 shadow-2xl shadow-primary/30 text-primary-foreground font-bold">
-                Find Your Child's Toy Personality ✨
+                Find Your Child's Toy Personality 
                 <Sparkles className="ml-2 animate-pulse" />
               </Button>
             </Link>

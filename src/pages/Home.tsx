@@ -40,7 +40,7 @@ const Home = () => {
             <Link to="/quiz">
               <Button size="lg" className="text-xl px-16 py-8 h-auto mb-8 bg-gradient-to-r from-primary via-accent to-secondary hover:scale-105 transition-all duration-300 shadow-2xl shadow-primary/30 text-primary-foreground font-bold">
                 Find Your Child's Toy Personality 
-                <Sparkles className="ml-2 animate-pulse" />
+                <Sparkles className="ml-2 animate-pulse mx-[9px]" />
               </Button>
             </Link>
             

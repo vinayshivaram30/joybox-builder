@@ -1,9 +1,34 @@
 import { motion } from "framer-motion";
 import { Navigation } from "@/components/Navigation";
 import { Footer } from "@/components/Footer";
-import { Sparkles, RefreshCw, Heart, BookOpen } from "lucide-react";
+import { Heart } from "lucide-react";
+import { TeamCarousel, TeamMember } from "@/components/TeamCarousel";
 
 const About = () => {
+  const teamMembers: TeamMember[] = [
+    {
+      id: "1",
+      name: "Santosh",
+      role: "Product experience and customer insights",
+      image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&h=500&fit=crop",
+      bio: "Passionate about creating solutions that truly make parenting easier and more joyful."
+    },
+    {
+      id: "2",
+      name: "Nilesh",
+      role: "Operations and logistics",
+      image: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=400&h=500&fit=crop",
+      bio: "Ensures every JoyBox is delivered on time, sanitized, and perfectly packed."
+    },
+    {
+      id: "3",
+      name: "Vinay",
+      role: "Technology and Play Personality Engine",
+      image: "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=400&h=500&fit=crop",
+      bio: "Builds the systems that help ToyLuv personalize toys for every child."
+    }
+  ];
+
   return (
     <div className="min-h-screen bg-gradient-to-b from-background via-background to-secondary/10">
       <Navigation />
@@ -229,47 +254,36 @@ const About = () => {
             </p>
             
             <h3 className="text-2xl font-semibold mb-6 text-center">Founders</h3>
-            <div className="grid md:grid-cols-3 gap-6 mb-8">
-              <div className="bg-gradient-to-br from-primary/10 to-primary/5 rounded-2xl p-6 border border-primary/20 text-center">
-                <div className="w-20 h-20 rounded-full bg-primary/20 flex items-center justify-center mx-auto mb-4">
-                  <span className="text-2xl font-bold text-primary">S</span>
-                </div>
-                <h4 className="text-xl font-semibold mb-2">Santosh</h4>
-                <p className="text-sm text-accent font-medium mb-3">Product experience and customer insights</p>
-                <p className="text-sm text-muted-foreground">
-                  Passionate about creating solutions that truly make parenting easier and more joyful.
-                </p>
-              </div>
+          </motion.div>
 
-              <div className="bg-gradient-to-br from-accent/10 to-accent/5 rounded-2xl p-6 border border-accent/20 text-center">
-                <div className="w-20 h-20 rounded-full bg-accent/20 flex items-center justify-center mx-auto mb-4">
-                  <span className="text-2xl font-bold text-accent">N</span>
-                </div>
-                <h4 className="text-xl font-semibold mb-2">Nilesh</h4>
-                <p className="text-sm text-accent font-medium mb-3">Operations and logistics</p>
-                <p className="text-sm text-muted-foreground">
-                  Ensures every JoyBox is delivered on time, sanitized, and perfectly packed.
-                </p>
-              </div>
+          {/* Team Carousel */}
+          <TeamCarousel 
+            members={teamMembers}
+            title="OUR TEAM"
+            titleSize="xl"
+            titleColor="hsl(var(--primary))"
+            cardWidth={300}
+            cardHeight={400}
+            showArrows={true}
+            showDots={true}
+            autoPlay={5000}
+            pauseOnHover={true}
+            infoPosition="bottom"
+            infoTextColor="hsl(var(--foreground))"
+            className="mb-16"
+          />
 
-              <div className="bg-gradient-to-br from-secondary/10 to-secondary/5 rounded-2xl p-6 border border-secondary/20 text-center">
-                <div className="w-20 h-20 rounded-full bg-secondary/20 flex items-center justify-center mx-auto mb-4">
-                  <span className="text-2xl font-bold text-secondary">V</span>
-                </div>
-                <h4 className="text-xl font-semibold mb-2">Vinay</h4>
-                <p className="text-sm text-accent font-medium mb-3">Technology and Play Personality Engine</p>
-                <p className="text-sm text-muted-foreground">
-                  Builds the systems that help ToyLuv personalize toys for every child.
-                </p>
-              </div>
-            </div>
-
-            <div className="bg-card/50 backdrop-blur-sm rounded-3xl p-8 border border-border/50">
-              <h4 className="text-xl font-semibold mb-3 text-center">Our team</h4>
-              <p className="text-muted-foreground text-center">
-                Alongside the founders, ToyLuv is supported by a small team of curators, hygiene specialists, and delivery partners dedicated to giving families a smooth, safe, and delightful experience.
-              </p>
-            </div>
+          {/* Our team support text */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 1.3 }}
+            className="bg-card/50 backdrop-blur-sm rounded-3xl p-8 border border-border/50 mb-12"
+          >
+            <h4 className="text-xl font-semibold mb-3 text-center">Our team</h4>
+            <p className="text-muted-foreground text-center">
+              Alongside the founders, ToyLuv is supported by a small team of curators, hygiene specialists, and delivery partners dedicated to giving families a smooth, safe, and delightful experience.
+            </p>
           </motion.div>
 
           {/* Mission Statement */}

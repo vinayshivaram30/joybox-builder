@@ -134,7 +134,7 @@ export const DynamicNavigation = ({
     }}></div>
 
       {/* Navigation Links */}
-      <ul className="relative z-10 p-1 w-full px-px py-px gap-0 border rounded-none flex items-center justify-center mx-px my-px">
+      <ul className="relative z-10 p-1 w-full px-px py-px gap-0 border rounded-none flex items-center justify-center mx-[3px] my-[3px]">
         {links.map(link => <li key={link.id}>
             <a id={`nav-item-${link.id}`} href={link.href} onClick={e => {
           e.preventDefault();

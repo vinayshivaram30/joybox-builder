@@ -236,7 +236,7 @@ const Features = () => {
               Seamless Logistics
             </h2>
             <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-              Hyperlocal Bengaluru service means fast delivery and easy swaps
+              Hyperlocal Bengaluru service means fast delivery and seamless exchanges
             </p>
           </div>
           
@@ -299,9 +299,9 @@ const Features = () => {
                   <span className="text-2xl">🔄</span>
                 </div>
                 <div>
-                  <h3 className="font-heading font-bold text-xl mb-2">Step 3: Monthly Swap</h3>
+                  <h3 className="font-heading font-bold text-xl mb-2">Step 3: New JoyBox Every 3 Weeks</h3>
                   <p className="text-muted-foreground">
-                    Every month, we pick up the old box and deliver a new one with fresh toys - same day service
+                    Every 3 weeks, we pick up the old box and deliver a fresh JoyBox with new toys - same day service
                   </p>
                 </div>
               </InteractiveGradient>
@@ -359,7 +359,7 @@ const Features = () => {
               <CheckCircle className="text-primary mx-auto mb-3" size={32} />
               <h3 className="font-heading font-bold mb-2">Quality Guarantee</h3>
               <p className="text-sm text-muted-foreground">
-                Not happy? Free swap within 48 hours
+                Not happy? Free replacement within 48 hours
               </p>
             </div>
             

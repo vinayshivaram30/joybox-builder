@@ -5,7 +5,7 @@ import { Footer } from "@/components/Footer";
 import { useScrollAnimation } from "@/hooks/useScrollAnimation";
 import { useParallax } from "@/hooks/useParallax";
 import heroImage from "@/assets/hero-toys.jpg";
-import { Sparkles, Shield, TruckIcon, Star, CheckCircle } from "lucide-react";
+import { Sparkles, Shield, TruckIcon, Star, CheckCircle, ClipboardList, Package, RefreshCw } from "lucide-react";
 import ParticlesBackground from "@/components/ParticlesBackground";
 import { OrbitCard } from "@/components/ui/orbit-card";
 import { GlowingCards, GlowingCard } from "@/components/ui/glowing-cards";
@@ -122,7 +122,7 @@ const Home = () => {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-5xl mx-auto">
           <div className="text-center">
             <div className="w-20 h-20 rounded-full bg-primary/20 flex items-center justify-center mx-auto mb-4">
-              <span className="text-4xl">1️⃣</span>
+              <ClipboardList className="text-primary" size={40} />
             </div>
             <h3 className="font-heading font-bold text-xl mb-2">Profile</h3>
             <p className="text-muted-foreground">
@@ -132,7 +132,7 @@ const Home = () => {
           
           <div className="text-center">
             <div className="w-20 h-20 rounded-full bg-secondary/20 flex items-center justify-center mx-auto mb-4">
-              <span className="text-4xl">2️⃣</span>
+              <Package className="text-secondary" size={40} />
             </div>
             <h3 className="font-heading font-bold text-xl mb-2">Play</h3>
             <p className="text-muted-foreground">
@@ -142,7 +142,7 @@ const Home = () => {
           
           <div className="text-center">
             <div className="w-20 h-20 rounded-full flex items-center justify-center mx-auto mb-4 bg-accent/20">
-              <span className="text-4xl">3️⃣</span>
+              <RefreshCw className="text-accent" size={40} />
             </div>
             <h3 className="font-heading font-bold text-xl mb-2">Refresh</h3>
             <p className="text-muted-foreground">

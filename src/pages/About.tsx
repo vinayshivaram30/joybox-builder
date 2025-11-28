@@ -3,6 +3,7 @@ import { Navigation } from "@/components/Navigation";
 import { Footer } from "@/components/Footer";
 import { Heart } from "lucide-react";
 import { TeamCarousel, TeamMember } from "@/components/TeamCarousel";
+import vinayPhoto from "@/assets/vinay-photo.png";
 
 const About = () => {
   const teamMembers: TeamMember[] = [
@@ -24,7 +25,7 @@ const About = () => {
       id: "3",
       name: "Vinay",
       role: "Technology and Play Personality Engine",
-      image: "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=400&h=500&fit=crop",
+      image: vinayPhoto,
       bio: "Builds the systems that help ToyLuv personalize toys for every child."
     }
   ];

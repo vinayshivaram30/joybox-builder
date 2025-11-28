@@ -1,13 +1,17 @@
 import { Link } from "react-router-dom";
 import { Instagram, Facebook, Twitter } from "lucide-react";
+import toyLuvLogo from "@/assets/toyluv-logo.svg";
+
 export const Footer = () => {
   return <footer className="bg-card border-t border-border mt-20">
       <div className="container mx-auto px-4 py-12">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
           <div>
-            <h3 className="font-heading font-bold mb-4 text-coral text-5xl">ToyLuv</h3>
-            <p className="text-sm text-muted-foreground text-left">AI-curated,  Hygienic toys delivered 
-across Bengaluru.</p>
+            <div className="flex items-center gap-2 mb-4">
+              <img src={toyLuvLogo} alt="ToyLuv" className="h-8 w-auto" />
+              <h3 className="font-heading font-bold text-coral text-3xl">ToyLuv</h3>
+            </div>
+            <p className="text-sm text-muted-foreground text-left">AI-curated, Hygienic toys delivered across Bengaluru.</p>
           </div>
           
           <div>
@@ -22,22 +26,22 @@ across Bengaluru.</p>
           <div>
             <h4 className="font-semibold mb-4">Support</h4>
             <ul className="space-y-2 text-sm">
-              <li><a href="#" className="text-muted-foreground hover:text-foreground transition-colors">Hygiene Standards</a></li>
-              <li><a href="#" className="text-muted-foreground hover:text-foreground transition-colors">FAQ</a></li>
-              <li><a href="#" className="text-muted-foreground hover:text-foreground transition-colors">Contact</a></li>
+              <li><Link to="/features" className="text-muted-foreground hover:text-foreground transition-colors">Hygiene Standards</Link></li>
+              <li><Link to="/faq" className="text-muted-foreground hover:text-foreground transition-colors">FAQ</Link></li>
+              <li><Link to="/contact" className="text-muted-foreground hover:text-foreground transition-colors">Contact</Link></li>
             </ul>
           </div>
           
           <div>
             <h4 className="font-semibold mb-4">Follow Us</h4>
             <div className="flex gap-4">
-              <a href="#" className="text-muted-foreground hover:text-primary transition-colors">
+              <a href="https://instagram.com/toyluv" target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-primary transition-colors">
                 <Instagram size={20} />
               </a>
-              <a href="#" className="text-muted-foreground hover:text-primary transition-colors">
+              <a href="https://facebook.com/toyluv" target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-primary transition-colors">
                 <Facebook size={20} />
               </a>
-              <a href="#" className="text-muted-foreground hover:text-primary transition-colors">
+              <a href="https://twitter.com/toyluv" target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-primary transition-colors">
                 <Twitter size={20} />
               </a>
             </div>

@@ -7,11 +7,10 @@ export const Footer = () => {
       <div className="container mx-auto px-4 py-12">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
           <div>
-            <div className="flex items-center gap-2 mb-4">
-              <img src={toyLuvLogo} alt="ToyLuv" className="h-8 w-auto" />
-              <h3 className="font-heading font-bold text-coral text-3xl">ToyLuv</h3>
+            <div className="mb-4">
+              <img src={toyLuvLogo} alt="ToyLuv" className="h-10 w-auto" />
             </div>
-            <p className="text-sm text-muted-foreground text-left">AI-curated, Hygienic toys delivered across Bengaluru.</p>
+            <p className="text-sm text-muted-foreground text-left">AI-curated, hygienic, high-value toys. Now in Bengaluru.</p>
           </div>
           
           <div>

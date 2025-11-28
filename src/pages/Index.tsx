@@ -151,8 +151,8 @@ const Index = () => {
     <div className="min-h-screen bg-background">
       {/* Hero Section */}
       {currentStep === "hero" && (
-        <div className="container mx-auto px-4 py-12 md:py-20">
-          <div className="max-w-4xl mx-auto text-center">
+        <div className="w-full px-4 sm:px-6 lg:px-8 py-8 sm:py-12 md:py-16 lg:py-20">
+          <div className="max-w-5xl mx-auto text-center">
             <div className="mb-8 rounded-3xl overflow-hidden shadow-2xl">
               <img
                 src={heroImage}
@@ -161,15 +161,15 @@ const Index = () => {
               />
             </div>
 
-            <h1 className="text-4xl md:text-6xl font-heading font-bold text-foreground mb-6 leading-tight">
+            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-heading font-bold text-foreground mb-4 sm:mb-6 leading-tight px-2">
               Find Your Child's Toy Personality in{" "}
               <span className="text-primary">60 Seconds</span>
             </h1>
 
-            <p className="text-xl md:text-2xl text-muted-foreground mb-4">
+            <p className="text-lg sm:text-xl md:text-2xl text-muted-foreground mb-3 sm:mb-4 px-4">
               Fun quiz. No payment needed.
             </p>
-            <p className="text-lg text-muted-foreground mb-10">
+            <p className="text-base sm:text-lg text-muted-foreground mb-8 sm:mb-10 px-4">
               Personalised JoyBox preview included.
             </p>
 
@@ -177,12 +177,12 @@ const Index = () => {
               variant="cta"
               size="lg"
               onClick={handleStartQuiz}
-              className="text-xl px-12 h-16"
+              className="text-lg sm:text-xl px-8 sm:px-12 h-14 sm:h-16"
             >
               Start the Quiz ✨
             </Button>
 
-            <div className="mt-12 flex items-center justify-center gap-8 text-sm text-muted-foreground">
+            <div className="mt-8 sm:mt-12 flex flex-wrap items-center justify-center gap-4 sm:gap-8 text-xs sm:text-sm text-muted-foreground px-4">
               <div className="flex items-center gap-2">
                 <span className="text-2xl">⚡</span>
                 <span>Takes 60 seconds</span>
@@ -202,7 +202,7 @@ const Index = () => {
 
       {/* Quiz Section */}
       {currentStep === "quiz" && (
-        <div className="container mx-auto px-4 py-12 md:py-20">
+        <div className="w-full px-4 sm:px-6 lg:px-8 py-8 sm:py-12 md:py-16 lg:py-20">
           <div className="max-w-2xl mx-auto mb-4 flex justify-end">
             <Button
               variant="ghost"
@@ -227,7 +227,7 @@ const Index = () => {
 
       {/* Result Section */}
       {currentStep === "result" && personalityResult && (
-        <div className="container mx-auto px-4 py-12 md:py-20">
+        <div className="w-full px-4 sm:px-6 lg:px-8 py-8 sm:py-12 md:py-16 lg:py-20">
           <PersonalityResult
             result={personalityResult}
             onContinue={handleContinueToSignup}
@@ -238,14 +238,14 @@ const Index = () => {
 
       {/* Signup Section */}
       {currentStep === "signup" && (
-        <div className="container mx-auto px-4 py-12 md:py-20">
+        <div className="w-full px-4 sm:px-6 lg:px-8 py-8 sm:py-12 md:py-16 lg:py-20">
           <SignupForm onSubmit={handleSignupSubmit} isLoading={isSaving} />
         </div>
       )}
 
       {/* JoyBox Preview Section */}
       {currentStep === "preview" && personalityResult && (
-        <div className="container mx-auto px-4 py-12 md:py-20">
+        <div className="w-full px-4 sm:px-6 lg:px-8 py-8 sm:py-12 md:py-16 lg:py-20">
           <JoyBoxPreview
             personalityType={personalityResult.title}
             childAge={userData?.childAge}

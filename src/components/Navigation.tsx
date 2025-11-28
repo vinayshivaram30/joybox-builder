@@ -72,13 +72,13 @@ export const Navigation = () => {
   };
   return (
     <nav className="sticky top-0 z-50 bg-background/95 backdrop-blur-md border-b border-border/50 shadow-sm">
-      <div className="container mx-auto px-4">
-        <div className="h-20 gap-4 items-center justify-between flex flex-row">
-          <Link to="/" className="block hover:opacity-80 transition-opacity">
+      <div className="w-full px-3 sm:px-4 lg:px-6">
+        <div className="h-16 sm:h-20 gap-2 sm:gap-4 items-center justify-between flex flex-row">
+          <Link to="/" className="block hover:opacity-80 transition-opacity flex-shrink-0">
             <img 
               src={logoSvg} 
               alt="ToyLuv Logo" 
-              className="h-14 w-auto md:h-16"
+              className="h-10 sm:h-12 md:h-14 lg:h-16 w-auto"
               loading="eager"
             />
           </Link>

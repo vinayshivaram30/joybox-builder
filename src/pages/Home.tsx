@@ -23,22 +23,22 @@ const Home = () => {
       <FloatingQuizButton />
       
       {/* Hero Section - Full Width */}
-      <section className="relative w-full min-h-[90vh] flex items-center justify-center bg-gradient-to-br from-primary/15 via-background to-accent/15 overflow-hidden">
+      <section className="relative w-full min-h-[85vh] sm:min-h-[90vh] flex items-center justify-center bg-gradient-to-br from-primary/15 via-background to-accent/15 overflow-hidden">
         <ParticlesBackground colors={['#e91e63', '#00bcd4', '#ffc107']} size={3} countDesktop={80} countTablet={60} countMobile={40} zIndex={0} height="100%" />
-        <div className="container mx-auto px-4 py-16 relative z-10">
-          <div className="max-w-5xl mx-auto text-center">
-            <img src={logoSvg} alt="ToyLuv" className="h-24 md:h-32 w-auto mx-auto mb-8 drop-shadow-2xl animate-float" loading="eager" />
-            <h1 className="text-4xl md:text-6xl font-heading font-bold text-foreground mb-6 leading-tight">
+        <div className="w-full px-4 sm:px-6 lg:px-8 py-12 sm:py-16 relative z-10">
+          <div className="max-w-6xl mx-auto text-center">
+            <img src={logoSvg} alt="ToyLuv" className="h-16 sm:h-24 md:h-32 w-auto mx-auto mb-6 sm:mb-8 drop-shadow-2xl animate-float" loading="eager" />
+            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-heading font-bold text-foreground mb-4 sm:mb-6 leading-tight px-2">
               Making playtime{" "}
               <span className="text-primary">smarter</span> with every box
             </h1>
             
-            <p className="text-xl md:text-2xl text-muted-foreground mb-12">
+            <p className="text-lg sm:text-xl md:text-2xl text-muted-foreground mb-8 sm:mb-12 px-4">
               AI-curated, hygienic, high-value toys. Now in Bengaluru.
             </p>
             
             <Link to="/quiz">
-              <Button size="lg" className="px-16 py-8 h-auto mb-8 bg-gradient-to-r from-primary via-accent to-secondary hover:scale-105 transition-all duration-300 shadow-2xl shadow-primary/30 text-primary-foreground font-bold text-2xl">
+              <Button size="lg" className="px-8 sm:px-12 md:px-16 py-6 sm:py-8 h-auto mb-6 sm:mb-8 bg-gradient-to-r from-primary via-accent to-secondary hover:scale-105 transition-all duration-300 shadow-2xl shadow-primary/30 text-primary-foreground font-bold text-lg sm:text-xl md:text-2xl">
                 Find Your Child's Toy Personality 
                 <Sparkles className="ml-2 animate-pulse mx-[5px]" />
               </Button>
@@ -50,8 +50,8 @@ const Home = () => {
       </section>
       
       {/* Value Proposition Grid */}
-      <section className="bg-muted/30 py-20">
-        <div className="container mx-auto px-4">
+      <section className="bg-muted/30 py-12 sm:py-16 lg:py-20">
+        <div className="w-full px-4 sm:px-6 lg:px-8">
           <div ref={valuePropsAnim.ref} className={`transition-all duration-700 max-w-6xl mx-auto ${valuePropsAnim.isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
             <GlowingCards enableGlow={true} glowRadius={20} glowOpacity={0.8} gap="1.5rem" padding="0">
               <GlowingCard glowColor="#e91e63">
@@ -99,17 +99,17 @@ const Home = () => {
       </section>
       
       {/* The JoyLoop */}
-      <section className="container mx-auto px-4 py-16">
-        <div className="max-w-4xl mx-auto text-center mb-12">
-          <h2 className="text-3xl md:text-5xl font-heading font-bold mb-4">
+      <section className="w-full px-4 sm:px-6 lg:px-8 py-12 sm:py-16">
+        <div className="max-w-5xl mx-auto text-center mb-8 sm:mb-12">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-heading font-bold mb-3 sm:mb-4">
             The JoyLoop
           </h2>
-          <p className="text-lg text-muted-foreground">
+          <p className="text-base sm:text-lg text-muted-foreground px-4">
             Three simple steps to endless play possibilities
           </p>
         </div>
         
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-5xl mx-auto">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8 max-w-6xl mx-auto">
           <div className="text-center">
             <div className="w-20 h-20 rounded-full bg-primary/20 flex items-center justify-center mx-auto mb-4">
               <ClipboardList className="text-primary" size={40} />
@@ -143,12 +143,12 @@ const Home = () => {
       </section>
       
       {/* Toy Brands */}
-      <section ref={showcaseAnim.ref} className={`container mx-auto px-4 py-16 bg-muted/30 rounded-3xl transition-all duration-700 delay-200 ${showcaseAnim.isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
-        <div className="text-center mb-12">
-          <h2 className="text-3xl md:text-4xl font-heading font-bold mb-4">
+      <section ref={showcaseAnim.ref} className={`w-full px-4 sm:px-6 lg:px-8 py-12 sm:py-16 bg-muted/30 transition-all duration-700 delay-200 ${showcaseAnim.isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
+        <div className="text-center mb-8 sm:mb-12">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl font-heading font-bold mb-3 sm:mb-4">
             Premium Brands You Trust
           </h2>
-          <p className="text-lg text-muted-foreground">
+          <p className="text-base sm:text-lg text-muted-foreground px-4">
             We partner with the world's best toy makers
           </p>
         </div>
@@ -197,14 +197,14 @@ const Home = () => {
       </section>
       
       {/* Community Proof */}
-      <section ref={testimonialsAnim.ref} className={`container mx-auto px-4 py-16 transition-all duration-700 delay-300 ${testimonialsAnim.isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
-        <div className="text-center mb-12">
-          <h2 className="text-3xl md:text-4xl font-heading font-bold mb-4">
+      <section ref={testimonialsAnim.ref} className={`w-full px-4 sm:px-6 lg:px-8 py-12 sm:py-16 transition-all duration-700 delay-300 ${testimonialsAnim.isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
+        <div className="text-center mb-8 sm:mb-12">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl font-heading font-bold mb-3 sm:mb-4">
             Loved by Bengaluru Parents
           </h2>
         </div>
         
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-5xl mx-auto">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 max-w-6xl mx-auto">
           <div className="glass-card p-6">
             <div className="flex gap-1 mb-3">
               {[...Array(5)].map((_, i) => <Star key={i} className="fill-yellow-500 text-yellow-500" size={16} />)}
@@ -238,9 +238,9 @@ const Home = () => {
       </section>
       
       {/* Why Parents Choose ToyLuv */}
-      <section className="container mx-auto px-4 py-16">
-        <div className="max-w-4xl mx-auto">
-          <h2 className="text-3xl md:text-4xl font-heading font-bold text-center mb-12">
+      <section className="w-full px-4 sm:px-6 lg:px-8 py-12 sm:py-16">
+        <div className="max-w-5xl mx-auto">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl font-heading font-bold text-center mb-8 sm:mb-12">
             Why Parents Choose ToyLuv
           </h2>
           
@@ -285,18 +285,18 @@ const Home = () => {
       </section>
       
       {/* Final CTA */}
-      <section className="bg-gradient-to-br from-primary/10 via-secondary/10 to-accent/10 py-20">
-        <div className="container mx-auto px-4">
-          <OrbitCard className="max-w-3xl mx-auto">
-            <div className="text-center p-8">
-              <h2 className="text-3xl md:text-4xl font-heading font-bold mb-4">
+      <section className="bg-gradient-to-br from-primary/10 via-secondary/10 to-accent/10 py-12 sm:py-16 lg:py-20">
+        <div className="w-full px-4 sm:px-6 lg:px-8">
+          <OrbitCard className="max-w-4xl mx-auto">
+            <div className="text-center p-6 sm:p-8">
+              <h2 className="text-2xl sm:text-3xl md:text-4xl font-heading font-bold mb-3 sm:mb-4">
                 Ready to Start the JoyLoop?
               </h2>
-              <p className="text-lg text-muted-foreground mb-8">
+              <p className="text-base sm:text-lg text-muted-foreground mb-6 sm:mb-8 px-4">
                 Discover your child's play personality in 60 seconds
               </p>
               <Link to="/quiz">
-                <Button size="lg" className="text-xl px-12 py-6 h-auto bg-gradient-to-r from-primary via-accent to-secondary hover:scale-105 transition-all shadow-xl text-primary-foreground font-bold">
+                <Button size="lg" className="text-lg sm:text-xl px-8 sm:px-12 py-5 sm:py-6 h-auto bg-gradient-to-r from-primary via-accent to-secondary hover:scale-105 transition-all shadow-xl text-primary-foreground font-bold">
                   Take the Quiz Now
                   <Sparkles className="ml-2" />
                 </Button>

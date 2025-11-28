@@ -249,6 +249,7 @@ const Index = () => {
           <JoyBoxPreview
             personalityType={personalityResult.title}
             childAge={userData?.childAge}
+            onRetakeQuiz={handleResetQuiz}
           />
         </div>
       )}

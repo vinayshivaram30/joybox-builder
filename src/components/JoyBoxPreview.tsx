@@ -9,9 +9,10 @@ import { supabase } from "@/integrations/supabase/client";
 interface JoyBoxPreviewProps {
   personalityType: string;
   childAge?: string;
+  onRetakeQuiz?: () => void;
 }
 
-export const JoyBoxPreview = ({ personalityType, childAge }: JoyBoxPreviewProps) => {
+export const JoyBoxPreview = ({ personalityType, childAge, onRetakeQuiz }: JoyBoxPreviewProps) => {
   const navigate = useNavigate();
   const [toys, setToys] = useState<RecommendedToy[]>([]);
   const [loading, setLoading] = useState(true);
@@ -82,9 +83,16 @@ export const JoyBoxPreview = ({ personalityType, childAge }: JoyBoxPreviewProps)
             <p className="text-muted-foreground mb-6">
               Check back soon as we add more toys to our inventory!
             </p>
-            <Button onClick={() => navigate("/pricing")} variant="cta">
-              View Our Plans
-            </Button>
+            <div className="flex flex-col md:flex-row gap-4 justify-center">
+              {onRetakeQuiz && (
+                <Button onClick={onRetakeQuiz} variant="outline" size="lg">
+                  Retake Quiz
+                </Button>
+              )}
+              <Button onClick={() => navigate("/pricing")} variant="cta" size="lg">
+                View Our Plans
+              </Button>
+            </div>
           </div>
         ) : (
           <>

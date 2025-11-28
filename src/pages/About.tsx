@@ -5,6 +5,7 @@ import { Heart } from "lucide-react";
 import { TeamCarousel, TeamMember } from "@/components/TeamCarousel";
 import vinayPhoto from "@/assets/vinay-photo.png";
 import santoshPhoto from "@/assets/santosh-photo.png";
+import nileshPhoto from "@/assets/nilesh-photo.png";
 
 const About = () => {
   const teamMembers: TeamMember[] = [
@@ -19,7 +20,7 @@ const About = () => {
       id: "2",
       name: "Nilesh",
       role: "Operations and logistics",
-      image: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=400&h=500&fit=crop",
+      image: nileshPhoto,
       bio: "Ensures every JoyBox is delivered on time, sanitized, and perfectly packed."
     },
     {

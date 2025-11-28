@@ -141,7 +141,7 @@ const Home = () => {
           </div>
           
           <div className="text-center">
-            <div className="w-20 h-20 rounded-full flex items-center justify-center mx-auto mb-4 bg-accent/20">
+            <div className="w-20 h-20 rounded-full flex items-center justify-center mx-auto mb-4 bg-muted">
               <RefreshCw className="text-accent" size={40} />
             </div>
             <h3 className="font-heading font-bold text-xl mb-2">Refresh</h3>

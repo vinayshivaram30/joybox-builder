@@ -5,6 +5,16 @@ import { getRecommendedToys, RecommendedToy } from "@/lib/toyRecommendations";
 import { Loader2 } from "lucide-react";
 import { ToyRating } from "@/components/ToyRating";
 import { supabase } from "@/integrations/supabase/client";
+import {
+  AlertDialog,
+  AlertDialogAction,
+  AlertDialogCancel,
+  AlertDialogContent,
+  AlertDialogDescription,
+  AlertDialogFooter,
+  AlertDialogHeader,
+  AlertDialogTitle,
+} from "@/components/ui/alert-dialog";
 
 interface JoyBoxPreviewProps {
   personalityType: string;
@@ -17,6 +27,7 @@ export const JoyBoxPreview = ({ personalityType, childAge, onRetakeQuiz }: JoyBo
   const [toys, setToys] = useState<RecommendedToy[]>([]);
   const [loading, setLoading] = useState(true);
   const [ratings, setRatings] = useState<Record<string, { average: number; count: number }>>({});
+  const [showRetakeDialog, setShowRetakeDialog] = useState(false);
 
   useEffect(() => {
     loadRecommendedToys();
@@ -50,6 +61,17 @@ export const JoyBoxPreview = ({ personalityType, childAge, onRetakeQuiz }: JoyBo
   };
 
   const totalValue = toys.reduce((sum, toy) => sum + (toy.price || 0), 0);
+
+  const handleRetakeClick = () => {
+    setShowRetakeDialog(true);
+  };
+
+  const handleConfirmRetake = () => {
+    setShowRetakeDialog(false);
+    if (onRetakeQuiz) {
+      onRetakeQuiz();
+    }
+  };
 
   if (loading) {
     return (
@@ -156,14 +178,25 @@ export const JoyBoxPreview = ({ personalityType, childAge, onRetakeQuiz }: JoyBo
             )}
 
             <div className="text-center space-y-4">
-              <Button
-                variant="cta"
-                size="lg"
-                className="w-full md:w-auto min-w-[300px]"
-                onClick={() => navigate("/pricing")}
-              >
-                Start My Subscription
-              </Button>
+              <div className="flex flex-col md:flex-row gap-4 justify-center">
+                <Button
+                  variant="cta"
+                  size="lg"
+                  className="w-full md:w-auto min-w-[300px]"
+                  onClick={() => navigate("/pricing")}
+                >
+                  Start My Subscription
+                </Button>
+                {onRetakeQuiz && (
+                  <Button
+                    variant="outline"
+                    size="lg"
+                    onClick={handleRetakeClick}
+                  >
+                    Retake Quiz
+                  </Button>
+                )}
+              </div>
               <p className="text-sm text-muted-foreground">
                 No commitment • Cancel anytime • Free delivery in Bengaluru
               </p>
@@ -171,6 +204,23 @@ export const JoyBoxPreview = ({ personalityType, childAge, onRetakeQuiz }: JoyBo
           </>
         )}
       </div>
+
+      <AlertDialog open={showRetakeDialog} onOpenChange={setShowRetakeDialog}>
+        <AlertDialogContent>
+          <AlertDialogHeader>
+            <AlertDialogTitle>Retake Quiz?</AlertDialogTitle>
+            <AlertDialogDescription>
+              This will reset your current quiz results and personality type. You'll need to answer all questions again to get a new personalized JoyBox.
+            </AlertDialogDescription>
+          </AlertDialogHeader>
+          <AlertDialogFooter>
+            <AlertDialogCancel>Cancel</AlertDialogCancel>
+            <AlertDialogAction onClick={handleConfirmRetake}>
+              Yes, Retake Quiz
+            </AlertDialogAction>
+          </AlertDialogFooter>
+        </AlertDialogContent>
+      </AlertDialog>
     </div>
   );
 };

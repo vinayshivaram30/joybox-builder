@@ -5,7 +5,7 @@ import { Footer } from "@/components/Footer";
 import { useScrollAnimation } from "@/hooks/useScrollAnimation";
 import { useParallax } from "@/hooks/useParallax";
 import heroImage from "@/assets/hero-toys.jpg";
-import { Sparkles, Shield, TruckIcon, Star, CheckCircle, ClipboardList, Package, RefreshCw } from "lucide-react";
+import { Sparkles, Shield, TruckIcon, Star, CheckCircle, ClipboardList, Package, RefreshCw, Wallet, Brain, Leaf } from "lucide-react";
 import ParticlesBackground from "@/components/ParticlesBackground";
 import { OrbitCard } from "@/components/ui/orbit-card";
 import { GlowingCards, GlowingCard } from "@/components/ui/glowing-cards";
@@ -256,7 +256,9 @@ const Home = () => {
           
           <div className="space-y-8">
             <div className="flex gap-6 items-start">
-              <div className="text-5xl">💰</div>
+              <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-green-500/20 to-emerald-500/20 flex items-center justify-center flex-shrink-0">
+                <Wallet className="w-8 h-8 text-green-500" />
+              </div>
               <div>
                 <h3 className="font-heading font-bold text-xl mb-2">Save Up to 80%</h3>
                 <p className="text-muted-foreground">
@@ -266,7 +268,9 @@ const Home = () => {
             </div>
             
             <div className="flex gap-6 items-start">
-              <div className="text-5xl">🧠</div>
+              <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-purple-500/20 to-pink-500/20 flex items-center justify-center flex-shrink-0">
+                <Brain className="w-8 h-8 text-purple-500" />
+              </div>
               <div>
                 <h3 className="font-heading font-bold text-xl mb-2">Developmental Match</h3>
                 <p className="text-muted-foreground">
@@ -276,7 +280,9 @@ const Home = () => {
             </div>
             
             <div className="flex gap-6 items-start">
-              <div className="text-5xl">🌱</div>
+              <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-teal-500/20 to-cyan-500/20 flex items-center justify-center flex-shrink-0">
+                <Leaf className="w-8 h-8 text-teal-500" />
+              </div>
               <div>
                 <h3 className="font-heading font-bold text-xl mb-2">Eco-Sensitive Rotation</h3>
                 <p className="text-muted-foreground">

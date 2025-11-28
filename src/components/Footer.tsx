@@ -1,7 +1,6 @@
 import { Link } from "react-router-dom";
 import { Instagram, Facebook, Twitter } from "lucide-react";
 import toyLuvLogo from "@/assets/toyluv-logo.svg";
-
 export const Footer = () => {
   return <footer className="bg-card border-t border-border mt-20">
       <div className="container mx-auto px-4 py-12">
@@ -10,7 +9,8 @@ export const Footer = () => {
             <div className="mb-4">
               <img src={toyLuvLogo} alt="ToyLuv" className="h-10 w-auto" />
             </div>
-            <p className="text-sm text-muted-foreground text-left">AI-curated, hygienic, high-value toys. Now in Bengaluru.</p>
+            <p className="text-sm text-muted-foreground text-left">AI-curated, hygienic, high-value toys.
+Now in Bengaluru.</p>
           </div>
           
           <div>

@@ -14,27 +14,31 @@ All colors MUST be HSL.
 
 @layer base {
   :root {
-    --background: 0 0% 96%;
+    --background: 0 0% 100%;
     --foreground: 0 0% 9%;
 
     --card: 0 0% 98%;
     --card-foreground: 0 0% 9%;
 
-    --popover: 0 0% 89%;
+    --popover: 0 0% 98%;
     --popover-foreground: 0 0% 9%;
 
-    --primary: 243 75% 58%;
-    --primary-foreground: 225 100% 96%;
+    /* Purple brand color */
+    --primary: 270 80% 55%;
+    --primary-foreground: 0 0% 100%;
 
-    --secondary: 0 0% 32%;
-    --secondary-foreground: 0 0% 98%;
+    /* Darker purple for secondary */
+    --secondary: 270 50% 35%;
+    --secondary-foreground: 0 0% 100%;
 
-    --muted: 0 0% 63%;
-    --muted-foreground: 0 0% 9%;
+    --muted: 0 0% 95%;
+    --muted-foreground: 0 0% 40%;
 
-    --accent: 250 100% 97%;
-    --accent-foreground: 258 89% 66%;
+    /* Yellow accent */
+    --accent: 45 100% 55%;
+    --accent-foreground: 0 0% 9%;
 
+    /* Keep coral for additional variety */
     --coral: 8 100% 74%;
     --coral-foreground: 0 0% 100%;
 
@@ -91,17 +95,19 @@ All colors MUST be HSL.
     --popover: 0 0% 25%;
     --popover-foreground: 0 0% 98%;
 
-    --primary: 234 89% 73%;
-    --primary-foreground: 243 47% 20%;
+    /* Lighter purple for dark mode */
+    --primary: 270 70% 65%;
+    --primary-foreground: 0 0% 9%;
 
-    --secondary: 0 0% 45%;
+    --secondary: 270 60% 45%;
     --secondary-foreground: 0 0% 98%;
 
-    --muted: 0 0% 45%;
-    --muted-foreground: 0 0% 98%;
+    --muted: 0 0% 20%;
+    --muted-foreground: 0 0% 70%;
 
-    --accent: 261 72% 22%;
-    --accent-foreground: 255 91% 76%;
+    /* Brighter yellow for dark mode visibility */
+    --accent: 45 100% 60%;
+    --accent-foreground: 0 0% 9%;
 
     --coral: 8 100% 74%;
 

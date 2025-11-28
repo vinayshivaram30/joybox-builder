@@ -12,6 +12,7 @@ import { GlowingCards, GlowingCard } from "@/components/ui/glowing-cards";
 import { SlidingLogoMarquee } from "@/components/ui/sliding-logo-marquee";
 import { TrustedUsers } from "@/components/TrustedUsers";
 import { AuroraTextEffect } from "@/components/ui/aurora-text-effect";
+import { FloatingQuizButton } from "@/components/FloatingQuizButton";
 const Home = () => {
   const heroParallax = useParallax(0.3);
   const valuePropsAnim = useScrollAnimation(0.2);
@@ -19,92 +20,98 @@ const Home = () => {
   const testimonialsAnim = useScrollAnimation(0.2);
   return <div className="min-h-screen bg-background">
       <Navigation />
+      <FloatingQuizButton />
       
-      {/* Hero Section */}
-      <section className="container mx-auto px-4 py-16 md:py-24 relative">
-        <ParticlesBackground colors={['#ff223e', '#5d1eb2', '#ff7300']} size={3} countDesktop={60} countTablet={50} countMobile={40} zIndex={0} height="100%" />
-        <div className="max-w-4xl mx-auto text-center relative z-10">
-          <AuroraTextEffect text="ToyLuv" fontSize="clamp(3rem, 10vw, 6rem)" colors={{
-          first: "bg-primary",
-          second: "bg-accent",
-          third: "bg-secondary",
-          fourth: "bg-coral"
-        }} blurAmount="blur-2xl" animationSpeed={{
-          border: 8,
-          first: 6,
-          second: 7,
-          third: 4,
-          fourth: 10
-        }} className="mb-6 h-32 md:h-40 bg-stone-100" />
-          <h1 className="text-3xl md:text-5xl font-heading font-bold text-foreground mb-6 leading-tight">
-            Making playtime{" "}
-            <span className="text-primary">smarter</span> with every box
-          </h1>
-          
-          <p className="text-xl md:text-2xl text-muted-foreground mb-8">
-            AI-curated, hygienic, high-value toys, Now in Bengaluru.
-          </p>
-          
-          <Link to="/quiz">
-            <Button variant="cta" size="lg" className="text-lg px-12 h-14 mb-8">
-              Find Your Child's Toy Personality in 60 Seconds ✨
-            </Button>
-          </Link>
-          
-          <TrustedUsers avatars={["https://api.dicebear.com/7.x/avataaars/svg?seed=Sarah", "https://api.dicebear.com/7.x/avataaars/svg?seed=Michael", "https://api.dicebear.com/7.x/avataaars/svg?seed=Priya", "https://api.dicebear.com/7.x/avataaars/svg?seed=Rajesh", "https://api.dicebear.com/7.x/avataaars/svg?seed=Ananya"]} rating={5} totalUsersText={2500} caption="Loved by" starColorClass="text-accent" ringColors={["ring-primary", "ring-secondary", "ring-accent", "ring-coral", "ring-primary"]} className="mb-12" />
-          
-          <div className="rounded-3xl overflow-hidden shadow-2xl mb-12">
-            <div ref={heroParallax} className="parallax-slow">
-              <img src={heroImage} alt="JoyBox filled with colorful educational toys" className="w-full h-auto animate-float" />
+      {/* Hero Section - Full Width */}
+      <section className="relative w-full min-h-[90vh] flex items-center justify-center bg-gradient-to-br from-primary/10 via-background to-accent/10 overflow-hidden">
+        <ParticlesBackground colors={['#9333ea', '#fbbf24', '#a855f7']} size={3} countDesktop={80} countTablet={60} countMobile={40} zIndex={0} height="100%" />
+        <div className="container mx-auto px-4 py-16 relative z-10">
+          <div className="max-w-5xl mx-auto text-center">
+            <AuroraTextEffect text="ToyLuv" fontSize="clamp(3rem, 10vw, 6rem)" colors={{
+            first: "bg-primary",
+            second: "bg-accent",
+            third: "bg-secondary",
+            fourth: "bg-coral"
+          }} blurAmount="blur-2xl" animationSpeed={{
+            border: 8,
+            first: 6,
+            second: 7,
+            third: 4,
+            fourth: 10
+          }} className="mb-6 h-32 md:h-40" />
+            <h1 className="text-4xl md:text-6xl font-heading font-bold text-foreground mb-6 leading-tight">
+              Making playtime{" "}
+              <span className="text-primary">smarter</span> with every box
+            </h1>
+            
+            <p className="text-xl md:text-2xl text-muted-foreground mb-12">
+              AI-curated, hygienic, high-value toys. Now in Bengaluru.
+            </p>
+            
+            <Link to="/quiz">
+              <Button size="lg" className="text-xl px-16 py-8 h-auto mb-8 bg-gradient-to-r from-accent via-yellow-400 to-accent hover:scale-105 transition-all duration-300 shadow-2xl shadow-accent/50 text-foreground font-bold">
+                Find Your Child's Toy Personality ✨
+                <Sparkles className="ml-2 animate-pulse" />
+              </Button>
+            </Link>
+            
+            <TrustedUsers avatars={["https://api.dicebear.com/7.x/avataaars/svg?seed=Sarah", "https://api.dicebear.com/7.x/avataaars/svg?seed=Michael", "https://api.dicebear.com/7.x/avataaars/svg?seed=Priya", "https://api.dicebear.com/7.x/avataaars/svg?seed=Rajesh", "https://api.dicebear.com/7.x/avataaars/svg?seed=Ananya"]} rating={5} totalUsersText={2500} caption="Loved by" starColorClass="text-yellow-500" ringColors={["ring-primary", "ring-secondary", "ring-accent", "ring-coral", "ring-primary"]} className="mb-12" />
+            
+            <div className="rounded-3xl overflow-hidden shadow-2xl max-w-3xl mx-auto">
+              <div ref={heroParallax} className="parallax-slow">
+                <img src={heroImage} alt="JoyBox filled with colorful educational toys" className="w-full h-auto" loading="eager" />
+              </div>
             </div>
           </div>
         </div>
       </section>
       
       {/* Value Proposition Grid */}
-      <section className="container mx-auto px-4 py-16">
-        <div ref={valuePropsAnim.ref} className={`transition-all duration-700 ${valuePropsAnim.isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
-          <GlowingCards enableGlow={true} glowRadius={20} glowOpacity={0.8} gap="1.5rem" padding="0">
-            <GlowingCard glowColor="#8B5CF6">
-              <div className="w-12 h-12 rounded-full bg-primary/20 flex items-center justify-center mb-4">
-                <Sparkles className="text-primary" size={24} />
-              </div>
-              <h3 className="font-heading font-bold text-xl mb-2">AI Curation</h3>
-              <p className="text-muted-foreground">
-                Toys matched to your child's unique play personality and developmental stage.
-              </p>
-            </GlowingCard>
-            
-            <GlowingCard glowColor="#64748B">
-              <div className="w-12 h-12 rounded-full bg-secondary/20 flex items-center justify-center mb-4">
-                <Shield className="text-secondary" size={24} />
-              </div>
-              <h3 className="font-heading font-bold text-xl mb-2">Hygiene Shield</h3>
-              <p className="text-muted-foreground">
-                Hospital-grade cleaning with UV-C sterilization and vacuum sealing.
-              </p>
-            </GlowingCard>
-            
-            <GlowingCard glowColor="#14B8A6">
-              <div className="w-12 h-12 rounded-full flex items-center justify-center mb-4 bg-teal-500/20">
-                <CheckCircle size={24} className="text-teal-500" />
-              </div>
-              <h3 className="font-heading font-bold text-xl mb-2">Eco-Friendly Play</h3>
-              <p className="text-muted-foreground">
-                Sustainable toy rotation every month. Zero clutter. Maximum variety. Planet-friendly joy.
-              </p>
-            </GlowingCard>
-            
-            <GlowingCard glowColor="#FF6B6B">
-              <div className="w-12 h-12 rounded-full bg-coral/20 flex items-center justify-center mb-4">
-                <TruckIcon className="text-coral" size={24} />
-              </div>
-              <h3 className="font-heading font-bold text-xl mb-2">Bengaluru Delivery</h3>
-              <p className="text-muted-foreground">
-                Hyperlocal service. Doorstep pickup and delivery within 48 hours.
-              </p>
-            </GlowingCard>
-          </GlowingCards>
+      <section className="bg-muted/30 py-20">
+        <div className="container mx-auto px-4">
+          <div ref={valuePropsAnim.ref} className={`transition-all duration-700 max-w-6xl mx-auto ${valuePropsAnim.isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
+            <GlowingCards enableGlow={true} glowRadius={20} glowOpacity={0.8} gap="1.5rem" padding="0">
+              <GlowingCard glowColor="#a855f7">
+                <div className="w-12 h-12 rounded-full bg-primary/20 flex items-center justify-center mb-4">
+                  <Sparkles className="text-primary" size={24} />
+                </div>
+                <h3 className="font-heading font-bold text-xl mb-2">AI Curation</h3>
+                <p className="text-muted-foreground">
+                  Toys matched to your child's unique play personality and developmental stage.
+                </p>
+              </GlowingCard>
+              
+              <GlowingCard glowColor="#9333ea">
+                <div className="w-12 h-12 rounded-full bg-secondary/20 flex items-center justify-center mb-4">
+                  <Shield className="text-secondary" size={24} />
+                </div>
+                <h3 className="font-heading font-bold text-xl mb-2">Hygiene Shield</h3>
+                <p className="text-muted-foreground">
+                  Hospital-grade cleaning with UV-C sterilization and vacuum sealing.
+                </p>
+              </GlowingCard>
+              
+              <GlowingCard glowColor="#fbbf24">
+                <div className="w-12 h-12 rounded-full flex items-center justify-center mb-4 bg-accent/20">
+                  <CheckCircle size={24} className="text-accent" />
+                </div>
+                <h3 className="font-heading font-bold text-xl mb-2">Eco-Friendly Play</h3>
+                <p className="text-muted-foreground">
+                  Sustainable toy rotation every month. Zero clutter. Maximum variety. Planet-friendly joy.
+                </p>
+              </GlowingCard>
+              
+              <GlowingCard glowColor="#fbbf24">
+                <div className="w-12 h-12 rounded-full bg-accent/20 flex items-center justify-center mb-4">
+                  <TruckIcon className="text-accent" size={24} />
+                </div>
+                <h3 className="font-heading font-bold text-xl mb-2">Bengaluru Delivery</h3>
+                <p className="text-muted-foreground">
+                  Hyperlocal service. Doorstep pickup and delivery within 48 hours.
+                </p>
+              </GlowingCard>
+            </GlowingCards>
+          </div>
         </div>
       </section>
       
@@ -295,22 +302,25 @@ const Home = () => {
       </section>
       
       {/* Final CTA */}
-      <section className="container mx-auto px-4 py-16">
-        <OrbitCard className="max-w-3xl mx-auto">
-          <div className="text-center p-6">
-            <h2 className="text-3xl md:text-4xl font-heading font-bold mb-4">
-              Ready to Start the JoyLoop?
-            </h2>
-            <p className="text-lg text-muted-foreground mb-8">
-              Discover your child's play personality in 60 seconds
-            </p>
-            <Link to="/quiz">
-              <Button variant="cta" size="lg" className="text-lg px-12 h-14">
-                Take the Quiz Now
-              </Button>
-            </Link>
-          </div>
-        </OrbitCard>
+      <section className="bg-gradient-to-br from-primary/10 via-accent/10 to-secondary/10 py-20">
+        <div className="container mx-auto px-4">
+          <OrbitCard className="max-w-3xl mx-auto">
+            <div className="text-center p-8">
+              <h2 className="text-3xl md:text-4xl font-heading font-bold mb-4">
+                Ready to Start the JoyLoop?
+              </h2>
+              <p className="text-lg text-muted-foreground mb-8">
+                Discover your child's play personality in 60 seconds
+              </p>
+              <Link to="/quiz">
+                <Button size="lg" className="text-xl px-12 py-6 h-auto bg-gradient-to-r from-accent to-yellow-400 hover:scale-105 transition-all shadow-xl text-foreground font-bold">
+                  Take the Quiz Now
+                  <Sparkles className="ml-2" />
+                </Button>
+              </Link>
+            </div>
+          </OrbitCard>
+        </div>
       </section>
       
       <Footer />

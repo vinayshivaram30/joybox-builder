@@ -4,6 +4,7 @@ import { Footer } from "@/components/Footer";
 import { Heart } from "lucide-react";
 import { TeamCarousel, TeamMember } from "@/components/TeamCarousel";
 import vinayPhoto from "@/assets/vinay-photo.png";
+import santoshPhoto from "@/assets/santosh-photo.png";
 
 const About = () => {
   const teamMembers: TeamMember[] = [
@@ -11,7 +12,7 @@ const About = () => {
       id: "1",
       name: "Santosh",
       role: "Product experience and customer insights",
-      image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&h=500&fit=crop",
+      image: santoshPhoto,
       bio: "Passionate about creating solutions that truly make parenting easier and more joyful."
     },
     {

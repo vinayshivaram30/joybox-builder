@@ -38,7 +38,7 @@ const Home = () => {
             </p>
             
             <Link to="/quiz">
-              <Button size="lg" className="sm:px-12 md:px-16 py-6 sm:py-8 h-auto mb-6 sm:mb-8 bg-gradient-to-r from-primary via-accent to-secondary hover:scale-105 transition-all duration-300 shadow-2xl shadow-primary/30 text-primary-foreground font-bold sm:text-xl md:text-xl text-base px-[24px]">
+              <Button size="lg" className="sm:px-12 md:px-16 sm:py-8 h-auto mb-6 sm:mb-8 bg-gradient-to-r from-primary via-accent to-secondary hover:scale-105 transition-all duration-300 shadow-2xl shadow-primary/30 text-primary-foreground font-bold sm:text-xl md:text-xl text-base px-[21px] py-[21px]">
                 Find Your Child's Toy Personality 
                 <Sparkles className="ml-2 animate-pulse mx-[5px]" />
               </Button>

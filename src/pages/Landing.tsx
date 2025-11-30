@@ -1,11 +1,14 @@
+import { useState } from "react";
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { useScrollAnimation } from "@/hooks/useScrollAnimation";
 import { useParallax } from "@/hooks/useParallax";
 import { Star, Sparkles, Shield, RefreshCw, TruckIcon } from "lucide-react";
+import WaitlistDialog from "@/components/WaitlistDialog";
 import heroImage from "@/assets/hero-toys.jpg";
 
 const Landing = () => {
+  const [waitlistOpen, setWaitlistOpen] = useState(false);
   const heroParallax = useParallax(0.3);
   const benefitsAnim = useScrollAnimation(0.2);
   const proofAnim = useScrollAnimation(0.2);
@@ -18,18 +21,22 @@ const Landing = () => {
       <section className="container mx-auto px-4 py-12 md:py-20">
         <div className="max-w-4xl mx-auto text-center">
           <h1 className="text-4xl md:text-6xl font-heading font-bold text-foreground mb-6 leading-tight">
-            Is your child <span className="text-coral">bored</span> of their toys?
+            Stop Buying Toys Your Child <span className="text-coral">Ignores</span> in 2 Days
           </h1>
           
           <p className="text-xl md:text-2xl text-muted-foreground mb-8">
-            Join Bengaluru parents using AI-curated toys to keep kids engaged
+            Discover your child&apos;s unique toy personality and get AI-matched toys they&apos;ll actually love
           </p>
           
           <Link to="/quiz">
-            <Button variant="cta" size="lg" className="text-xl px-12 h-16 mb-8">
-              Take the 60-Second Quiz ✨
+            <Button variant="cta" size="lg" className="text-xl px-12 h-16 mb-4">
+              Find Your Kid&apos;s Toy Personality ✨
             </Button>
           </Link>
+          
+          <p className="text-sm text-muted-foreground mb-8">
+            60-second quiz • Personalized results • No payment needed
+          </p>
           
           <div className="rounded-3xl overflow-hidden shadow-2xl mb-8">
             <div ref={heroParallax} className="parallax-slow">
@@ -85,11 +92,14 @@ const Landing = () => {
             3-4 premium toys, AI-matched to your child, delivered monthly. No commitment. Cancel anytime.
           </p>
           
-          <Link to="/quiz">
-            <Button variant="cta" size="lg" className="text-xl px-12 h-16">
-              Claim Your First Box
-            </Button>
-          </Link>
+          <Button 
+            variant="cta" 
+            size="lg" 
+            className="text-xl px-12 h-16"
+            onClick={() => setWaitlistOpen(true)}
+          >
+            Join Our Exclusive Waitlist
+          </Button>
         </div>
       </section>
       
@@ -208,30 +218,41 @@ const Landing = () => {
       <section className="container mx-auto px-4 py-12 mb-20">
         <div className="max-w-3xl mx-auto glass-card p-8 md:p-12 text-center">
           <h2 className="text-3xl md:text-4xl font-heading font-bold mb-4">
-            Ready to end toy boredom?
+            Ready to end toy boredom forever?
           </h2>
           <p className="text-lg text-muted-foreground mb-8">
-            Take our 60-second quiz. Get your child's personalized JoyBox preview. No payment needed.
+            Join the waitlist and be first to get AI-matched toys your child will love
           </p>
-          <Link to="/quiz">
-            <Button variant="cta" size="lg" className="text-xl px-12 h-16">
-              Start the Quiz Now ✨
-            </Button>
-          </Link>
+          <Button 
+            variant="cta" 
+            size="lg" 
+            className="text-xl px-12 h-16"
+            onClick={() => setWaitlistOpen(true)}
+          >
+            Claim Your Spot Now ✨
+          </Button>
           <p className="text-sm text-muted-foreground mt-4">
-            No commitment • Cancel anytime • Free delivery in Bengaluru
+            Early bird perks • Exclusive discounts • Priority access
           </p>
         </div>
       </section>
       
       {/* Sticky Mobile CTA */}
       <div className="fixed bottom-0 left-0 right-0 p-4 glass-card border-t border-border md:hidden z-50">
-        <Link to="/quiz" className="block">
-          <Button variant="cta" size="lg" className="w-full">
-            Start Quiz Now
-          </Button>
-        </Link>
+        <Button 
+          variant="cta" 
+          size="lg" 
+          className="w-full"
+          onClick={() => setWaitlistOpen(true)}
+        >
+          Join Waitlist
+        </Button>
       </div>
+
+      <WaitlistDialog 
+        open={waitlistOpen} 
+        onOpenChange={setWaitlistOpen}
+      />
     </div>
   );
 };

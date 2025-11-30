@@ -10,6 +10,9 @@ import {
   AlertDialogHeader,
   AlertDialogTitle,
 } from "@/components/ui/alert-dialog";
+import { PersonalityScoreChart } from "@/components/PersonalityScoreChart";
+import { PDFReportGenerator } from "@/components/PDFReportGenerator";
+import { PersonalityId } from "@/data/quizData";
 
 export interface PersonalityResultData {
   title: string;
@@ -19,15 +22,19 @@ export interface PersonalityResultData {
     name: string;
     icon: string;
   }>;
+  id?: PersonalityId;
+  scores?: Record<PersonalityId, number>;
 }
 
 interface PersonalityResultProps {
-  result: PersonalityResultData;
+  result: PersonalityResultData & { scores: Record<PersonalityId, number>; id: PersonalityId };
   onContinue: () => void;
   onRetake?: () => void;
+  childAge?: string;
+  parentName?: string;
 }
 
-export const PersonalityResult = ({ result, onContinue, onRetake }: PersonalityResultProps) => {
+export const PersonalityResult = ({ result, onContinue, onRetake, childAge, parentName }: PersonalityResultProps) => {
   const [showRetakeDialog, setShowRetakeDialog] = useState(false);
 
   const handleRetakeClick = () => {
@@ -42,7 +49,7 @@ export const PersonalityResult = ({ result, onContinue, onRetake }: PersonalityR
   };
 
   return (
-    <div className="max-w-2xl mx-auto animate-confetti">
+    <div className="max-w-5xl mx-auto animate-confetti space-y-8">
       <div className="glass-card p-8 md:p-12 text-center">
         <div className="text-7xl mb-6 animate-scale-up">{result.emoji}</div>
         
@@ -81,6 +88,13 @@ export const PersonalityResult = ({ result, onContinue, onRetake }: PersonalityR
             See My Child's JoyBox
           </Button>
           
+          <PDFReportGenerator
+            personalityResult={result}
+            scores={result.scores}
+            childAge={childAge}
+            parentName={parentName}
+          />
+          
           {onRetake && (
             <Button
               variant="outline"
@@ -93,6 +107,11 @@ export const PersonalityResult = ({ result, onContinue, onRetake }: PersonalityR
           )}
         </div>
       </div>
+
+      {/* Score Breakdown */}
+      {result.scores && result.id && (
+        <PersonalityScoreChart scores={result.scores} topPersonality={result.id} />
+      )}
 
       <AlertDialog open={showRetakeDialog} onOpenChange={setShowRetakeDialog}>
         <AlertDialogContent>

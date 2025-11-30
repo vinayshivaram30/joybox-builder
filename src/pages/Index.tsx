@@ -242,6 +242,8 @@ const Index = () => {
             result={personalityResult}
             onContinue={handleContinueToSignup}
             onRetake={handleRetakeQuiz}
+            childAge={answers.age || undefined}
+            parentName={userData?.name}
           />
         </div>
       )}

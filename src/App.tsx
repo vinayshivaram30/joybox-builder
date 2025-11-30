@@ -23,6 +23,7 @@ import MyReviews from "./pages/MyReviews";
 import AdminWaitlist from "./pages/AdminWaitlist";
 import FAQ from "./pages/FAQ";
 import Contact from "./pages/Contact";
+import PersonalityComparison from "./pages/PersonalityComparison";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -54,6 +55,7 @@ const App = () => (
             <Route path="/my-reviews" element={<MyReviews />} />
             <Route path="/profile/edit" element={<ProfileEdit />} />
             <Route path="/reset-password" element={<ResetPassword />} />
+            <Route path="/personality-comparison" element={<PersonalityComparison />} />
             {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
             <Route path="*" element={<NotFound />} />
           </Routes>

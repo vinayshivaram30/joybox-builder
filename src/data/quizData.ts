@@ -110,7 +110,7 @@ export const quizQuestions: QuizQuestionData[] = [
 ];
 
 // PERSONALITY DEFINITIONS
-export const personalityTypes: Record<PersonalityId, PersonalityResultData> = {
+export const PERSONALITIES: Record<PersonalityId, PersonalityResultData> = {
   curious_builder: {
     title: "The Curious Builder",
     emoji: "🏗️",
@@ -274,7 +274,7 @@ function pickBestPersonality(scores: Record<PersonalityId, number>): Personality
 }
 
 // MAIN CALCULATION FUNCTION
-export function calculatePersonality(answers: Record<string, string>): PersonalityResultData {
+export function calculatePersonality(answers: Record<string, string>): PersonalityResultData & { scores: Record<PersonalityId, number>; id: PersonalityId } {
   // Collect all category hints from answers
   const hints: CategoryKey[] = [];
   
@@ -288,5 +288,12 @@ export function calculatePersonality(answers: Record<string, string>): Personali
   const personalityScores = computePersonalityScores(categoryScores);
   const bestPersonality = pickBestPersonality(personalityScores);
   
-  return personalityTypes[bestPersonality];
+  return {
+    ...PERSONALITIES[bestPersonality],
+    scores: personalityScores,
+    id: bestPersonality,
+  };
 }
+
+// Backwards compatibility
+export const personalityTypes = PERSONALITIES;

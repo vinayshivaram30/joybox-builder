@@ -134,7 +134,7 @@ const Signup = () => {
               </p>
               <p className="text-lg">
                 <span className="font-heading font-semibold">Your Price:</span>{" "}
-                <span className="text-2xl font-bold text-primary">₹1,299/month</span>
+                <span className="text-2xl font-bold text-primary">₹899/month</span>
                 <span className="text-sm text-muted-foreground ml-2">(Quarterly Plan)</span>
               </p>
             </div>
@@ -232,7 +232,7 @@ const Signup = () => {
                     }`}
                   >
                     <p className="font-semibold">Monthly</p>
-                    <p className="text-2xl font-bold">₹1,499</p>
+                    <p className="text-2xl font-bold">₹999</p>
                     <p className="text-sm text-muted-foreground">per month</p>
                   </button>
 
@@ -249,7 +249,7 @@ const Signup = () => {
                       Best Value
                     </div>
                     <p className="font-semibold">Quarterly</p>
-                    <p className="text-2xl font-bold">₹1,299</p>
+                    <p className="text-2xl font-bold">₹899</p>
                     <p className="text-sm text-muted-foreground">per month</p>
                   </button>
 
@@ -263,7 +263,7 @@ const Signup = () => {
                     }`}
                   >
                     <p className="font-semibold">Annual</p>
-                    <p className="text-2xl font-bold">₹999</p>
+                    <p className="text-2xl font-bold">₹799</p>
                     <p className="text-sm text-muted-foreground">per month</p>
                   </button>
                 </div>

@@ -78,17 +78,11 @@ const Pricing = () => {
               </li>
             </ul>
             
-            <Button 
-              variant="default" 
-              size="lg" 
-              className="w-full max-w-md"
-              onClick={() => {
-                setSelectedPlan("trial");
-                setWaitlistOpen(true);
-              }}
-            >
-              Join Waitlist for Trial
-            </Button>
+            <Link to="/quiz">
+              <Button variant="default" size="lg" className="w-full max-w-md">
+                Try Trial Box
+              </Button>
+            </Link>
           </div>
         </div>
 
@@ -455,7 +449,7 @@ const Pricing = () => {
             Ready to Get Started?
           </h2>
           <p className="text-base sm:text-lg text-muted-foreground mb-5">
-            Take our 60-second quiz to discover your child's play personality, then explore our subscription plans.
+            Take our 60-second quiz to discover your child's play personality and get personalized toy recommendations.
           </p>
           <Link to="/quiz">
             <Button variant="cta" size="lg">

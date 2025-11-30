@@ -6,6 +6,7 @@ import { ProgressBar } from "@/components/ProgressBar";
 import { PersonalityResult } from "@/components/PersonalityResult";
 import { SignupForm } from "@/components/SignupForm";
 import { JoyBoxPreview } from "@/components/JoyBoxPreview";
+import { Navigation } from "@/components/Navigation";
 import { quizQuestions, calculatePersonality } from "@/data/quizData";
 import { supabase } from "@/integrations/supabase/client";
 import { useToast } from "@/hooks/use-toast";
@@ -149,6 +150,7 @@ const Index = () => {
 
   return (
     <div className="min-h-screen bg-background">
+      <Navigation />
       {/* Hero Section */}
       {currentStep === "hero" && (
         <div className="w-full px-4 sm:px-6 lg:px-8 py-8 sm:py-12 md:py-16 lg:py-20">

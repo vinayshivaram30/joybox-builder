@@ -21,16 +21,17 @@ const Landing = () => {
       <section className="container mx-auto px-4 py-12 md:py-20">
         <div className="max-w-4xl mx-auto text-center">
           <h1 className="text-4xl md:text-6xl font-heading font-bold text-foreground mb-6 leading-tight">
-            Stop Buying Toys Your Child <span className="text-coral">Ignores</span> in 2 Days
+            Playtime works better when toys match your child.
           </h1>
           
           <p className="text-xl md:text-2xl text-muted-foreground mb-8">
-            Discover your child&apos;s unique toy personality and get AI-matched toys they&apos;ll actually love
+            Our AI Play Personality Test helps you pick toys that match how your child learns, grows, and plays.
           </p>
           
           <Link to="/quiz">
-            <Button variant="cta" size="lg" className="text-xl px-12 h-16 mb-4">
-              Find Your Kid&apos;s Toy Personality ✨
+            <Button size="lg" className="h-auto mb-4 bg-gradient-to-r from-primary via-accent to-secondary hover:scale-105 transition-all duration-300 shadow-2xl shadow-primary/30 text-primary-foreground font-bold text-base sm:text-lg md:text-xl px-6 py-4 sm:px-10 sm:py-6 md:px-14 md:py-7">
+              Find Your Kid&apos;s Toy Personality
+              <Sparkles className="ml-2 animate-pulse" />
             </Button>
           </Link>
           

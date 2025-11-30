@@ -132,7 +132,7 @@ export const TeamCarousel: React.FC<TeamCarouselProps> = ({
     return 'hidden';
   };
 
-  const getVariantStyles = (position: string): TargetAndTransition => {
+  const getVariantStyles = (position: string, isExiting: boolean = false): TargetAndTransition => {
     const transition = {
       duration: animationDuration / 1000,
       ease: [0.25, 0.46, 0.45, 0.94] as [number, number, number, number],
@@ -190,11 +190,16 @@ export const TeamCarousel: React.FC<TeamCarouselProps> = ({
           transition,
         };
       default:
+        // For exiting cards, split them: cards on left exit left, cards on right exit right
+        const exitDirection = isExiting && position === 'hidden' 
+          ? (direction > 0 ? cardWidth * (visibleCards + 1) : -cardWidth * (visibleCards + 1))
+          : (direction > 0 ? cardWidth * (visibleCards + 1) : -cardWidth * (visibleCards + 1));
+        
         return {
           zIndex: 0,
           opacity: 0,
           scale: 0.8,
-          x: direction > 0 ? cardWidth * (visibleCards + 1) : -cardWidth * (visibleCards + 1),
+          x: exitDirection,
           pointerEvents: 'none',
           filter: grayscaleEffect ? 'grayscale(100%)' : 'grayscale(0%)',
           transition,
@@ -351,6 +356,9 @@ export const TeamCarousel: React.FC<TeamCarouselProps> = ({
 
               if (position === 'hidden' && !isCurrent) return null;
 
+              const relativePosition = wrapIndex(index - currentIndex);
+              const isLeftOfCenter = relativePosition > totalMembers / 2;
+              
               return (
                 <motion.div
                   key={member.id}
@@ -369,7 +377,18 @@ export const TeamCarousel: React.FC<TeamCarouselProps> = ({
                   }}
                   initial={getVariantStyles('hidden')}
                   animate={getVariantStyles(position)}
-                  exit={getVariantStyles('hidden')}
+                  exit={{
+                    zIndex: 0,
+                    opacity: 0,
+                    scale: 0.8,
+                    x: isLeftOfCenter ? -cardWidth * (visibleCards + 1) : cardWidth * (visibleCards + 1),
+                    pointerEvents: 'none',
+                    filter: grayscaleEffect ? 'grayscale(100%)' : 'grayscale(0%)',
+                    transition: {
+                      duration: animationDuration / 1000,
+                      ease: [0.25, 0.46, 0.45, 0.94] as [number, number, number, number],
+                    },
+                  }}
                   onClick={() => {
                     if (!isCurrent) {
                       const newDirection = index > currentIndex ? 1 : -1;

@@ -115,12 +115,92 @@ export const personalityTypes: Record<string, PersonalityResultData> = {
       { name: "Creative Play", icon: "🎨" },
     ],
   },
+  sensorySeeker: {
+    title: "The Sensory Seeker",
+    emoji: "✨",
+    description: "Your child loves textures, lights, sounds, and hands-on sensations. They explore the world using touch and movement.",
+    toyCategories: [
+      { name: "Sensory Kits", icon: "🌈" },
+      { name: "Textured Toys", icon: "🧸" },
+      { name: "Light Toys", icon: "💡" },
+    ],
+  },
+  tinyEngineer: {
+    title: "The Tiny Engineer",
+    emoji: "⚙️",
+    description: "Your child wants to know how things work. They enjoy gears, levers, mechanisms, and figuring out cause-and-effect.",
+    toyCategories: [
+      { name: "Engineering Kits", icon: "🔧" },
+      { name: "STEM Building", icon: "⚙️" },
+      { name: "Mechanical Puzzles", icon: "🧩" },
+    ],
+  },
+  creativeMaker: {
+    title: "The Creative Maker",
+    emoji: "🎨",
+    description: "Your child expresses themselves through hands-on creativity. They enjoy transforming simple materials into something new.",
+    toyCategories: [
+      { name: "Art Kits", icon: "🖌️" },
+      { name: "Clay Sets", icon: "🪴" },
+      { name: "Building Toys", icon: "🧱" },
+    ],
+  },
+  quietThinker: {
+    title: "The Quiet Thinker",
+    emoji: "🤔",
+    description: "Your child prefers calm, focused play. They take time to observe, understand, and work slowly but steadily.",
+    toyCategories: [
+      { name: "Quiet Play Kits", icon: "🧘" },
+      { name: "Montessori Materials", icon: "📚" },
+      { name: "Simple Puzzles", icon: "🧩" },
+    ],
+  },
+  curiousExplorer: {
+    title: "The Curious Explorer",
+    emoji: "🔍",
+    description: "Your child wants to move, climb, push, pull, and interact with everything around them. Exploration excites them more than structured play.",
+    toyCategories: [
+      { name: "Exploration Kits", icon: "🔭" },
+      { name: "Movement Toys", icon: "🚗" },
+      { name: "Active Play Sets", icon: "⚽" },
+    ],
+  },
 };
 
 export function calculatePersonality(answers: Record<string, string>): PersonalityResultData {
   const playType = answers["play-type"];
+  const energy = answers["energy"];
+  const attention = answers["attention"];
+  const learning = answers["learning"];
   
-  // Map play types to personality types
+  // Advanced personality mapping based on multiple factors
+  
+  // Sensory Seeker: High energy + motor skills focus
+  if (energy === "high-energy" && learning === "motor") {
+    return personalityTypes.sensorySeeker;
+  }
+  
+  // Tiny Engineer: Building + STEM focus + good attention
+  if (playType === "builder" && learning === "stem" && (attention === "long" || attention === "very-long")) {
+    return personalityTypes.tinyEngineer;
+  }
+  
+  // Creative Maker: Creative play + arts focus
+  if (playType === "creative" && learning !== "stem") {
+    return personalityTypes.creativeMaker;
+  }
+  
+  // Quiet Thinker: Calm energy + long attention + any learning style
+  if (energy === "calm" && (attention === "long" || attention === "very-long")) {
+    return personalityTypes.quietThinker;
+  }
+  
+  // Curious Explorer: Active + varies energy + shorter attention (exploration-driven)
+  if (playType === "active" && (energy === "varies" || attention === "short" || attention === "medium")) {
+    return personalityTypes.curiousExplorer;
+  }
+  
+  // Original personality types (fallbacks)
   if (playType === "builder") return personalityTypes.builder;
   if (playType === "creative") return personalityTypes.creative;
   if (playType === "active") return personalityTypes.active;

@@ -281,7 +281,7 @@ const Pricing = () => {
           
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
             <div className="glass-card p-3 sm:p-4 hover-lift">
-              <div className="aspect-square rounded-xl mb-2 overflow-hidden">
+              <div className="aspect-square mb-2 overflow-hidden rounded-none">
                 <div ref={toyParallax1} className="parallax-slow h-full">
                   <img src={toyBlocks} alt="Building blocks toy" className="w-full h-full object-cover" />
                 </div>

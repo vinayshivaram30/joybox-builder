@@ -9,7 +9,10 @@ export const Footer = () => {
             <div className="mb-4">
               <img src={toyLuvLogo} alt="ToyLuv" className="h-10 w-auto" width="133" height="40" />
             </div>
-            <p className="text-sm text-muted-foreground text-left">AI-curated, hygienic, high-value toys. Now in Bengaluru.</p>
+            <p className="text-sm text-muted-foreground text-left">
+              AI-curated, hygienic, high-value toys.<br />
+              Now in Bengaluru.
+            </p>
           </div>
           
           <div>

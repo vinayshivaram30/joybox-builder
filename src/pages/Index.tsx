@@ -148,6 +148,14 @@ const Index = () => {
     setUserData(null);
   };
 
+  const handleRetakeQuiz = () => {
+    setCurrentStep("quiz");
+    setQuizStep(0);
+    setAnswers({});
+    setSelectedAnswer(null);
+    setPersonalityResult(null);
+  };
+
   return (
     <div className="min-h-screen bg-background">
       <Navigation />
@@ -233,7 +241,7 @@ const Index = () => {
           <PersonalityResult
             result={personalityResult}
             onContinue={handleContinueToSignup}
-            onRetake={handleResetQuiz}
+            onRetake={handleRetakeQuiz}
           />
         </div>
       )}
@@ -251,7 +259,7 @@ const Index = () => {
           <JoyBoxPreview
             personalityType={personalityResult.title}
             childAge={userData?.childAge}
-            onRetakeQuiz={handleResetQuiz}
+            onRetakeQuiz={handleRetakeQuiz}
           />
         </div>
       )}

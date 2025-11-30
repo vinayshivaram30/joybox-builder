@@ -99,7 +99,7 @@ export const PersonalityResult = ({ result, onContinue, onRetake }: PersonalityR
           <AlertDialogHeader>
             <AlertDialogTitle>Retake Quiz?</AlertDialogTitle>
             <AlertDialogDescription>
-              This will clear your current results and restart the quiz from the beginning. 
+              This will clear your current results and take you back to the first question. 
               Your personality type and answers will be lost. Are you sure you want to continue?
             </AlertDialogDescription>
           </AlertDialogHeader>

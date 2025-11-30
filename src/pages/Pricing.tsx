@@ -78,11 +78,17 @@ const Pricing = () => {
               </li>
             </ul>
             
-            <Link to="/quiz">
-              <Button variant="default" size="lg" className="w-full max-w-md">
-                Try Trial Box
-              </Button>
-            </Link>
+            <Button 
+              variant="default" 
+              size="lg" 
+              className="w-full max-w-md"
+              onClick={() => {
+                setSelectedPlan("trial");
+                setWaitlistOpen(true);
+              }}
+            >
+              Join Our Exclusive Waitlist
+            </Button>
           </div>
         </div>
 

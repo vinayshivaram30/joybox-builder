@@ -273,6 +273,42 @@ export type Database = {
         }
         Relationships: []
       }
+      waitlist: {
+        Row: {
+          child_age: string | null
+          created_at: string
+          email: string
+          id: string
+          interested_plan: string | null
+          notified: boolean | null
+          parent_name: string | null
+          personality_type: string | null
+          phone_number: string | null
+        }
+        Insert: {
+          child_age?: string | null
+          created_at?: string
+          email: string
+          id?: string
+          interested_plan?: string | null
+          notified?: boolean | null
+          parent_name?: string | null
+          personality_type?: string | null
+          phone_number?: string | null
+        }
+        Update: {
+          child_age?: string | null
+          created_at?: string
+          email?: string
+          id?: string
+          interested_plan?: string | null
+          notified?: boolean | null
+          parent_name?: string | null
+          personality_type?: string | null
+          phone_number?: string | null
+        }
+        Relationships: []
+      }
     }
     Views: {
       toy_ratings_summary: {

@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Navigation } from "@/components/Navigation";
 import { Footer } from "@/components/Footer";
@@ -6,11 +7,14 @@ import { useScrollAnimation } from "@/hooks/useScrollAnimation";
 import { useParallax } from "@/hooks/useParallax";
 import { Check, X } from "lucide-react";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
+import WaitlistDialog from "@/components/WaitlistDialog";
 import toyBlocks from "@/assets/toy-blocks.jpg";
 import toyCraft from "@/assets/toy-craft.jpg";
 import toyPuzzle from "@/assets/toy-puzzle.jpg";
 import toyVehicles from "@/assets/toy-vehicles.jpg";
 const Pricing = () => {
+  const [waitlistOpen, setWaitlistOpen] = useState(false);
+  const [selectedPlan, setSelectedPlan] = useState("");
   const tiersAnim = useScrollAnimation(0.2);
   const comparisonAnim = useScrollAnimation(0.2);
   const boxAnim = useScrollAnimation(0.2);
@@ -19,7 +23,9 @@ const Pricing = () => {
   const toyParallax2 = useParallax(0.5);
   const toyParallax3 = useParallax(0.3);
   const toyParallax4 = useParallax(0.6);
-  return <div className="min-h-screen bg-background">
+  
+  return (
+    <div className="min-h-screen bg-background">
       <Navigation />
       
       {/* Hero Section */}
@@ -112,11 +118,16 @@ const Pricing = () => {
               </li>
             </ul>
             
-            <Link to="/quiz" className="mt-auto">
-              <Button variant="outline" className="w-full">
-                Get Started
-              </Button>
-            </Link>
+            <Button 
+              variant="outline" 
+              className="w-full mt-auto"
+              onClick={() => {
+                setSelectedPlan("monthly");
+                setWaitlistOpen(true);
+              }}
+            >
+              Join Waitlist
+            </Button>
           </div>
           
           {/* Quarterly Plan - Recommended */}
@@ -157,11 +168,16 @@ const Pricing = () => {
               </li>
             </ul>
             
-            <Link to="/quiz" className="mt-auto">
-              <Button variant="cta" className="w-full">
-                Get Started
-              </Button>
-            </Link>
+            <Button 
+              variant="cta" 
+              className="w-full mt-auto"
+              onClick={() => {
+                setSelectedPlan("quarterly");
+                setWaitlistOpen(true);
+              }}
+            >
+              Join Waitlist
+            </Button>
           </div>
           
           {/* Annual Plan */}
@@ -202,11 +218,16 @@ const Pricing = () => {
               </li>
             </ul>
             
-            <Link to="/quiz" className="mt-auto">
-              <Button variant="outline" className="w-full">
-                Get Started
-              </Button>
-            </Link>
+            <Button 
+              variant="outline" 
+              className="w-full mt-auto"
+              onClick={() => {
+                setSelectedPlan("annual");
+                setWaitlistOpen(true);
+              }}
+            >
+              Join Waitlist
+            </Button>
           </div>
         </div>
       </section>
@@ -439,6 +460,13 @@ const Pricing = () => {
       </section>
       
       <Footer />
-    </div>;
+      
+      <WaitlistDialog 
+        open={waitlistOpen} 
+        onOpenChange={setWaitlistOpen}
+        defaultPlan={selectedPlan}
+      />
+    </div>
+  );
 };
 export default Pricing;

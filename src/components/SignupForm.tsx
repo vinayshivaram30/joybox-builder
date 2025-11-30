@@ -54,14 +54,14 @@ export const SignupForm = ({ onSubmit, isLoading = false }: SignupFormProps) => 
   };
 
   return (
-    <div className="glass-card p-4 sm:p-6 md:p-8 max-w-xl mx-auto animate-slide-in">
-      <h3 className="text-xl sm:text-2xl font-heading font-bold text-center mb-4 sm:mb-6 px-2">
+    <div className="glass-card p-8 max-w-xl mx-auto animate-slide-in">
+      <h3 className="text-2xl font-heading font-bold text-center mb-6">
         One Last Step! 🎉
       </h3>
       
-      <form onSubmit={handleSubmit} className="space-y-4 sm:space-y-5">
+      <form onSubmit={handleSubmit} className="space-y-5">
         <div>
-          <Label htmlFor="name" className="text-sm sm:text-base font-semibold">
+          <Label htmlFor="name" className="text-base font-semibold">
             Parent's Name
           </Label>
           <Input
@@ -70,15 +70,15 @@ export const SignupForm = ({ onSubmit, isLoading = false }: SignupFormProps) => 
             placeholder="Your name"
             value={formData.name}
             onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-            className="mt-1.5 sm:mt-2 h-11 sm:h-12 rounded-xl border-2 text-sm sm:text-base"
+            className="mt-2 h-12 rounded-xl border-2"
           />
           {errors.name && (
-            <p className="text-destructive text-xs sm:text-sm mt-1">{errors.name}</p>
+            <p className="text-destructive text-sm mt-1">{errors.name}</p>
           )}
         </div>
 
         <div>
-          <Label htmlFor="email" className="text-sm sm:text-base font-semibold">
+          <Label htmlFor="email" className="text-base font-semibold">
             Email Address
           </Label>
           <Input
@@ -87,15 +87,15 @@ export const SignupForm = ({ onSubmit, isLoading = false }: SignupFormProps) => 
             placeholder="your.email@example.com"
             value={formData.email}
             onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-            className="mt-1.5 sm:mt-2 h-11 sm:h-12 rounded-xl border-2 text-sm sm:text-base"
+            className="mt-2 h-12 rounded-xl border-2"
           />
           {errors.email && (
-            <p className="text-destructive text-xs sm:text-sm mt-1">{errors.email}</p>
+            <p className="text-destructive text-sm mt-1">{errors.email}</p>
           )}
         </div>
 
         <div>
-          <Label htmlFor="phone" className="text-sm sm:text-base font-semibold">
+          <Label htmlFor="phone" className="text-base font-semibold">
             WhatsApp Number
           </Label>
           <Input
@@ -104,15 +104,15 @@ export const SignupForm = ({ onSubmit, isLoading = false }: SignupFormProps) => 
             placeholder="10 digit mobile number"
             value={formData.phone}
             onChange={(e) => setFormData({ ...formData, phone: e.target.value.replace(/\D/g, '').slice(0, 10) })}
-            className="mt-1.5 sm:mt-2 h-11 sm:h-12 rounded-xl border-2 text-sm sm:text-base"
+            className="mt-2 h-12 rounded-xl border-2"
           />
           {errors.phone && (
-            <p className="text-destructive text-xs sm:text-sm mt-1">{errors.phone}</p>
+            <p className="text-destructive text-sm mt-1">{errors.phone}</p>
           )}
         </div>
 
         <div>
-          <Label htmlFor="pincode" className="text-sm sm:text-base font-semibold">
+          <Label htmlFor="pincode" className="text-base font-semibold">
             Bengaluru Pincode
           </Label>
           <Input
@@ -121,10 +121,10 @@ export const SignupForm = ({ onSubmit, isLoading = false }: SignupFormProps) => 
             placeholder="6 digit pincode"
             value={formData.pincode}
             onChange={(e) => setFormData({ ...formData, pincode: e.target.value.replace(/\D/g, '').slice(0, 6) })}
-            className="mt-1.5 sm:mt-2 h-11 sm:h-12 rounded-xl border-2 text-sm sm:text-base"
+            className="mt-2 h-12 rounded-xl border-2"
           />
           {errors.pincode && (
-            <p className="text-destructive text-xs sm:text-sm mt-1">{errors.pincode}</p>
+            <p className="text-destructive text-sm mt-1">{errors.pincode}</p>
           )}
         </div>
 
@@ -132,7 +132,7 @@ export const SignupForm = ({ onSubmit, isLoading = false }: SignupFormProps) => 
           type="submit" 
           variant="cta" 
           size="lg" 
-          className="w-full mt-5 sm:mt-6 h-12 sm:h-14 text-sm sm:text-base"
+          className="w-full mt-6"
           disabled={isLoading}
         >
           {isLoading ? "Saving..." : "View My Child's Box"}

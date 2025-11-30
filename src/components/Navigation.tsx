@@ -148,27 +148,27 @@ export const Navigation = () => {
           </div>
 
           {/* Mobile Auth Buttons */}
-          <div className="md:hidden flex items-center gap-2">
+          <div className="md:hidden flex items-center gap-2 sm:gap-3">
             {user ? (
               <>
                 <Link to="/dashboard">
-                  <Button variant="outline" size="sm">
+                  <Button variant="outline" size="sm" className="h-9 px-3">
                     <User className="h-4 w-4" />
                   </Button>
                 </Link>
-                <Button variant="ghost" size="sm" onClick={handleSignOut}>
+                <Button variant="ghost" size="sm" className="h-9 px-3" onClick={handleSignOut}>
                   <LogOut className="h-4 w-4" />
                 </Button>
               </>
             ) : (
               <>
                 <Link to="/quiz">
-                  <Button variant="cta" size="sm">
+                  <Button variant="cta" size="sm" className="h-9 px-4 text-sm font-semibold">
                     Quiz
                   </Button>
                 </Link>
                 <Link to="/auth">
-                  <Button variant="outline" size="sm">
+                  <Button variant="outline" size="sm" className="h-9 px-4 text-sm">
                     Sign In
                   </Button>
                 </Link>
@@ -178,13 +178,13 @@ export const Navigation = () => {
         </div>
 
         {/* Mobile Navigation with DynamicNavigation */}
-        <div className="md:hidden pb-3">
+        <div className="md:hidden pb-2 pt-1">
           <DynamicNavigation
             links={navigationLinks}
             activeLink={getActiveLink()}
             onLinkClick={handleNavLinkClick}
             showLabelsOnMobile={true}
-            className="w-full"
+            className="w-full max-w-full"
           />
         </div>
       </div>

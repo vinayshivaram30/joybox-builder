@@ -153,7 +153,7 @@ const Pricing = () => {
               </li>
               <li className="flex items-start gap-2">
                 <Check className="text-primary flex-shrink-0 mt-1" size={20} />
-                <span className="text-foreground font-semibold">Free bonus box</span>
+                <span className="text-foreground font-semibold">1 extra month free</span>
               </li>
             </ul>
             

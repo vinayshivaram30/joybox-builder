@@ -4,6 +4,7 @@ import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { AuthProvider } from "@/contexts/AuthContext";
+import WhatsAppWidget from "@/components/WhatsAppWidget";
 import Home from "./pages/Home";
 import About from "./pages/About";
 import Features from "./pages/Features";
@@ -31,6 +32,7 @@ const App = () => (
       <TooltipProvider>
         <Toaster />
         <Sonner />
+        <WhatsAppWidget />
         <BrowserRouter>
           <Routes>
             <Route path="/" element={<Home />} />

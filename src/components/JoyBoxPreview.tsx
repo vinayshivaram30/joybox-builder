@@ -6,6 +6,7 @@ import { Loader2 } from "lucide-react";
 import { ToyRating } from "@/components/ToyRating";
 import { supabase } from "@/integrations/supabase/client";
 import { personalityTypes } from "@/data/quizData";
+import WaitlistDialog from "@/components/WaitlistDialog";
 import {
   AlertDialog,
   AlertDialogAction,
@@ -29,6 +30,7 @@ export const JoyBoxPreview = ({ personalityType, childAge, onRetakeQuiz }: JoyBo
   const [loading, setLoading] = useState(true);
   const [ratings, setRatings] = useState<Record<string, { average: number; count: number }>>({});
   const [showRetakeDialog, setShowRetakeDialog] = useState(false);
+  const [waitlistOpen, setWaitlistOpen] = useState(false);
 
   useEffect(() => {
     loadRecommendedToys();
@@ -247,9 +249,9 @@ export const JoyBoxPreview = ({ personalityType, childAge, onRetakeQuiz }: JoyBo
                   variant="cta"
                   size="lg"
                   className="w-full min-h-[48px]"
-                  onClick={() => navigate("/pricing")}
+                  onClick={() => setWaitlistOpen(true)}
                 >
-                  View Our Plans
+                  Join Waitlist
                 </Button>
                 {onRetakeQuiz && (
                   <Button
@@ -283,6 +285,12 @@ export const JoyBoxPreview = ({ personalityType, childAge, onRetakeQuiz }: JoyBo
           </AlertDialogFooter>
         </AlertDialogContent>
       </AlertDialog>
+      
+      <WaitlistDialog 
+        open={waitlistOpen} 
+        onOpenChange={setWaitlistOpen}
+        defaultPersonalityType={personalityType}
+      />
     </div>
   );
 };

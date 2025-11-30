@@ -61,47 +61,39 @@ const Features = () => {
           </div>
           
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4 sm:gap-5">
-            <ElectroBorder borderColor="#FF6B6B" borderWidth={2} radius="1rem" glow={true} aura={true}>
-              <div className="p-4 sm:p-5">
-                <div className="text-3xl sm:text-4xl mb-2">🎯</div>
-                <h3 className="font-heading font-bold text-lg sm:text-xl mb-1.5">Play Schema</h3>
-                <p className="text-muted-foreground">
-                  We identify whether your child is a builder, explorer, artist, or problem-solver to curate the right toy types.
-                </p>
-              </div>
-            </ElectroBorder>
+            <div className="p-4 sm:p-5 rounded-2xl border border-border/50 bg-card/50 backdrop-blur-sm hover:border-primary/50 transition-colors">
+              <div className="text-3xl sm:text-4xl mb-2">🎯</div>
+              <h3 className="font-heading font-bold text-lg sm:text-xl mb-1.5">Play Schema</h3>
+              <p className="text-muted-foreground">
+                We identify whether your child is a builder, explorer, artist, or problem-solver to curate the right toy types.
+              </p>
+            </div>
             
-            <ElectroBorder borderColor="#8B5CF6" borderWidth={2} radius="1rem" glow={true} aura={true}>
-              <div className="p-4 sm:p-5">
-                <div className="text-3xl sm:text-4xl mb-2">🎨</div>
-                <h3 className="font-heading font-bold text-lg sm:text-xl mb-1.5">Interests</h3>
-                <p className="text-muted-foreground">
-                  From vehicles to animals, art to science - we match toys to what genuinely excites your child.
-                </p>
-              </div>
-            </ElectroBorder>
+            <div className="p-4 sm:p-5 rounded-2xl border border-border/50 bg-card/50 backdrop-blur-sm hover:border-primary/50 transition-colors">
+              <div className="text-3xl sm:text-4xl mb-2">🎨</div>
+              <h3 className="font-heading font-bold text-lg sm:text-xl mb-1.5">Interests</h3>
+              <p className="text-muted-foreground">
+                From vehicles to animals, art to science - we match toys to what genuinely excites your child.
+              </p>
+            </div>
             
-            <ElectroBorder borderColor="#14B8A6" borderWidth={2} radius="1rem" glow={true} aura={true}>
-              <div className="p-4 sm:p-5">
-                <div className="text-3xl sm:text-4xl mb-2">⏱️</div>
-                <h3 className="font-heading font-bold text-lg sm:text-xl mb-1.5">Attention Span</h3>
-                <p className="text-muted-foreground">
-                  Quick play or deep focus? We select complexity levels that keep your child engaged without frustration.
-                </p>
-              </div>
-            </ElectroBorder>
+            <div className="p-4 sm:p-5 rounded-2xl border border-border/50 bg-card/50 backdrop-blur-sm hover:border-primary/50 transition-colors">
+              <div className="text-3xl sm:text-4xl mb-2">⏱️</div>
+              <h3 className="font-heading font-bold text-lg sm:text-xl mb-1.5">Attention Span</h3>
+              <p className="text-muted-foreground">
+                Quick play or deep focus? We select complexity levels that keep your child engaged without frustration.
+              </p>
+            </div>
           </div>
           
           <div className="mt-5 sm:mt-6">
-            <ElectroBorder borderColor="#3B82F6" borderWidth={2} radius="1rem" glow={true} aura={true}>
-              <div className="p-5 sm:p-6">
-                <p className="text-center text-foreground">
-                  <span className="font-semibold">60 seconds of questions</span> → 
-                  <span className="font-semibold"> 12+ data points</span> → 
-                  <span className="font-semibold"> Personalized JoyBox</span>
-                </p>
-              </div>
-            </ElectroBorder>
+            <div className="p-5 sm:p-6 rounded-2xl border border-border/50 bg-card/50 backdrop-blur-sm">
+              <p className="text-center text-foreground">
+                <span className="font-semibold">60 seconds of questions</span> → 
+                <span className="font-semibold"> 12+ data points</span> → 
+                <span className="font-semibold"> Personalized JoyBox</span>
+              </p>
+            </div>
           </div>
         </div>
       </section>

@@ -372,7 +372,9 @@ const Pricing = () => {
               </div>
               <h4 className="font-semibold mb-1 text-sm sm:text-base">Vehicle Toy</h4>
               <p className="text-xs sm:text-sm text-muted-foreground mb-1.5">
-                Toy bikes, cars, trains, or transportation playsets
+                <span className="block mb-1"><strong>0-2 years:</strong> Push cars & pull trains</span>
+                <span className="block mb-1"><strong>3-5 years:</strong> Ride-on vehicles & toy bikes</span>
+                <span className="block"><strong>6+ years:</strong> Remote control cars & pedal bikes</span>
               </p>
               <span className="text-xs bg-coral/10 text-coral px-2 py-0.5 rounded-full">
                 Imagination & Mobility

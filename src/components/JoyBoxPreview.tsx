@@ -177,9 +177,9 @@ export const JoyBoxPreview = ({ personalityType, childAge, onRetakeQuiz }: JoyBo
                   variant="cta"
                   size="lg"
                   className="w-full min-h-[48px]"
-                  onClick={() => navigate("/pricing")}
+                  onClick={() => setWaitlistOpen(true)}
                 >
-                  Start My Subscription
+                  Join Waitlist
                 </Button>
                 {onRetakeQuiz && (
                   <Button

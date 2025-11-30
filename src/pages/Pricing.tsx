@@ -14,6 +14,7 @@ import {
 import toyBlocks from "@/assets/toy-blocks.jpg";
 import toyCraft from "@/assets/toy-craft.jpg";
 import toyPuzzle from "@/assets/toy-puzzle.jpg";
+import toyVehicles from "@/assets/toy-vehicles.jpg";
 
 const Pricing = () => {
   const tiersAnim = useScrollAnimation(0.2);
@@ -23,6 +24,7 @@ const Pricing = () => {
   const toyParallax1 = useParallax(0.4);
   const toyParallax2 = useParallax(0.5);
   const toyParallax3 = useParallax(0.3);
+  const toyParallax4 = useParallax(0.6);
 
   return (
     <div className="min-h-screen bg-background">
@@ -300,7 +302,7 @@ const Pricing = () => {
             Every box is curated for your child's development
           </p>
           
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-4 sm:gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
             <div className="glass-card p-3 sm:p-4 hover-lift">
               <div className="aspect-square rounded-xl mb-2 overflow-hidden">
                 <div ref={toyParallax1} className="parallax-slow h-full">
@@ -355,6 +357,25 @@ const Pricing = () => {
               </p>
               <span className="text-xs bg-secondary/10 text-secondary px-2 py-0.5 rounded-full">
                 Cognitive Growth
+              </span>
+            </div>
+            
+            <div className="glass-card p-3 sm:p-4 hover-lift">
+              <div className="aspect-square rounded-xl mb-2 overflow-hidden">
+                <div ref={toyParallax4} className="parallax-slow h-full">
+                  <img
+                    src={toyVehicles}
+                    alt="Toy vehicles bikes cars trains"
+                    className="w-full h-full object-cover"
+                  />
+                </div>
+              </div>
+              <h4 className="font-semibold mb-1 text-sm sm:text-base">Vehicle Toy</h4>
+              <p className="text-xs sm:text-sm text-muted-foreground mb-1.5">
+                Toy bikes, cars, trains, or transportation playsets
+              </p>
+              <span className="text-xs bg-coral/10 text-coral px-2 py-0.5 rounded-full">
+                Imagination & Mobility
               </span>
             </div>
           </div>

@@ -2,3 +2,6 @@ project_id = "ruseqikdkaqwbuvifhcd"
 
 [functions.send-quiz-email]
 verify_jwt = false
+
+[functions.ai-chat]
+verify_jwt = false

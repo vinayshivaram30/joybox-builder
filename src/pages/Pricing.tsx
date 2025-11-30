@@ -311,9 +311,9 @@ const Pricing = () => {
                   />
                 </div>
               </div>
-              <h4 className="font-semibold mb-1 text-sm sm:text-base">Motor Skills Toy</h4>
+              <h4 className="font-semibold mb-1 text-sm sm:text-base">Hands-On Play Toy</h4>
               <p className="text-xs sm:text-sm text-muted-foreground mb-1.5">
-                Building blocks, stacking toys, or construction sets
+                Building blocks, toy bikes & cars, stacking toys, or construction sets
               </p>
               <span className="text-xs bg-primary/10 text-primary px-2 py-0.5 rounded-full">
                 Physical Development

@@ -405,7 +405,7 @@ const Pricing = () => {
                 What's the difference between the Trial Box and subscription plans?
               </AccordionTrigger>
               <AccordionContent className="text-muted-foreground pb-4">
-                The Trial Box is a one-time purchase (₹299) with 2 toys worth ₹1,500+ to test our service. Subscription plans (starting at ₹999/month) include 3-4 premium toys worth ₹4,500+, regular exchanges every 3 weeks, priority delivery, and access to our full toy library. Trial Box users can upgrade to a subscription anytime.
+                The Trial Box is a one-time purchase (₹299) with 2 toys worth ₹1,500+ to test our service. Subscription plans (starting at ₹999/month) include 3-4 premium toys worth ₹6,500+, regular exchanges every 3 weeks, priority delivery, and access to our full toy library. Trial Box users can upgrade to a subscription anytime.
               </AccordionContent>
             </AccordionItem>
 

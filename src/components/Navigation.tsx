@@ -178,7 +178,7 @@ export const Navigation = () => {
         </div>
 
         {/* Mobile Navigation with DynamicNavigation */}
-        <div className="md:hidden pb-2 pt-1 px-1">
+        <div className="md:hidden pb-2 pt-1 px-0.5 sm:px-1">
           <DynamicNavigation
             links={navigationLinks}
             activeLink={getActiveLink()}

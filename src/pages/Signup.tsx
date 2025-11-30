@@ -94,7 +94,7 @@ const Signup = () => {
                     />
                   </div>
                 </div>
-                <h4 className="font-semibold mb-1 text-foreground">Motor Skills Toy</h4>
+                <h4 className="font-semibold mb-1 text-foreground">Hands-On Play Toy</h4>
                 <p className="text-sm text-muted-foreground">Building & Construction</p>
               </div>
 

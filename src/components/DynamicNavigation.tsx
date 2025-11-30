@@ -122,8 +122,8 @@ export const DynamicNavigation = ({
       setActive(activeLink);
     }
   }, [activeLink]);
-  return <nav ref={navRef} className={cn(`relative rounded-full  backdrop-blur-md border 
-        shadow-lg transition-all duration-300`, defaultThemeStyles.bg, defaultThemeStyles.border, defaultThemeStyles.glow, className)} style={{
+  return <nav ref={navRef} className={cn(`relative rounded-full backdrop-blur-md border 
+        shadow-sm md:shadow-lg transition-all duration-300`, defaultThemeStyles.bg, defaultThemeStyles.border, defaultThemeStyles.glow, className)} style={{
     backgroundColor: backgroundColor,
     color: textColor
   }}>
@@ -134,14 +134,14 @@ export const DynamicNavigation = ({
     }}></div>
 
       {/* Navigation Links */}
-      <ul className="relative z-10 p-1 w-full px-px py-px gap-0 rounded-none flex items-center justify-center mx-[3px] my-[3px] border-0">
-        {links.map(link => <li key={link.id}>
+      <ul className="relative z-10 p-0.5 md:p-1 w-full gap-0 rounded-none flex items-center justify-center border-0">
+        {links.map(link => <li key={link.id} className="flex-1 md:flex-initial">
             <a id={`nav-item-${link.id}`} href={link.href} onClick={e => {
           e.preventDefault();
           handleLinkClick(link.id, e);
-        }} onMouseEnter={() => handleLinkHover(link.id)} onMouseLeave={() => updateHighlightPosition()} className={cn("relative flex items-center gap-2 px-4 py-2 rounded-full transition-colors duration-200", "hover:text-foreground", active === link.id ? "text-foreground" : "text-muted-foreground", !showLabelsOnMobile && "md:gap-2 gap-0")}>
-              {link.icon && <span className="flex-shrink-0">{link.icon}</span>}
-              <span className={cn(!showLabelsOnMobile && "hidden md:inline")}>{link.label}</span>
+        }} onMouseEnter={() => handleLinkHover(link.id)} onMouseLeave={() => updateHighlightPosition()} className={cn("relative flex items-center justify-center gap-1 md:gap-2 px-2 py-1.5 md:px-4 md:py-2 rounded-full transition-colors duration-200 text-xs md:text-sm", "hover:text-foreground", active === link.id ? "text-foreground font-medium" : "text-muted-foreground", !showLabelsOnMobile && "md:gap-2 gap-0")}>
+              {link.icon && <span className="flex-shrink-0 text-[12px] md:text-sm">{link.icon}</span>}
+              <span className={cn("whitespace-nowrap", !showLabelsOnMobile && "hidden md:inline")}>{link.label}</span>
             </a>
           </li>)}
       </ul>

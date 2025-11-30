@@ -178,13 +178,13 @@ export const Navigation = () => {
         </div>
 
         {/* Mobile Navigation with DynamicNavigation */}
-        <div className="md:hidden pb-2 pt-1">
+        <div className="md:hidden pb-2 pt-1 px-1">
           <DynamicNavigation
             links={navigationLinks}
             activeLink={getActiveLink()}
             onLinkClick={handleNavLinkClick}
             showLabelsOnMobile={true}
-            className="w-full max-w-full"
+            className="w-full"
           />
         </div>
       </div>

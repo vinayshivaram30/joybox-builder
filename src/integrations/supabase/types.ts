@@ -284,6 +284,8 @@ export type Database = {
           parent_name: string | null
           personality_type: string | null
           phone_number: string | null
+          referral_code: string | null
+          referred_by: string | null
         }
         Insert: {
           child_age?: string | null
@@ -295,6 +297,8 @@ export type Database = {
           parent_name?: string | null
           personality_type?: string | null
           phone_number?: string | null
+          referral_code?: string | null
+          referred_by?: string | null
         }
         Update: {
           child_age?: string | null
@@ -306,6 +310,8 @@ export type Database = {
           parent_name?: string | null
           personality_type?: string | null
           phone_number?: string | null
+          referral_code?: string | null
+          referred_by?: string | null
         }
         Relationships: []
       }
@@ -327,6 +333,7 @@ export type Database = {
       }
     }
     Functions: {
+      generate_referral_code: { Args: never; Returns: string }
       has_role: {
         Args: {
           _role: Database["public"]["Enums"]["app_role"]

@@ -86,24 +86,26 @@ export const Navigation = () => {
           </Link>
 
           {/* Desktop Navigation and Auth Buttons */}
-          <div className="hidden md:flex flex-1 items-center justify-end gap-4">
-            <DynamicNavigation
-              links={navigationLinks}
-              activeLink={getActiveLink()}
-              onLinkClick={handleNavLinkClick}
-              showLabelsOnMobile={false}
-              className="max-w-md"
-            />
+          <div className="hidden md:flex flex-1 items-center justify-end gap-3 lg:gap-4 max-w-[85%] lg:max-w-none">
+            <div className="flex-shrink-0 max-w-md lg:max-w-lg">
+              <DynamicNavigation
+                links={navigationLinks}
+                activeLink={getActiveLink()}
+                onLinkClick={handleNavLinkClick}
+                showLabelsOnMobile={false}
+                className="w-full"
+              />
+            </div>
             {user ? (
               <>
-                <Link to="/dashboard">
+                <Link to="/dashboard" className="flex-shrink-0">
                   <Button variant="outline" size="sm">
                     Dashboard
                   </Button>
                 </Link>
                 <DropdownMenu>
                   <DropdownMenuTrigger asChild>
-                    <Button variant="ghost" size="sm">
+                    <Button variant="ghost" size="sm" className="flex-shrink-0">
                       <User className="h-4 w-4" />
                     </Button>
                   </DropdownMenuTrigger>
@@ -133,12 +135,12 @@ export const Navigation = () => {
               </>
             ) : (
               <>
-                <Link to="/quiz">
+                <Link to="/quiz" className="flex-shrink-0">
                   <Button variant="cta" size="sm">
                     Take Quiz
                   </Button>
                 </Link>
-                <Link to="/auth">
+                <Link to="/auth" className="flex-shrink-0">
                   <Button variant="outline" size="sm">
                     Sign In
                   </Button>

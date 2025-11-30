@@ -135,13 +135,13 @@ export const DynamicNavigation = ({
 
       {/* Navigation Links */}
       <ul className="relative z-10 p-0.5 sm:p-0.5 md:p-1 w-full gap-0 rounded-none flex items-center justify-center border-0">
-        {links.map(link => <li key={link.id} className="flex-1 sm:flex-1 md:flex-initial">
+        {links.map(link => <li key={link.id} className="flex-1 sm:flex-1 md:flex-none">
             <a id={`nav-item-${link.id}`} href={link.href} onClick={e => {
           e.preventDefault();
           handleLinkClick(link.id, e);
-        }} onMouseEnter={() => handleLinkHover(link.id)} onMouseLeave={() => updateHighlightPosition()} className={cn("relative flex items-center justify-center gap-1 sm:gap-1.5 md:gap-2 px-2 sm:px-3 md:px-4 py-1.5 sm:py-2 md:py-2 rounded-full transition-colors duration-200 text-xs sm:text-sm md:text-sm", "hover:text-foreground", active === link.id ? "text-foreground font-medium" : "text-muted-foreground", !showLabelsOnMobile && "sm:gap-1.5 md:gap-2 gap-0")}>
+        }} onMouseEnter={() => handleLinkHover(link.id)} onMouseLeave={() => updateHighlightPosition()} className={cn("relative flex items-center justify-center gap-1 sm:gap-1.5 md:gap-2 px-2 sm:px-3 md:px-4 lg:px-5 py-1.5 sm:py-2 md:py-2 rounded-full transition-colors duration-200 text-xs sm:text-sm md:text-sm whitespace-nowrap", "hover:text-foreground", active === link.id ? "text-foreground font-medium" : "text-muted-foreground", !showLabelsOnMobile && "sm:gap-1.5 md:gap-2 gap-0")}>
               {link.icon && <span className="flex-shrink-0 text-[12px] sm:text-sm md:text-sm">{link.icon}</span>}
-              <span className={cn("whitespace-nowrap text-[11px] sm:text-xs md:text-sm", !showLabelsOnMobile && "hidden md:inline")}>{link.label}</span>
+              <span className={cn("text-[11px] sm:text-xs md:text-sm", !showLabelsOnMobile && "hidden md:inline")}>{link.label}</span>
             </a>
           </li>)}
       </ul>

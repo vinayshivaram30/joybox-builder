@@ -20,6 +20,7 @@ import ResetPassword from "./pages/ResetPassword";
 import ToyInventory from "./pages/ToyInventory";
 import ToyDetails from "./pages/ToyDetails";
 import MyReviews from "./pages/MyReviews";
+import AdminWaitlist from "./pages/AdminWaitlist";
 import FAQ from "./pages/FAQ";
 import Contact from "./pages/Contact";
 import NotFound from "./pages/NotFound";
@@ -48,6 +49,7 @@ const App = () => (
             <Route path="/dashboard" element={<Dashboard />} />
             <Route path="/admin" element={<AdminDashboard />} />
             <Route path="/admin/toys" element={<ToyInventory />} />
+            <Route path="/admin/waitlist" element={<AdminWaitlist />} />
             <Route path="/toys/:id" element={<ToyDetails />} />
             <Route path="/my-reviews" element={<MyReviews />} />
             <Route path="/profile/edit" element={<ProfileEdit />} />

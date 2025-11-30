@@ -1,10 +1,11 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { useSearchParams } from "react-router-dom";
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription } from "@/components/ui/dialog";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
-import { Sparkles, Heart, Gift, Loader2, CheckCircle2 } from "lucide-react";
+import { Sparkles, Heart, Gift, Loader2, CheckCircle2, Star, Zap } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
 import { supabase } from "@/integrations/supabase/client";
 
@@ -16,6 +17,7 @@ interface WaitlistDialogProps {
 }
 
 const WaitlistDialog = ({ open, onOpenChange, defaultPlan, defaultPersonalityType }: WaitlistDialogProps) => {
+  const [searchParams] = useSearchParams();
   const [email, setEmail] = useState("");
   const [parentName, setParentName] = useState("");
   const [childAge, setChildAge] = useState("");
@@ -23,7 +25,16 @@ const WaitlistDialog = ({ open, onOpenChange, defaultPlan, defaultPersonalityTyp
   const [phoneNumber, setPhoneNumber] = useState("");
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSuccess, setIsSuccess] = useState(false);
+  const [referralCode, setReferralCode] = useState("");
+  const [referredBy, setReferredBy] = useState<string | null>(null);
   const { toast } = useToast();
+
+  useEffect(() => {
+    const refParam = searchParams.get("ref");
+    if (refParam) {
+      setReferredBy(refParam);
+    }
+  }, [searchParams]);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -40,14 +51,15 @@ const WaitlistDialog = ({ open, onOpenChange, defaultPlan, defaultPersonalityTyp
     setIsSubmitting(true);
 
     try {
-      const { error } = await supabase.from("waitlist").insert({
+      const { data: waitlistData, error } = await supabase.from("waitlist").insert({
         email,
         parent_name: parentName,
         child_age: childAge,
         interested_plan: interestedPlan,
         personality_type: defaultPersonalityType,
         phone_number: phoneNumber,
-      });
+        referred_by: referredBy,
+      }).select("referral_code").single();
 
       if (error) {
         if (error.code === "23505") {
@@ -60,6 +72,26 @@ const WaitlistDialog = ({ open, onOpenChange, defaultPlan, defaultPersonalityTyp
           throw error;
         }
       } else {
+        const generatedReferralCode = waitlistData?.referral_code || "";
+        setReferralCode(generatedReferralCode);
+
+        // Send welcome email
+        try {
+          await supabase.functions.invoke("send-waitlist-welcome", {
+            body: {
+              parentName,
+              email,
+              interestedPlan,
+              personalityType: defaultPersonalityType,
+              referralCode: generatedReferralCode,
+              childAge,
+            },
+          });
+        } catch (emailError) {
+          console.error("Error sending welcome email:", emailError);
+          // Don't fail the whole process if email fails
+        }
+
         setIsSuccess(true);
       }
     } catch (error) {
@@ -81,10 +113,13 @@ const WaitlistDialog = ({ open, onOpenChange, defaultPlan, defaultPersonalityTyp
     setChildAge("");
     setInterestedPlan(defaultPlan || "");
     setPhoneNumber("");
+    setReferralCode("");
     onOpenChange(false);
   };
 
   if (isSuccess) {
+    const referralLink = `${window.location.origin}/?ref=${referralCode}`;
+
     return (
       <Dialog open={open} onOpenChange={handleClose}>
         <DialogContent className="sm:max-w-md">
@@ -102,16 +137,68 @@ const WaitlistDialog = ({ open, onOpenChange, defaultPlan, defaultPersonalityTyp
               </DialogDescription>
             </div>
 
-            <div className="bg-primary/10 rounded-lg p-4 space-y-2 w-full">
+            <div className="bg-accent/10 rounded-lg p-4 space-y-2 w-full">
               <div className="flex items-center gap-2 justify-center text-sm">
-                <Gift className="h-4 w-4 text-primary" />
+                <Gift className="h-4 w-4 text-accent" />
                 <span className="font-medium">Early bird perks coming your way</span>
               </div>
-              <p className="text-xs text-muted-foreground">
-                As a waitlist member, you'll get first access to launch deals and 
-                exclusive discounts when we go live!
-              </p>
+              <div className="space-y-1 text-left text-xs">
+                <div className="flex items-start gap-2">
+                  <Sparkles className="h-3 w-3 text-accent mt-0.5 flex-shrink-0" />
+                  <span>Priority access when we launch</span>
+                </div>
+                <div className="flex items-start gap-2">
+                  <Star className="h-3 w-3 text-accent mt-0.5 flex-shrink-0" />
+                  <span>Exclusive 20% discount on first month</span>
+                </div>
+                <div className="flex items-start gap-2">
+                  <Zap className="h-3 w-3 text-accent mt-0.5 flex-shrink-0" />
+                  <span>Free trial box upgrade</span>
+                </div>
+                <div className="flex items-start gap-2">
+                  <Gift className="h-3 w-3 text-accent mt-0.5 flex-shrink-0" />
+                  <span>First pick of premium toys</span>
+                </div>
+              </div>
             </div>
+
+            {referralCode && (
+              <div className="bg-primary/10 rounded-xl p-4 border-2 border-primary/30 w-full space-y-3">
+                <h4 className="font-semibold text-primary text-sm">🚀 Your Referral Code</h4>
+                <p className="text-2xl font-bold text-primary tracking-wider">{referralCode}</p>
+                <p className="text-xs text-muted-foreground">Share this code with friends and earn rewards!</p>
+                
+                <div className="text-xs text-left space-y-2 pt-2 border-t border-primary/20">
+                  <p className="font-semibold">Referral Rewards:</p>
+                  <ul className="space-y-1">
+                    <li className="flex items-start gap-1">
+                      <span>•</span>
+                      <span>3 friends = Free extra toy</span>
+                    </li>
+                    <li className="flex items-start gap-1">
+                      <span>•</span>
+                      <span>5 friends = 1 month free</span>
+                    </li>
+                    <li className="flex items-start gap-1">
+                      <span>•</span>
+                      <span>10 friends = 2 months free + VIP status</span>
+                    </li>
+                  </ul>
+                </div>
+                
+                <Button
+                  variant="outline"
+                  size="sm"
+                  className="w-full"
+                  onClick={() => {
+                    navigator.clipboard.writeText(referralLink);
+                    toast({ title: "Copied!", description: "Share link copied to clipboard" });
+                  }}
+                >
+                  Copy Share Link
+                </Button>
+              </div>
+            )}
 
             <div className="flex flex-col gap-2 w-full pt-4">
               <Button onClick={handleClose} size="lg" className="w-full">
@@ -139,6 +226,11 @@ const WaitlistDialog = ({ open, onOpenChange, defaultPlan, defaultPersonalityTyp
           <DialogDescription>
             Be among the first to experience personalized toy subscriptions when we launch! 
             Early members get special perks and exclusive discounts. 🎁
+            {referredBy && (
+              <span className="block mt-2 text-sm font-semibold text-primary">
+                ✨ You were referred by a friend! Extra perks await!
+              </span>
+            )}
           </DialogDescription>
         </DialogHeader>
 
@@ -194,9 +286,10 @@ const WaitlistDialog = ({ open, onOpenChange, defaultPlan, defaultPersonalityTyp
                 <SelectValue placeholder="Select a plan" />
               </SelectTrigger>
               <SelectContent>
-                <SelectItem value="starter">Starter Plan</SelectItem>
-                <SelectItem value="explorer">Explorer Plan</SelectItem>
-                <SelectItem value="premium">Premium Plan</SelectItem>
+                <SelectItem value="trial">Trial Box</SelectItem>
+                <SelectItem value="monthly">Monthly Plan</SelectItem>
+                <SelectItem value="quarterly">Quarterly Plan</SelectItem>
+                <SelectItem value="annual">Annual Plan</SelectItem>
                 <SelectItem value="not-sure">Not Sure Yet</SelectItem>
               </SelectContent>
             </Select>

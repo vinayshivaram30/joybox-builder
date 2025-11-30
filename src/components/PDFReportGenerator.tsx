@@ -309,17 +309,19 @@ export const PDFReportGenerator = ({
       size="lg"
       onClick={generatePDF}
       disabled={generating}
-      className="w-full sm:w-auto gap-2"
+      className="w-full sm:w-auto sm:min-w-[180px] md:min-w-[200px] h-12 sm:h-14 text-sm sm:text-base gap-2"
     >
       {generating ? (
         <>
           <Loader2 className="h-4 w-4 animate-spin" />
-          Generating PDF...
+          <span className="hidden xs:inline">Generating PDF...</span>
+          <span className="xs:hidden">...</span>
         </>
       ) : (
         <>
           <Download className="h-4 w-4" />
-          Download Full Report
+          <span className="hidden xs:inline">Download Full Report</span>
+          <span className="xs:hidden">PDF</span>
         </>
       )}
     </Button>

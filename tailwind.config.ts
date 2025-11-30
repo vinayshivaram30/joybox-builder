@@ -9,10 +9,14 @@ export default {
   		center: true,
   		padding: '2rem',
   		screens: {
+  			xs: '475px',
   			'2xl': '1400px'
   		}
   	},
   	extend: {
+  		screens: {
+  			xs: '475px',
+  		},
   		colors: {
   			border: 'hsl(var(--border))',
   			input: 'hsl(var(--input))',

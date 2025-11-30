@@ -96,10 +96,10 @@ export const SocialShareButtons = ({ personalityTitle, shareUrl = "https://toylu
   };
 
   return (
-    <div className="space-y-4">
-      <div className="flex flex-col items-center gap-3">
-        <h3 className="text-lg font-heading font-semibold text-foreground flex items-center gap-2">
-          <Share2 className="h-5 w-5" />
+    <div className="space-y-3 sm:space-y-4">
+      <div className="flex flex-col items-center gap-2 sm:gap-3">
+        <h3 className="text-base sm:text-lg font-heading font-semibold text-foreground flex items-center gap-2">
+          <Share2 className="h-4 w-4 sm:h-5 sm:w-5" />
           Share Your Results
         </h3>
         
@@ -109,7 +109,7 @@ export const SocialShareButtons = ({ personalityTitle, shareUrl = "https://toylu
           disabled={isDownloading}
           variant="cta"
           size="lg"
-          className="w-full md:w-auto min-w-[200px]"
+          className="w-full sm:w-auto min-w-[200px] h-11 sm:h-12 text-sm sm:text-base"
         >
           {isDownloading ? (
             <>
@@ -130,54 +130,58 @@ export const SocialShareButtons = ({ personalityTitle, shareUrl = "https://toylu
         </Button>
 
         {/* Social Share Buttons */}
-        <div className="flex flex-wrap justify-center gap-2">
+        <div className="flex flex-wrap justify-center gap-2 w-full max-w-lg">
           <Button
             onClick={() => handleShare("facebook")}
             variant="outline"
             size="sm"
-            className="gap-2"
+            className="gap-1.5 sm:gap-2 flex-1 min-w-[110px] sm:flex-initial text-xs sm:text-sm"
           >
-            <Facebook className="h-4 w-4" />
-            Facebook
+            <Facebook className="h-3.5 w-3.5 sm:h-4 sm:w-4" />
+            <span className="hidden xs:inline">Facebook</span>
+            <span className="xs:hidden">FB</span>
           </Button>
           
           <Button
             onClick={() => handleShare("twitter")}
             variant="outline"
             size="sm"
-            className="gap-2"
+            className="gap-1.5 sm:gap-2 flex-1 min-w-[110px] sm:flex-initial text-xs sm:text-sm"
           >
-            <Twitter className="h-4 w-4" />
-            Twitter
+            <Twitter className="h-3.5 w-3.5 sm:h-4 sm:w-4" />
+            <span className="hidden xs:inline">Twitter</span>
+            <span className="xs:hidden">X</span>
           </Button>
           
           <Button
             onClick={() => handleShare("linkedin")}
             variant="outline"
             size="sm"
-            className="gap-2"
+            className="gap-1.5 sm:gap-2 flex-1 min-w-[110px] sm:flex-initial text-xs sm:text-sm"
           >
-            <Linkedin className="h-4 w-4" />
-            LinkedIn
+            <Linkedin className="h-3.5 w-3.5 sm:h-4 sm:w-4" />
+            <span className="hidden xs:inline">LinkedIn</span>
+            <span className="xs:hidden">LI</span>
           </Button>
           
           <Button
             onClick={() => handleShare("whatsapp")}
             variant="outline"
             size="sm"
-            className="gap-2"
+            className="gap-1.5 sm:gap-2 flex-1 min-w-[110px] sm:flex-initial text-xs sm:text-sm"
           >
-            <MessageCircle className="h-4 w-4" />
-            WhatsApp
+            <MessageCircle className="h-3.5 w-3.5 sm:h-4 sm:w-4" />
+            <span className="hidden xs:inline">WhatsApp</span>
+            <span className="xs:hidden">WA</span>
           </Button>
 
           <Button
             onClick={handleCopyLink}
             variant="outline"
             size="sm"
-            className="gap-2"
+            className="gap-1.5 sm:gap-2 w-full sm:w-auto text-xs sm:text-sm mt-1 sm:mt-0"
           >
-            <Share2 className="h-4 w-4" />
+            <Share2 className="h-3.5 w-3.5 sm:h-4 sm:w-4" />
             Copy Link
           </Button>
         </div>

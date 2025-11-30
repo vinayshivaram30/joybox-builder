@@ -86,21 +86,21 @@ const Pricing = () => {
         
         <div ref={tiersAnim.ref} className={`grid grid-cols-1 md:grid-cols-3 gap-6 max-w-5xl mx-auto transition-all duration-700 ${tiersAnim.isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
           {/* Monthly Plan */}
-          <div className="glass-card p-5 sm:p-6 md:p-8 hover-lift">
+          <div className="glass-card p-5 sm:p-6 md:p-8 hover-lift flex flex-col">
             <h3 className="font-heading font-bold text-xl sm:text-2xl mb-1.5">Monthly</h3>
             <div className="mb-4">
-              <span className="text-3xl sm:text-4xl font-bold text-foreground">₹1,499</span>
+              <span className="text-3xl sm:text-4xl font-bold text-foreground">₹999</span>
               <span className="text-muted-foreground">/month</span>
             </div>
             
-            <ul className="space-y-2 mb-6">
+            <ul className="space-y-2 mb-6 flex-grow">
               <li className="flex items-start gap-2">
                 <Check className="text-primary flex-shrink-0 mt-1" size={20} />
                 <span className="text-muted-foreground">3-4 premium toys</span>
               </li>
               <li className="flex items-start gap-2">
                 <Check className="text-primary flex-shrink-0 mt-1" size={20} />
-                <span className="text-muted-foreground">Box value: ₹4,500+</span>
+                <span className="text-muted-foreground">Box value: ₹6,500+</span>
               </li>
               <li className="flex items-start gap-2">
                 <Check className="text-primary flex-shrink-0 mt-1" size={20} />
@@ -112,7 +112,7 @@ const Pricing = () => {
               </li>
             </ul>
             
-            <Link to="/quiz">
+            <Link to="/quiz" className="mt-auto">
               <Button variant="outline" className="w-full">
                 Get Started
               </Button>
@@ -120,28 +120,28 @@ const Pricing = () => {
           </div>
           
           {/* Quarterly Plan - Recommended */}
-          <div className="glass-card p-5 sm:p-6 md:p-8 border-2 border-primary hover-lift relative">
+          <div className="glass-card p-5 sm:p-6 md:p-8 border-2 border-primary hover-lift relative flex flex-col">
             <div className="absolute -top-2.5 left-1/2 -translate-x-1/2 bg-primary text-primary-foreground px-3 sm:px-4 py-0.5 sm:py-1 rounded-full text-xs sm:text-sm font-semibold">
               Recommended
             </div>
             
             <h3 className="font-heading font-bold text-xl sm:text-2xl mb-1.5">Quarterly</h3>
             <div className="mb-4">
-              <span className="text-3xl sm:text-4xl font-bold text-foreground">₹1,299</span>
+              <span className="text-3xl sm:text-4xl font-bold text-foreground">₹899</span>
               <span className="text-muted-foreground">/month</span>
               <div className="text-xs sm:text-sm text-primary font-semibold mt-0.5">
-                Save ₹600/quarter
+                Save ₹300/quarter
               </div>
             </div>
             
-            <ul className="space-y-2 mb-6">
+            <ul className="space-y-2 mb-6 flex-grow">
               <li className="flex items-start gap-2">
                 <Check className="text-primary flex-shrink-0 mt-1" size={20} />
                 <span className="text-muted-foreground">3-4 premium toys</span>
               </li>
               <li className="flex items-start gap-2">
                 <Check className="text-primary flex-shrink-0 mt-1" size={20} />
-                <span className="text-muted-foreground">Box value: ₹4,500+</span>
+                <span className="text-muted-foreground">Box value: ₹6,500+</span>
               </li>
               <li className="flex items-start gap-2">
                 <Check className="text-primary flex-shrink-0 mt-1" size={20} />
@@ -157,7 +157,7 @@ const Pricing = () => {
               </li>
             </ul>
             
-            <Link to="/quiz">
+            <Link to="/quiz" className="mt-auto">
               <Button variant="cta" className="w-full">
                 Get Started
               </Button>
@@ -165,24 +165,24 @@ const Pricing = () => {
           </div>
           
           {/* Annual Plan */}
-          <div className="glass-card p-5 sm:p-6 md:p-8 hover-lift">
+          <div className="glass-card p-5 sm:p-6 md:p-8 hover-lift flex flex-col">
             <h3 className="font-heading font-bold text-xl sm:text-2xl mb-1.5">Annual</h3>
             <div className="mb-4">
-              <span className="text-3xl sm:text-4xl font-bold text-foreground">₹999</span>
+              <span className="text-3xl sm:text-4xl font-bold text-foreground">₹799</span>
               <span className="text-muted-foreground">/month</span>
               <div className="text-xs sm:text-sm text-accent font-semibold mt-0.5">
-                Save ₹6,000/year
+                Save ₹2,400/year
               </div>
             </div>
             
-            <ul className="space-y-2 mb-6">
+            <ul className="space-y-2 mb-6 flex-grow">
               <li className="flex items-start gap-2">
                 <Check className="text-primary flex-shrink-0 mt-1" size={20} />
                 <span className="text-muted-foreground">3-4 premium toys</span>
               </li>
               <li className="flex items-start gap-2">
                 <Check className="text-primary flex-shrink-0 mt-1" size={20} />
-                <span className="text-muted-foreground">Box value: ₹4,500+</span>
+                <span className="text-muted-foreground">Box value: ₹6,500+</span>
               </li>
               <li className="flex items-start gap-2">
                 <Check className="text-primary flex-shrink-0 mt-1" size={20} />
@@ -194,7 +194,7 @@ const Pricing = () => {
               </li>
               <li className="flex items-start gap-2">
                 <Check className="text-primary flex-shrink-0 mt-1" size={20} />
-                <span className="text-foreground font-semibold">2 free bonus boxes</span>
+                <span className="text-foreground font-semibold">2 extra months free</span>
               </li>
               <li className="flex items-start gap-2">
                 <Check className="text-primary flex-shrink-0 mt-1" size={20} />
@@ -202,7 +202,7 @@ const Pricing = () => {
               </li>
             </ul>
             
-            <Link to="/quiz">
+            <Link to="/quiz" className="mt-auto">
               <Button variant="outline" className="w-full">
                 Get Started
               </Button>
@@ -232,7 +232,7 @@ const Pricing = () => {
                   <tr className="border-t border-border">
                     <td className="p-4">Monthly Cost</td>
                     <td className="text-center p-4 text-muted-foreground">₹3,000+</td>
-                    <td className="text-center p-4 font-semibold text-primary">₹999-1,499</td>
+                    <td className="text-center p-4 font-semibold text-primary">₹799-999</td>
                   </tr>
                   <tr className="border-t border-border">
                     <td className="p-4">Clutter</td>

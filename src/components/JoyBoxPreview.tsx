@@ -5,7 +5,7 @@ import { getRecommendedToys, RecommendedToy } from "@/lib/toyRecommendations";
 import { Loader2 } from "lucide-react";
 import { ToyRating } from "@/components/ToyRating";
 import { supabase } from "@/integrations/supabase/client";
-import { personalityTypes } from "@/data/quizData";
+import { personalityTypes, PersonalityId } from "@/data/quizData";
 import WaitlistDialog from "@/components/WaitlistDialog";
 import {
   AlertDialog,
@@ -66,17 +66,23 @@ export const JoyBoxPreview = ({ personalityType, childAge, onRetakeQuiz }: JoyBo
   const totalValue = toys.reduce((sum, toy) => sum + (toy.price || 0), 0);
   
   // Get personality insights
-  const getPersonalityKey = (type: string): string => {
+  const getPersonalityKey = (type: string): PersonalityId => {
     const lowerType = type.toLowerCase();
-    if (lowerType.includes('builder')) return 'builder';
-    if (lowerType.includes('creative') || lowerType.includes('explorer')) return 'creative';
-    if (lowerType.includes('active') || lowerType.includes('adventurer')) return 'active';
-    if (lowerType.includes('story') || lowerType.includes('weaver')) return 'storyteller';
-    return 'balanced';
+    if (lowerType.includes('builder') && !lowerType.includes('curious')) return 'curious_builder';
+    if (lowerType.includes('tiny') && lowerType.includes('engineer')) return 'tiny_engineer';
+    if (lowerType.includes('creative') && lowerType.includes('maker')) return 'creative_maker';
+    if (lowerType.includes('story') || lowerType.includes('imagination')) return 'imaginative_storyteller';
+    if (lowerType.includes('active') && lowerType.includes('explorer')) return 'active_explorer';
+    if (lowerType.includes('curious') && lowerType.includes('explorer')) return 'curious_explorer';
+    if (lowerType.includes('problem') && lowerType.includes('solver')) return 'problem_solver';
+    if (lowerType.includes('sensory') && lowerType.includes('seeker')) return 'sensory_seeker';
+    if (lowerType.includes('quiet') && lowerType.includes('thinker')) return 'quiet_thinker';
+    if (lowerType.includes('social') && lowerType.includes('connector')) return 'social_connector';
+    return 'social_connector';
   };
   
   const personalityKey = getPersonalityKey(personalityType);
-  const personalityData = personalityTypes[personalityKey] || personalityTypes.balanced;
+  const personalityData = personalityTypes[personalityKey] || personalityTypes.social_connector;
 
   const handleRetakeClick = () => {
     setShowRetakeDialog(true);

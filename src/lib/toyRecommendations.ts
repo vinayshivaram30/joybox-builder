@@ -12,7 +12,7 @@ export interface RecommendedToy {
 
 /**
  * Get personalized toy recommendations based on personality type
- * @param personalityType The user's personality type from quiz results
+ * @param personalityType The user's personality type from quiz results (e.g., "curious_builder", "The Curious Builder")
  * @param ageGroup Optional age group filter
  * @param limit Number of toys to return (default: 6)
  */
@@ -22,10 +22,17 @@ export async function getRecommendedToys(
   limit: number = 6
 ): Promise<RecommendedToy[]> {
   try {
+    // Normalize personality type to match database format
+    // Convert "The Curious Builder" to "curious_builder" or keep "curious_builder" as is
+    const normalizedType = personalityType
+      .toLowerCase()
+      .replace(/^the\s+/i, '')
+      .replace(/\s+/g, '_');
+
     let query = supabase
       .from("toys")
       .select("id, name, description, image_url, age_group, category, price")
-      .contains("personality_types", [personalityType])
+      .contains("personality_types", [normalizedType])
       .gt("stock_quantity", 0)
       .order("is_featured", { ascending: false })
       .order("created_at", { ascending: false });

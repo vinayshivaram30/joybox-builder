@@ -1,6 +1,43 @@
 import { QuizQuestionData } from "@/components/QuizQuestion";
 import { PersonalityResultData } from "@/components/PersonalityResult";
 
+// -----------------------------
+// ToyLuv Personality Engine
+// -----------------------------
+
+export const CATEGORY_KEYS = [
+  "builder",
+  "creative",
+  "active",
+  "imagination",
+  "problem_solver",
+  "social",
+  "sensory",
+  "high_energy",
+  "explorer",
+  "focused",
+  "flexible",
+  "seeker_of_novelty",
+  "independent",
+  "guided",
+  "curious",
+  "observer",
+] as const;
+
+export type CategoryKey = (typeof CATEGORY_KEYS)[number];
+
+export type PersonalityId =
+  | "curious_builder"
+  | "imaginative_storyteller"
+  | "active_explorer"
+  | "problem_solver"
+  | "social_connector"
+  | "sensory_seeker"
+  | "tiny_engineer"
+  | "creative_maker"
+  | "quiet_thinker"
+  | "curious_explorer";
+
 export const quizQuestions: QuizQuestionData[] = [
   {
     id: "age",
@@ -72,101 +109,102 @@ export const quizQuestions: QuizQuestionData[] = [
   },
 ];
 
-export const personalityTypes: Record<string, PersonalityResultData> = {
-  builder: {
+// PERSONALITY DEFINITIONS
+export const personalityTypes: Record<PersonalityId, PersonalityResultData> = {
+  curious_builder: {
     title: "The Curious Builder",
     emoji: "🏗️",
-    description: "Your child loves to construct, experiment, and figure out how things work!",
+    description: "Your child loves building, arranging, and seeing how things fit together.",
     toyCategories: [
       { name: "Building Blocks", icon: "🧱" },
       { name: "STEM Kits", icon: "🔬" },
       { name: "Puzzles", icon: "🧩" },
     ],
   },
-  creative: {
-    title: "The Creative Explorer",
-    emoji: "🎨",
-    description: "Your child expresses themselves through art, crafts, and imaginative creation!",
-    toyCategories: [
-      { name: "Art Supplies", icon: "🖍️" },
-      { name: "Craft Kits", icon: "✂️" },
-      { name: "DIY Projects", icon: "🎭" },
-    ],
-  },
-  active: {
-    title: "The Active Adventurer",
-    emoji: "⚽",
-    description: "Your child thrives on movement, outdoor play, and physical challenges!",
-    toyCategories: [
-      { name: "Sports Toys", icon: "🏀" },
-      { name: "Outdoor Games", icon: "🪁" },
-      { name: "Active Play", icon: "🤸" },
-    ],
-  },
-  storyteller: {
-    title: "The Story Weaver",
+  imaginative_storyteller: {
+    title: "The Imaginative Storyteller",
     emoji: "📚",
-    description: "Your child loves books, storytelling, and imaginative role play!",
+    description: "Your child creates stories, characters, and pretend worlds.",
     toyCategories: [
       { name: "Story Books", icon: "📖" },
       { name: "Pretend Play", icon: "🎭" },
       { name: "Puppets", icon: "🧸" },
     ],
   },
-  balanced: {
-    title: "The Versatile Player",
-    emoji: "🌟",
-    description: "Your child enjoys a wonderful mix of different play styles!",
+  active_explorer: {
+    title: "The Active Explorer",
+    emoji: "⚽",
+    description: "Your child learns through movement, action, and big body play.",
     toyCategories: [
-      { name: "Mixed Activities", icon: "🎪" },
-      { name: "Learning Games", icon: "🎲" },
-      { name: "Creative Play", icon: "🎨" },
+      { name: "Sports Toys", icon: "🏀" },
+      { name: "Outdoor Games", icon: "🪁" },
+      { name: "Active Play", icon: "🤸" },
     ],
   },
-  sensorySeeker: {
+  problem_solver: {
+    title: "The Problem Solver",
+    emoji: "🧩",
+    description: "Your child enjoys puzzles, challenges, and figuring things out.",
+    toyCategories: [
+      { name: "Logic Puzzles", icon: "🧩" },
+      { name: "STEM Toys", icon: "🔬" },
+      { name: "Brain Teasers", icon: "🎯" },
+    ],
+  },
+  social_connector: {
+    title: "The Social Connector",
+    emoji: "🌟",
+    description: "Your child enjoys group play, sharing, and collaboration.",
+    toyCategories: [
+      { name: "Group Games", icon: "🎲" },
+      { name: "Sharing Activities", icon: "🤝" },
+      { name: "Communication Play", icon: "💬" },
+    ],
+  },
+  sensory_seeker: {
     title: "The Sensory Seeker",
     emoji: "✨",
-    description: "Your child loves textures, lights, sounds, and hands-on sensations. They explore the world using touch and movement.",
+    description: "Your child loves textures, sounds, lights, and hands-on sensory play.",
     toyCategories: [
       { name: "Sensory Kits", icon: "🌈" },
       { name: "Textured Toys", icon: "🧸" },
       { name: "Light Toys", icon: "💡" },
     ],
   },
-  tinyEngineer: {
+  tiny_engineer: {
     title: "The Tiny Engineer",
     emoji: "⚙️",
-    description: "Your child wants to know how things work. They enjoy gears, levers, mechanisms, and figuring out cause-and-effect.",
+    description: "Your child is curious about mechanisms, gears, and how things work.",
     toyCategories: [
       { name: "Engineering Kits", icon: "🔧" },
       { name: "STEM Building", icon: "⚙️" },
       { name: "Mechanical Puzzles", icon: "🧩" },
     ],
   },
-  creativeMaker: {
+  creative_maker: {
     title: "The Creative Maker",
     emoji: "🎨",
-    description: "Your child expresses themselves through hands-on creativity. They enjoy transforming simple materials into something new.",
+    description: "Your child enjoys making, decorating, and building unique creations.",
     toyCategories: [
       { name: "Art Kits", icon: "🖌️" },
       { name: "Clay Sets", icon: "🪴" },
       { name: "Building Toys", icon: "🧱" },
     ],
   },
-  quietThinker: {
+  quiet_thinker: {
     title: "The Quiet Thinker",
     emoji: "🤔",
-    description: "Your child prefers calm, focused play. They take time to observe, understand, and work slowly but steadily.",
+    description: "Your child prefers calm, focused, and thoughtful play.",
     toyCategories: [
       { name: "Quiet Play Kits", icon: "🧘" },
       { name: "Montessori Materials", icon: "📚" },
       { name: "Simple Puzzles", icon: "🧩" },
     ],
   },
-  curiousExplorer: {
+  curious_explorer: {
     title: "The Curious Explorer",
     emoji: "🔍",
-    description: "Your child wants to move, climb, push, pull, and interact with everything around them. Exploration excites them more than structured play.",
+    description: "Your child loves discovering, testing, and exploring new things.",
     toyCategories: [
       { name: "Exploration Kits", icon: "🔭" },
       { name: "Movement Toys", icon: "🚗" },
@@ -175,167 +213,80 @@ export const personalityTypes: Record<string, PersonalityResultData> = {
   },
 };
 
+// PERSONALITY PRIORITY (tie-breaker)
+export const PERSONALITY_PRIORITY: PersonalityId[] = [
+  "curious_builder",
+  "tiny_engineer",
+  "problem_solver",
+  "creative_maker",
+  "imaginative_storyteller",
+  "curious_explorer",
+  "active_explorer",
+  "sensory_seeker",
+  "quiet_thinker",
+  "social_connector",
+];
+
+// STEP 1 — Category scoring
+function computeCategoryScores(hints: CategoryKey[]) {
+  const scores: Record<string, number> = {};
+  CATEGORY_KEYS.forEach((k) => (scores[k] = 0));
+  hints.forEach((h) => (scores[h] += 1));
+  return scores;
+}
+
+// STEP 2 — Compute personality scores
+function computePersonalityScores(category: Record<string, number>) {
+  const c = category;
+
+  return {
+    curious_builder: c.builder + 0.5 * c.problem_solver + 0.5 * c.independent,
+    imaginative_storyteller:
+      c.imagination + 0.5 * c.creative + 0.5 * c.social + 0.5 * c.guided,
+    active_explorer: c.active + c.high_energy + 0.5 * c.explorer,
+    problem_solver:
+      c.problem_solver + c.focused + 0.5 * c.independent + 0.5 * c.observer,
+    social_connector: c.social + 0.5 * c.guided + 0.5 * c.flexible,
+    sensory_seeker: c.sensory + 0.5 * c.high_energy,
+    tiny_engineer:
+      c.builder + c.problem_solver + c.focused + 0.5 * c.observer,
+    creative_maker:
+      c.creative + c.imagination + 0.5 * c.sensory + 0.5 * c.flexible,
+    quiet_thinker: c.focused + c.independent + 0.5 * c.imagination,
+    curious_explorer:
+      c.explorer + c.curious + c.seeker_of_novelty + 0.5 * c.active,
+  };
+}
+
+// STEP 3 — Pick best personality
+function pickBestPersonality(scores: Record<PersonalityId, number>): PersonalityId {
+  let best: PersonalityId = "curious_builder";
+  let max = -Infinity;
+
+  for (const id of PERSONALITY_PRIORITY) {
+    if (scores[id] > max) {
+      max = scores[id];
+      best = id;
+    }
+  }
+
+  return best;
+}
+
+// MAIN CALCULATION FUNCTION
 export function calculatePersonality(answers: Record<string, string>): PersonalityResultData {
-  const playType = answers["play-type"];
-  const energy = answers["energy"];
-  const attention = answers["attention"];
-  const learning = answers["learning"];
-  const social = answers["social"];
+  // Collect all category hints from answers
+  const hints: CategoryKey[] = [];
   
-  // Advanced personality mapping based on multiple factors
-  
-  // Direct social play signals (highest priority for certain types)
-  if (social === "sensory") {
-    return personalityTypes.sensorySeeker;
-  }
-  
-  if (social === "focused") {
-    // Focused play + STEM/problem solving = Tiny Engineer
-    if (learning === "problem_solver" || playType === "builder") {
-      return personalityTypes.tinyEngineer;
+  Object.values(answers).forEach((value) => {
+    if (CATEGORY_KEYS.includes(value as CategoryKey)) {
+      hints.push(value as CategoryKey);
     }
-    // Focused play + puzzles = Quiet Thinker
-    if (playType === "problem_solver") {
-      return personalityTypes.quietThinker;
-    }
-    return personalityTypes.builder;
-  }
+  });
   
-  // Direct learning signals
-  if (learning === "sensory") {
-    return personalityTypes.sensorySeeker;
-  }
+  const categoryScores = computeCategoryScores(hints);
+  const personalityScores = computePersonalityScores(categoryScores);
+  const bestPersonality = pickBestPersonality(personalityScores);
   
-  if (learning === "creative") {
-    return personalityTypes.creativeMaker;
-  }
-  
-  if (learning === "problem_solver") {
-    if (energy === "focused" || energy === "explorer" || social === "focused") {
-      return personalityTypes.tinyEngineer;
-    }
-    return personalityTypes.builder;
-  }
-  
-  if (learning === "imagination") {
-    if (energy === "focused" || playType === "problem_solver") {
-      return personalityTypes.quietThinker;
-    }
-    return personalityTypes.storyteller;
-  }
-  
-  if (learning === "social") {
-    return personalityTypes.balanced; // Social Connector
-  }
-  
-  if (learning === "active") {
-    if (energy === "high_energy") {
-      return personalityTypes.active;
-    }
-    return personalityTypes.curiousExplorer;
-  }
-  
-  // Direct energy signals
-  if (energy === "sensory") {
-    return personalityTypes.sensorySeeker;
-  }
-  
-  if (energy === "focused") {
-    if (playType === "problem_solver" || attention === "very-long") {
-      return personalityTypes.quietThinker;
-    }
-    if (playType === "builder") {
-      return personalityTypes.tinyEngineer;
-    }
-    return personalityTypes.quietThinker;
-  }
-  
-  if (energy === "explorer") {
-    if (playType === "builder") {
-      return personalityTypes.tinyEngineer;
-    }
-    if (playType === "problem_solver") {
-      return personalityTypes.builder;
-    }
-    return personalityTypes.curiousExplorer;
-  }
-  
-  if (energy === "seeker_of_novelty") {
-    if (playType === "creative") {
-      return personalityTypes.creativeMaker;
-    }
-    if (playType === "imagination") {
-      return personalityTypes.storyteller;
-    }
-    return personalityTypes.curiousExplorer;
-  }
-  
-  // Direct play-type signals
-  if (playType === "sensory") {
-    return personalityTypes.sensorySeeker;
-  }
-  
-  if (playType === "problem_solver") {
-    if (energy === "focused" || attention === "very-long" || social === "focused") {
-      return personalityTypes.quietThinker;
-    }
-    return personalityTypes.builder;
-  }
-  
-  // High energy + active play = Active Explorer
-  if (energy === "high_energy" && playType === "active") {
-    return personalityTypes.active;
-  }
-  
-  // Tiny Engineer: Building + good attention
-  if (playType === "builder" && (attention === "long" || attention === "very-long")) {
-    return personalityTypes.tinyEngineer;
-  }
-  
-  // Creative Maker: Creative play + parent guidance
-  if (playType === "creative") {
-    return personalityTypes.creativeMaker;
-  }
-  
-  // Social Connector: With kids or guided play + imagination
-  if (social === "social" || social === "guided") {
-    if (playType === "imagination") {
-      return personalityTypes.storyteller;
-    }
-    return personalityTypes.balanced;
-  }
-  
-  // Independent play signals
-  if (social === "independent") {
-    if (playType === "problem_solver" || energy === "focused") {
-      return personalityTypes.quietThinker;
-    }
-    if (playType === "builder") {
-      return personalityTypes.builder;
-    }
-  }
-  
-  // Flexible play
-  if (social === "flexible") {
-    if (playType === "creative") return personalityTypes.creativeMaker;
-    if (playType === "active") return personalityTypes.curiousExplorer;
-    return personalityTypes.balanced;
-  }
-  
-  // Energy flexible = balanced types
-  if (energy === "flexible") {
-    if (playType === "creative") return personalityTypes.creativeMaker;
-    return personalityTypes.balanced;
-  }
-  
-  // Curious Explorer: Active play
-  if (playType === "active") {
-    return personalityTypes.curiousExplorer;
-  }
-  
-  // Original personality types (fallbacks)
-  if (playType === "builder") return personalityTypes.builder;
-  if (playType === "imagination") return personalityTypes.storyteller;
-  
-  return personalityTypes.balanced;
+  return personalityTypes[bestPersonality];
 }

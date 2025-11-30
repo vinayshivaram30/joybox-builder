@@ -12,19 +12,12 @@ import {
 } from "@/components/ui/alert-dialog";
 import { PersonalityScoreChart } from "@/components/PersonalityScoreChart";
 import { PDFReportGenerator } from "@/components/PDFReportGenerator";
+import { SocialShareCard } from "@/components/SocialShareCard";
+import { SocialShareButtons } from "@/components/SocialShareButtons";
 import { PersonalityId } from "@/data/quizData";
+import { PersonalityResultData } from "@/types/personality";
 
-export interface PersonalityResultData {
-  title: string;
-  description: string;
-  emoji: string;
-  toyCategories: Array<{
-    name: string;
-    icon: string;
-  }>;
-  id?: PersonalityId;
-  scores?: Record<PersonalityId, number>;
-}
+export type { PersonalityResultData };
 
 interface PersonalityResultProps {
   result: PersonalityResultData & { scores: Record<PersonalityId, number>; id: PersonalityId };
@@ -112,6 +105,21 @@ export const PersonalityResult = ({ result, onContinue, onRetake, childAge, pare
       {result.scores && result.id && (
         <PersonalityScoreChart scores={result.scores} topPersonality={result.id} />
       )}
+
+      {/* Social Share Card */}
+      <div className="glass-card p-8">
+        <SocialShareCard 
+          result={result} 
+          childAge={childAge}
+          parentName={parentName}
+        />
+        <div className="mt-6">
+          <SocialShareButtons 
+            personalityTitle={result.title}
+            shareUrl="https://toyluv.app/quiz"
+          />
+        </div>
+      </div>
 
       <AlertDialog open={showRetakeDialog} onOpenChange={setShowRetakeDialog}>
         <AlertDialogContent>

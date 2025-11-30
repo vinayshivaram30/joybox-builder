@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { z } from "zod";
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription } from "@/components/ui/dialog";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -7,6 +8,28 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@
 import { Sparkles, Heart, Gift, Loader2, CheckCircle2 } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
 import { supabase } from "@/integrations/supabase/client";
+
+// Validation schema
+const waitlistSchema = z.object({
+  email: z.string()
+    .trim()
+    .email({ message: "Invalid email address" })
+    .max(255, { message: "Email must be less than 255 characters" }),
+  parentName: z.string()
+    .trim()
+    .min(1, { message: "Name is required" })
+    .max(100, { message: "Name must be less than 100 characters" }),
+  childAge: z.string()
+    .trim()
+    .max(50, { message: "Age must be less than 50 characters" })
+    .optional(),
+  phoneNumber: z.string()
+    .trim()
+    .regex(/^[\d\s\+\-\(\)]*$/, { message: "Invalid phone number format" })
+    .max(20, { message: "Phone number must be less than 20 characters" })
+    .optional(),
+  interestedPlan: z.string().optional(),
+});
 
 interface WaitlistDialogProps {
   open: boolean;
@@ -28,6 +51,26 @@ const WaitlistDialog = ({ open, onOpenChange, defaultPlan, defaultPersonalityTyp
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     
+    // Validate input
+    try {
+      waitlistSchema.parse({
+        email,
+        parentName,
+        childAge,
+        phoneNumber,
+        interestedPlan,
+      });
+    } catch (validationError) {
+      if (validationError instanceof z.ZodError) {
+        toast({
+          title: "Validation Error",
+          description: validationError.errors[0].message,
+          variant: "destructive",
+        });
+        return;
+      }
+    }
+
     if (!email || !parentName) {
       toast({
         title: "Missing Information",
@@ -40,14 +83,17 @@ const WaitlistDialog = ({ open, onOpenChange, defaultPlan, defaultPersonalityTyp
     setIsSubmitting(true);
 
     try {
-      const { error } = await supabase.from("waitlist").insert({
-        email,
-        parent_name: parentName,
-        child_age: childAge,
-        interested_plan: interestedPlan,
-        personality_type: defaultPersonalityType,
-        phone_number: phoneNumber,
-      });
+      // Sanitize and encode data for storage
+      const sanitizedData = {
+        email: email.trim().toLowerCase(),
+        parent_name: parentName.trim(),
+        child_age: childAge.trim() || null,
+        interested_plan: interestedPlan || null,
+        personality_type: defaultPersonalityType || null,
+        phone_number: phoneNumber.trim() || null,
+      };
+
+      const { error } = await supabase.from("waitlist").insert(sanitizedData);
 
       if (error) {
         if (error.code === "23505") {
@@ -150,6 +196,7 @@ const WaitlistDialog = ({ open, onOpenChange, defaultPlan, defaultPersonalityTyp
               placeholder="Your name"
               value={parentName}
               onChange={(e) => setParentName(e.target.value)}
+              maxLength={100}
               required
             />
           </div>
@@ -162,6 +209,7 @@ const WaitlistDialog = ({ open, onOpenChange, defaultPlan, defaultPersonalityTyp
               placeholder="you@example.com"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
+              maxLength={255}
               required
             />
           </div>
@@ -173,6 +221,7 @@ const WaitlistDialog = ({ open, onOpenChange, defaultPlan, defaultPersonalityTyp
               placeholder="e.g., 3 years"
               value={childAge}
               onChange={(e) => setChildAge(e.target.value)}
+              maxLength={50}
             />
           </div>
 
@@ -184,6 +233,7 @@ const WaitlistDialog = ({ open, onOpenChange, defaultPlan, defaultPersonalityTyp
               placeholder="+91 XXXXX XXXXX"
               value={phoneNumber}
               onChange={(e) => setPhoneNumber(e.target.value)}
+              maxLength={20}
             />
           </div>
 

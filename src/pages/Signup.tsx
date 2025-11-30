@@ -80,63 +80,65 @@ const Signup = () => {
         >
           <div className="glass-card p-8 md:p-12">
             <h2 className="text-2xl md:text-3xl font-heading font-bold text-center mb-8">
-              Your Child's Personalized JoyBox
+              Your Child&apos;s Personalized JoyBox
             </h2>
 
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
-              <div className="bg-white rounded-2xl p-4 border-2 border-primary/10">
-                <div className="aspect-square bg-muted rounded-xl mb-3 overflow-hidden">
+              <div className="bg-card rounded-2xl p-4 border-2 border-primary/10 hover:shadow-xl transition-all">
+                <div className="aspect-square rounded-xl mb-3 overflow-hidden bg-gradient-to-br from-primary/5 to-secondary/5">
                   <div ref={toyParallax1} className="parallax-slow h-full">
                     <img
                       src={toyBlocks}
-                      alt="Motor skill toy"
+                      alt="Motor Skills Toy"
                       className="w-full h-full object-cover"
                     />
                   </div>
                 </div>
-                <h4 className="font-semibold mb-1">Motor Skills Toy</h4>
+                <h4 className="font-semibold mb-1 text-foreground">Motor Skills Toy</h4>
                 <p className="text-sm text-muted-foreground">Building & Construction</p>
               </div>
 
-              <div className="bg-white rounded-2xl p-4 border-2 border-primary/10">
-                <div className="aspect-square bg-muted rounded-xl mb-3 overflow-hidden">
+              <div className="bg-card rounded-2xl p-4 border-2 border-primary/10 hover:shadow-xl transition-all">
+                <div className="aspect-square rounded-xl mb-3 overflow-hidden bg-gradient-to-br from-primary/5 to-secondary/5">
                   <div ref={toyParallax2} className="parallax-slow h-full">
                     <img
                       src={toyPuzzle}
-                      alt="Problem solver toy"
+                      alt="Problem Solver"
                       className="w-full h-full object-cover"
                     />
                   </div>
                 </div>
-                <h4 className="font-semibold mb-1">Problem Solver</h4>
+                <h4 className="font-semibold mb-1 text-foreground">Problem Solver</h4>
                 <p className="text-sm text-muted-foreground">Puzzles & Logic</p>
               </div>
 
-              <div className="bg-white rounded-2xl p-4 border-2 border-primary/10">
-                <div className="aspect-square bg-muted rounded-xl mb-3 overflow-hidden">
+              <div className="bg-card rounded-2xl p-4 border-2 border-primary/10 hover:shadow-xl transition-all">
+                <div className="aspect-square rounded-xl mb-3 overflow-hidden bg-gradient-to-br from-primary/5 to-secondary/5">
                   <div ref={toyParallax3} className="parallax-slow h-full">
                     <img
                       src={toyCraft}
-                      alt="Creativity toy"
+                      alt="Creativity Toy"
                       className="w-full h-full object-cover"
                     />
                   </div>
                 </div>
-                <h4 className="font-semibold mb-1">Creativity Toy</h4>
+                <h4 className="font-semibold mb-1 text-foreground">Creativity Toy</h4>
                 <p className="text-sm text-muted-foreground">Arts & Crafts</p>
               </div>
             </div>
 
-            <div className="bg-accent/10 rounded-2xl p-6 border-2 border-accent/20 text-center">
-              <p className="text-lg mb-2">
-                <span className="font-heading font-semibold">Box Value:</span>{" "}
-                <span className="text-2xl font-bold text-foreground">₹6,500+</span>
-              </p>
-              <p className="text-lg">
-                <span className="font-heading font-semibold">Your Price:</span>{" "}
-                <span className="text-2xl font-bold text-primary">₹899/month</span>
-                <span className="text-sm text-muted-foreground ml-2">(Quarterly Plan)</span>
-              </p>
+            <div className="bg-accent/10 rounded-2xl p-6 border-2 border-accent/20">
+              <div className="flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-8 text-center">
+                <div>
+                  <span className="font-heading font-semibold text-base sm:text-lg text-foreground">Box Value: </span>
+                  <span className="text-xl sm:text-2xl font-bold text-foreground">₹6,500+</span>
+                </div>
+                <div>
+                  <span className="font-heading font-semibold text-base sm:text-lg text-foreground">Your Price: </span>
+                  <span className="text-xl sm:text-2xl font-bold text-primary">₹899/month</span>
+                  <span className="text-sm text-muted-foreground ml-2">(Quarterly Plan)</span>
+                </div>
+              </div>
             </div>
           </div>
         </div>

@@ -36,7 +36,9 @@ export const TrustedUsers: React.FC<TrustedUsersProps> = ({
         </div>
         <span className="text-foreground text-xs md:text-sm font-semibold">
           {caption}{" "}
-          <CountUp value={totalUsersText} duration={2} separator="," className="ml-1 text-sm md:text-base font-bold" suffix="+" colorScheme="gradient" />
+          <span className="ml-1 text-sm md:text-base font-bold bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
+            Bengaluru
+          </span>
           {" "}parents
         </span>
       </div>

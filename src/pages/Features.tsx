@@ -1,26 +1,13 @@
 import { Navigation } from "@/components/Navigation";
 import { Footer } from "@/components/Footer";
 import { useScrollAnimation } from "@/hooks/useScrollAnimation";
-import { useParallax } from "@/hooks/useParallax";
 import { Brain, Droplets, Zap, CheckCircle, Shield, TruckIcon } from "lucide-react";
-import { ElectroBorder } from "@/components/ui/electro-border";
-import { InteractiveGradient } from "@/components/ui/interactive-gradient";
 
 const Features = () => {
   const aiAnim = useScrollAnimation(0.2);
   const hygieneAnim = useScrollAnimation(0.2);
   const logisticsAnim = useScrollAnimation(0.2);
   const trustAnim = useScrollAnimation(0.2);
-  
-  const parallax1 = useParallax(0.15);
-  const parallax2 = useParallax(0.25);
-  const parallax3 = useParallax(0.35);
-  const parallax4 = useParallax(0.45);
-  
-  const hygieneParallax1 = useParallax(0.1);
-  const hygieneParallax2 = useParallax(0.2);
-  const hygieneParallax3 = useParallax(0.3);
-  const hygieneParallax4 = useParallax(0.4);
 
   return (
     <div className="min-h-screen bg-background">
@@ -118,82 +105,46 @@ const Features = () => {
             </p>
           </div>
           
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-5">
-            <InteractiveGradient 
-              color="#64748B" 
-              glowColor="#64748B40"
-              borderRadius="1rem"
-              followMouse={true}
-              hoverOnly={true}
-              intensity={80}
-            >
-              <div className="p-4 sm:p-5 h-full flex flex-col items-center text-center">
-                <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-secondary/20 flex items-center justify-center mb-3">
-                  <span className="text-xl sm:text-2xl">🔍</span>
-                </div>
-                <h3 className="font-heading font-bold text-base sm:text-lg mb-1.5">1. Inspection</h3>
-                <p className="text-sm text-muted-foreground">
-                  Manual quality check for damage, wear, and safety
-                </p>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-5">
+            <div className="p-4 sm:p-5 h-full flex flex-col items-center text-center rounded-2xl border border-border/50 bg-card/50 backdrop-blur-sm hover:border-secondary/50 transition-colors">
+              <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-secondary/20 flex items-center justify-center mb-3">
+                <span className="text-xl sm:text-2xl">🔍</span>
               </div>
-            </InteractiveGradient>
+              <h3 className="font-heading font-bold text-base sm:text-lg mb-1.5">1. Inspection</h3>
+              <p className="text-sm text-muted-foreground">
+                Manual quality check for damage, wear, and safety
+              </p>
+            </div>
             
-            <InteractiveGradient 
-              color="#3B82F6" 
-              glowColor="#3B82F640"
-              borderRadius="1rem"
-              followMouse={true}
-              hoverOnly={true}
-              intensity={80}
-            >
-              <div className="p-4 sm:p-5 h-full flex flex-col items-center text-center">
-                <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-secondary/20 flex items-center justify-center mb-3">
-                  <Droplets className="text-secondary" size={20} />
-                </div>
-                <h3 className="font-heading font-bold text-base sm:text-lg mb-1.5">2. Ultrasonic Clean</h3>
-                <p className="text-sm text-muted-foreground">
-                  Deep cleaning removes 99.9% of germs and bacteria
-                </p>
+            <div className="p-4 sm:p-5 h-full flex flex-col items-center text-center rounded-2xl border border-border/50 bg-card/50 backdrop-blur-sm hover:border-secondary/50 transition-colors">
+              <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-secondary/20 flex items-center justify-center mb-3">
+                <Droplets className="text-secondary" size={20} />
               </div>
-            </InteractiveGradient>
+              <h3 className="font-heading font-bold text-base sm:text-lg mb-1.5">2. Ultrasonic Clean</h3>
+              <p className="text-sm text-muted-foreground">
+                Deep cleaning removes 99.9% of germs and bacteria
+              </p>
+            </div>
             
-            <InteractiveGradient 
-              color="#8B5CF6" 
-              glowColor="#8B5CF640"
-              borderRadius="1rem"
-              followMouse={true}
-              hoverOnly={true}
-              intensity={80}
-            >
-              <div className="p-4 sm:p-5 h-full flex flex-col items-center text-center">
-                <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-secondary/20 flex items-center justify-center mb-3">
-                  <Zap className="text-secondary" size={20} />
-                </div>
-                <h3 className="font-heading font-bold text-base sm:text-lg mb-1.5">3. UV-C Sterilization</h3>
-                <p className="text-sm text-muted-foreground">
-                  Medical-grade UV light kills remaining pathogens
-                </p>
+            <div className="p-4 sm:p-5 h-full flex flex-col items-center text-center rounded-2xl border border-border/50 bg-card/50 backdrop-blur-sm hover:border-secondary/50 transition-colors">
+              <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-secondary/20 flex items-center justify-center mb-3">
+                <Zap className="text-secondary" size={20} />
               </div>
-            </InteractiveGradient>
+              <h3 className="font-heading font-bold text-base sm:text-lg mb-1.5">3. UV-C Sterilization</h3>
+              <p className="text-sm text-muted-foreground">
+                Medical-grade UV light kills remaining pathogens
+              </p>
+            </div>
             
-            <InteractiveGradient 
-              color="#14B8A6" 
-              glowColor="#14B8A640"
-              borderRadius="1rem"
-              followMouse={true}
-              hoverOnly={true}
-              intensity={80}
-            >
-              <div className="p-4 sm:p-5 h-full flex flex-col items-center text-center">
-                <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-secondary/20 flex items-center justify-center mb-3">
-                  <span className="text-xl sm:text-2xl">📦</span>
-                </div>
-                <h3 className="font-heading font-bold text-base sm:text-lg mb-1.5">4. Vacuum Seal</h3>
-                <p className="text-sm text-muted-foreground">
-                  Sealed packaging ensures hygiene until delivery
-                </p>
+            <div className="p-4 sm:p-5 h-full flex flex-col items-center text-center rounded-2xl border border-border/50 bg-card/50 backdrop-blur-sm hover:border-secondary/50 transition-colors">
+              <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-secondary/20 flex items-center justify-center mb-3">
+                <span className="text-xl sm:text-2xl">📦</span>
               </div>
-            </InteractiveGradient>
+              <h3 className="font-heading font-bold text-base sm:text-lg mb-1.5">4. Vacuum Seal</h3>
+              <p className="text-sm text-muted-foreground">
+                Sealed packaging ensures hygiene until delivery
+              </p>
+            </div>
           </div>
           
           <div className="mt-5 sm:mt-6 text-center">
@@ -225,92 +176,52 @@ const Features = () => {
           </div>
           
           <div className="space-y-4 sm:space-y-5">
-            <div ref={parallax1}>
-              <InteractiveGradient 
-                color="#FF6B6B" 
-                glowColor="#FF6B6B40"
-                borderRadius="1rem"
-                followMouse={true}
-                hoverOnly={true}
-                intensity={70}
-                className="p-4 sm:p-5 flex gap-4 sm:gap-5 items-start"
-              >
-                <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-primary/20 flex items-center justify-center flex-shrink-0">
-                  <span className="text-xl sm:text-2xl">📅</span>
-                </div>
-                <div>
-                  <h3 className="font-heading font-bold text-lg sm:text-xl mb-1.5">Step 1: Complete Quiz</h3>
-                  <p className="text-muted-foreground">
-                    Take our 60-second Play Personality Test and receive your personalized JoyBox preview
-                  </p>
-                </div>
-              </InteractiveGradient>
+            <div className="p-4 sm:p-5 flex gap-4 sm:gap-5 items-start rounded-2xl border border-border/50 bg-card/50 backdrop-blur-sm hover:border-primary/50 transition-colors">
+              <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-primary/20 flex items-center justify-center flex-shrink-0">
+                <span className="text-xl sm:text-2xl">📅</span>
+              </div>
+              <div>
+                <h3 className="font-heading font-bold text-lg sm:text-xl mb-1.5">Step 1: Complete Quiz</h3>
+                <p className="text-muted-foreground">
+                  Take our 60-second Play Personality Test and receive your personalized JoyBox preview
+                </p>
+              </div>
             </div>
             
-            <div ref={parallax2}>
-              <InteractiveGradient 
-                color="#3B82F6" 
-                glowColor="#3B82F640"
-                borderRadius="1rem"
-                followMouse={true}
-                hoverOnly={true}
-                intensity={70}
-                className="p-4 sm:p-5 flex gap-4 sm:gap-5 items-start"
-              >
-                <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-secondary/20 flex items-center justify-center flex-shrink-0">
-                  <span className="text-xl sm:text-2xl">🚚</span>
-                </div>
-                <div>
-                  <h3 className="font-heading font-bold text-lg sm:text-xl mb-1.5">Step 2: First Delivery</h3>
-                  <p className="text-muted-foreground">
-                    Your first JoyBox arrives within 48 hours at your doorstep in sealed, hygienic packaging
-                  </p>
-                </div>
-              </InteractiveGradient>
+            <div className="p-4 sm:p-5 flex gap-4 sm:gap-5 items-start rounded-2xl border border-border/50 bg-card/50 backdrop-blur-sm hover:border-secondary/50 transition-colors">
+              <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-secondary/20 flex items-center justify-center flex-shrink-0">
+                <span className="text-xl sm:text-2xl">🚚</span>
+              </div>
+              <div>
+                <h3 className="font-heading font-bold text-lg sm:text-xl mb-1.5">Step 2: First Delivery</h3>
+                <p className="text-muted-foreground">
+                  Your first JoyBox arrives within 48 hours at your doorstep in sealed, hygienic packaging
+                </p>
+              </div>
             </div>
             
-            <div ref={parallax3}>
-              <InteractiveGradient 
-                color="#8B5CF6" 
-                glowColor="#8B5CF640"
-                borderRadius="1rem"
-                followMouse={true}
-                hoverOnly={true}
-                intensity={70}
-                className="p-4 sm:p-5 flex gap-4 sm:gap-5 items-start"
-              >
-                <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-accent/20 flex items-center justify-center flex-shrink-0">
-                  <span className="text-xl sm:text-2xl">🔄</span>
-                </div>
-                <div>
-                  <h3 className="font-heading font-bold text-lg sm:text-xl mb-1.5">Step 3: New JoyBox Every 3 Weeks</h3>
-                  <p className="text-muted-foreground">
-                    Every 3 weeks, we pick up the old box and deliver a fresh JoyBox with new toys - same day service
-                  </p>
-                </div>
-              </InteractiveGradient>
+            <div className="p-4 sm:p-5 flex gap-4 sm:gap-5 items-start rounded-2xl border border-border/50 bg-card/50 backdrop-blur-sm hover:border-accent/50 transition-colors">
+              <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-accent/20 flex items-center justify-center flex-shrink-0">
+                <span className="text-xl sm:text-2xl">🔄</span>
+              </div>
+              <div>
+                <h3 className="font-heading font-bold text-lg sm:text-xl mb-1.5">Step 3: New JoyBox Every 3 Weeks</h3>
+                <p className="text-muted-foreground">
+                  Every 3 weeks, we pick up the old box and deliver a fresh JoyBox with new toys - same day service
+                </p>
+              </div>
             </div>
             
-            <div ref={parallax4}>
-              <InteractiveGradient 
-                color="#14B8A6" 
-                glowColor="#14B8A640"
-                borderRadius="1rem"
-                followMouse={true}
-                hoverOnly={true}
-                intensity={70}
-                className="p-4 sm:p-5 flex gap-4 sm:gap-5 items-start"
-              >
-                <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-coral/20 flex items-center justify-center flex-shrink-0">
-                  <span className="text-xl sm:text-2xl">♻️</span>
-                </div>
-                <div>
-                  <h3 className="font-heading font-bold text-lg sm:text-xl mb-1.5">Step 4: Repeat JoyLoop</h3>
-                  <p className="text-muted-foreground">
-                    Your child gets variety, you get convenience, and the planet gets sustainability
-                  </p>
-                </div>
-              </InteractiveGradient>
+            <div className="p-4 sm:p-5 flex gap-4 sm:gap-5 items-start rounded-2xl border border-border/50 bg-card/50 backdrop-blur-sm hover:border-coral/50 transition-colors">
+              <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-coral/20 flex items-center justify-center flex-shrink-0">
+                <span className="text-xl sm:text-2xl">♻️</span>
+              </div>
+              <div>
+                <h3 className="font-heading font-bold text-lg sm:text-xl mb-1.5">Step 4: Repeat JoyLoop</h3>
+                <p className="text-muted-foreground">
+                  Your child gets variety, you get convenience, and the planet gets sustainability
+                </p>
+              </div>
             </div>
           </div>
         </div>

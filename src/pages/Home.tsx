@@ -27,7 +27,7 @@ const Home = () => {
         <ParticlesBackground colors={['#e91e63', '#00bcd4', '#ffc107']} size={3} countDesktop={80} countTablet={60} countMobile={40} zIndex={0} height="100%" />
         <div className="w-full px-4 sm:px-6 lg:px-8 py-12 sm:py-16 relative z-10">
           <div className="max-w-6xl mx-auto text-center">
-            <img src={logoSvg} alt="ToyLuv" className="h-16 sm:h-24 md:h-32 w-auto mx-auto mb-6 sm:mb-8 drop-shadow-2xl animate-float" width="213" height="64" loading="eager" fetchPriority="high" />
+            <img src={logoSvg} alt="ToyLuv" className="h-14 sm:h-20 md:h-28 w-auto mx-auto mb-4 sm:mb-6 md:mb-8 drop-shadow-2xl animate-float" width="213" height="64" loading="eager" fetchPriority="high" />
             <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-heading font-bold text-foreground mb-4 sm:mb-6 leading-tight px-2">
               Making playtime{" "}
               <span className="text-primary">smarter</span> with every box
@@ -38,9 +38,9 @@ const Home = () => {
             </p>
             
             <Link to="/quiz">
-              <Button size="lg" className="sm:px-12 md:px-16 sm:py-8 h-auto mb-6 sm:mb-8 bg-gradient-to-r from-primary via-accent to-secondary hover:scale-105 transition-all duration-300 shadow-2xl shadow-primary/30 text-primary-foreground font-bold sm:text-xl md:text-xl text-base px-[21px] py-[21px]">
+              <Button size="lg" className="h-auto mb-4 sm:mb-6 md:mb-8 bg-gradient-to-r from-primary via-accent to-secondary hover:scale-105 transition-all duration-300 shadow-2xl shadow-primary/30 text-primary-foreground font-bold text-base sm:text-lg md:text-xl px-6 py-4 sm:px-10 sm:py-6 md:px-14 md:py-7">
                 Find Your Child's Toy Personality 
-                <Sparkles className="ml-2 animate-pulse mx-[5px]" />
+                <Sparkles className="ml-2 animate-pulse" />
               </Button>
             </Link>
             

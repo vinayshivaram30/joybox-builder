@@ -279,10 +279,10 @@ const Pricing = () => {
             Every box is curated for your child's development
           </p>
           
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
             <div className="glass-card p-3 sm:p-4 hover-lift">
               <div className="aspect-square mb-2 overflow-hidden rounded-lg">
-                <img src={toyBlocks} alt="Building blocks toy" className="w-full h-full object-cover" />
+                <img src={toyBlocks} alt="Building blocks toy" className="w-full h-full object-cover" loading="lazy" />
               </div>
               <h4 className="font-semibold mb-1 text-sm sm:text-base">Hands-On Play Toy</h4>
               <p className="text-xs sm:text-sm text-muted-foreground mb-1.5">
@@ -295,7 +295,7 @@ const Pricing = () => {
             
             <div className="glass-card p-3 sm:p-4 hover-lift">
               <div className="aspect-square mb-2 overflow-hidden rounded-lg">
-                <img src={toyCraft} alt="Creative craft toy" className="w-full h-full object-cover" />
+                <img src={toyCraft} alt="Creative craft toy" className="w-full h-full object-cover" loading="lazy" />
               </div>
               <h4 className="font-semibold mb-1 text-sm sm:text-base">Creativity Toy</h4>
               <p className="text-xs sm:text-sm text-muted-foreground mb-1.5">
@@ -308,7 +308,7 @@ const Pricing = () => {
             
             <div className="glass-card p-3 sm:p-4 hover-lift">
               <div className="aspect-square mb-2 overflow-hidden rounded-lg">
-                <img src={toyPuzzle} alt="Educational puzzle toy" className="w-full h-full object-cover" />
+                <img src={toyPuzzle} alt="Educational puzzle toy" className="w-full h-full object-cover" loading="lazy" />
               </div>
               <h4 className="font-semibold mb-1 text-sm sm:text-base">Problem-Solving Toy</h4>
               <p className="text-xs sm:text-sm text-muted-foreground mb-1.5">
@@ -321,7 +321,7 @@ const Pricing = () => {
             
             <div className="glass-card p-3 sm:p-4 hover-lift">
               <div className="aspect-square mb-2 overflow-hidden rounded-lg">
-                <img src={toyVehicles} alt="Toy vehicles bikes cars trains" className="w-full h-full object-cover" />
+                <img src={toyVehicles} alt="Toy vehicles bikes cars trains" className="w-full h-full object-cover" loading="lazy" />
               </div>
               <h4 className="font-semibold mb-1 text-sm sm:text-base">Vehicle Toy</h4>
               <p className="text-xs sm:text-sm text-muted-foreground mb-1.5">

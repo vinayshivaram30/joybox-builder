@@ -5,14 +5,13 @@ import { QuizQuestion } from "@/components/QuizQuestion";
 import { ProgressBar } from "@/components/ProgressBar";
 import { PersonalityResult } from "@/components/PersonalityResult";
 import { SignupForm } from "@/components/SignupForm";
-import { JoyBoxPreview } from "@/components/JoyBoxPreview";
 import { quizQuestions, calculatePersonality } from "@/data/quizData";
 import { supabase } from "@/integrations/supabase/client";
 import { useToast } from "@/hooks/use-toast";
 import { useAuth } from "@/contexts/AuthContext";
 import heroImage from "@/assets/hero-toys.jpg";
 
-type FlowStep = "hero" | "quiz" | "result" | "signup" | "preview";
+type FlowStep = "hero" | "quiz" | "result" | "signup";
 
 const Index = () => {
   const { toast } = useToast();
@@ -114,17 +113,16 @@ const Index = () => {
       }
 
       setUserData(data);
-      setCurrentStep("preview");
       
       toast({
-        title: "Quiz saved successfully!",
-        description: "Your personalized JoyBox is ready. Check your email for recommendations!",
+        title: "Quiz completed! 🎉",
+        description: "Check out our plans to get started with ToyLuv!",
       });
 
-      // If user is logged in, redirect to dashboard after preview
-      if (user) {
-        setTimeout(() => navigate('/dashboard'), 2000);
-      }
+      // Redirect to pricing page instead of showing preview
+      setTimeout(() => {
+        navigate('/pricing');
+      }, 1000);
     } catch (error) {
       console.error("Error saving quiz results:", error);
       toast({
@@ -170,7 +168,7 @@ const Index = () => {
               Fun quiz. No payment needed.
             </p>
             <p className="text-base sm:text-lg text-muted-foreground mb-8 sm:mb-10 px-4">
-              Personalised JoyBox preview included.
+              Discover the perfect toys for your child's personality.
             </p>
 
             <Button
@@ -240,17 +238,6 @@ const Index = () => {
       {currentStep === "signup" && (
         <div className="w-full px-4 sm:px-6 lg:px-8 py-8 sm:py-12 md:py-16 lg:py-20">
           <SignupForm onSubmit={handleSignupSubmit} isLoading={isSaving} />
-        </div>
-      )}
-
-      {/* JoyBox Preview Section */}
-      {currentStep === "preview" && personalityResult && (
-        <div className="w-full px-4 sm:px-6 lg:px-8 py-8 sm:py-12 md:py-16 lg:py-20">
-          <JoyBoxPreview
-            personalityType={personalityResult.title}
-            childAge={userData?.childAge}
-            onRetakeQuiz={handleResetQuiz}
-          />
         </div>
       )}
     </div>

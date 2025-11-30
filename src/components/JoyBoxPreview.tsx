@@ -5,6 +5,7 @@ import { getRecommendedToys, RecommendedToy } from "@/lib/toyRecommendations";
 import { Loader2 } from "lucide-react";
 import { ToyRating } from "@/components/ToyRating";
 import { supabase } from "@/integrations/supabase/client";
+import { personalityTypes } from "@/data/quizData";
 import {
   AlertDialog,
   AlertDialogAction,
@@ -61,6 +62,19 @@ export const JoyBoxPreview = ({ personalityType, childAge, onRetakeQuiz }: JoyBo
   };
 
   const totalValue = toys.reduce((sum, toy) => sum + (toy.price || 0), 0);
+  
+  // Get personality insights
+  const getPersonalityKey = (type: string): string => {
+    const lowerType = type.toLowerCase();
+    if (lowerType.includes('builder')) return 'builder';
+    if (lowerType.includes('creative') || lowerType.includes('explorer')) return 'creative';
+    if (lowerType.includes('active') || lowerType.includes('adventurer')) return 'active';
+    if (lowerType.includes('story') || lowerType.includes('weaver')) return 'storyteller';
+    return 'balanced';
+  };
+  
+  const personalityKey = getPersonalityKey(personalityType);
+  const personalityData = personalityTypes[personalityKey] || personalityTypes.balanced;
 
   const handleRetakeClick = () => {
     setShowRetakeDialog(true);
@@ -182,34 +196,72 @@ export const JoyBoxPreview = ({ personalityType, childAge, onRetakeQuiz }: JoyBo
             </div>
           </>
         ) : (
-          <div className="text-center space-y-6 py-8">
-            <div className="mb-6">
-              <p className="text-xl font-semibold text-foreground mb-3">
-                Your personalized toy recommendations are being prepared!
-              </p>
-              <p className="text-muted-foreground">
-                Let's explore our subscription plans to get started.
-              </p>
+          <div className="space-y-8 py-8">
+            {/* Personality Insights Section */}
+            <div className="text-center space-y-6">
+              <div className="text-8xl mb-4 animate-bounce">
+                {personalityData.emoji}
+              </div>
+              
+              <div className="space-y-3">
+                <h3 className="text-3xl font-bold text-foreground">
+                  {personalityData.title}
+                </h3>
+                <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
+                  {personalityData.description}
+                </p>
+              </div>
             </div>
-            <div className="flex flex-col gap-3 sm:gap-4 max-w-md mx-auto">
-              <Button
-                variant="cta"
-                size="lg"
-                className="w-full min-h-[48px]"
-                onClick={() => navigate("/pricing")}
-              >
-                View Our Plans
-              </Button>
-              {onRetakeQuiz && (
+
+            {/* Play Style Categories */}
+            <div className="bg-gradient-to-br from-primary/5 to-accent/5 rounded-2xl p-8 border-2 border-primary/10">
+              <h4 className="text-xl font-semibold mb-6 text-center text-foreground">
+                Perfect Toy Matches for Your Child
+              </h4>
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+                {personalityData.toyCategories.map((category, index) => (
+                  <div
+                    key={index}
+                    className="bg-card/80 backdrop-blur-sm rounded-xl p-6 border border-border/50 hover:border-primary/30 transition-all hover:shadow-lg"
+                  >
+                    <div className="text-5xl mb-3 text-center">{category.icon}</div>
+                    <p className="font-semibold text-center text-foreground">{category.name}</p>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            {/* CTA Section */}
+            <div className="text-center space-y-6 pt-4">
+              <div className="space-y-2">
+                <p className="text-lg font-semibold text-foreground">
+                  Ready to Start Your Child's Play Journey?
+                </p>
+                <p className="text-muted-foreground">
+                  Subscribe now to get curated toys delivered to your doorstep
+                </p>
+              </div>
+              
+              <div className="flex flex-col gap-3 sm:gap-4 max-w-md mx-auto">
                 <Button
-                  variant="outline"
+                  variant="cta"
                   size="lg"
                   className="w-full min-h-[48px]"
-                  onClick={handleRetakeClick}
+                  onClick={() => navigate("/pricing")}
                 >
-                  Retake Quiz
+                  View Our Plans
                 </Button>
-              )}
+                {onRetakeQuiz && (
+                  <Button
+                    variant="outline"
+                    size="lg"
+                    className="w-full min-h-[48px]"
+                    onClick={handleRetakeClick}
+                  >
+                    Retake Quiz
+                  </Button>
+                )}
+              </div>
             </div>
           </div>
         )}

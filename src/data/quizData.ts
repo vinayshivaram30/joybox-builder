@@ -50,10 +50,12 @@ export const quizQuestions: QuizQuestionData[] = [
     id: "learning",
     question: "What learning area interests them most?",
     answers: [
-      { id: "stem", text: "Science & Math", icon: "🔬", value: "stem" },
-      { id: "language", text: "Reading & Stories", icon: "📚", value: "language" },
-      { id: "motor", text: "Physical Skills", icon: "🤸", value: "motor" },
+      { id: "stem", text: "Science & Math", icon: "🔬", value: "problem_solver" },
+      { id: "language", text: "Reading & Stories", icon: "📚", value: "imagination" },
+      { id: "motor", text: "Physical Skills", icon: "🤸‍♂️", value: "active" },
       { id: "social", text: "Social & Emotional", icon: "❤️", value: "social" },
+      { id: "creative", text: "Creative & Art-based Learning", icon: "🎨", value: "creative" },
+      { id: "sensory", text: "Sensory Exploration", icon: "✨", value: "sensory" },
     ],
   },
   {
@@ -180,29 +182,63 @@ export function calculatePersonality(answers: Record<string, string>): Personali
   
   // Advanced personality mapping based on multiple factors
   
-  // Direct energy signals (highest priority)
+  // Direct learning signals (highest priority)
+  if (learning === "sensory") {
+    return personalityTypes.sensorySeeker;
+  }
+  
+  if (learning === "creative") {
+    return personalityTypes.creativeMaker;
+  }
+  
+  if (learning === "problem_solver") {
+    // STEM + focused = Tiny Engineer
+    if (energy === "focused" || energy === "explorer") {
+      return personalityTypes.tinyEngineer;
+    }
+    return personalityTypes.builder;
+  }
+  
+  if (learning === "imagination") {
+    // Reading + quiet = Quiet Thinker
+    if (energy === "focused" || playType === "problem_solver") {
+      return personalityTypes.quietThinker;
+    }
+    return personalityTypes.storyteller;
+  }
+  
+  if (learning === "social") {
+    return personalityTypes.balanced; // Social Connector
+  }
+  
+  if (learning === "active") {
+    // Physical + high energy = Active Explorer
+    if (energy === "high_energy") {
+      return personalityTypes.active;
+    }
+    // Physical + explorer = Curious Explorer
+    return personalityTypes.curiousExplorer;
+  }
+  
+  // Direct energy signals
   if (energy === "sensory") {
     return personalityTypes.sensorySeeker;
   }
   
   if (energy === "focused") {
-    // Focused + puzzles = Quiet Thinker
     if (playType === "problem_solver" || attention === "very-long") {
       return personalityTypes.quietThinker;
     }
-    // Focused + building = Tiny Engineer or Problem Solver
-    if (playType === "builder" || learning === "stem") {
+    if (playType === "builder") {
       return personalityTypes.tinyEngineer;
     }
     return personalityTypes.quietThinker;
   }
   
   if (energy === "explorer") {
-    // Explorer + building/STEM = Tiny Engineer
-    if (playType === "builder" || learning === "stem") {
+    if (playType === "builder") {
       return personalityTypes.tinyEngineer;
     }
-    // Explorer + puzzles = Problem Solver (builder personality)
     if (playType === "problem_solver") {
       return personalityTypes.builder;
     }
@@ -210,11 +246,9 @@ export function calculatePersonality(answers: Record<string, string>): Personali
   }
   
   if (energy === "seeker_of_novelty") {
-    // Novelty seeker + creative = Creative Maker
     if (playType === "creative") {
       return personalityTypes.creativeMaker;
     }
-    // Novelty seeker + pretend = Imaginative Storyteller
     if (playType === "imagination") {
       return personalityTypes.storyteller;
     }
@@ -227,7 +261,6 @@ export function calculatePersonality(answers: Record<string, string>): Personali
   }
   
   if (playType === "problem_solver") {
-    // Puzzles + focused = Quiet Thinker
     if (energy === "focused" || attention === "very-long") {
       return personalityTypes.quietThinker;
     }
@@ -239,22 +272,17 @@ export function calculatePersonality(answers: Record<string, string>): Personali
     return personalityTypes.active;
   }
   
-  // High energy + motor = Sensory Seeker
-  if (energy === "high_energy" && learning === "motor") {
-    return personalityTypes.sensorySeeker;
-  }
-  
-  // Tiny Engineer: Building + STEM focus + good attention
-  if (playType === "builder" && learning === "stem" && (attention === "long" || attention === "very-long")) {
+  // Tiny Engineer: Building + good attention
+  if (playType === "builder" && (attention === "long" || attention === "very-long")) {
     return personalityTypes.tinyEngineer;
   }
   
-  // Creative Maker: Creative play + not STEM focused
-  if (playType === "creative" && learning !== "stem") {
+  // Creative Maker: Creative play
+  if (playType === "creative") {
     return personalityTypes.creativeMaker;
   }
   
-  // Social Connector: Pretend play + social preference (using balanced)
+  // Social Connector: Pretend play + social preference
   if (playType === "imagination" && (social === "peers" || social === "flexible")) {
     return personalityTypes.balanced;
   }
@@ -266,14 +294,12 @@ export function calculatePersonality(answers: Record<string, string>): Personali
   }
   
   // Curious Explorer: Active + exploration-driven
-  if (playType === "active" && (energy === "explorer" || energy === "seeker_of_novelty")) {
+  if (playType === "active") {
     return personalityTypes.curiousExplorer;
   }
   
   // Original personality types (fallbacks)
   if (playType === "builder") return personalityTypes.builder;
-  if (playType === "creative") return personalityTypes.creative;
-  if (playType === "active") return personalityTypes.active;
   if (playType === "imagination") return personalityTypes.storyteller;
   
   return personalityTypes.balanced;

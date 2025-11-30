@@ -130,7 +130,7 @@ const Signup = () => {
             <div className="bg-accent/10 rounded-2xl p-6 border-2 border-accent/20 text-center">
               <p className="text-lg mb-2">
                 <span className="font-heading font-semibold">Box Value:</span>{" "}
-                <span className="text-2xl font-bold text-foreground">₹4,500+</span>
+                <span className="text-2xl font-bold text-foreground">₹6,500+</span>
               </p>
               <p className="text-lg">
                 <span className="font-heading font-semibold">Your Price:</span>{" "}

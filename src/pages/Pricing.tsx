@@ -30,7 +30,7 @@ const Pricing = () => {
           </h1>
           
           <p className="text-lg sm:text-xl md:text-2xl text-muted-foreground mb-0">
-            Get premium toys worth ₹4,500 in every JoyBox at an affordable monthly price
+            Get premium toys worth ₹6,500 in every JoyBox at an affordable monthly price
           </p>
         </div>
       </section>
@@ -414,7 +414,7 @@ const Pricing = () => {
                 How many toys will I receive in each JoyBox?
               </AccordionTrigger>
               <AccordionContent className="text-muted-foreground pb-4">
-                Each subscription JoyBox contains 3-4 premium toys worth ₹4,500+ in total. The exact number depends on the toy sizes and types selected for your child's age and interests. We focus on quality over quantity, ensuring each toy provides weeks of engaging play.
+                Each subscription JoyBox contains 3-4 premium toys worth ₹6,500+ in total. The exact number depends on the toy sizes and types selected for your child's age and interests. We focus on quality over quantity, ensuring each toy provides weeks of engaging play.
               </AccordionContent>
             </AccordionItem>
           </Accordion>

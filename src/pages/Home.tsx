@@ -126,7 +126,7 @@ const Home = () => {
             </div>
             <h3 className="font-heading font-bold text-lg sm:text-xl mb-1.5">Play</h3>
             <p className="text-muted-foreground">
-              Receive curated JoyBox with 3-4 premium toys worth ₹4,500+
+              Receive curated JoyBox with 3-4 premium toys worth ₹6,500+
             </p>
           </div>
           
@@ -252,7 +252,7 @@ const Home = () => {
               <div>
                 <h3 className="font-heading font-bold text-lg sm:text-xl mb-1.5">Save Up to 80%</h3>
                 <p className="text-muted-foreground">
-                  Get ₹4,500+ worth of toys for just ₹999/month. No storage, no waste.
+                  Get ₹6,500+ worth of toys for just ₹999/month. No storage, no waste.
                 </p>
               </div>
             </div>

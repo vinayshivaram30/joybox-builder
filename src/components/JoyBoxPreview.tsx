@@ -96,27 +96,7 @@ export const JoyBoxPreview = ({ personalityType, childAge, onRetakeQuiz }: JoyBo
           </p>
         </div>
 
-        {toys.length === 0 ? (
-          <div className="text-center py-8 sm:py-12">
-            <div className="text-5xl sm:text-6xl mb-4">📦</div>
-            <p className="text-lg sm:text-xl text-muted-foreground mb-3 sm:mb-4">
-              No toys available for your personality type yet.
-            </p>
-            <p className="text-sm sm:text-base text-muted-foreground mb-6">
-              Check back soon as we add more toys to our inventory!
-            </p>
-            <div className="flex flex-col gap-3 sm:gap-4 max-w-md mx-auto">
-              {onRetakeQuiz && (
-                <Button onClick={onRetakeQuiz} variant="outline" size="lg" className="w-full min-h-[48px]">
-                  Retake Quiz
-                </Button>
-              )}
-              <Button onClick={() => navigate("/pricing")} variant="cta" size="lg" className="w-full min-h-[48px]">
-                View Our Plans
-              </Button>
-            </div>
-          </div>
-        ) : (
+        {toys.length > 0 ? (
           <>
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 mb-6 sm:mb-8">
               {toys.map((toy) => (
@@ -201,6 +181,37 @@ export const JoyBoxPreview = ({ personalityType, childAge, onRetakeQuiz }: JoyBo
               </p>
             </div>
           </>
+        ) : (
+          <div className="text-center space-y-6 py-8">
+            <div className="mb-6">
+              <p className="text-xl font-semibold text-foreground mb-3">
+                Your personalized toy recommendations are being prepared!
+              </p>
+              <p className="text-muted-foreground">
+                Let's explore our subscription plans to get started.
+              </p>
+            </div>
+            <div className="flex flex-col gap-3 sm:gap-4 max-w-md mx-auto">
+              <Button
+                variant="cta"
+                size="lg"
+                className="w-full min-h-[48px]"
+                onClick={() => navigate("/pricing")}
+              >
+                View Our Plans
+              </Button>
+              {onRetakeQuiz && (
+                <Button
+                  variant="outline"
+                  size="lg"
+                  className="w-full min-h-[48px]"
+                  onClick={handleRetakeClick}
+                >
+                  Retake Quiz
+                </Button>
+              )}
+            </div>
+          </div>
         )}
       </div>
 

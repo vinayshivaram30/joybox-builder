@@ -75,7 +75,7 @@ const Landing = () => {
           </div>
           
           <h2 className="text-3xl md:text-5xl font-heading font-bold mb-4">
-            Get ₹4,500 worth of toys
+            Get ₹6,500 worth of toys
           </h2>
           <p className="text-2xl md:text-4xl font-heading font-bold text-primary mb-6">
             For just ₹999/month

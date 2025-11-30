@@ -40,7 +40,7 @@ const FAQ = () => {
     },
     {
       question: "What if my child damages a toy?",
-      answer: "Normal wear and tear is expected and completely okay. However, if a toy is significantly damaged or has missing pieces, please let us know. We understand that accidents happen and will work with you to find a solution."
+      answer: "Normal wear and tear is expected and completely okay - that's what toys are for! We don't charge for minor scratches, scuffs, or typical play damage. However, if a toy is significantly damaged, broken beyond repair, or has missing essential pieces, please inform us during the swap. We understand accidents happen! For major damage, we may apply a nominal replacement fee (much less than buying new). We'll always communicate with you first and work together on a fair solution. Your satisfaction and transparency are our priorities."
     },
     {
       question: "Can I choose specific toys?",

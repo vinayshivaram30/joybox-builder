@@ -19,7 +19,9 @@ export const quizQuestions: QuizQuestionData[] = [
       { id: "building", text: "Building & Construction", icon: "🏗️", value: "builder" },
       { id: "creative", text: "Arts & Crafts", icon: "🎨", value: "creative" },
       { id: "active", text: "Active & Outdoor", icon: "⚽", value: "active" },
-      { id: "pretend", text: "Pretend & Role Play", icon: "🎭", value: "pretend" },
+      { id: "pretend", text: "Pretend & Role Play", icon: "🎭", value: "imagination" },
+      { id: "sensory", text: "Sensory & Tactile Play", icon: "✨", value: "sensory" },
+      { id: "puzzles", text: "Puzzles & Quiet Games", icon: "🧩", value: "problem_solver" },
     ],
   },
   {
@@ -172,12 +174,22 @@ export function calculatePersonality(answers: Record<string, string>): Personali
   const energy = answers["energy"];
   const attention = answers["attention"];
   const learning = answers["learning"];
+  const social = answers["social"];
   
   // Advanced personality mapping based on multiple factors
   
-  // Sensory Seeker: High energy + motor skills focus
-  if (energy === "high-energy" && learning === "motor") {
+  // Direct play-type signals (highest priority)
+  if (playType === "sensory") {
     return personalityTypes.sensorySeeker;
+  }
+  
+  if (playType === "problem_solver") {
+    // If they picked puzzles + calm energy = Quiet Thinker
+    if (energy === "calm" || attention === "very-long") {
+      return personalityTypes.quietThinker;
+    }
+    // Otherwise default to builder (problem solver)
+    return personalityTypes.builder;
   }
   
   // Tiny Engineer: Building + STEM focus + good attention
@@ -185,26 +197,36 @@ export function calculatePersonality(answers: Record<string, string>): Personali
     return personalityTypes.tinyEngineer;
   }
   
-  // Creative Maker: Creative play + arts focus
+  // Creative Maker: Creative play + not STEM focused
   if (playType === "creative" && learning !== "stem") {
     return personalityTypes.creativeMaker;
   }
   
-  // Quiet Thinker: Calm energy + long attention + any learning style
+  // Quiet Thinker: Calm energy + long attention
   if (energy === "calm" && (attention === "long" || attention === "very-long")) {
     return personalityTypes.quietThinker;
   }
   
-  // Curious Explorer: Active + varies energy + shorter attention (exploration-driven)
+  // Sensory Seeker: High energy + motor skills focus
+  if (energy === "high-energy" && learning === "motor") {
+    return personalityTypes.sensorySeeker;
+  }
+  
+  // Curious Explorer: Active + exploration-driven
   if (playType === "active" && (energy === "varies" || attention === "short" || attention === "medium")) {
     return personalityTypes.curiousExplorer;
+  }
+  
+  // Social Connector: Pretend play + social preference
+  if (playType === "imagination" && (social === "peers" || social === "flexible")) {
+    return personalityTypes.balanced; // Using balanced for social connector
   }
   
   // Original personality types (fallbacks)
   if (playType === "builder") return personalityTypes.builder;
   if (playType === "creative") return personalityTypes.creative;
   if (playType === "active") return personalityTypes.active;
-  if (playType === "pretend") return personalityTypes.storyteller;
+  if (playType === "imagination") return personalityTypes.storyteller;
   
   return personalityTypes.balanced;
 }

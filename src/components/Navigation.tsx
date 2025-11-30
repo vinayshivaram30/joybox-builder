@@ -121,6 +121,9 @@ export const Navigation = () => {
                         <DropdownMenuItem asChild>
                           <Link to="/admin/toys">Toy Inventory</Link>
                         </DropdownMenuItem>
+                        <DropdownMenuItem asChild>
+                          <Link to="/admin/waitlist">Waitlist Management</Link>
+                        </DropdownMenuItem>
                       </>
                     )}
                     <DropdownMenuItem asChild>

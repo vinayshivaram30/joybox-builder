@@ -89,7 +89,7 @@ const Signup = () => {
                   <div ref={toyParallax1} className="parallax-slow h-full">
                     <img
                       src={toyBlocks}
-                      alt="Motor Skills Toy"
+                      alt="Hands-On Play Toy"
                       className="w-full h-full object-cover"
                     />
                   </div>
